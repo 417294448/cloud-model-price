@@ -724,13 +724,12 @@
     margin-bottom: 10px;
   }
   .drawer-title {
-    font-family: var(--font-display);
-    font-size: 26px;
-    font-weight: 500;
+    font-family: var(--font-mono);
+    font-size: 22px;
+    font-weight: 600;
     color: var(--text);
-    line-height: 1.3;
+    line-height: 1.35;
     word-break: break-word;
-    letter-spacing: -0.01em;
   }
   .drawer-title-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
 
@@ -815,10 +814,13 @@
   }
   .drawer-row-label { color: var(--text-dim); font-size: 13px; flex-shrink: 0; }
   .drawer-row-value {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 13px;
     text-align: right;
     color: var(--text);
+  }
+  .drawer-row-value.mono {
+    font-family: var(--font-mono);
     font-variant-numeric: tabular-nums;
   }
 
@@ -862,7 +864,7 @@
     .drawer-content { padding: 52px 24px 32px; }
     .drawer-footer { padding: 16px 24px; }
     .drawer-close { top: 22px; right: 22px; }
-    .drawer-title { font-size: 22px; }
+    .drawer-title { font-size: 18px; }
     .drawer-hero-value { font-size: 32px; }
   }
 
@@ -1178,13 +1180,13 @@ function renderModalities(m) {
 let detailKey = null;
 
 function renderModelDetailSections(m) {
-  const rowHtml = (label, val, fmt) => {
+  const rowHtml = (label, val, fmt, cls = '') => {
     if (val == null) return '';
     const display = fmt ? fmt(val) : val;
     if (display == null) return '';
     return `<div class="drawer-row">
       <span class="drawer-row-label">${esc(label)}</span>
-      <span class="drawer-row-value">${esc(display)}</span>
+      <span class="drawer-row-value ${cls}">${esc(display)}</span>
     </div>`;
   };
 
@@ -1228,7 +1230,7 @@ function renderModelDetailSections(m) {
   }
 
   // 上下文
-  const ctxRows = rowHtml('最大输入', m.maxInput, fmtTokens) + rowHtml('最大输出', m.maxOutput, fmtTokens);
+  const ctxRows = rowHtml('最大输入', m.maxInput, fmtTokens, 'mono') + rowHtml('最大输出', m.maxOutput, fmtTokens, 'mono');
   if (ctxRows) {
     html += `<div class="drawer-section">
       <div class="drawer-section-label">上下文</div>
