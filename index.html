@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>云模型价格对比</title>
+<title>云模型定价与能力对比</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -309,7 +309,7 @@
     padding: 18px; position: relative; z-index: 2;
     transition: padding-bottom 0.2s;
   }
-  .pager.float-bar-visible { padding-bottom: 84px; }
+  .pager.select-popup-visible { padding-bottom: 240px; }
   .pager button {
     padding: 7px 16px;
     border: 1px solid var(--border-strong);
@@ -348,13 +348,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+    width: 22px;
+    height: 22px;
     border: 1px solid var(--border-strong);
     border-radius: 50%;
     background: var(--bg);
-    color: var(--text-faint);
-    font-size: 15px;
+    color: var(--text-dim);
+    font-size: 12px;
+    font-weight: 600;
     line-height: 1;
     cursor: pointer;
     transition: all 0.15s;
@@ -554,46 +555,87 @@
     letter-spacing: 0.04em;
   }
 
-  /* ===== 悬浮对比条 ===== */
-  @keyframes floatBarIn {
+  /* ===== 已选产品弹窗 ===== */
+  @keyframes popupIn {
     from { opacity: 0; transform: translate(-50%, 16px); }
     to { opacity: 1; transform: translate(-50%, 0); }
   }
-  .float-bar {
+  .select-popup {
     position: fixed;
     left: 50%;
     bottom: 24px;
     transform: translate(-50%, 0);
     display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 10px 12px 10px 18px;
-    background: var(--text);
-    color: var(--bg);
-    border-radius: 14px;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 280px;
+    max-width: calc(100vw - 48px);
+    max-height: min(200px, 35vh);
+    padding: 14px 16px 16px;
+    background: var(--bg-elevated);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 16px;
     box-shadow: 0 16px 40px -10px hsla(var(--shadow-color), 0.35), 0 4px 12px hsla(var(--shadow-color), 0.12);
     z-index: 70;
-    max-width: calc(100vw - 48px);
   }
-  .float-bar.hidden { display: none; }
-  .float-bar.show { animation: floatBarIn 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
-  .float-bar-chips { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .float-chip {
+  .select-popup.hidden { display: none; }
+  .select-popup.show { animation: popupIn 0.28s cubic-bezier(0.16, 1, 0.3, 1); }
+  .select-popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .select-popup-title {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .select-popup-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--border-strong);
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--text-dim);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+  .select-popup-close:hover { color: var(--bg); background: var(--danger); border-color: var(--danger); }
+  .select-popup-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+  .select-popup-chip {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     padding: 4px 6px 4px 10px;
-    background: rgba(255,255,255,0.1);
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
     border-radius: 999px;
     font-family: var(--font-mono);
     font-size: 11.5px;
-    max-width: 180px;
+    max-width: 220px;
   }
-  .float-chip span.name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .float-chip button {
+  .select-popup-chip span.name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .select-popup-chip button {
     border: none;
-    background: rgba(255,255,255,0.15);
-    color: var(--bg);
+    background: var(--border-strong);
+    color: var(--text);
     width: 16px; height: 16px;
     border-radius: 50%;
     font-size: 10px;
@@ -602,10 +644,11 @@
     display: inline-flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
-  .float-chip button:hover { background: var(--danger); }
-  .float-bar-go {
+  .select-popup-chip button:hover { background: var(--danger); color: var(--bg); }
+  .select-popup-go {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     padding: 9px 16px;
     background: var(--accent);
@@ -620,7 +663,7 @@
     white-space: nowrap;
     transition: background 0.15s, transform 0.15s;
   }
-  .float-bar-go:hover { background: var(--accent-bright); transform: translateY(-1px); }
+  .select-popup-go:hover { background: var(--accent-bright); transform: translateY(-1px); }
 
   /* ===== 详情抽屉 ===== */
   .drawer-backdrop {
@@ -756,7 +799,7 @@
   .drawer-section { margin-bottom: 28px; }
   .drawer-section:last-child { margin-bottom: 0; }
   .drawer-section-label {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: 10.5px;
@@ -870,8 +913,8 @@
 <body>
 
 <header class="hero">
-  <div class="hero-eyebrow">Model Pricing Intelligence · LiteLLM Dataset</div>
-  <h1>云模型价格对比</h1>
+  <div class="hero-eyebrow">Model Pricing Intelligence</div>
+  <h1>云模型定价与能力对比</h1>
   <p class="hero-desc">跨全部云厂商与模型 Provider 的定价与能力全景 · 价格单位统一为 <span class="mono">美元 / 百万 tokens</span></p>
   <div class="stat-strip">
     <div class="stat"><span class="stat-num" id="statModels">—</span><span class="stat-label">模型总数</span></div>
@@ -900,7 +943,6 @@
       <label class="cap-filter"><input type="checkbox" data-cap="supports_function_calling"><span>函数调用</span></label>
       <label class="cap-filter"><input type="checkbox" data-cap="supports_reasoning"><span>推理</span></label>
     </div>
-    <button id="clearSelection" class="ghost-btn" title="清除所有勾选">清空勾选</button>
     <span class="stats" id="statsText"></span>
   </div>
   <div class="table-wrap">
@@ -929,9 +971,13 @@
   </div>
 </div>
 
-<div class="float-bar hidden" id="floatBar">
-  <div class="float-bar-chips" id="floatBarChips"></div>
-  <button class="float-bar-go" id="floatBarGo">对比 <span id="floatBarCount">0</span> 个 →</button>
+<div class="select-popup hidden" id="selectPopup">
+  <div class="select-popup-header">
+    <span class="select-popup-title">已选择 <span id="selectPopupCount">0</span> 个</span>
+    <button class="select-popup-close" id="selectPopupClose" title="清除所有选择">✕</button>
+  </div>
+  <div class="select-popup-body" id="selectPopupBody"></div>
+  <button class="select-popup-go" id="selectPopupGo">开始对比 →</button>
 </div>
 
 <div id="compareView">
@@ -1346,7 +1392,7 @@ function renderBrowse() {
   });
 }
 
-// 统一刷新所有勾选计数显示（徽标 / 对比工具栏文本 / 席位指示点 / 悬浮对比条）
+// 统一刷新所有勾选计数显示（徽标 / 对比工具栏文本 / 席位指示点 / 已选产品弹窗）
 function updateCount() {
   const n = state.selected.size;
   document.getElementById('compareCount').textContent = n;
@@ -1357,29 +1403,29 @@ function updateCount() {
     dots.innerHTML = Array.from({ length: MAX_COMPARE }, (_, i) =>
       `<span class="slot-dot ${i < n ? 'filled' : ''}"></span>`).join('');
   }
-  renderFloatBar();
+  renderSelectPopup();
 }
 
-// 浏览页底部悬浮条：勾选≥1个模型时出现，让用户不必滚回顶部找「对比」标签
-function renderFloatBar() {
-  const bar = document.getElementById('floatBar');
-  if (!bar) return;
+// 浏览页已选产品弹窗：勾选≥1个模型时在底部弹出，显示已选项并支持清除/前往对比
+function renderSelectPopup() {
+  const popup = document.getElementById('selectPopup');
+  if (!popup) return;
   const sel = [...state.selected].map(k => state.models.find(m => m.key === k)).filter(Boolean);
   const pager = document.querySelector('.pager');
   if (sel.length === 0) {
-    bar.classList.add('hidden');
-    bar.classList.remove('show');
-    if (pager) pager.classList.remove('float-bar-visible');
+    popup.classList.add('hidden');
+    popup.classList.remove('show');
+    if (pager) pager.classList.remove('select-popup-visible');
     return;
   }
-  const wasHidden = bar.classList.contains('hidden');
-  bar.classList.remove('hidden');
-  if (wasHidden) bar.classList.add('show');
-  if (pager) pager.classList.add('float-bar-visible');
-  document.getElementById('floatBarChips').innerHTML = sel.map(m =>
-    `<span class="float-chip"><span class="name" title="${esc(m.key)}">${esc(m.key)}</span><button data-unselect="${esc(m.key)}" title="移除">✕</button></span>`
+  const wasHidden = popup.classList.contains('hidden');
+  popup.classList.remove('hidden');
+  if (wasHidden) popup.classList.add('show');
+  if (pager) pager.classList.add('select-popup-visible');
+  document.getElementById('selectPopupCount').textContent = sel.length;
+  document.getElementById('selectPopupBody').innerHTML = sel.map(m =>
+    `<span class="select-popup-chip"><span class="name" title="${esc(m.key)}">${esc(m.key)}</span><button data-unselect="${esc(m.key)}" title="移除">✕</button></span>`
   ).join('');
-  document.getElementById('floatBarCount').textContent = sel.length;
 }
 
 function clearSelection() {
@@ -1661,8 +1707,9 @@ function initUI() {
   document.getElementById('tabBrowse').addEventListener('click', () => switchTab('browse'));
   document.getElementById('tabCompare').addEventListener('click', () => switchTab('compare'));
 
-  document.getElementById('floatBarGo').addEventListener('click', () => switchTab('compare'));
-  document.getElementById('floatBarChips').addEventListener('click', e => {
+  document.getElementById('selectPopupGo').addEventListener('click', () => switchTab('compare'));
+  document.getElementById('selectPopupClose').addEventListener('click', clearSelection);
+  document.getElementById('selectPopupBody').addEventListener('click', e => {
     const btn = e.target.closest('[data-unselect]');
     if (!btn) return;
     state.selected.delete(btn.dataset.unselect);
@@ -1678,7 +1725,6 @@ function initUI() {
     renderCompare();
   });
 
-  document.getElementById('clearSelection').addEventListener('click', clearSelection);
   document.getElementById('closeCompare').addEventListener('click', () => {
     clearSelection();
     switchTab('browse');
@@ -1697,8 +1743,8 @@ function switchTab(which) {
   document.getElementById('compareView').style.display = browse ? 'none' : 'block';
   document.getElementById('tabBrowse').classList.toggle('active', browse);
   document.getElementById('tabCompare').classList.toggle('active', !browse);
-  // 悬浮对比条只在浏览页出现，对比页本身就是目的地
-  document.getElementById('floatBar').classList.toggle('hidden', !browse || state.selected.size === 0);
+  // 已选产品弹窗只在浏览页出现，对比页本身就是目的地
+  document.getElementById('selectPopup').classList.toggle('hidden', !browse || state.selected.size === 0);
   if (browse) renderBrowse(); else renderCompare();
 }
 

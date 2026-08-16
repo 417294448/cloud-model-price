@@ -1,6 +1,6 @@
-# cloud-model-price
+# 云模型定价与能力对比
 
-云模型价格对比页面：基于 LiteLLM 价格库（`source-data/model_prices_and_context_window.json`，3000+ 模型）的单文件静态页面，支持全模型浏览、多条件筛选排序与多模型并排对比。
+云模型定价与能力对比页面：基于 `source-data/model_prices_and_context_window.json`（3000+ 模型）的单文件静态页面，支持全模型浏览、多条件筛选排序与多模型并排对比。
 
 ## 使用方式
 
