@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>云模型定价与能力对比</title>
+<title>Cloud Model Pricing & Compare</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -93,6 +93,32 @@
     pointer-events: none;
   }
   .hero > * { position: relative; }
+  /* 语言切换器：右上角 */
+  .lang-switch {
+    position: absolute;
+    top: 20px; right: 32px;
+    display: flex;
+    gap: 2px;
+    padding: 3px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    z-index: 5;
+  }
+  .lang-btn {
+    border: none;
+    background: transparent;
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .lang-btn:hover:not(.active) { color: var(--text-dim); }
+  .lang-btn.active { background: var(--accent); color: #f4fbfd; }
   .hero-top { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; }
   .logo-mark {
     width: 26px; height: 26px;
@@ -998,6 +1024,10 @@
   }
   .drawer-price-sub-value .unit { font-size: 10.5px; font-weight: 500; color: var(--text-faint); margin-left: 2px; }
 
+  /* 专项价格 / 支持区域 行的单位与 tag 列表 */
+  .drawer-row-value.mono .unit { font-size: 10.5px; font-weight: 500; color: var(--text-faint); margin-left: 3px; }
+  .region-list { display: inline-flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; }
+
   .drawer-divider {
     height: 1px;
     background: var(--border);
@@ -1190,6 +1220,10 @@
 </svg>
 
 <header class="hero">
+  <div class="lang-switch" role="group" aria-label="语言 / Language">
+    <button class="lang-btn" data-lang="zh">中</button>
+    <button class="lang-btn active" data-lang="en">EN</button>
+  </div>
   <div class="hero-top">
     <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true">
       <defs>
@@ -1201,22 +1235,22 @@
       <rect x="2.5" y="2.5" width="13" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
       <rect x="8.5" y="8.5" width="13" height="13" rx="2.5" fill="url(#logoGrad)"/>
     </svg>
-    <div class="hero-eyebrow">模型定价 · 能力对比</div>
+    <div class="hero-eyebrow" data-i18n="eyebrow">MODEL PRICING · CAPABILITY COMPARE</div>
   </div>
-  <h1>云模型定价与能力对比</h1>
-  <p class="hero-desc">跨全部云厂商与模型 Provider 的定价与能力全景 · 价格单位统一为 <span class="mono">美元 / 百万 tokens</span></p>
+  <h1 data-i18n="title">Cloud Model Pricing & Compare</h1>
+  <p class="hero-desc"><span data-i18n="descA">Pricing & capability landscape across all cloud providers · prices normalized to</span> <span class="mono" data-i18n="descUnit">USD / 1M tokens</span></p>
   <div class="stat-strip">
-    <div class="stat"><span class="stat-num" id="statModels">—</span><span class="stat-label"><svg class="ic"><use href="#i-models"/></svg>模型总数</span></div>
+    <div class="stat"><span class="stat-num" id="statModels">—</span><span class="stat-label"><svg class="ic"><use href="#i-models"/></svg><span data-i18n="statModels">Models</span></span></div>
     <div class="stat-divider"></div>
-    <div class="stat"><span class="stat-num" id="statProviders">—</span><span class="stat-label"><svg class="ic"><use href="#i-providers"/></svg>Provider</span></div>
+    <div class="stat"><span class="stat-num" id="statProviders">—</span><span class="stat-label"><svg class="ic"><use href="#i-providers"/></svg><span data-i18n="statProviders">Providers</span></span></div>
     <div class="stat-divider"></div>
-    <div class="stat"><span class="stat-num" id="statModes">—</span><span class="stat-label"><svg class="ic"><use href="#i-modes"/></svg>能力类型</span></div>
+    <div class="stat"><span class="stat-num" id="statModes">—</span><span class="stat-label"><svg class="ic"><use href="#i-modes"/></svg><span data-i18n="statModes">Capability Types</span></span></div>
   </div>
 </header>
 
 <div class="tabs">
-  <button class="tab active" id="tabBrowse">浏览全部</button>
-  <button class="tab" id="tabCompare">对比 <span class="badge" id="compareCount">0</span></button>
+  <button class="tab active" id="tabBrowse" data-i18n="tabBrowse">Browse All</button>
+  <button class="tab" id="tabCompare"><span data-i18n="tabCompare">Compare</span> <span class="badge" id="compareCount">0</span></button>
 </div>
 
 <div id="browseView">
@@ -1224,42 +1258,42 @@
     <div class="filter-row">
       <div class="search-wrap">
         <svg class="ic"><use href="#i-search"/></svg>
-        <input type="search" id="searchInput" placeholder="搜索模型名 / provider…">
+        <input type="search" id="searchInput" data-i18n-ph="searchPh" placeholder="Search models / providers…">
       </div>
       <div class="select-wrap">
-        <select id="providerSelect"><option value="">全部 Provider</option></select>
+        <select id="providerSelect"><option value="" data-i18n="allProviders">All Providers</option></select>
         <svg class="ic select-chev"><use href="#i-chev-down"/></svg>
       </div>
       <div class="select-wrap">
-        <select id="modeSelect"><option value="">全部类型</option></select>
+        <select id="modeSelect"><option value="" data-i18n="allModes">All Types</option></select>
         <svg class="ic select-chev"><use href="#i-chev-down"/></svg>
       </div>
       <div class="chip-group">
-        <label class="cap-filter"><input type="checkbox" data-cap="supports_vision"><span class="chip-label"><svg class="ic"><use href="#i-eye"/></svg>视觉</span></label>
-        <label class="cap-filter"><input type="checkbox" data-cap="supports_function_calling"><span class="chip-label"><svg class="ic"><use href="#i-wrench"/></svg>函数调用</span></label>
-        <label class="cap-filter"><input type="checkbox" data-cap="supports_reasoning"><span class="chip-label"><svg class="ic"><use href="#i-brain"/></svg>推理</span></label>
+        <label class="cap-filter"><input type="checkbox" data-cap="supports_vision"><span class="chip-label"><svg class="ic"><use href="#i-eye"/></svg><span data-i18n="capVision">Vision</span></span></label>
+        <label class="cap-filter"><input type="checkbox" data-cap="supports_function_calling"><span class="chip-label"><svg class="ic"><use href="#i-wrench"/></svg><span data-i18n="capFunction">Function Calling</span></span></label>
+        <label class="cap-filter"><input type="checkbox" data-cap="supports_reasoning"><span class="chip-label"><svg class="ic"><use href="#i-brain"/></svg><span data-i18n="capReasoning">Reasoning</span></span></label>
       </div>
-      <button class="clear-filters-btn" id="clearFilters" title="清除全部筛选条件">
-        <svg class="ic"><use href="#i-close"/></svg>清除筛选
+      <button class="clear-filters-btn" id="clearFilters" data-i18n-title="clearFiltersTitle" title="Clear all filters">
+        <svg class="ic"><use href="#i-close"/></svg><span data-i18n="clearFilters">Clear</span>
       </button>
       <span class="stats" id="statsText"></span>
     </div>
     <div class="filter-row">
       <div class="chip-group">
-        <span class="chip-group-label">输入</span>
-        <label class="cap-filter"><input type="checkbox" data-in-mod="text"><span class="chip-label"><svg class="ic"><use href="#i-text"/></svg>文本</span></label>
-        <label class="cap-filter"><input type="checkbox" data-in-mod="image"><span class="chip-label"><svg class="ic"><use href="#i-image"/></svg>图像</span></label>
-        <label class="cap-filter"><input type="checkbox" data-in-mod="audio"><span class="chip-label"><svg class="ic"><use href="#i-audio"/></svg>音频</span></label>
-        <label class="cap-filter"><input type="checkbox" data-in-mod="video"><span class="chip-label"><svg class="ic"><use href="#i-video"/></svg>视频</span></label>
-        <label class="cap-filter"><input type="checkbox" data-in-mod="code"><span class="chip-label"><svg class="ic"><use href="#i-code"/></svg>代码</span></label>
+        <span class="chip-group-label" data-i18n="groupInput">Input</span>
+        <label class="cap-filter"><input type="checkbox" data-in-mod="text"><span class="chip-label"><svg class="ic"><use href="#i-text"/></svg><span data-i18n="modText">Text</span></span></label>
+        <label class="cap-filter"><input type="checkbox" data-in-mod="image"><span class="chip-label"><svg class="ic"><use href="#i-image"/></svg><span data-i18n="modImage">Image</span></span></label>
+        <label class="cap-filter"><input type="checkbox" data-in-mod="audio"><span class="chip-label"><svg class="ic"><use href="#i-audio"/></svg><span data-i18n="modAudio">Audio</span></span></label>
+        <label class="cap-filter"><input type="checkbox" data-in-mod="video"><span class="chip-label"><svg class="ic"><use href="#i-video"/></svg><span data-i18n="modVideo">Video</span></span></label>
+        <label class="cap-filter"><input type="checkbox" data-in-mod="code"><span class="chip-label"><svg class="ic"><use href="#i-code"/></svg><span data-i18n="modCode">Code</span></span></label>
       </div>
       <div class="chip-group">
-        <span class="chip-group-label">输出</span>
-        <label class="cap-filter"><input type="checkbox" data-out-mod="text"><span class="chip-label"><svg class="ic"><use href="#i-text"/></svg>文本</span></label>
-        <label class="cap-filter"><input type="checkbox" data-out-mod="image"><span class="chip-label"><svg class="ic"><use href="#i-image"/></svg>图像</span></label>
-        <label class="cap-filter"><input type="checkbox" data-out-mod="audio"><span class="chip-label"><svg class="ic"><use href="#i-audio"/></svg>音频</span></label>
-        <label class="cap-filter"><input type="checkbox" data-out-mod="video"><span class="chip-label"><svg class="ic"><use href="#i-video"/></svg>视频</span></label>
-        <label class="cap-filter"><input type="checkbox" data-out-mod="code"><span class="chip-label"><svg class="ic"><use href="#i-code"/></svg>代码</span></label>
+        <span class="chip-group-label" data-i18n="groupOutput">Output</span>
+        <label class="cap-filter"><input type="checkbox" data-out-mod="text"><span class="chip-label"><svg class="ic"><use href="#i-text"/></svg><span data-i18n="modText">Text</span></span></label>
+        <label class="cap-filter"><input type="checkbox" data-out-mod="image"><span class="chip-label"><svg class="ic"><use href="#i-image"/></svg><span data-i18n="modImage">Image</span></span></label>
+        <label class="cap-filter"><input type="checkbox" data-out-mod="audio"><span class="chip-label"><svg class="ic"><use href="#i-audio"/></svg><span data-i18n="modAudio">Audio</span></span></label>
+        <label class="cap-filter"><input type="checkbox" data-out-mod="video"><span class="chip-label"><svg class="ic"><use href="#i-video"/></svg><span data-i18n="modVideo">Video</span></span></label>
+        <label class="cap-filter"><input type="checkbox" data-out-mod="code"><span class="chip-label"><svg class="ic"><use href="#i-code"/></svg><span data-i18n="modCode">Code</span></span></label>
       </div>
     </div>
   </div>
@@ -1268,41 +1302,41 @@
       <thead>
         <tr>
           <th></th>
-          <th data-sort="key">模型 <span class="arrow"></span></th>
-          <th data-sort="provider">Provider <span class="arrow"></span></th>
-          <th data-sort="mode">类型 <span class="arrow"></span></th>
-          <th data-sort="inputPrice">输入 $/1M <span class="arrow"></span></th>
-          <th data-sort="outputPrice">输出 $/1M <span class="arrow"></span></th>
-          <th data-sort="cacheRead">缓存读 $/1M <span class="arrow"></span></th>
-          <th data-sort="maxInput">上下文 <span class="arrow"></span></th>
-          <th data-sort="maxOutput">最大输出 <span class="arrow"></span></th>
-          <th>能力</th>
+          <th data-sort="key"><span data-i18n="thModel">Model</span> <span class="arrow"></span></th>
+          <th data-sort="provider"><span data-i18n="thProvider">Provider</span> <span class="arrow"></span></th>
+          <th data-sort="mode"><span data-i18n="thMode">Type</span> <span class="arrow"></span></th>
+          <th data-sort="inputPrice"><span data-i18n="thInput">Input $/1M</span> <span class="arrow"></span></th>
+          <th data-sort="outputPrice"><span data-i18n="thOutput">Output $/1M</span> <span class="arrow"></span></th>
+          <th data-sort="cacheRead"><span data-i18n="thCache">Cache $/1M</span> <span class="arrow"></span></th>
+          <th data-sort="maxInput"><span data-i18n="thContext">Context</span> <span class="arrow"></span></th>
+          <th data-sort="maxOutput"><span data-i18n="thMaxOut">Max Output</span> <span class="arrow"></span></th>
+          <th data-i18n="thCaps">Capabilities</th>
         </tr>
       </thead>
       <tbody id="browseBody"></tbody>
     </table>
   </div>
   <div class="pager">
-    <button id="prevPage">← 上一页</button>
+    <button id="prevPage" data-i18n="prevPage">← Prev</button>
     <span id="pageInfo"></span>
-    <button id="nextPage">下一页 →</button>
-    <label class="pager-jump">跳至 <input type="number" id="pageJump" min="1" step="1"> 页</label>
+    <button id="nextPage" data-i18n="nextPage">Next →</button>
+    <label class="pager-jump"><span data-i18n="jumpTo">Go to</span> <input type="number" id="pageJump" min="1" step="1"> <span data-i18n="pageUnit"></span></label>
   </div>
 </div>
 
 <div class="select-popup hidden" id="selectPopup">
   <div class="select-popup-header">
-    <span class="select-popup-title"><svg class="ic"><use href="#i-check-circle"/></svg>已选择 <span id="selectPopupCount">0</span> 个</span>
-    <button class="select-popup-close" id="selectPopupClose" title="清除所有选择"><svg class="ic"><use href="#i-close"/></svg></button>
+    <span class="select-popup-title"><svg class="ic"><use href="#i-check-circle"/></svg><span data-i18n="selTitle">Selected</span> <span id="selectPopupCount">0</span> <span data-i18n="selUnit"></span></span>
+    <button class="select-popup-close" id="selectPopupClose" data-i18n-title="selClear" title="Clear all selections"><svg class="ic"><use href="#i-close"/></svg></button>
   </div>
   <div class="select-popup-body" id="selectPopupBody"></div>
-  <button class="select-popup-go" id="selectPopupGo">开始对比<svg class="ic"><use href="#i-arrow-right"/></svg></button>
+  <button class="select-popup-go" id="selectPopupGo"><span data-i18n="selGo">Compare</span><svg class="ic"><use href="#i-arrow-right"/></svg></button>
 </div>
 
 <div id="compareView">
   <div class="compare-toolbar">
     <div class="compare-toolbar-left">
-      <span class="compare-toolbar-title"><svg class="ic"><use href="#i-columns"/></svg>对比分析</span>
+      <span class="compare-toolbar-title"><svg class="ic"><use href="#i-columns"/></svg><span data-i18n="compareTitle">Compare Analysis</span></span>
       <div class="slot-dots" id="slotDots"></div>
       <span class="compare-count-text" id="compareCount2Text"></span>
     </div>
@@ -1314,14 +1348,14 @@
         </div>
         <div class="add-model-box">
           <svg class="ic add-model-search-ic"><use href="#i-search"/></svg>
-          <input type="text" id="addModelInput" placeholder="搜索该 Provider 下的模型…" autocomplete="off">
+          <input type="text" id="addModelInput" data-i18n-ph="addModelPh" placeholder="Search models in this provider…" autocomplete="off">
           <svg class="ic select-chev"><use href="#i-chev-down"/></svg>
         </div>
         <select id="addModelSelect" size="10" aria-label="添加模型到对比"></select>
       </div>
     </div>
     <div class="compare-toolbar-right">
-      <button id="closeCompare" class="close-compare-btn" title="关闭对比并清空所选模型"><svg class="ic"><use href="#i-close"/></svg></button>
+      <button id="closeCompare" class="close-compare-btn" data-i18n-title="closeCompareTitle" title="Close compare and clear selection"><svg class="ic"><use href="#i-close"/></svg></button>
     </div>
   </div>
   <div class="compare-wrap" id="compareWrap"></div>
@@ -1341,75 +1375,238 @@
 <script>
 'use strict';
 
+// ============ 多语言（i18n）============
+// 数据层（模型 key / provider / mode）全是英文 slug，无需翻译；这里只覆盖 UI 层文本。
+// 静态文本用 data-i18n 属性 + applyI18n() 遍历替换；动态文本在 JS 里用 t() 取值。
+const I18N = {
+  zh: {
+    eyebrow: '模型定价 · 能力对比',
+    title: '云模型定价与能力对比',
+    descA: '跨全部云厂商与模型 Provider 的定价与能力全景 · 价格单位统一为',
+    descUnit: '美元 / 百万 tokens',
+    statModels: '模型总数',
+    statProviders: 'Provider',
+    statModes: '能力类型',
+    tabBrowse: '浏览全部',
+    tabCompare: '对比',
+    searchPh: '搜索模型名 / provider…',
+    allProviders: '全部 Provider',
+    allModes: '全部类型',
+    capVision: '视觉', capFunction: '函数调用', capReasoning: '推理',
+    groupInput: '输入', groupOutput: '输出',
+    modText: '文本', modImage: '图像', modAudio: '音频', modVideo: '视频', modCode: '代码',
+    clearFilters: '清除筛选',
+    clearFiltersTitle: '清除全部筛选条件',
+    prevPage: '← 上一页', nextPage: '下一页 →', jumpTo: '跳至', pageUnit: '页',
+    thModel: '模型', thProvider: 'Provider', thMode: '类型',
+    thInput: '输入 $/1M', thOutput: '输出 $/1M', thCache: '缓存读 $/1M',
+    thContext: '上下文', thMaxOut: '最大输出', thCaps: '能力',
+    selTitle: '已选择', selUnit: '个', selClear: '清除所有选择', selGo: '开始对比',
+    compareTitle: '对比分析', closeCompareTitle: '关闭对比并清空所选模型',
+    seatsText: (n, max) => `${n} / ${max} 席位`,
+    addProviderPh: '选择 Provider',
+    addModelPh: '搜索该 Provider 下的模型…',
+    addModelFull: (max) => `对比已满（${max} 个）`,
+    noMatch: '该 Provider 下无匹配模型',
+    statsText: (f, total, sel) => `共 ${f} 个模型（总计 ${total}）· 已勾选 ${sel}`,
+    pageInfo: (p, tp) => `${p} / ${tp} 页`,
+    // toast
+    toastLimit: (max) => `最多同时对比 ${max} 个模型`,
+    toastFull: (max) => `已选满 ${max} 个模型，正在进入对比…`,
+    // 对比视图
+    grpPrice: '价格', grpContext: '上下文', grpBasic: '基本信息', grpModality: '支持模态', grpCaps: '能力',
+    lblInputPrice: '输入价格', lblOutputPrice: '输出价格', lblCache: '缓存读价格', lblImageGen: '图像生成',
+    lblMaxInput: '最大输入', lblMaxOutput: '最大输出', lblDeprec: '弃用日期', lblTiered: '阶梯定价',
+    lblInMod: '输入模态', lblOutMod: '输出模态',
+    unitPerM: '/ 1M tokens', unitPerImg: '/ 张', unitPerMShort: '/1M', unitPerImgShort: '/张',
+    bestTag: '最优', tieredTag: '阶梯', tieredTitle: '存在阶梯定价',
+    emptyCompareA: '尚未勾选模型。回到', emptyCompareLink: '浏览全部',
+    emptyCompareB: (max) => `勾选要对比的模型（最多 ${max} 个）。`,
+    removeTitle: '移除',
+    // 详情抽屉
+    secContext: '上下文', secBasic: '基本信息', secModality: '支持模态', secCaps: '能力',
+    rowProvider: 'Provider', rowMode: '类型', rowSource: '数据来源',
+    viewSource: '查看原始文档',
+    tieredExist: '存在（详见源数据）',
+    secExtraPrice: '专项价格',
+    epAudioIn: '音频输入', epReasoningOut: '推理输出',
+    epCodeInterp: '代码解释器', epCompUseIn: '计算机操作输入', epCompUseOut: '计算机操作输出',
+    epFileSearch: '文件检索', epFileSearchGb: '文件检索存储', epVectorStore: '向量存储',
+    epSearchCtx: '联网检索',
+    rowRegions: '支持区域',
+    addToCompare: '加入对比', addedToCompare: '已加入对比', compareFullBtn: (max) => `对比已满（${max}）`,
+    drawerFallback: '模型详情',
+    // 错误
+    errLoad: (msg) => `数据加载失败（${msg}）`,
+    errBody: '本页面数据应内嵌于页面中，但当前未检测到，且浏览器不允许通过 file:// 协议 fetch 本地 JSON。请检查数据块是否完整，或在项目目录运行本地服务后访问。',
+    renderErr: '对比表渲染出错：',
+    renderErrHint: '请打开浏览器控制台（F12）查看详情并反馈。',
+  },
+  en: {
+    eyebrow: 'MODEL PRICING · CAPABILITY COMPARE',
+    title: 'Cloud Model Pricing & Compare',
+    descA: 'Pricing & capability landscape across all cloud providers · prices normalized to',
+    descUnit: 'USD / 1M tokens',
+    statModels: 'Models',
+    statProviders: 'Providers',
+    statModes: 'Capability Types',
+    tabBrowse: 'Browse All',
+    tabCompare: 'Compare',
+    searchPh: 'Search models / providers…',
+    allProviders: 'All Providers',
+    allModes: 'All Types',
+    capVision: 'Vision', capFunction: 'Function Calling', capReasoning: 'Reasoning',
+    groupInput: 'Input', groupOutput: 'Output',
+    modText: 'Text', modImage: 'Image', modAudio: 'Audio', modVideo: 'Video', modCode: 'Code',
+    clearFilters: 'Clear',
+    clearFiltersTitle: 'Clear all filters',
+    prevPage: '← Prev', nextPage: 'Next →', jumpTo: 'Go to', pageUnit: '',
+    thModel: 'Model', thProvider: 'Provider', thMode: 'Type',
+    thInput: 'Input $/1M', thOutput: 'Output $/1M', thCache: 'Cache $/1M',
+    thContext: 'Context', thMaxOut: 'Max Output', thCaps: 'Capabilities',
+    selTitle: 'Selected', selUnit: '', selClear: 'Clear all selections', selGo: 'Compare',
+    compareTitle: 'Compare Analysis', closeCompareTitle: 'Close compare and clear selection',
+    seatsText: (n, max) => `${n} / ${max} seats`,
+    addProviderPh: 'Select Provider',
+    addModelPh: 'Search models in this provider…',
+    addModelFull: (max) => `Compare full (${max})`,
+    noMatch: 'No matching models in this provider',
+    statsText: (f, total, sel) => `${f} models (${total} total) · ${sel} selected`,
+    pageInfo: (p, tp) => `${p} / ${tp}`,
+    toastLimit: (max) => `Compare up to ${max} models at once`,
+    toastFull: (max) => `${max} models selected, entering compare…`,
+    grpPrice: 'Pricing', grpContext: 'Context', grpBasic: 'Basic Info', grpModality: 'Modalities', grpCaps: 'Capabilities',
+    lblInputPrice: 'Input Price', lblOutputPrice: 'Output Price', lblCache: 'Cache Read', lblImageGen: 'Image Gen',
+    lblMaxInput: 'Max Input', lblMaxOutput: 'Max Output', lblDeprec: 'Deprecation', lblTiered: 'Tiered Pricing',
+    lblInMod: 'Input Modality', lblOutMod: 'Output Modality',
+    unitPerM: '/ 1M tokens', unitPerImg: '/ image', unitPerMShort: '/1M', unitPerImgShort: '/img',
+    bestTag: 'Best', tieredTag: 'Tiered', tieredTitle: 'Tiered pricing applies',
+    emptyCompareA: 'No models selected. Go back to', emptyCompareLink: 'Browse All',
+    emptyCompareB: (max) => `to pick models to compare (up to ${max}).`,
+    removeTitle: 'Remove',
+    secContext: 'Context', secBasic: 'Basic Info', secModality: 'Modalities', secCaps: 'Capabilities',
+    rowProvider: 'Provider', rowMode: 'Type', rowSource: 'Source',
+    viewSource: 'View source',
+    tieredExist: 'Yes (see source data)',
+    secExtraPrice: 'Additional Pricing',
+    epAudioIn: 'Audio Input', epReasoningOut: 'Reasoning Output',
+    epCodeInterp: 'Code Interpreter', epCompUseIn: 'Computer Use Input', epCompUseOut: 'Computer Use Output',
+    epFileSearch: 'File Search', epFileSearchGb: 'File Search Storage', epVectorStore: 'Vector Store',
+    epSearchCtx: 'Web Search Context',
+    rowRegions: 'Supported Regions',
+    addToCompare: 'Add to Compare', addedToCompare: 'Added to Compare', compareFullBtn: (max) => `Compare full (${max})`,
+    drawerFallback: 'Model Detail',
+    errLoad: (msg) => `Failed to load data (${msg})`,
+    errBody: 'The page data should be embedded inline, but it was not detected, and the browser blocks fetch() of local JSON over file://. Check the data block, or serve the directory over a local HTTP server.',
+    renderErr: 'Failed to render compare table: ',
+    renderErrHint: 'Open the browser console (F12) for details.',
+  },
+};
+
+let lang = localStorage.getItem('cmp-lang') || 'en';
+const t = key => {
+  const v = I18N[lang][key];
+  return v === undefined ? key : v;
+};
+// 数据映射表里的双语值统一做成 { zh, en }，用 L() 按当前语言取值
+const L = o => (o && typeof o === 'object' ? (o[lang] ?? o.zh) : o);
+
+function setLang(next) {
+  lang = next;
+  try { localStorage.setItem('cmp-lang', lang); } catch (e) {}
+  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+  document.title = lang === 'zh' ? '云模型定价与能力对比' : 'Cloud Model Pricing & Compare';
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  applyI18n();
+  // 重建 provider 下拉（「其他/Other」兜底项随语言刷新），并重置模型下拉的占位/无匹配文案
+  if (typeof window.rebuildAddProvider === 'function') window.rebuildAddProvider();
+  if (typeof window.rebuildAddModelIfOpen === 'function') window.rebuildAddModelIfOpen();
+  if (typeof window.syncAddModelUI === 'function') window.syncAddModelUI();
+  renderBrowse();
+  renderCompare();
+}
+
+// 把静态 HTML 里带 data-i18n 的元素替换为当前语言文本；
+// data-i18n-ph / data-i18n-title 分别对应 placeholder / title 属性
+function applyI18n() {
+  document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+  document.querySelectorAll('[data-i18n-title]').forEach(el => { el.title = t(el.dataset.i18nTitle); });
+}
+
 // ============ 常量 ============
 // 浏览表能力列改为只展示 supported_modalities 派生的图标（见 renderModalities），
 // 这里的完整 supports_* 列表用于对比视图。按语义分成 6 组，对比页面渲染"能力"
 // 区块时逐组各占一行，让能力数量多的模型（10+ 项）也能按类别快速扫视比较，
 // 而不是全部挤在一个不分类的标签墙里。
 const CAP_GROUPS = [
-  { label: '输入类型', fields: [
-    ['supports_vision', 'eye', '视觉'],
-    ['supports_audio_input', 'mic', '音频输入'],
-    ['supports_pdf_input', 'doc', 'PDF 输入'],
-    ['supports_video_input', 'video', '视频输入'],
-    ['supports_image_input', 'image', '图像输入'],
-    ['supports_multimodal', 'globe', '多模态'],
+  { label: { zh: '输入类型', en: 'Input Types' }, fields: [
+    ['supports_vision', 'eye', { zh: '视觉', en: 'Vision' }],
+    ['supports_audio_input', 'mic', { zh: '音频输入', en: 'Audio Input' }],
+    ['supports_pdf_input', 'doc', { zh: 'PDF 输入', en: 'PDF Input' }],
+    ['supports_video_input', 'video', { zh: '视频输入', en: 'Video Input' }],
+    ['supports_image_input', 'image', { zh: '图像输入', en: 'Image Input' }],
+    ['supports_multimodal', 'globe', { zh: '多模态', en: 'Multimodal' }],
   ] },
-  { label: '工具与函数调用', fields: [
-    ['supports_function_calling', 'wrench', '函数调用'],
-    ['supports_parallel_function_calling', 'forward', '并行函数调用'],
-    ['supports_tool_choice', 'target', '工具选择'],
-    ['supports_tool_search', 'search', '工具检索'],
-    ['supports_parallel_tool_use_config', 'gear', '并行工具配置'],
+  { label: { zh: '工具与函数调用', en: 'Tools & Function Calling' }, fields: [
+    ['supports_function_calling', 'wrench', { zh: '函数调用', en: 'Function Calling' }],
+    ['supports_parallel_function_calling', 'forward', { zh: '并行函数调用', en: 'Parallel Function Calling' }],
+    ['supports_tool_choice', 'target', { zh: '工具选择', en: 'Tool Choice' }],
+    ['supports_tool_search', 'search', { zh: '工具检索', en: 'Tool Search' }],
+    ['supports_parallel_tool_use_config', 'gear', { zh: '并行工具配置', en: 'Parallel Tool Config' }],
   ] },
-  { label: '推理能力', fields: [
-    ['supports_reasoning', 'brain', '推理'],
-    ['supports_adaptive_thinking', 'spark', '自适应思考'],
-    ['supports_max_reasoning_effort', 'gauge-up', '最大推理强度'],
-    ['supports_xhigh_reasoning_effort', 'flame', '超高推理强度'],
-    ['supports_minimal_reasoning_effort', 'gauge-down', '最小推理强度'],
-    ['supports_none_reasoning_effort', 'circle-off', '无推理模式'],
+  { label: { zh: '推理能力', en: 'Reasoning' }, fields: [
+    ['supports_reasoning', 'brain', { zh: '推理', en: 'Reasoning' }],
+    ['supports_adaptive_thinking', 'spark', { zh: '自适应思考', en: 'Adaptive Thinking' }],
+    ['supports_max_reasoning_effort', 'gauge-up', { zh: '最大推理强度', en: 'Max Reasoning Effort' }],
+    ['supports_xhigh_reasoning_effort', 'flame', { zh: '超高推理强度', en: 'X-High Reasoning Effort' }],
+    ['supports_minimal_reasoning_effort', 'gauge-down', { zh: '最小推理强度', en: 'Min Reasoning Effort' }],
+    ['supports_none_reasoning_effort', 'circle-off', { zh: '无推理模式', en: 'No-Reasoning Mode' }],
   ] },
-  { label: '输出与结构化', fields: [
-    ['supports_response_schema', 'ruler', '结构化输出'],
-    ['supports_native_structured_output', 'grid', '原生结构化输出'],
-    ['supports_output_config', 'sliders', '输出配置'],
-    ['supports_audio_output', 'speaker', '音频输出'],
-    ['supports_nova_canvas_image_edit', 'brush', 'Nova Canvas 图像编辑'],
+  { label: { zh: '输出与结构化', en: 'Output & Structure' }, fields: [
+    ['supports_response_schema', 'ruler', { zh: '结构化输出', en: 'Structured Output' }],
+    ['supports_native_structured_output', 'grid', { zh: '原生结构化输出', en: 'Native Structured Output' }],
+    ['supports_output_config', 'sliders', { zh: '输出配置', en: 'Output Config' }],
+    ['supports_audio_output', 'speaker', { zh: '音频输出', en: 'Audio Output' }],
+    ['supports_nova_canvas_image_edit', 'brush', { zh: 'Nova Canvas 图像编辑', en: 'Nova Canvas Image Edit' }],
   ] },
-  { label: '系统与会话', fields: [
-    ['supports_system_messages', 'chat', '系统消息'],
-    ['supports_mid_conversation_system', 'chat-plus', '对话中系统消息'],
-    ['supports_assistant_prefill', 'pen', '助手预填'],
-    ['supports_prompt_caching', 'bolt', '提示缓存'],
-    ['supports_native_streaming', 'wave', '原生流式'],
+  { label: { zh: '系统与会话', en: 'System & Session' }, fields: [
+    ['supports_system_messages', 'chat', { zh: '系统消息', en: 'System Messages' }],
+    ['supports_mid_conversation_system', 'chat-plus', { zh: '对话中系统消息', en: 'Mid-Conversation System' }],
+    ['supports_assistant_prefill', 'pen', { zh: '助手预填', en: 'Assistant Prefill' }],
+    ['supports_prompt_caching', 'bolt', { zh: '提示缓存', en: 'Prompt Caching' }],
+    ['supports_native_streaming', 'wave', { zh: '原生流式', en: 'Native Streaming' }],
   ] },
-  { label: '其他', fields: [
-    ['supports_web_search', 'search', '联网搜索'],
-    ['supports_url_context', 'link', 'URL 上下文'],
-    ['supports_computer_use', 'monitor', '计算机操作'],
-    ['supports_embedding_image_input', 'puzzle', '嵌入图像输入'],
-    ['supports_speed', 'rocket', '速度模式'],
+  { label: { zh: '其他', en: 'Other' }, fields: [
+    ['supports_web_search', 'search', { zh: '联网搜索', en: 'Web Search' }],
+    ['supports_url_context', 'link', { zh: 'URL 上下文', en: 'URL Context' }],
+    ['supports_computer_use', 'monitor', { zh: '计算机操作', en: 'Computer Use' }],
+    ['supports_embedding_image_input', 'puzzle', { zh: '嵌入图像输入', en: 'Embedding Image Input' }],
+    ['supports_speed', 'rocket', { zh: '速度模式', en: 'Speed Mode' }],
   ] },
 ];
 // 保留扁平数组供 loadData() 的 caps 状态构建、浏览表格能力筛选等现有逻辑直接复用
 const CAPS = CAP_GROUPS.flatMap(g => g.fields);
 const MODALITY_ICONS = {
-  text: ['text', '文本'],
-  image: ['image', '图像'],
-  audio: ['audio', '音频'],
-  video: ['video', '视频'],
-  code: ['code', '代码'],
+  text: ['text', { zh: '文本', en: 'Text' }],
+  image: ['image', { zh: '图像', en: 'Image' }],
+  audio: ['audio', { zh: '音频', en: 'Audio' }],
+  video: ['video', { zh: '视频', en: 'Video' }],
+  code: ['code', { zh: '代码', en: 'Code' }],
 };
 // 生成内联 SVG 图标引用（sprite 定义在 body 开头的 <svg> 里）
 const ic = (id, cls = '') => `<svg class="ic ${cls}" aria-hidden="true"><use href="#i-${id}"/></svg>`;
 const MAX_COMPARE = 3;
 const PAGE_SIZE = 100;
 const MODE_LABELS = {
-  chat: '对话', embedding: '嵌入', image_generation: '图像生成', image_edit: '图像编辑',
-  audio_transcription: '语音转写', audio_speech: '语音合成', completion: '补全',
-  responses: 'Responses', rerank: '重排序', moderation: '内容审核', search: '搜索',
-  realtime: '实时', video_generation: '视频生成', ocr: 'OCR', vector_store: '向量存储',
+  chat: { zh: '对话', en: 'Chat' }, embedding: { zh: '嵌入', en: 'Embedding' },
+  image_generation: { zh: '图像生成', en: 'Image Generation' }, image_edit: { zh: '图像编辑', en: 'Image Edit' },
+  audio_transcription: { zh: '语音转写', en: 'Transcription' }, audio_speech: { zh: '语音合成', en: 'Speech' },
+  completion: { zh: '补全', en: 'Completion' }, responses: { zh: 'Responses', en: 'Responses' },
+  rerank: { zh: '重排序', en: 'Rerank' }, moderation: { zh: '内容审核', en: 'Moderation' },
+  search: { zh: '搜索', en: 'Search' }, realtime: { zh: '实时', en: 'Realtime' },
+  video_generation: { zh: '视频生成', en: 'Video Generation' }, ocr: { zh: 'OCR', en: 'OCR' },
+  vector_store: { zh: '向量存储', en: 'Vector Store' },
 };
 
 // ============ 状态 ============
@@ -1496,13 +1693,50 @@ async function loadData() {
       tiered: Array.isArray(m.tiered_pricing) || m.input_cost_per_token_above_128k_tokens != null,
       deprecation: m.deprecation_date || null,
       source: m.source || null,
+      supportedRegions: Array.isArray(m.supported_regions) ? m.supported_regions : null,
       inputModalities: Array.isArray(m.supported_modalities) ? m.supported_modalities : null,
       outputModalities: Array.isArray(m.supported_output_modalities) ? m.supported_output_modalities : null,
+      // 专项价格：sample_spec 里主干之外的额外计费维度。单位各异（session/1k tokens/query/GB-day），
+      // 预处理阶段统一换算/格式化好，渲染层只遍历有值的项——该模型没有就不渲染，不产生占位噪音。
+      extraPrices: extractExtraPrices(m),
       caps,
       raw: m,
     });
   }
   return models;
+}
+
+// 提取主干价格之外的专项计费字段。每项产出 { labelKey, value }，value 已是最终展示字符串。
+// 只收录有真实值的字段（非 null/0），没有的模型返回空数组、对应区块整体不渲染。
+function extractExtraPrices(m) {
+  const out = [];
+  // 简单数值字段：[原始字段, 文案key, 单位, 是否需×1e6换算]
+  const numFields = [
+    ['input_cost_per_audio_token', 'epAudioIn', '/1M', true],
+    ['output_cost_per_reasoning_token', 'epReasoningOut', '/1M', true],
+    ['code_interpreter_cost_per_session', 'epCodeInterp', '/session', false],
+    ['computer_use_input_cost_per_1k_tokens', 'epCompUseIn', '/1k', false],
+    ['computer_use_output_cost_per_1k_tokens', 'epCompUseOut', '/1k', false],
+    ['file_search_cost_per_1k_calls', 'epFileSearch', '/1k calls', false],
+    ['file_search_cost_per_gb_per_day', 'epFileSearchGb', '/GB/day', false],
+    ['vector_store_cost_per_gb_per_day', 'epVectorStore', '/GB/day', false],
+  ];
+  for (const [field, labelKey, unit, scale] of numFields) {
+    const v = m[field];
+    if (v == null || isNaN(v) || v === 0) continue;
+    const val = scale ? v * 1e6 : v;
+    out.push({ labelKey, value: fmtPrice(val), unit });
+  }
+  // 联网检索：嵌套对象按 search_context_size 分档（high/medium/low），展开成多档
+  const sc = m.search_context_cost_per_query;
+  if (sc && typeof sc === 'object') {
+    const tiers = Object.entries(sc).filter(([, v]) => v != null && !isNaN(v) && v !== 0);
+    if (tiers.length > 0) {
+      const val = tiers.map(([size, v]) => `${size.replace('search_context_size_', '')}: ${fmtPrice(v)}`).join('  ·  ');
+      out.push({ labelKey: 'epSearchCtx', value: val, unit: '/query' });
+    }
+  }
+  return out;
 }
 
 // ============ 浏览视图 ============
@@ -1513,8 +1747,8 @@ function renderModalities(m) {
   const group = (list, arrowClass) => {
     if (!list || list.length === 0) return '';
     const icons = list.map(v => {
-      const [icon, label] = MODALITY_ICONS[v] || ['quest', v];
-      return `<span class="mi" title="${esc(label)}">${ic(icon)}</span>`;
+      const [icon, labelObj] = MODALITY_ICONS[v] || ['quest', v];
+      return `<span class="mi" title="${esc(L(labelObj))}">${ic(icon)}</span>`;
     }).join('');
     return `<span class="modality-group ${arrowClass}">${icons}</span>`;
   };
@@ -1544,18 +1778,18 @@ function renderModelDetailSections(m) {
   // 不分主次；缓存读价格、图像生成价格是补充信息，降一级放在下方。
   // 少数模型只有其中一个（如纯输入的 embedding、纯输出的图像生成），则该项独占整行。
   const heroCandidates = [
-    ['输入价格', m.inputPrice, '/ 1M tokens', v => fmtPrice(v)],
-    ['输出价格', m.outputPrice, '/ 1M tokens', v => fmtPrice(v)],
+    [t('lblInputPrice'), m.inputPrice, ' ' + t('unitPerM'), v => fmtPrice(v)],
+    [t('lblOutputPrice'), m.outputPrice, ' ' + t('unitPerM'), v => fmtPrice(v)],
   ].filter(([, v]) => v != null);
   // 完全没有输入/输出价格时（比如纯图像生成模型），退而用图像价格撑起主价格区
   if (heroCandidates.length === 0 && m.imagePrice != null) {
-    heroCandidates.push(['图像生成', m.imagePrice, '/ 张', v => '$' + v]);
+    heroCandidates.push([t('lblImageGen'), m.imagePrice, ' ' + t('unitPerImg'), v => '$' + v]);
   }
 
   const subCandidates = [];
-  if (m.cacheRead != null) subCandidates.push(['缓存读价格', m.cacheRead, '/1M', v => fmtPrice(v)]);
-  if (m.imagePrice != null && heroCandidates[0]?.[0] !== '图像生成') {
-    subCandidates.push(['图像生成', m.imagePrice, '/张', v => '$' + v]);
+  if (m.cacheRead != null) subCandidates.push([t('lblCache'), m.cacheRead, t('unitPerMShort'), v => fmtPrice(v)]);
+  if (m.imagePrice != null && heroCandidates[0]?.[0] !== t('lblImageGen')) {
+    subCandidates.push([t('lblImageGen'), m.imagePrice, t('unitPerImgShort'), v => '$' + v]);
   }
 
   if (heroCandidates.length > 0) {
@@ -1578,27 +1812,43 @@ function renderModelDetailSections(m) {
   }
 
   // 上下文
-  const ctxRows = rowHtml('最大输入', m.maxInput, fmtTokens, 'mono') + rowHtml('最大输出', m.maxOutput, fmtTokens, 'mono');
+  const ctxRows = rowHtml(t('lblMaxInput'), m.maxInput, fmtTokens, 'mono') + rowHtml(t('lblMaxOutput'), m.maxOutput, fmtTokens, 'mono');
   if (ctxRows) {
     html += `<div class="drawer-section">
-      <div class="drawer-section-label">${ic('ruler-h')}上下文</div>
+      <div class="drawer-section-label">${ic('ruler-h')}${esc(t('secContext'))}</div>
       ${ctxRows}
     </div>`;
   }
 
   // 基本信息（含数据来源外链，此前从未在界面上展示过）
-  const basicRows = rowHtml('Provider', m.provider, v => v)
-    + rowHtml('类型', m.mode, v => MODE_LABELS[v] || v)
-    + rowHtml('弃用日期', m.deprecation, v => v)
-    + rowHtml('阶梯定价', m.tiered ? true : null, () => '存在（详见源数据）')
+  const basicRows = rowHtml(t('rowProvider'), m.provider, v => v)
+    + rowHtml(t('rowMode'), m.mode, v => L(MODE_LABELS[v]) || v)
+    + rowHtml(t('lblDeprec'), m.deprecation, v => v)
+    + rowHtml(t('lblTiered'), m.tiered ? true : null, () => t('tieredExist'))
+    + (m.supportedRegions ? `<div class="drawer-row">
+        <span class="drawer-row-label">${esc(t('rowRegions'))}</span>
+        <span class="drawer-row-value"><span class="region-list">${m.supportedRegions.map(r => `<span class="provider-tag">${esc(r)}</span>`).join('')}</span></span>
+      </div>` : '')
     + (m.source ? `<div class="drawer-row">
-        <span class="drawer-row-label">数据来源</span>
-        <a class="drawer-source-link" href="${esc(m.source)}" target="_blank" rel="noopener noreferrer">查看原始文档 ${ic('ext')}</a>
+        <span class="drawer-row-label">${esc(t('rowSource'))}</span>
+        <a class="drawer-source-link" href="${esc(m.source)}" target="_blank" rel="noopener noreferrer">${esc(t('viewSource'))} ${ic('ext')}</a>
       </div>` : '');
   if (basicRows) {
     html += `<div class="drawer-section">
-      <div class="drawer-section-label">${ic('info')}基本信息</div>
+      <div class="drawer-section-label">${ic('info')}${esc(t('secBasic'))}</div>
       ${basicRows}
+    </div>`;
+  }
+
+  // 专项价格：主干（输入/输出/缓存读/图像）之外的额外计费维度。
+  // extraPrices 已在预处理阶段筛掉无值字段，这里只渲染有值的——没有的模型整个区块不出现。
+  if (m.extraPrices && m.extraPrices.length > 0) {
+    html += `<div class="drawer-section">
+      <div class="drawer-section-label">${ic('coin')}${esc(t('secExtraPrice'))}</div>
+      ${m.extraPrices.map(p => `<div class="drawer-row">
+        <span class="drawer-row-label">${esc(t(p.labelKey))}</span>
+        <span class="drawer-row-value mono">${esc(p.value)}<span class="unit">${esc(p.unit)}</span></span>
+      </div>`).join('')}
     </div>`;
   }
 
@@ -1607,16 +1857,17 @@ function renderModelDetailSections(m) {
     const modIcons = (list, groupClass) => {
       if (!list || list.length === 0) return null;
       return `<span class="modality-group ${groupClass}">${list.map(v => {
-        const [icon, label] = MODALITY_ICONS[v] || ['quest', v];
+        const [icon, labelObj] = MODALITY_ICONS[v] || ['quest', v];
+        const label = L(labelObj);
         return `<span class="mi" title="${esc(label)}">${ic(icon)}</span>`;
       }).join('')}</span>`;
     };
     const inIcons = modIcons(m.inputModalities, 'in');
     const outIcons = modIcons(m.outputModalities, 'out');
     html += `<div class="drawer-section">
-      <div class="drawer-section-label">${ic('globe')}支持模态</div>
-      ${inIcons ? `<div class="drawer-row"><span class="drawer-row-label">输入模态</span><span class="drawer-row-value">${inIcons}</span></div>` : ''}
-      ${outIcons ? `<div class="drawer-row"><span class="drawer-row-label">输出模态</span><span class="drawer-row-value">${outIcons}</span></div>` : ''}
+      <div class="drawer-section-label">${ic('globe')}${esc(t('secModality'))}</div>
+      ${inIcons ? `<div class="drawer-row"><span class="drawer-row-label">${esc(t('lblInMod'))}</span><span class="drawer-row-value">${inIcons}</span></div>` : ''}
+      ${outIcons ? `<div class="drawer-row"><span class="drawer-row-label">${esc(t('lblOutMod'))}</span><span class="drawer-row-value">${outIcons}</span></div>` : ''}
     </div>`;
   }
 
@@ -1625,10 +1876,10 @@ function renderModelDetailSections(m) {
   const ownCaps = CAPS.filter(([field]) => m.caps[field]);
   if (ownCaps.length > 0) {
     html += `<div class="drawer-section">
-      <div class="drawer-section-label">${ic('bolt')}能力</div>
+      <div class="drawer-section-label">${ic('bolt')}${esc(t('secCaps'))}</div>
       <div class="cap-list">
         ${ownCaps.map(([field, icon, label]) =>
-          `<span class="cap-tag on" title="${esc(label)}">${ic(icon)}${esc(label)}</span>`
+          `<span class="cap-tag on" title="${esc(L(label))}">${ic(icon)}${esc(L(label))}</span>`
         ).join('')}
       </div>
     </div>`;
@@ -1643,14 +1894,14 @@ function renderDetail() {
 
   const inCompare = state.selected.has(m.key);
   const atLimit = state.selected.size >= MAX_COMPARE && !inCompare;
-  const btnLabel = inCompare ? '已加入对比' : atLimit ? `对比已满（${MAX_COMPARE}）` : '加入对比';
+  const btnLabel = inCompare ? t('addedToCompare') : atLimit ? t('compareFullBtn')(MAX_COMPARE) : t('addToCompare');
 
   document.getElementById('drawerContent').innerHTML = `
-    <div class="drawer-eyebrow">${esc(MODE_LABELS[m.mode] || m.mode || '模型详情')}</div>
+    <div class="drawer-eyebrow">${esc(L(MODE_LABELS[m.mode]) || m.mode || t('drawerFallback'))}</div>
     <div class="drawer-title">${esc(m.key)}</div>
     <div class="drawer-title-meta">
       <span class="provider-tag">${esc(m.provider || '—')}</span>
-      ${m.tiered ? '<span class="tiered-note" title="存在阶梯定价">阶梯</span>' : ''}
+      ${m.tiered ? `<span class="tiered-note" title="${esc(t('tieredTitle'))}">${esc(t('tieredTag'))}</span>` : ''}
     </div>
     ${renderModelDetailSections(m)}`;
 
@@ -1702,7 +1953,8 @@ function sortModels(list) {
     if (va == null) return 1;   // 缺失值永远排最后
     if (vb == null) return -1;
     if (typeof va === 'number') return (va - vb) * dir;
-    return String(va).localeCompare(String(vb)) * dir;
+    // 字符串列（含 provider）统一转小写比较，避免大写排在小写前（Z 在 a 前）的反直觉顺序
+    return String(va).toLowerCase().localeCompare(String(vb).toLowerCase()) * dir;
   });
 }
 
@@ -1719,11 +1971,11 @@ function renderBrowse() {
     const delay = Math.min(i * 10, 260);
     return `<tr style="animation-delay:${delay}ms" data-key="${esc(m.key)}">
       <td><input type="checkbox" data-key="${esc(m.key)}" ${state.selected.has(m.key) ? 'checked' : ''}></td>
-      <td class="model-key" title="${esc(m.key)}">${esc(m.key)}${m.tiered ? ' <span class="tiered-note" title="存在阶梯定价">阶梯</span>' : ''}</td>
+      <td class="model-key" title="${esc(m.key)}">${esc(m.key)}${m.tiered ? ` <span class="tiered-note" title="${esc(t('tieredTitle'))}">${esc(t('tieredTag'))}</span>` : ''}</td>
       <td><span class="provider-tag">${esc(m.provider || '—')}</span></td>
-      <td>${esc(MODE_LABELS[m.mode] || m.mode || '—')}</td>
+      <td>${esc(L(MODE_LABELS[m.mode]) || m.mode || '—')}</td>
       <td class="num">${m.inputPrice != null ? esc(fmtPrice(m.inputPrice)) : '<span class="cell-na">—</span>'}</td>
-      <td class="num">${m.outputPrice != null ? esc(fmtPrice(m.outputPrice)) : m.imagePrice != null ? esc('$' + m.imagePrice + '/图') : '<span class="cell-na">—</span>'}</td>
+      <td class="num">${m.outputPrice != null ? esc(fmtPrice(m.outputPrice)) : m.imagePrice != null ? esc('$' + m.imagePrice + (lang === 'zh' ? '/图' : '/img')) : '<span class="cell-na">—</span>'}</td>
       <td class="num">${price(m.cacheRead)}</td>
       <td class="num">${tok(m.maxInput)}</td>
       <td class="num">${tok(m.maxOutput)}</td>
@@ -1733,8 +1985,8 @@ function renderBrowse() {
   document.getElementById('browseBody').innerHTML = rows;
 
   document.getElementById('statsText').textContent =
-    `共 ${filtered.length} 个模型（总计 ${state.models.length}）· 已勾选 ${state.selected.size}`;
-  document.getElementById('pageInfo').textContent = `${state.page + 1} / ${totalPages} 页`;
+    t('statsText')(filtered.length, state.models.length, state.selected.size);
+  document.getElementById('pageInfo').textContent = t('pageInfo')(state.page + 1, totalPages);
   document.getElementById('prevPage').disabled = state.page === 0;
   document.getElementById('nextPage').disabled = state.page >= totalPages - 1;
   updateCount();
@@ -1777,7 +2029,7 @@ function updateCount() {
   const n = state.selected.size;
   document.getElementById('compareCount').textContent = n;
   const countText = document.getElementById('compareCount2Text');
-  if (countText) countText.textContent = `${n} / ${MAX_COMPARE} 席位`;
+  if (countText) countText.textContent = t('seatsText')(n, MAX_COMPARE);
   const dots = document.getElementById('slotDots');
   if (dots) {
     dots.innerHTML = Array.from({ length: MAX_COMPARE }, (_, i) =>
@@ -1809,7 +2061,7 @@ function renderSelectPopup() {
   if (pager) pager.classList.add('select-popup-visible');
   document.getElementById('selectPopupCount').textContent = sel.length;
   document.getElementById('selectPopupBody').innerHTML = sel.map(m =>
-    `<span class="select-popup-chip"><span class="name" title="${esc(m.key)}">${esc(m.key)}</span><button data-unselect="${esc(m.key)}" title="移除">${ic('close')}</button></span>`
+    `<span class="select-popup-chip"><span class="name" title="${esc(m.key)}">${esc(m.key)}</span><button data-unselect="${esc(m.key)}" title="${esc(t('removeTitle'))}">${ic('close')}</button></span>`
   ).join('');
 }
 
@@ -1826,7 +2078,7 @@ function clearSelection() {
 function trySelectModel(key) {
   if (state.selected.has(key)) return true;
   if (state.selected.size >= MAX_COMPARE) {
-    showToast(`最多同时对比 ${MAX_COMPARE} 个模型`);
+    showToast(t('toastLimit')(MAX_COMPARE));
     return false;
   }
   state.selected.add(key);
@@ -1836,7 +2088,7 @@ function trySelectModel(key) {
   // 否则新模型只进了 state、表格还是旧的，得刷新页面才能看到
   if (state.tab === 'compare') renderCompare();
   if (state.selected.size === MAX_COMPARE && state.tab !== 'compare') {
-    showToast(`已选满 ${MAX_COMPARE} 个模型，正在进入对比…`);
+    showToast(t('toastFull')(MAX_COMPARE));
     setTimeout(() => { if (state.selected.size === MAX_COMPARE) switchTab('compare'); }, 700);
   }
   return true;
@@ -1865,7 +2117,7 @@ function renderCompare() {
     renderCompareInner(wrap);
   } catch (err) {
     console.error('对比表渲染失败:', err);
-    wrap.innerHTML = `<div class="empty-hint">对比表渲染出错：${esc(err.message)}<br>请打开浏览器控制台（F12）查看详情并反馈。</div>`;
+    wrap.innerHTML = `<div class="empty-hint">${esc(t('renderErr'))}${esc(err.message)}<br>${esc(t('renderErrHint'))}</div>`;
   }
 }
 
@@ -1877,7 +2129,7 @@ function renderCompareInner(wrap) {
         <rect x="3" y="4.5" width="7.6" height="15" rx="1.4"/>
         <rect x="13.4" y="4.5" width="7.6" height="15" rx="1.4"/>
       </svg><br>
-      尚未勾选模型。回到<a href="#" class="empty-link" onclick="switchTab('browse'); event.preventDefault();">浏览全部</a>勾选要对比的模型（最多 ${MAX_COMPARE} 个）。</div>`;
+      ${esc(t('emptyCompareA'))}<a href="#" class="empty-link" onclick="switchTab('browse'); event.preventDefault();">${esc(t('emptyCompareLink'))}</a>${esc(t('emptyCompareB')(MAX_COMPARE))}</div>`;
     return;
   }
 
@@ -1888,15 +2140,15 @@ function renderCompareInner(wrap) {
   // 已选模型中全部为空的指标直接不渲染该行，而不是每张卡片都显示"—"
   const anyHas = getter => sel.some(m => getter(m) != null);
   const priceFields = [
-    { label: '输入价格', getter: m => m.inputPrice, best: bestOf(m => m.inputPrice, true) },
-    { label: '输出价格', getter: m => m.outputPrice, best: bestOf(m => m.outputPrice, true) },
-    { label: '缓存读价格', getter: m => m.cacheRead, best: bestOf(m => m.cacheRead, true) },
+    { label: t('lblInputPrice'), getter: m => m.inputPrice, best: bestOf(m => m.inputPrice, true) },
+    { label: t('lblOutputPrice'), getter: m => m.outputPrice, best: bestOf(m => m.outputPrice, true) },
+    { label: t('lblCache'), getter: m => m.cacheRead, best: bestOf(m => m.cacheRead, true) },
   ].filter(f => anyHas(f.getter));
   const showImagePrice = sel.some(m => m.imagePrice != null);
   const imageBest = showImagePrice ? bestOf(m => m.imagePrice, true) : new Set();
   const ctxFields = [
-    { label: '最大输入', getter: m => m.maxInput, fmt: fmtTokens, best: bestOf(m => m.maxInput, false) },
-    { label: '最大输出', getter: m => m.maxOutput, fmt: fmtTokens, best: bestOf(m => m.maxOutput, false) },
+    { label: t('lblMaxInput'), getter: m => m.maxInput, fmt: fmtTokens, best: bestOf(m => m.maxInput, false) },
+    { label: t('lblMaxOutput'), getter: m => m.maxOutput, fmt: fmtTokens, best: bestOf(m => m.maxOutput, false) },
   ].filter(f => anyHas(f.getter));
   const showDeprecation = anyHas(m => m.deprecation);
   const showTiered = sel.some(m => m.tiered);
@@ -1921,11 +2173,11 @@ function renderCompareInner(wrap) {
   rows += `<div class="ctg-cell ctg-label-col"></div>`;
   sel.forEach(m => {
     rows += `<div class="ctg-cell ctg-head">
-      <button class="remove-btn" data-remove="${esc(m.key)}" title="移除">${ic('close')}</button>
+      <button class="remove-btn" data-remove="${esc(m.key)}" title="${esc(t('removeTitle'))}">${ic('close')}</button>
       <div class="ctg-head-name">${esc(m.key)}</div>
       <div class="ctg-head-meta">
         <span class="provider-tag">${esc(m.provider || '—')}</span>
-        <span class="provider-tag">${esc(MODE_LABELS[m.mode] || m.mode || '—')}</span>
+        <span class="provider-tag">${esc(L(MODE_LABELS[m.mode]) || m.mode || '—')}</span>
       </div>
     </div>`;
   });
@@ -1942,15 +2194,15 @@ function renderCompareInner(wrap) {
       } else {
         rows += `<div class="ctg-cell"><div class="ctg-value ctg-value-price ${isBest ? 'best' : ''}">
           ${esc(fmt(val))}<span class="unit">${unitSuffix}</span>
-          ${isBest ? '<span class="best-tag">最优</span>' : ''}
+          ${isBest ? `<span class="best-tag">${esc(t('bestTag'))}</span>` : ''}
         </div></div>`;
       }
     });
   };
   if (priceFields.length > 0 || showImagePrice) {
-    groupRow('价格', 'coin');
-    priceFields.forEach(f => priceRow(f.label, '/ 1M tokens', f.getter, f.best, fmtPrice));
-    if (showImagePrice) priceRow('图像生成', '/ 张', m => m.imagePrice, imageBest, v => '$' + v);
+    groupRow(t('grpPrice'), 'coin');
+    priceFields.forEach(f => priceRow(f.label, t('unitPerM'), f.getter, f.best, fmtPrice));
+    if (showImagePrice) priceRow(t('lblImageGen'), t('unitPerImg'), m => m.imagePrice, imageBest, v => '$' + v);
   }
 
   // 普通字段行：标签列 + 每列一个值，值为空显示"—"、最优值高亮
@@ -1966,34 +2218,35 @@ function renderCompareInner(wrap) {
   };
 
   if (ctxFields.length > 0) {
-    groupRow('上下文', 'ruler-h');
+    groupRow(t('grpContext'), 'ruler-h');
     ctxFields.forEach(f => fieldRow(f.label, f.getter, f.fmt, f.best));
   }
 
   if (showBasicInfo) {
-    groupRow('基本信息', 'info');
-    if (showDeprecation) fieldRow('弃用日期', m => m.deprecation, v => v, null);
-    if (showTiered) fieldRow('阶梯定价', m => m.tiered ? '存在' : null, v => v, null);
+    groupRow(t('grpBasic'), 'info');
+    if (showDeprecation) fieldRow(t('lblDeprec'), m => m.deprecation, v => v, null);
+    if (showTiered) fieldRow(t('lblTiered'), m => m.tiered ? t('tieredTag') : null, v => v, null);
   }
 
   if (showModalities) {
-    groupRow('支持模态', 'globe');
+    groupRow(t('grpModality'), 'globe');
     const modIcons = (list, groupClass) => {
       if (!list || list.length === 0) return null;
       return `<span class="modality-group ${groupClass}">${list.map(v => {
-        const [icon, label] = MODALITY_ICONS[v] || ['quest', v];
+        const [icon, labelObj] = MODALITY_ICONS[v] || ['quest', v];
+        const label = L(labelObj);
         return `<span class="mi" title="${esc(label)}">${ic(icon)}</span>`;
       }).join('')}</span>`;
     };
     if (showInputModality) {
-      rows += labelCell('输入模态');
+      rows += labelCell(t('lblInMod'));
       sel.forEach(m => {
         const icons = modIcons(m.inputModalities, 'in');
         rows += `<div class="ctg-cell"><div class="ctg-value ${icons == null ? 'na' : ''}">${icons == null ? '—' : icons}</div></div>`;
       });
     }
     if (showOutputModality) {
-      rows += labelCell('输出模态');
+      rows += labelCell(t('lblOutMod'));
       sel.forEach(m => {
         const icons = modIcons(m.outputModalities, 'out');
         rows += `<div class="ctg-cell"><div class="ctg-value ${icons == null ? 'na' : ''}">${icons == null ? '—' : icons}</div></div>`;
@@ -2006,17 +2259,17 @@ function renderCompareInner(wrap) {
   // 若已选模型全都没有任何能力数据，整个「能力」区块不渲染（showCaps 已判断）；
   // 若只是某个子类下全都没有，则该子行单独跳过，不影响其他子行显示。
   if (showCaps) {
-    groupRow('能力', 'bolt');
+    groupRow(t('grpCaps'), 'bolt');
     CAP_GROUPS.forEach(group => {
       const groupHasAny = sel.some(m => group.fields.some(([field]) => m.caps[field]));
       if (!groupHasAny) return;
-      rows += labelCell(group.label);
+      rows += labelCell(L(group.label));
       sel.forEach(m => {
         const ownCaps = group.fields.filter(([field]) => m.caps[field]);
         rows += `<div class="ctg-cell ctg-caps-cell"><div class="cap-list">
           ${ownCaps.length > 0
             ? ownCaps.map(([field, icon, label]) =>
-                `<span class="cap-tag on" title="${esc(label)}">${ic(icon)}${esc(label)}</span>`
+                `<span class="cap-tag on" title="${esc(L(label))}">${ic(icon)}${esc(L(label))}</span>`
               ).join('')
             : '<span class="cell-na">—</span>'}
         </div></div>`;
@@ -2030,24 +2283,30 @@ function renderCompareInner(wrap) {
 
 // ============ 事件绑定 ============
 function initUI() {
-  // provider / mode 下拉（按频次排序）
+  // provider 下拉按首字母（统一转小写）升序，mode 下拉按频次降序（类型少、高频优先更顺手）
   const countBy = f => state.models.reduce((acc, m) => { const v = m[f]; if (v) acc[v] = (acc[v] || 0) + 1; return acc; }, {});
-  const fillSelect = (id, counts) => {
+  const alphaSort = (a, b) => a[0].toLowerCase().localeCompare(b[0].toLowerCase());
+  const freqSort = (a, b) => b[1] - a[1];
+  const fillSelect = (id, counts, sortFn) => {
     const selEl = document.getElementById(id);
-    for (const [v, c] of Object.entries(counts).sort((a, b) => b[1] - a[1])) {
+    for (const [v, c] of Object.entries(counts).sort(sortFn)) {
       const opt = document.createElement('option');
       opt.value = v;
-      opt.textContent = id === 'modeSelect' ? `${MODE_LABELS[v] || v} (${c})` : `${v} (${c})`;
+      opt.textContent = id === 'modeSelect' ? `${L(MODE_LABELS[v]) || v} (${c})` : `${v} (${c})`;
       selEl.appendChild(opt);
     }
   };
-  fillSelect('providerSelect', countBy('provider'));
-  fillSelect('modeSelect', countBy('mode'));
+  fillSelect('providerSelect', countBy('provider'), alphaSort);
+  fillSelect('modeSelect', countBy('mode'), freqSort);
 
   // 页头统计
   document.getElementById('statModels').textContent = state.models.length.toLocaleString('en-US');
   document.getElementById('statProviders').textContent = new Set(state.models.map(m => m.provider).filter(Boolean)).size;
   document.getElementById('statModes').textContent = new Set(state.models.map(m => m.mode).filter(Boolean)).size;
+
+  // 语言切换
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.addEventListener('click', () => { if (b.dataset.lang !== lang) setLang(b.dataset.lang); }));
 
   document.getElementById('searchInput').addEventListener('input', e => {
     state.search = e.target.value; state.page = 0; renderBrowse();
@@ -2148,13 +2407,21 @@ function initUI() {
   const addSelect = document.getElementById('addModelSelect');
   const addWrap = document.getElementById('addModelWrap');
 
-  // Provider 下拉：按模型数降序，复用浏览页的统计逻辑
-  (function fillAddProvider() {
-    const counts = state.models.reduce((acc, m) => { const v = m.provider || '其他'; acc[v] = (acc[v] || 0) + 1; return acc; }, {});
+  // Provider 下拉：按首字母（统一转小写）升序，与浏览页 Provider 下拉排序口径一致
+  // provider 为空时的兜底显示名（双语）
+  const noneProvider = () => (lang === 'zh' ? '其他' : 'Other');
+  // 挂到 window 供 setLang() 在切换语言后重建（「其他/Other」兜底项需随语言刷新）
+  window.rebuildAddProvider = function rebuildAddProvider() {
+    const counts = state.models.reduce((acc, m) => { const v = m.provider || noneProvider(); acc[v] = (acc[v] || 0) + 1; return acc; }, {});
     addProviderSelect.innerHTML = Object.entries(counts)
-      .sort((a, b) => b[1] - a[1])
+      .sort((a, b) => a[0].toLowerCase().localeCompare(b[0].toLowerCase()))
       .map(([p, c]) => `<option value="${esc(p)}">${esc(p)} (${c})</option>`).join('');
-  })();
+  };
+  window.rebuildAddProvider();
+  // 切换语言时若模型下拉正展开，重建以刷新「无匹配模型」等文案（buildAddModelOptions 定义在下方，函数声明提升）
+  window.rebuildAddModelIfOpen = function rebuildAddModelIfOpen() {
+    if (addSelect.classList.contains('open')) buildAddModelOptions();
+  };
 
   // 只在当前选中的 Provider 范围内过滤模型。
   // key 里常带区分同名的前缀：bedrock 的 region（us./eu.，. 分隔）、azure 的区域（eu/、global/）、
@@ -2164,10 +2431,10 @@ function initUI() {
     const provider = addProviderSelect.value;
     const q = addInput.value.trim().toLowerCase();
     const list = state.models
-      .filter(m => (m.provider || '其他') === provider && (!q || m.key.toLowerCase().includes(q)))
+      .filter(m => (m.provider || noneProvider()) === provider && (!q || m.key.toLowerCase().includes(q)))
       .sort((a, b) => a.key.localeCompare(b.key));
     addSelect.innerHTML = list.length === 0
-      ? `<option disabled>该 Provider 下无匹配模型</option>`
+      ? `<option disabled>${esc(t('noMatch'))}</option>`
       : list.map(m => {
           const i = m.key.lastIndexOf('/');
           const name = i >= 0 ? m.key.slice(i + 1) : m.key;
@@ -2183,7 +2450,7 @@ function initUI() {
     const full = state.selected.size >= MAX_COMPARE;
     addProviderSelect.disabled = full;
     addInput.disabled = full;
-    addInput.placeholder = full ? `对比已满（${MAX_COMPARE} 个）` : '搜索该 Provider 下的模型…';
+    addInput.placeholder = full ? t('addModelFull')(MAX_COMPARE) : t('addModelPh');
     addInput.closest('.add-model-box').classList.toggle('disabled', full);
     addProviderSelect.closest('.add-provider-wrap').classList.toggle('disabled', full);
     if (full) closeAddModel();
@@ -2258,15 +2525,16 @@ loadData()
       if (saved && saved.tab === 'compare' && state.selected.size > 0) state.tab = 'compare';
     } catch (e) { /* 存储损坏时按默认 browse 启动 */ }
     initUI();
+    // 应用启动语言（同步 html lang、<title>、切换器高亮、静态文本）
+    setLang(lang);
     if (state.tab === 'compare') switchTab('compare');
     else { renderBrowse(); updateCount(); }
   })
   .catch(err => {
     document.getElementById('browseView').innerHTML = `
       <div class="error-box">
-        <b>数据加载失败（${esc(err.message)}）</b><br>
-        本页面数据应内嵌于 <code>&lt;script id="model-data"&gt;</code> 标签中，但当前未检测到，且浏览器不允许通过 <code>file://</code> 协议 fetch 本地 JSON。<br>
-        请检查 <code>index.html</code> 中该数据块是否完整，或在项目目录运行 <code>python -m http.server 8000</code> 后打开 <code>http://localhost:8000</code> 作为临时方案。
+        <b>${esc(t('errLoad')(err.message))}</b><br>
+        ${esc(t('errBody'))}
       </div>`;
   });
 </script>
