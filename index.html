@@ -6,7 +6,7 @@
 <title>Cloud Model Pricing & Compare</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     /* 精密实验室仪器美学：白底 + 深青蓝 accent + 浅冷灰面板 */
@@ -31,7 +31,7 @@
     --warn: #b4791f;
     --danger: #c2493d;
     --shadow-color: 200, 30%, 40%;
-    --font-display: 'Space Grotesk', 'Noto Sans SC', 'PingFang SC', system-ui, sans-serif;
+    --font-display: 'Sora', 'Noto Sans SC', 'PingFang SC', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;
     --font-sans: 'Manrope', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
   }
@@ -136,10 +136,17 @@
   .hero h1 {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 42px;
-    letter-spacing: -0.02em;
+    font-size: 38px;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
     margin: 0 0 12px;
     color: var(--text);
+  }
+  /* 标题里的 & 连接符：accent 色、降字重，作为视觉分隔更精致 */
+  .hero h1 .title-sep {
+    color: var(--accent);
+    font-weight: 400;
+    margin: 0 4px;
   }
   .hero-desc {
     color: var(--text-dim);
@@ -1237,7 +1244,7 @@
     </svg>
     <div class="hero-eyebrow" data-i18n="eyebrow">MODEL PRICING · CAPABILITY COMPARE</div>
   </div>
-  <h1 data-i18n="title">Cloud Model Pricing & Compare</h1>
+  <h1 data-i18n-html="titleHtml">Cloud Model Pricing <span class="title-sep">&amp;</span> Compare</h1>
   <p class="hero-desc"><span data-i18n="descA">Pricing & capability landscape across all cloud providers · prices normalized to</span> <span class="mono" data-i18n="descUnit">USD / 1M tokens</span></p>
   <div class="stat-strip">
     <div class="stat"><span class="stat-num" id="statModels">—</span><span class="stat-label"><svg class="ic"><use href="#i-models"/></svg><span data-i18n="statModels">Models</span></span></div>
@@ -1382,6 +1389,8 @@ const I18N = {
   zh: {
     eyebrow: '模型定价 · 能力对比',
     title: '云模型定价与能力对比',
+    titleHtml: '云模型定价 <span class="title-sep">&amp;</span> 对比',
+    docTitle: '云模型定价与能力对比',
     descA: '跨全部云厂商与模型 Provider 的定价与能力全景 · 价格单位统一为',
     descUnit: '美元 / 百万 tokens',
     statModels: '模型总数',
@@ -1445,6 +1454,8 @@ const I18N = {
   en: {
     eyebrow: 'MODEL PRICING · CAPABILITY COMPARE',
     title: 'Cloud Model Pricing & Compare',
+    titleHtml: 'Cloud Model Pricing <span class="title-sep">&amp;</span> Compare',
+    docTitle: 'Cloud Model Pricing & Compare',
     descA: 'Pricing & capability landscape across all cloud providers · prices normalized to',
     descUnit: 'USD / 1M tokens',
     statModels: 'Models',
@@ -1515,7 +1526,7 @@ function setLang(next) {
   lang = next;
   try { localStorage.setItem('cmp-lang', lang); } catch (e) {}
   document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-  document.title = lang === 'zh' ? '云模型定价与能力对比' : 'Cloud Model Pricing & Compare';
+  document.title = t('docTitle');
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   applyI18n();
   // 重建 provider 下拉（「其他/Other」兜底项随语言刷新），并重置模型下拉的占位/无匹配文案
@@ -1527,9 +1538,11 @@ function setLang(next) {
 }
 
 // 把静态 HTML 里带 data-i18n 的元素替换为当前语言文本；
-// data-i18n-ph / data-i18n-title 分别对应 placeholder / title 属性
+// data-i18n-ph / data-i18n-title 分别对应 placeholder / title 属性；
+// data-i18n-html 用于含内联标签（如标题里的 <span>）的内容，用 innerHTML 替换
 function applyI18n() {
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
   document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
   document.querySelectorAll('[data-i18n-title]').forEach(el => { el.title = t(el.dataset.i18nTitle); });
 }
