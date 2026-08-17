@@ -1622,6 +1622,19 @@ const MODE_LABELS = {
   vector_store: { zh: '向量存储', en: 'Vector Store' },
 };
 
+// 通用字母序：首字母为字母的排在前面，非字母（如中文、数字、符号）排在后面；同组内统一转小写比较
+function alphaSort(a, b) {
+  const va = Array.isArray(a) ? a[0] : a;
+  const vb = Array.isArray(b) ? b[0] : b;
+  const sa = String(va), sb = String(vb);
+  const ca = sa.charAt(0), cb = sb.charAt(0);
+  const isLetterA = /^[a-z]/i.test(ca);
+  const isLetterB = /^[a-z]/i.test(cb);
+  if (isLetterA && !isLetterB) return -1;
+  if (!isLetterA && isLetterB) return 1;
+  return sa.toLowerCase().localeCompare(sb.toLowerCase());
+}
+
 // ============ 状态 ============
 const state = {
   models: [],
@@ -2298,7 +2311,6 @@ function renderCompareInner(wrap) {
 function initUI() {
   // provider 下拉按首字母（统一转小写）升序，mode 下拉按频次降序（类型少、高频优先更顺手）
   const countBy = f => state.models.reduce((acc, m) => { const v = m[f]; if (v) acc[v] = (acc[v] || 0) + 1; return acc; }, {});
-  const alphaSort = (a, b) => a[0].toLowerCase().localeCompare(b[0].toLowerCase());
   const freqSort = (a, b) => b[1] - a[1];
   const fillSelect = (id, counts, sortFn) => {
     const selEl = document.getElementById(id);
@@ -2427,7 +2439,7 @@ function initUI() {
   window.rebuildAddProvider = function rebuildAddProvider() {
     const counts = state.models.reduce((acc, m) => { const v = m.provider || noneProvider(); acc[v] = (acc[v] || 0) + 1; return acc; }, {});
     addProviderSelect.innerHTML = Object.entries(counts)
-      .sort((a, b) => a[0].toLowerCase().localeCompare(b[0].toLowerCase()))
+      .sort(alphaSort)
       .map(([p, c]) => `<option value="${esc(p)}">${esc(p)} (${c})</option>`).join('');
   };
   window.rebuildAddProvider();
