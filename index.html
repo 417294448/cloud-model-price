@@ -2467,6 +2467,8 @@ function initUI() {
           const label = prefix ? `${name}  ·  ${prefix}` : name;
           return `<option value="${esc(m.key)}" title="${esc(m.key)}" ${state.selected.has(m.key) ? 'disabled' : ''}>${esc(label)}</option>`;
         }).join('');
+    // 根据实际选项数动态控制下拉高度，选项少时不撑出大片空白；最少保留 2 行避免只有 1 项时过窄
+    addSelect.size = Math.max(2, Math.min(list.length || 1, 10));
   }
 
   // 挂到 window 上供全局的 updateCount() 调用（initUI 内部局部函数外部不可见）；
