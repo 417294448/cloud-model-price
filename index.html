@@ -290,11 +290,31 @@
     transition: all 0.15s;
   }
   .ghost-btn:hover { color: var(--danger); border-color: var(--danger); }
+  .clear-filters-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 13px;
+    border: 1px solid var(--border-strong);
+    border-radius: 7px;
+    background: transparent;
+    color: var(--text-dim);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    margin-left: auto;
+    transition: all 0.15s;
+  }
+  .clear-filters-btn .ic { font-size: 12px; }
+  .clear-filters-btn:hover:not(:disabled) { color: var(--danger); border-color: var(--danger); }
+  .clear-filters-btn:disabled { opacity: 0.4; cursor: default; }
+  /* 清除按钮用 margin-left:auto 把自己推到行尾，统计文字紧随其后（不再自己靠右） */
   .stats {
     color: var(--text-faint);
     font-family: var(--font-mono);
     font-size: 12px;
-    margin-left: auto;
     white-space: nowrap;
   }
   .stats b { color: var(--text-dim); font-weight: 600; }
@@ -1219,6 +1239,9 @@
         <label class="cap-filter"><input type="checkbox" data-cap="supports_function_calling"><span class="chip-label"><svg class="ic"><use href="#i-wrench"/></svg>函数调用</span></label>
         <label class="cap-filter"><input type="checkbox" data-cap="supports_reasoning"><span class="chip-label"><svg class="ic"><use href="#i-brain"/></svg>推理</span></label>
       </div>
+      <button class="clear-filters-btn" id="clearFilters" title="清除全部筛选条件">
+        <svg class="ic"><use href="#i-close"/></svg>清除筛选
+      </button>
       <span class="stats" id="statsText"></span>
     </div>
     <div class="filter-row">
@@ -1721,6 +1744,32 @@ function renderBrowse() {
     th.querySelector('.arrow').innerHTML =
       th.dataset.sort === state.sortKey ? ic(state.sortAsc ? 'arrow-up' : 'arrow-down') : '';
   });
+
+  // 清除筛选按钮：有任何筛选激活时才可用
+  const clearBtn = document.getElementById('clearFilters');
+  if (clearBtn) {
+    const hasActive = !!(state.search || state.provider || state.mode
+      || state.capFilters.size || state.inModFilters.size || state.outModFilters.size);
+    clearBtn.disabled = !hasActive;
+  }
+}
+
+// 清除全部筛选条件，恢复初始状态（不影响已勾选的对比模型）
+function clearFilters() {
+  state.search = '';
+  state.provider = '';
+  state.mode = '';
+  state.capFilters.clear();
+  state.inModFilters.clear();
+  state.outModFilters.clear();
+  state.page = 0;
+  // 同步 UI 控件
+  document.getElementById('searchInput').value = '';
+  document.getElementById('providerSelect').value = '';
+  document.getElementById('modeSelect').value = '';
+  document.querySelectorAll('.cap-filter input').forEach(cb => { cb.checked = false; });
+  document.querySelectorAll('.cap-filter').forEach(l => l.classList.remove('active'));
+  renderBrowse();
 }
 
 // 统一刷新所有勾选计数显示（徽标 / 对比工具栏文本 / 席位指示点 / 已选产品弹窗 / 添加模型下拉）
@@ -2009,6 +2058,7 @@ function initUI() {
   document.getElementById('modeSelect').addEventListener('change', e => {
     state.mode = e.target.value; state.page = 0; renderBrowse();
   });
+  document.getElementById('clearFilters').addEventListener('click', clearFilters);
   document.querySelectorAll('.cap-filter input').forEach(cb => cb.addEventListener('change', e => {
     const cap = e.target.dataset.cap;
     const inMod = e.target.dataset.inMod;
