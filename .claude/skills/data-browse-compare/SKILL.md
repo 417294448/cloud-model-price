@@ -206,14 +206,9 @@ for (const [key, raw] of Object.entries(data)) {
 
 浏览器 `file://` 协议禁止 `fetch()` 读取本地文件，所以最终交付的 `index.html` 必须自包含数据。
 
-做法：让 `index.html` 本身内嵌数据，用 `scripts/build.py` **原地更新**它（不指定 `--out`，默认输出路径等于模板路径）：
+**页面模板独立成文件，build.py 从模板 + 数据全量重建页面。** skill 目录下有一份 `template.html`（完整页面代码，数据块位置用 `<!--MODEL_DATA-->` 占位），`scripts/build.py` 读它 + 新 JSON 拼出整个 `index.html`。这样**数据或模板任一变化都能从零重建**，而不是只能在已有页面上换数据。
 
-```bash
-python build.py
-# 等价于 python build.py --template index.html --out index.html
-```
-
-脚本会识别已有的同 id 内嵌数据块并整体替换，不会重复插入。页面里的加载逻辑仍然写成“优先读内嵌数据、没有则退回 fetch”，方便开发阶段用 `python -m http.server` 边改边看：
+模板里的加载逻辑写成“优先读内嵌数据、没有则退回 fetch”，因此 `template.html` 本身可直接用 `python -m http.server` 开发预览（占位注释走 fetch 分支）：
 
 ```js
 async function loadData() {
@@ -229,6 +224,21 @@ async function loadData() {
 }
 ```
 
+**生成流程是原子的**，避免中途失败留下损坏的 index.html——先生成中间产物、验证通过才替换正式文件：
+
+```bash
+python .claude/skills/data-browse-compare/scripts/build.py
+```
+
+0. **前置拉取**：默认先从上游拉取最新 JSON 到临时文件并校验（`--no-fetch` 跳过、改用本地；显式 `--data` 也会跳过）。**本地 JSON 在最后一步才替换**——任何前置失败，本地数据和页面都保持旧版不被污染；
+1. 模板 + 数据拼出 `index-new.html`；
+2. 验证：数据块能被 `JSON.parse` 解析、条目数与源数据一致、页面 JS 通过 `node --check` 语法校验（无 node 则跳过并提示）；
+3. 验证通过：把现有 `index.html` 改名为 `index-old.html`（备份），再把 `index-new.html` 改名为 `index.html`，最后才把拉取的新数据写回本地 JSON；
+4. **后置 diff**：对比拉取前后的新旧数据，把**新增 / 减少 / 变更**的模型简洁信息（key + provider/mode + 价格）追加写入 `diff/<YYYY-MM-DD>.txt`——同一天多次执行追加不覆盖，仅在拉取模式且有旧数据可对比时生成；
+5. 任一步失败：保留原 `index.html` 和本地 JSON 不动，删除临时文件，非零退出。
+
+注意：条目数统计要排除 `sample_spec` 这类 schema 说明项——它是字段示例不是真实记录，不计入（也不应计入页面展示的模型总数）。
+
 数据量较大时内嵌后文件会变大，这是预期正常现象，跟用户说明一下即可。
 
 ## 常见坑
@@ -243,7 +253,7 @@ async function loadData() {
 - **不要用 `alert()`/`confirm()` 做提示**——用 toast（定时消失的浮层提示）代替。
 - **排序时缺失值不要排在最前**——`null`/`undefined` 在升序和降序时都排最后。
 - **内嵌数据到 `<script>` 标签时转义 `</`**——用 `.replace('</', '<\\/')` 处理。
-- **原地更新内嵌数据的脚本要写成幂等的**——识别已有同 id 数据块并替换，而不是反复插入。
+- **页面生成要做成原子替换**——先产出中间文件（index-new.html）、验证通过再转正并把旧版备份为 index-old.html；不要边写边覆盖正式 index.html，否则中途失败会留下损坏的页面。
 - **表格行点击与勾选框点击要隔离**——勾选框 change 事件不要冒泡触发抽屉打开。
 - **并列最优不要高亮**——多个对象取值相同并列第一时，不要只高亮其中一个，应视为同等优秀。
 - **抽屉/弹窗要提供多种关闭方式**——关闭按钮、点击遮罩、按 `Esc` 都应能关闭。
