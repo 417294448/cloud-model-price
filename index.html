@@ -459,6 +459,25 @@
 
   /* ===== 对比视图 ===== */
   #compareView { display: none; }
+  .share-compare-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border: 1px solid var(--accent-border);
+    border-radius: 7px;
+    background: var(--accent-soft);
+    color: var(--accent-bright);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .share-compare-btn .ic { font-size: 13px; }
+  .share-compare-btn:hover:not(:disabled) { background: var(--accent); color: #f4fbfd; border-color: var(--accent); }
+  .share-compare-btn:disabled { opacity: 0.4; cursor: default; }
   .compare-toolbar {
     display: flex;
     align-items: center;
@@ -1215,6 +1234,7 @@
     <symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r="1.1" fill="currentColor" stroke="none"/></g></symbol>
     <symbol id="i-columns" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="4.5" width="6.8" height="15" rx="1.2"/><rect x="13.2" y="4.5" width="6.8" height="15" rx="1.2"/></g></symbol>
     <symbol id="i-check-circle" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m8.2 12.2 2.6 2.6 5-5.4"/></g></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.6"/><circle cx="17.5" cy="5.5" r="2.6"/><circle cx="17.5" cy="18.5" r="2.6"/><path d="m8.3 10.8 6.9-4M8.3 13.2l6.9 4"/></g></symbol>
     <!-- 控件 -->
     <symbol id="i-close" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></g></symbol>
     <symbol id="i-chev-down" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9.5 6 6 6-6"/></g></symbol>
@@ -1362,7 +1382,10 @@
       </div>
     </div>
     <div class="compare-toolbar-right">
-      <button id="closeCompare" class="close-compare-btn" data-i18n-title="closeCompareTitle" title="Close compare and clear selection"><svg class="ic"><use href="#i-close"/></svg></button>
+      <button id="shareCompare" class="share-compare-btn" data-i18n-title="shareTitle" title="Copy a shareable link to this comparison">
+        <svg class="ic"><use href="#i-share"/></svg><span data-i18n="shareBtn">Share</span>
+      </button>
+      <button id="closeCompare" class="close-compare-btn" data-i18n-title="closeCompareTitle" title="Clear selected models"><svg class="ic"><use href="#i-close"/></svg></button>
     </div>
   </div>
   <div class="compare-wrap" id="compareWrap"></div>
@@ -1411,7 +1434,7 @@ const I18N = {
     thInput: '输入 $/1M', thOutput: '输出 $/1M', thCache: '缓存读 $/1M',
     thContext: '上下文', thMaxOut: '最大输出', thCaps: '能力',
     selTitle: '已选择', selUnit: '个', selClear: '清除所有选择', selGo: '开始对比',
-    compareTitle: '对比分析', closeCompareTitle: '关闭对比并清空所选模型',
+    compareTitle: '对比分析', closeCompareTitle: '清空所选模型',
     seatsText: (n, max) => `${n} / ${max} 席位`,
     addProviderPh: '选择 Provider',
     addModelPh: '搜索该 Provider 下的模型…',
@@ -1450,6 +1473,12 @@ const I18N = {
     errBody: '本页面数据应内嵌于页面中，但当前未检测到，且浏览器不允许通过 file:// 协议 fetch 本地 JSON。请检查数据块是否完整，或在项目目录运行本地服务后访问。',
     renderErr: '对比表渲染出错：',
     renderErrHint: '请打开浏览器控制台（F12）查看详情并反馈。',
+    // 分享
+    shareBtn: '分享对比',
+    shareTitle: '复制当前对比的分享链接',
+    toastShared: '分享链接已复制，发送给他人即可查看当前对比',
+    toastShareEmpty: '请先勾选要对比的模型',
+    toastShareInvalid: (n) => `链接中有 ${n} 个模型已不可用，已自动忽略`,
   },
   en: {
     eyebrow: 'MODEL PRICING · CAPABILITY COMPARE',
@@ -1476,7 +1505,7 @@ const I18N = {
     thInput: 'Input $/1M', thOutput: 'Output $/1M', thCache: 'Cache $/1M',
     thContext: 'Context', thMaxOut: 'Max Output', thCaps: 'Capabilities',
     selTitle: 'Selected', selUnit: '', selClear: 'Clear all selections', selGo: 'Compare',
-    compareTitle: 'Compare Analysis', closeCompareTitle: 'Close compare and clear selection',
+    compareTitle: 'Compare Analysis', closeCompareTitle: 'Clear selected models',
     seatsText: (n, max) => `${n} / ${max} seats`,
     addProviderPh: 'Select Provider',
     addModelPh: 'Search models in this provider…',
@@ -1511,6 +1540,12 @@ const I18N = {
     errBody: 'The page data should be embedded inline, but it was not detected, and the browser blocks fetch() of local JSON over file://. Check the data block, or serve the directory over a local HTTP server.',
     renderErr: 'Failed to render compare table: ',
     renderErrHint: 'Open the browser console (F12) for details.',
+    // 分享
+    shareBtn: 'Share',
+    shareTitle: 'Copy a shareable link to this comparison',
+    toastShared: 'Link copied — share it to let others see this comparison',
+    toastShareEmpty: 'Select models to compare first',
+    toastShareInvalid: (n) => `${n} model(s) in the link are no longer available and were skipped`,
   },
 };
 
@@ -1661,6 +1696,50 @@ function saveUIState() {
       selected: [...state.selected],
     }));
   } catch (e) { /* 隐私模式等写入失败时静默降级，不影响主流程 */ }
+}
+
+// ============ 分享链接 ============
+// 把已选模型编码进 URL hash：#compare=key1,key2,key3。
+// 用 hash 而非 query——file:// 双击打开时 query 可能被丢弃，hash 一定保留且不触发刷新。
+// 数据本身已内嵌在 HTML，链接只需携带 key；接收方打开后从 hash 解码还原对比。
+function buildShareUrl() {
+  const keys = [...state.selected].map(k => encodeURIComponent(k)).join(',');
+  const base = location.href.split('#')[0];
+  return `${base}#compare=${keys}`;
+}
+function copyToClipboard(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text).then(() => true).catch(() => fallbackCopy(text));
+  }
+  return Promise.resolve(fallbackCopy(text));
+}
+// file:// 或旧浏览器禁用 clipboard API 时的兜底：临时 textarea + execCommand
+function fallbackCopy(text) {
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  } catch (e) { return false; }
+}
+function shareCompare() {
+  if (state.selected.size === 0) { showToast(t('toastShareEmpty')); return; }
+  copyToClipboard(buildShareUrl()).then(ok => {
+    showToast(ok ? t('toastShared') : buildShareUrl());
+  });
+}
+// 从 URL hash 解析分享进来的已选模型 key 列表；无 compare 参数返回 null
+function parseShareFromUrl() {
+  const m = location.hash.match(/#compare=([^&]*)/);
+  if (!m) return null;
+  try {
+    return m[1].split(',').filter(Boolean).map(k => decodeURIComponent(k));
+  } catch (e) { return null; }
 }
 
 // ============ 工具函数 ============
@@ -2062,6 +2141,9 @@ function updateCount() {
       `<span class="slot-dot ${i < n ? 'filled' : ''}"></span>`).join('');
   }
   renderSelectPopup();
+  // 分享按钮：无选中时禁用
+  const shareBtn = document.getElementById('shareCompare');
+  if (shareBtn) shareBtn.disabled = n === 0;
   // 添加模型下拉的禁用态与占位文案（initUI 绑定后才挂到 window，未初始化时跳过）
   if (typeof window.syncAddModelUI === 'function') window.syncAddModelUI();
 }
@@ -2422,9 +2504,11 @@ function initUI() {
   });
 
   document.getElementById('closeCompare').addEventListener('click', () => {
+    // 清空所选但停留在对比 tab（显示空态），由用户自行决定何时回浏览页
     clearSelection();
-    switchTab('browse');
+    switchTab('compare');
   });
+  document.getElementById('shareCompare').addEventListener('click', shareCompare);
 
   // ---- 对比页「添加模型」：先选 Provider，再在该 Provider 下搜索模型 ----
   const addProviderSelect = document.getElementById('addProviderSelect');
@@ -2542,15 +2626,25 @@ function switchTab(which) {
 loadData()
   .then(models => {
     state.models = models;
-    // 恢复上次的 tab 与已选模型；已选 key 若已不在当前数据里（数据更新后模型下线）则剔除
-    try {
-      const saved = JSON.parse(localStorage.getItem(UI_STORE_KEY) || 'null');
-      if (saved && Array.isArray(saved.selected)) {
-        const valid = new Set(models.map(m => m.key));
-        saved.selected.slice(0, MAX_COMPARE).forEach(k => { if (valid.has(k)) state.selected.add(k); });
-      }
-      if (saved && saved.tab === 'compare' && state.selected.size > 0) state.tab = 'compare';
-    } catch (e) { /* 存储损坏时按默认 browse 启动 */ }
+    const valid = new Set(models.map(m => m.key));
+    // 优先从 URL hash 恢复（分享链接场景）；无 compare 参数才退回 localStorage（本地刷新场景）。
+    // 已选 key 若已不在当前数据里（数据更新后模型下线）则剔除并提示。
+    const shareKeys = parseShareFromUrl();
+    if (shareKeys) {
+      let invalid = 0;
+      shareKeys.slice(0, MAX_COMPARE).forEach(k => { if (valid.has(k)) state.selected.add(k); else invalid++; });
+      // 分享链接直达对比页
+      if (state.selected.size > 0) state.tab = 'compare';
+      if (invalid > 0) setTimeout(() => showToast(t('toastShareInvalid')(invalid)), 400);
+    } else {
+      try {
+        const saved = JSON.parse(localStorage.getItem(UI_STORE_KEY) || 'null');
+        if (saved && Array.isArray(saved.selected)) {
+          saved.selected.slice(0, MAX_COMPARE).forEach(k => { if (valid.has(k)) state.selected.add(k); });
+        }
+        if (saved && saved.tab === 'compare' && state.selected.size > 0) state.tab = 'compare';
+      } catch (e) { /* 存储损坏时按默认 browse 启动 */ }
+    }
     initUI();
     // 应用启动语言（同步 html lang、<title>、切换器高亮、静态文本）
     setLang(lang);
