@@ -93,17 +93,39 @@
     pointer-events: none;
   }
   .hero > * { position: relative; }
-  /* 语言切换器：右上角 */
-  .lang-switch {
+  /* 右上角控件组：主页按钮 + 语言切换器 */
+  .hero-corner {
     position: absolute;
     top: 20px; right: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 5;
+  }
+  .home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 11px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 12px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .home-btn .ic { font-size: 13px; }
+  .home-btn:hover { color: var(--accent-bright); border-color: var(--accent-border); }
+  .lang-switch {
     display: flex;
     gap: 2px;
     padding: 3px;
     background: var(--bg-elevated);
     border: 1px solid var(--border-strong);
     border-radius: 8px;
-    z-index: 5;
   }
   .lang-btn {
     border: none;
@@ -351,13 +373,20 @@
     font-size: 12.5px;
     letter-spacing: 0.01em;
     cursor: pointer;
-    margin-left: auto;
     transition: all 0.15s;
   }
   .clear-filters-btn .ic { font-size: 12px; }
   .clear-filters-btn:hover:not(:disabled) { color: var(--danger); border-color: var(--danger); }
   .clear-filters-btn:disabled { opacity: 0.4; cursor: default; }
-  /* 清除按钮用 margin-left:auto 把自己推到行尾，统计文字紧随其后（不再自己靠右） */
+  /* 统计文字 + 清除按钮组成筛选区的收尾 footer，整体固定在最后一行行尾：
+     Clear 清空的是全部三行筛选（厂商/搜索/能力/模态），落在筛选区右下角语义最准，
+     位置也不再随第一行内容宽度漂移 */
+  .filter-footer {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+  }
   .stats {
     color: var(--text-faint);
     font-family: var(--font-mono);
@@ -1297,14 +1326,20 @@
     <symbol id="i-arrow-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></g></symbol>
     <symbol id="i-quest" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M9.4 9.2A2.7 2.7 0 0 1 12 7.4c1.5 0 2.7 1 2.7 2.3 0 1.9-2.4 2-2.7 3.8"/><circle cx="12" cy="16.8" r="1.1" fill="currentColor" stroke="none"/></g></symbol>
     <symbol id="i-ext" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.5H5.5V18.5H18.5V14"/><path d="M13.5 5.5h5v5"/><path d="M18.5 5.5 11 13"/></g></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 11 8-7 8 7"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5.5h4V20"/></g></symbol>
     <!--PROVIDER_LOGOS-->
   </defs>
 </svg>
 
 <header class="hero">
-  <div class="lang-switch" role="group" aria-label="语言 / Language">
-    <button class="lang-btn" data-lang="zh">中</button>
-    <button class="lang-btn active" data-lang="en">EN</button>
+  <div class="hero-corner">
+    <a class="home-btn" href="https://www.cloudproduct.top/" target="_blank" rel="noopener noreferrer" data-i18n-title="homeTitle" title="Back to homepage">
+      <svg class="ic"><use href="#i-home"/></svg><span data-i18n="homeBtn">Home</span>
+    </a>
+    <div class="lang-switch" role="group" aria-label="语言 / Language">
+      <button class="lang-btn" data-lang="zh">中</button>
+      <button class="lang-btn active" data-lang="en">EN</button>
+    </div>
   </div>
   <div class="hero-top">
     <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true">
@@ -1361,10 +1396,6 @@
         <label class="cap-filter"><input type="checkbox" data-cap="supports_web_search"><span class="chip-label"><svg class="ic"><use href="#i-search"/></svg><span data-i18n="capWebSearch">Web Search</span></span></label>
         <label class="cap-filter"><input type="checkbox" data-cap="supports_computer_use"><span class="chip-label"><svg class="ic"><use href="#i-monitor"/></svg><span data-i18n="capComputerUse">Computer Use</span></span></label>
       </div>
-      <button class="clear-filters-btn" id="clearFilters" data-i18n-title="clearFiltersTitle" title="Clear all filters">
-        <svg class="ic"><use href="#i-close"/></svg><span data-i18n="clearFilters">Clear</span>
-      </button>
-      <span class="stats" id="statsText"></span>
     </div>
     <div class="filter-row">
       <div class="chip-group">
@@ -1383,6 +1414,12 @@
         <label class="cap-filter"><input type="checkbox" data-out-mod="video"><span class="chip-label"><svg class="ic"><use href="#i-video"/></svg><span data-i18n="modVideo">Video</span></span></label>
         <label class="cap-filter"><input type="checkbox" data-out-mod="code"><span class="chip-label"><svg class="ic"><use href="#i-code"/></svg><span data-i18n="modCode">Code</span></span></label>
       </div>
+      <span class="filter-footer">
+        <span class="stats" id="statsText"></span>
+        <button class="clear-filters-btn" id="clearFilters" data-i18n-title="clearFiltersTitle" title="Clear all filters">
+          <svg class="ic"><use href="#i-close"/></svg><span data-i18n="clearFilters">Clear</span>
+        </button>
+      </span>
     </div>
   </div>
   <div class="table-wrap">
@@ -1483,6 +1520,7 @@ const I18N = {
     tabBrowse: '浏览全部',
     tabCompare: '对比',
     searchPh: '搜索模型名 / provider…',
+    homeBtn: '主页', homeTitle: '返回主页',
     allProviders: '全部 Provider',
     allModes: '全部类型',
     capVision: '视觉', capFunction: '函数调用', capReasoning: '推理', capWebSearch: '联网搜索',
@@ -1560,6 +1598,7 @@ const I18N = {
     tabBrowse: 'Browse All',
     tabCompare: 'Compare',
     searchPh: 'Search models / providers…',
+    homeBtn: 'Home', homeTitle: 'Back to homepage',
     allProviders: 'All Providers',
     allModes: 'All Types',
     capVision: 'Vision', capFunction: 'Function Calling', capReasoning: 'Reasoning', capWebSearch: 'Web Search',

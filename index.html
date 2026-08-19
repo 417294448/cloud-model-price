@@ -93,17 +93,39 @@
     pointer-events: none;
   }
   .hero > * { position: relative; }
-  /* 语言切换器：右上角 */
-  .lang-switch {
+  /* 右上角控件组：主页按钮 + 语言切换器 */
+  .hero-corner {
     position: absolute;
     top: 20px; right: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 5;
+  }
+  .home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 11px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 12px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .home-btn .ic { font-size: 13px; }
+  .home-btn:hover { color: var(--accent-bright); border-color: var(--accent-border); }
+  .lang-switch {
     display: flex;
     gap: 2px;
     padding: 3px;
     background: var(--bg-elevated);
     border: 1px solid var(--border-strong);
     border-radius: 8px;
-    z-index: 5;
   }
   .lang-btn {
     border: none;
@@ -351,13 +373,20 @@
     font-size: 12.5px;
     letter-spacing: 0.01em;
     cursor: pointer;
-    margin-left: auto;
     transition: all 0.15s;
   }
   .clear-filters-btn .ic { font-size: 12px; }
   .clear-filters-btn:hover:not(:disabled) { color: var(--danger); border-color: var(--danger); }
   .clear-filters-btn:disabled { opacity: 0.4; cursor: default; }
-  /* 清除按钮用 margin-left:auto 把自己推到行尾，统计文字紧随其后（不再自己靠右） */
+  /* 统计文字 + 清除按钮组成筛选区的收尾 footer，整体固定在最后一行行尾：
+     Clear 清空的是全部三行筛选（厂商/搜索/能力/模态），落在筛选区右下角语义最准，
+     位置也不再随第一行内容宽度漂移 */
+  .filter-footer {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+  }
   .stats {
     color: var(--text-faint);
     font-family: var(--font-mono);
@@ -1299,6 +1328,7 @@ eyJzYW1wbGVfc3BlYyI6eyJjb2RlX2ludGVycHJldGVyX2Nvc3RfcGVyX3Nlc3Npb24iOjAuMCwiY29t
     <symbol id="i-arrow-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></g></symbol>
     <symbol id="i-quest" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M9.4 9.2A2.7 2.7 0 0 1 12 7.4c1.5 0 2.7 1 2.7 2.3 0 1.9-2.4 2-2.7 3.8"/><circle cx="12" cy="16.8" r="1.1" fill="currentColor" stroke="none"/></g></symbol>
     <symbol id="i-ext" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.5H5.5V18.5H18.5V14"/><path d="M13.5 5.5h5v5"/><path d="M18.5 5.5 11 13"/></g></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 11 8-7 8 7"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5.5h4V20"/></g></symbol>
     <symbol id="pv-ai21" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="m6.47 17l-.367-1.189H2.718L2.35 17H0l3.398-9.789h2.026L8.864 17zm-2.052-6.993l-1.17 4.028H5.56zm4.707-2.796h2.23V17h-2.23zM11.955 15c.1-.483.277-.946.524-1.37c.214-.359.482-.68.795-.951q.48-.41 1.013-.741q.42-.253.781-.483a5 5 0 0 0 .632-.468q.26-.223.428-.525c.107-.199.16-.423.157-.65q0-.588-.313-.846a1.18 1.18 0 0 0-.775-.259a1.2 1.2 0 0 0-.863.329q-.347.329-.347 1.098H11.8a3.4 3.4 0 0 1 .224-1.245a2.75 2.75 0 0 1 .66-.993c.306-.29.667-.514 1.06-.657A4 4 0 0 1 15.183 7c.42-.002.84.057 1.244.175c.376.107.73.287 1.04.531c.305.246.55.562.714.923c.185.419.275.875.265 1.335c.005.39-.084.774-.259 1.12c-.167.328-.38.63-.632.894q-.37.388-.808.693q-.436.3-.789.51q-.49.336-.809.58a4 4 0 0 0-.51.455a1.2 1.2 0 0 0-.265.434a1.6 1.6 0 0 0-.074.517h4.078V17h-6.606a9.2 9.2 0 0 1 .183-2M18.8 8.93a5 5 0 0 0 1.135-.105c.25-.049.484-.156.686-.314c.163-.139.28-.324.34-.532c.068-.25.1-.51.095-.77H23V17h-2.243v-6.475H18.8z"/></symbol>
     <symbol id="pv-amazon-nova" viewBox="0 0 24 24"><title>Amazon Web Services</title><path fill="currentColor" d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zM21.698 16.207c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zM22.792 14.961c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></symbol>
     <symbol id="pv-anthropic" viewBox="0 0 24 24"><title>Anthropic</title><path fill="currentColor" d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></symbol>
@@ -1402,9 +1432,14 @@ eyJzYW1wbGVfc3BlYyI6eyJjb2RlX2ludGVycHJldGVyX2Nvc3RfcGVyX3Nlc3Npb24iOjAuMCwiY29t
 </svg>
 
 <header class="hero">
-  <div class="lang-switch" role="group" aria-label="语言 / Language">
-    <button class="lang-btn" data-lang="zh">中</button>
-    <button class="lang-btn active" data-lang="en">EN</button>
+  <div class="hero-corner">
+    <a class="home-btn" href="https://www.cloudproduct.top/" target="_blank" rel="noopener noreferrer" data-i18n-title="homeTitle" title="Back to homepage">
+      <svg class="ic"><use href="#i-home"/></svg><span data-i18n="homeBtn">Home</span>
+    </a>
+    <div class="lang-switch" role="group" aria-label="语言 / Language">
+      <button class="lang-btn" data-lang="zh">中</button>
+      <button class="lang-btn active" data-lang="en">EN</button>
+    </div>
   </div>
   <div class="hero-top">
     <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true">
@@ -1461,10 +1496,6 @@ eyJzYW1wbGVfc3BlYyI6eyJjb2RlX2ludGVycHJldGVyX2Nvc3RfcGVyX3Nlc3Npb24iOjAuMCwiY29t
         <label class="cap-filter"><input type="checkbox" data-cap="supports_web_search"><span class="chip-label"><svg class="ic"><use href="#i-search"/></svg><span data-i18n="capWebSearch">Web Search</span></span></label>
         <label class="cap-filter"><input type="checkbox" data-cap="supports_computer_use"><span class="chip-label"><svg class="ic"><use href="#i-monitor"/></svg><span data-i18n="capComputerUse">Computer Use</span></span></label>
       </div>
-      <button class="clear-filters-btn" id="clearFilters" data-i18n-title="clearFiltersTitle" title="Clear all filters">
-        <svg class="ic"><use href="#i-close"/></svg><span data-i18n="clearFilters">Clear</span>
-      </button>
-      <span class="stats" id="statsText"></span>
     </div>
     <div class="filter-row">
       <div class="chip-group">
@@ -1483,6 +1514,12 @@ eyJzYW1wbGVfc3BlYyI6eyJjb2RlX2ludGVycHJldGVyX2Nvc3RfcGVyX3Nlc3Npb24iOjAuMCwiY29t
         <label class="cap-filter"><input type="checkbox" data-out-mod="video"><span class="chip-label"><svg class="ic"><use href="#i-video"/></svg><span data-i18n="modVideo">Video</span></span></label>
         <label class="cap-filter"><input type="checkbox" data-out-mod="code"><span class="chip-label"><svg class="ic"><use href="#i-code"/></svg><span data-i18n="modCode">Code</span></span></label>
       </div>
+      <span class="filter-footer">
+        <span class="stats" id="statsText"></span>
+        <button class="clear-filters-btn" id="clearFilters" data-i18n-title="clearFiltersTitle" title="Clear all filters">
+          <svg class="ic"><use href="#i-close"/></svg><span data-i18n="clearFilters">Clear</span>
+        </button>
+      </span>
     </div>
   </div>
   <div class="table-wrap">
@@ -1583,6 +1620,7 @@ const I18N = {
     tabBrowse: '浏览全部',
     tabCompare: '对比',
     searchPh: '搜索模型名 / provider…',
+    homeBtn: '主页', homeTitle: '返回主页',
     allProviders: '全部 Provider',
     allModes: '全部类型',
     capVision: '视觉', capFunction: '函数调用', capReasoning: '推理', capWebSearch: '联网搜索',
@@ -1660,6 +1698,7 @@ const I18N = {
     tabBrowse: 'Browse All',
     tabCompare: 'Compare',
     searchPh: 'Search models / providers…',
+    homeBtn: 'Home', homeTitle: 'Back to homepage',
     allProviders: 'All Providers',
     allModes: 'All Types',
     capVision: 'Vision', capFunction: 'Function Calling', capReasoning: 'Reasoning', capWebSearch: 'Web Search',

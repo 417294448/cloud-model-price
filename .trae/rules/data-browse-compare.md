@@ -244,6 +244,8 @@ for (const [key, raw] of Object.entries(data)) {
 | `<!--PROVIDER_ICONS-->` | `PROVIDER_ICONS`（provider→symbol id 映射，JS 对象字面量） |
 | `<!--PROVIDER_COMPANIES-->` | `PROVIDER_COMPANIES`（provider→company_en 映射，来自 provider.csv） |
 
+**构建期下载的外部资源（如 logo SVG）要落本地缓存，不要每次构建都拉网络。** logo 这类资源几乎不变，每次构建下载近百个文件既慢又会因网络抖动批量失败（实际遇到过：99 个 logo 全部 SSL 失败、页面退化成全 monogram）。做法：build.py 把下载成功的 SVG 按 `pv-<provider>.svg` 缓存到 `source-data/provider-logos/`，命中缓存直接用、未命中才下载并写入缓存；缓存损坏自动回退下载。**缓存目录要提交进版本管理**——克隆仓库后首次构建即离线可用。需要强制刷新某个 logo 时，删除对应缓存文件再构建即可。构建日志要区分「下载成功 / 缓存命中」数量，方便确认缓存是否生效。
+
 模板里的加载逻辑写成“优先读内嵌数据、没有则退回 fetch”，因此 `template.html` 本身可直接用 `python -m http.server` 开发预览（占位注释走 fetch 分支）：
 
 ```js

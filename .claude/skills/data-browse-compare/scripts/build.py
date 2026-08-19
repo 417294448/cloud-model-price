@@ -162,17 +162,24 @@ def _svg_to_symbol(svg, sid):
     return f'<symbol id="{sid}" viewBox="{viewbox}">{inner.strip()}</symbol>'
 
 
-def build_provider_logos(csv_path):
-    """读 provider.csv，下载有 logo 的 SVG 并内联为 sprite symbol；
+def build_provider_logos(csv_path, cache_dir=None):
+    """读 provider.csv，把有 logo 的 SVG 内联为 sprite symbol；
     返回 (sprite_symbols_str, provider->iconId 映射, provider->公司名 映射)。
-    无 logo 的不进 sprite，由前端用 monogram 兜底。"""
+    无 logo 的不进 sprite，由前端用 monogram 兜底。
+
+    logo 内容几乎不变，没必要每次构建都下载：SVG 按 sid 缓存到 cache_dir
+    （默认 source-data/provider-logos/），命中缓存直接用，未命中才下载并写入缓存。
+    缓存文件纳入版本管理，之后离线/网络抖动时构建也能拿到完整 logo。
+    如需强制刷新某个 logo，删除对应缓存文件再构建即可。"""
     if not os.path.isfile(csv_path):
         print(f'提示：找不到 {csv_path}，跳过 provider logo 内联')
         return '', {}, {}
     symbols = []
     icon_map = {}   # provider -> symbol id（有 logo 的）
     name_map = {}   # provider -> 公司名（全部）
-    ok = fail_cnt = 0
+    ok = fail_cnt = cached = 0
+    if cache_dir:
+        os.makedirs(cache_dir, exist_ok=True)
     with open(csv_path, encoding='utf-8') as f:
         for row in csv.DictReader(f):
             p = row.get('provider', '').strip()
@@ -182,20 +189,36 @@ def build_provider_logos(csv_path):
             if row.get('logo_accessible') != 'yes' or not row.get('logo_url'):
                 continue
             url = row['logo_url'].strip()
-            try:
-                req = urllib.request.Request(url, headers={'User-Agent': 'build.py'})
-                with urllib.request.urlopen(req, timeout=20) as resp:
-                    svg = resp.read().decode('utf-8')
-                if '<svg' not in svg:
-                    raise ValueError('非 SVG 内容')
-                sid = 'pv-' + re.sub(r'[^a-z0-9]+', '-', p.lower()).strip('-')
-                symbols.append(_svg_to_symbol(svg, sid))
-                icon_map[p] = sid
-                ok += 1
-            except Exception as e:
-                fail_cnt += 1
-                print(f'  提示：{p} 的 logo 下载失败（{e}），将用 monogram 兜底', file=sys.stderr)
-    print(f'provider logo：成功内联 {ok} 个，{fail_cnt} 个下载失败/无 logo 走 monogram 兜底')
+            sid = 'pv-' + re.sub(r'[^a-z0-9]+', '-', p.lower()).strip('-')
+            cache_path = os.path.join(cache_dir, sid + '.svg') if cache_dir else None
+            svg = None
+            # 1. 优先读缓存
+            if cache_path and os.path.isfile(cache_path):
+                try:
+                    with open(cache_path, encoding='utf-8') as cf:
+                        svg = cf.read()
+                    cached += 1
+                except Exception:
+                    svg = None  # 缓存损坏则回退到下载
+            # 2. 缓存未命中才下载，成功后写入缓存
+            if svg is None:
+                try:
+                    req = urllib.request.Request(url, headers={'User-Agent': 'build.py'})
+                    with urllib.request.urlopen(req, timeout=20) as resp:
+                        svg = resp.read().decode('utf-8')
+                    if '<svg' not in svg:
+                        raise ValueError('非 SVG 内容')
+                    if cache_path:
+                        with open(cache_path, 'w', encoding='utf-8') as cf:
+                            cf.write(svg)
+                except Exception as e:
+                    fail_cnt += 1
+                    print(f'  提示：{p} 的 logo 下载失败（{e}），将用 monogram 兜底', file=sys.stderr)
+                    continue
+            symbols.append(_svg_to_symbol(svg, sid))
+            icon_map[p] = sid
+            ok += 1
+    print(f'provider logo：成功内联 {ok} 个（其中缓存命中 {cached} 个），{fail_cnt} 个下载失败/无 logo 走 monogram 兜底')
     return '\n    '.join(symbols), icon_map, name_map
 
 
@@ -271,8 +294,11 @@ def main():
     # 数据条目数（排除 sample_spec 等非记录项），用于后面验证内嵌结果
     expected_count = sum(1 for k, v in data.items() if isinstance(v, dict) and k != 'sample_spec')
 
-    # ---- provider logo：下载 SVG 并内联为 sprite symbol，生成 provider→iconId 映射 ----
-    logo_symbols, provider_icons, provider_names = build_provider_logos(os.path.join(root, 'provider.csv'))
+    # ---- provider logo：SVG 内联为 sprite symbol，生成 provider→iconId 映射 ----
+    # 缓存目录：source-data/provider-logos/，命中缓存不下载（logo 几乎不变）
+    logo_symbols, provider_icons, provider_names = build_provider_logos(
+        os.path.join(root, 'provider.csv'),
+        cache_dir=os.path.join(root, 'source-data', 'provider-logos'))
 
     # ---- 生成 index-new.html ----
     json_text = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
