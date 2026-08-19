@@ -271,6 +271,20 @@
     font-size: 13px; color: var(--text-faint); pointer-events: none;
   }
   .chip-group { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  /* 厂商筛选行：与搜索/筛选行之间留细分隔线，视觉上归为"粗粒度圈选"一层 */
+  .vendor-row {
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .vendor-chip .vendor-count {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--text-faint);
+    margin-left: 2px;
+  }
+  .vendor-chip.active .vendor-count { color: var(--accent-bright); opacity: 0.75; }
+  /* 厂商 chip 里的 logo 略大于表格内的 12px，扫视更清晰 */
+  .vendor-chip .pv-logo, .vendor-chip .pv-mono { width: 14px; height: 14px; }
   .chip-group-label {
     display: inline-flex;
     align-items: center;
@@ -1423,6 +1437,10 @@ eyJzYW1wbGVfc3BlYyI6eyJjb2RlX2ludGVycHJldGVyX2Nvc3RfcGVyX3Nlc3Npb24iOjAuMCwiY29t
 
 <div id="browseView">
   <div class="filters">
+    <div class="filter-row vendor-row">
+      <span class="chip-group-label" data-i18n="groupVendor">Vendor</span>
+      <div class="chip-group" id="vendorChips"></div>
+    </div>
     <div class="filter-row">
       <div class="search-wrap">
         <svg class="ic"><use href="#i-search"/></svg>
@@ -1441,6 +1459,7 @@ eyJzYW1wbGVfc3BlYyI6eyJjb2RlX2ludGVycHJldGVyX2Nvc3RfcGVyX3Nlc3Npb24iOjAuMCwiY29t
         <label class="cap-filter"><input type="checkbox" data-cap="supports_function_calling"><span class="chip-label"><svg class="ic"><use href="#i-wrench"/></svg><span data-i18n="capFunction">Function Calling</span></span></label>
         <label class="cap-filter"><input type="checkbox" data-cap="supports_reasoning"><span class="chip-label"><svg class="ic"><use href="#i-brain"/></svg><span data-i18n="capReasoning">Reasoning</span></span></label>
         <label class="cap-filter"><input type="checkbox" data-cap="supports_web_search"><span class="chip-label"><svg class="ic"><use href="#i-search"/></svg><span data-i18n="capWebSearch">Web Search</span></span></label>
+        <label class="cap-filter"><input type="checkbox" data-cap="supports_computer_use"><span class="chip-label"><svg class="ic"><use href="#i-monitor"/></svg><span data-i18n="capComputerUse">Computer Use</span></span></label>
       </div>
       <button class="clear-filters-btn" id="clearFilters" data-i18n-title="clearFiltersTitle" title="Clear all filters">
         <svg class="ic"><use href="#i-close"/></svg><span data-i18n="clearFilters">Clear</span>
@@ -1567,7 +1586,8 @@ const I18N = {
     allProviders: '全部 Provider',
     allModes: '全部类型',
     capVision: '视觉', capFunction: '函数调用', capReasoning: '推理', capWebSearch: '联网搜索',
-    groupInput: '输入', groupOutput: '输出',
+    capComputerUse: '计算机操作',
+    groupInput: '输入', groupOutput: '输出', groupVendor: '厂商',
     modText: '文本', modImage: '图像', modAudio: '音频', modVideo: '视频', modCode: '代码',
     clearFilters: '清除筛选',
     clearFiltersTitle: '清除全部筛选条件',
@@ -1608,6 +1628,10 @@ const I18N = {
     epCodeInterp: '代码解释器', epCompUseIn: '计算机操作输入', epCompUseOut: '计算机操作输出',
     epFileSearch: '文件检索', epFileSearchGb: '文件检索存储', epVectorStore: '向量存储',
     epSearchCtx: '联网检索',
+    epCacheWrite: '缓存写入',
+    epPriorityIn: 'Priority 输入', epPriorityOut: 'Priority 输出',
+    epBatchIn: 'Batch 输入', epBatchOut: 'Batch 输出',
+    epFlexIn: 'Flex 输入', epFlexOut: 'Flex 输出',
     rowRegions: '支持区域',
     addToCompare: '加入对比', addedToCompare: '已加入对比', compareFullBtn: (max) => `对比已满（${max}）`,
     drawerFallback: '模型详情',
@@ -1639,7 +1663,8 @@ const I18N = {
     allProviders: 'All Providers',
     allModes: 'All Types',
     capVision: 'Vision', capFunction: 'Function Calling', capReasoning: 'Reasoning', capWebSearch: 'Web Search',
-    groupInput: 'Input', groupOutput: 'Output',
+    capComputerUse: 'Computer Use',
+    groupInput: 'Input', groupOutput: 'Output', groupVendor: 'Vendor',
     modText: 'Text', modImage: 'Image', modAudio: 'Audio', modVideo: 'Video', modCode: 'Code',
     clearFilters: 'Clear',
     clearFiltersTitle: 'Clear all filters',
@@ -1677,6 +1702,10 @@ const I18N = {
     epCodeInterp: 'Code Interpreter', epCompUseIn: 'Computer Use Input', epCompUseOut: 'Computer Use Output',
     epFileSearch: 'File Search', epFileSearchGb: 'File Search Storage', epVectorStore: 'Vector Store',
     epSearchCtx: 'Web Search Context',
+    epCacheWrite: 'Cache Write',
+    epPriorityIn: 'Priority Input', epPriorityOut: 'Priority Output',
+    epBatchIn: 'Batch Input', epBatchOut: 'Batch Output',
+    epFlexIn: 'Flex Input', epFlexOut: 'Flex Output',
     rowRegions: 'Supported Regions',
     addToCompare: 'Add to Compare', addedToCompare: 'Added to Compare', compareFullBtn: (max) => `Compare full (${max})`,
     drawerFallback: 'Model Detail',
@@ -1712,6 +1741,8 @@ function setLang(next) {
   if (typeof window.rebuildAddProvider === 'function') window.rebuildAddProvider();
   if (typeof window.rebuildAddModelIfOpen === 'function') window.rebuildAddModelIfOpen();
   if (typeof window.syncAddModelUI === 'function') window.syncAddModelUI();
+  // 厂商 chip 组（公司名是专有名词不翻译，但选中态/计数需随重建保持）
+  if (typeof window.rebuildVendorChips === 'function') window.rebuildVendorChips();
   renderBrowse();
   renderCompare();
 }
@@ -1791,6 +1822,27 @@ const ic = (id, cls = '') => `<svg class="ic ${cls}" aria-hidden="true"><use hre
 // provider -> sprite symbol id 的映射（构建时由 build.py 注入；无 logo 的 provider 不在其中，
 // 前端用首字母 monogram 兜底）。iconId 已含 pv- 前缀，引用时直接用 `#${id}`。
 const PROVIDER_ICONS = {"ai21": "pv-ai21", "amazon_nova": "pv-amazon-nova", "anthropic": "pv-anthropic", "anyscale": "pv-anyscale", "assemblyai": "pv-assemblyai", "aws_polly": "pv-aws-polly", "azure": "pv-azure", "azure_ai": "pv-azure-ai", "azure_text": "pv-azure-text", "baseten": "pv-baseten", "bedrock": "pv-bedrock", "bedrock_converse": "pv-bedrock-converse", "bedrock_mantle": "pv-bedrock-mantle", "cerebras": "pv-cerebras", "chatgpt": "pv-chatgpt", "cloudflare": "pv-cloudflare", "codestral": "pv-codestral", "cohere": "pv-cohere", "cohere_chat": "pv-cohere-chat", "crusoe": "pv-crusoe", "dashscope": "pv-dashscope", "databricks": "pv-databricks", "deepgram": "pv-deepgram", "deepinfra": "pv-deepinfra", "deepseek": "pv-deepseek", "duckduckgo": "pv-duckduckgo", "elevenlabs": "pv-elevenlabs", "exa_ai": "pv-exa-ai", "fal_ai": "pv-fal-ai", "featherless_ai": "pv-featherless-ai", "firecrawl": "pv-firecrawl", "fireworks_ai": "pv-fireworks-ai", "fireworks_ai-embedding-models": "pv-fireworks-ai-embedding-models", "friendliai": "pv-friendliai", "gemini": "pv-gemini", "github_copilot": "pv-github-copilot", "google_pse": "pv-google-pse", "gradient_ai": "pv-gradient-ai", "groq": "pv-groq", "heroku": "pv-heroku", "hyperbolic": "pv-hyperbolic", "inception": "pv-inception", "jina_ai": "pv-jina-ai", "lambda_ai": "pv-lambda-ai", "meta": "pv-meta", "meta_llama": "pv-meta-llama", "minimax": "pv-minimax", "mistral": "pv-mistral", "moonshot": "pv-moonshot", "morph": "pv-morph", "nebius": "pv-nebius", "nimble": "pv-nimble", "nvidia_nim": "pv-nvidia-nim", "oci": "pv-oci", "ollama": "pv-ollama", "openai": "pv-openai", "openrouter": "pv-openrouter", "ovhcloud": "pv-ovhcloud", "palm": "pv-palm", "perplexity": "pv-perplexity", "recraft": "pv-recraft", "replicate": "pv-replicate", "runwayml": "pv-runwayml", "sagemaker": "pv-sagemaker", "sambanova": "pv-sambanova", "scaleway": "pv-scaleway", "searxng": "pv-searxng", "snowflake": "pv-snowflake", "stability": "pv-stability", "tavily": "pv-tavily", "tencent": "pv-tencent", "text-completion-codestral": "pv-text-completion-codestral", "text-completion-inception": "pv-text-completion-inception", "text-completion-openai": "pv-text-completion-openai", "together_ai": "pv-together-ai", "v0": "pv-v0", "vercel_ai_gateway": "pv-vercel-ai-gateway", "vertex_ai": "pv-vertex-ai", "vertex_ai-ai21_models": "pv-vertex-ai-ai21-models", "vertex_ai-anthropic_models": "pv-vertex-ai-anthropic-models", "vertex_ai-deepseek_models": "pv-vertex-ai-deepseek-models", "vertex_ai-embedding-models": "pv-vertex-ai-embedding-models", "vertex_ai-image-models": "pv-vertex-ai-image-models", "vertex_ai-language-models": "pv-vertex-ai-language-models", "vertex_ai-llama_models": "pv-vertex-ai-llama-models", "vertex_ai-minimax_models": "pv-vertex-ai-minimax-models", "vertex_ai-mistral_models": "pv-vertex-ai-mistral-models", "vertex_ai-moonshot_models": "pv-vertex-ai-moonshot-models", "vertex_ai-openai_models": "pv-vertex-ai-openai-models", "vertex_ai-qwen_models": "pv-vertex-ai-qwen-models", "vertex_ai-text-models": "pv-vertex-ai-text-models", "vertex_ai-video-models": "pv-vertex-ai-video-models", "vertex_ai-zai_models": "pv-vertex-ai-zai-models", "volcengine": "pv-volcengine", "voyage": "pv-voyage", "wandb": "pv-wandb", "watsonx": "pv-watsonx", "xai": "pv-xai", "zai": "pv-zai"};
+// provider -> 归属公司（company_en，构建时由 build.py 从 provider.csv 注入）。
+// 严格渠道口径：vertex_ai-anthropic_models 这类托管子渠道归属渠道方（Google），
+// 不按内容模型二次归属。厂商筛选以此映射为唯一依据。
+const PROVIDER_COMPANIES = {"ai21": "AI21 Labs", "aiml": "AIML API", "amazon_nova": "Amazon", "anthropic": "Anthropic", "anyscale": "Anyscale", "apiserpent": "apiserpent", "assemblyai": "AssemblyAI", "aws_polly": "Amazon", "azure": "Microsoft", "azure_ai": "Microsoft", "azure_text": "Microsoft", "baseten": "Baseten", "bedrock": "Amazon", "bedrock_converse": "Amazon", "bedrock_mantle": "Amazon", "black_forest_labs": "Black Forest Labs", "cerebras": "Cerebras", "chatgpt": "OpenAI", "cloudflare": "Cloudflare", "codestral": "Mistral AI", "cohere": "Cohere", "cohere_chat": "Cohere", "crusoe": "Crusoe", "darkbloom": "Darkbloom", "dashscope": "Alibaba Cloud", "databricks": "Databricks", "dataforseo": "DataForSEO", "deepgram": "Deepgram", "deepinfra": "Deep Infra", "deepseek": "DeepSeek", "duckduckgo": "DuckDuckGo", "elevenlabs": "ElevenLabs", "exa_ai": "Exa", "fal_ai": "fal.ai", "featherless_ai": "Featherless AI", "firecrawl": "Firecrawl", "fireworks_ai": "Fireworks AI", "fireworks_ai-embedding-models": "Fireworks AI", "friendliai": "FriendliAI", "gemini": "Google", "gigachat": "Sber", "github_copilot": "GitHub", "gmi": "GMI Cloud", "google_pse": "Google", "gradient_ai": "DigitalOcean", "groq": "Groq", "heroku": "Heroku", "hyperbolic": "Hyperbolic", "inception": "Inception Labs", "jina_ai": "Jina AI", "lambda_ai": "Lambda", "lemonade": "lemonade", "libertai": "LibertAI", "linkup": "Linkup", "llamagate": "LlamaGate", "meta": "Meta", "meta_llama": "Meta", "minimax": "MiniMax", "mistral": "Mistral AI", "moonshot": "Moonshot AI", "morph": "Morph", "nebius": "Nebius", "nimble": "Nimble", "nlp_cloud": "NLP Cloud", "novita": "Novita AI", "nscale": "Nscale", "nvidia_nim": "NVIDIA", "oci": "Oracle", "ollama": "Ollama", "openai": "OpenAI", "openrouter": "OpenRouter", "ovhcloud": "OVHcloud", "palm": "Google", "parallel_ai": "Parallel AI", "perplexity": "Perplexity", "pinstripes": "Pinstripes", "publicai": "PublicAI", "recraft": "Recraft", "reducto": "Reducto", "replicate": "Replicate", "runwayml": "Runway", "sagemaker": "Amazon", "sambanova": "SambaNova", "sarvam": "Sarvam AI", "scaleway": "Scaleway", "searxng": "SearXNG", "serper": "Serper", "snowflake": "Snowflake", "soniox": "Soniox", "stability": "Stability AI", "tavily": "Tavily", "tencent": "Tencent", "tensormesh": "TensorMesh", "text-completion-codestral": "Mistral AI", "text-completion-inception": "Inception Labs", "text-completion-openai": "OpenAI", "tinyfish": "TinyFish", "together_ai": "Together AI", "v0": "Vercel", "vercel_ai_gateway": "Vercel", "vertex_ai": "Google", "vertex_ai-ai21_models": "Google", "vertex_ai-anthropic_models": "Google", "vertex_ai-deepseek_models": "Google", "vertex_ai-embedding-models": "Google", "vertex_ai-image-models": "Google", "vertex_ai-language-models": "Google", "vertex_ai-llama_models": "Google", "vertex_ai-minimax_models": "Google", "vertex_ai-mistral_models": "Google", "vertex_ai-moonshot_models": "Google", "vertex_ai-openai_models": "Google", "vertex_ai-qwen_models": "Google", "vertex_ai-text-models": "Google", "vertex_ai-video-models": "Google", "vertex_ai-zai_models": "Google", "volcengine": "Volcengine", "voyage": "Voyage AI", "wandb": "Weights & Biases", "watsonx": "IBM", "xai": "xAI", "you_com": "You.com", "zai": "Z.ai"};
+// 重点厂商筛选 chip 的展示名单（值必须与 provider.csv 的 company_en 完全一致）。
+// 顺序即 chip 展示顺序；未列出的公司不进 chip 组（仍可按 provider 下拉筛选）。
+const VENDOR_CHIPS = [
+  'OpenAI', 'Anthropic', 'Google', 'Amazon', 'Microsoft', 'xAI',
+  'Alibaba Cloud', 'DeepSeek', 'Z.ai', 'Moonshot AI', 'Mistral AI', 'MiniMax',
+  'Oracle', 'Volcengine', 'Cohere', 'Fireworks AI', 'OpenRouter',
+];
+// 公司 -> logo 展示用的代表 provider（chip 是公司粒度，sprite symbol 是 provider 粒度）。
+// 每个代表 provider 在 PROVIDER_ICONS 里都有 logo；没有时 providerIcon() 自动走 monogram 兜底。
+const VENDOR_REP_PROVIDER = {
+  'OpenAI': 'openai', 'Anthropic': 'anthropic', 'Google': 'google_pse',
+  'Amazon': 'amazon_nova', 'Microsoft': 'azure', 'xAI': 'xai',
+  'Alibaba Cloud': 'dashscope', 'DeepSeek': 'deepseek', 'Z.ai': 'zai',
+  'Moonshot AI': 'moonshot', 'Mistral AI': 'mistral', 'MiniMax': 'minimax',
+  'Oracle': 'oci', 'Volcengine': 'volcengine', 'Cohere': 'cohere',
+  'Fireworks AI': 'fireworks_ai', 'OpenRouter': 'openrouter',
+};
 // provider 前缀图标：有 logo 用 sprite symbol，无 logo 用首字母 monogram 方块
 function providerIcon(provider) {
   const sid = provider && PROVIDER_ICONS[provider];
@@ -1830,6 +1882,7 @@ const state = {
   search: '',
   provider: '',
   mode: '',
+  vendors: new Set(),
   capFilters: new Set(),
   inModFilters: new Set(),
   outModFilters: new Set(),
@@ -1946,9 +1999,14 @@ async function loadData() {
     if (key === 'sample_spec' || !m || typeof m !== 'object') continue;
     const caps = {};
     for (const [field] of CAPS) caps[field] = m[field] === true;
+    const provider = m.litellm_provider || '';
+    // 归属公司：严格按 provider.csv 的 company_en（渠道口径）。
+    // build.py 注入的映射里 company_en 为空时回退成了 provider 名，此时视为"无厂商归属"置空串。
+    const comp = PROVIDER_COMPANIES[provider] || '';
     models.push({
       key,
-      provider: m.litellm_provider || '',
+      provider,
+      vendor: comp === provider ? '' : comp,
       mode: m.mode || '',
       inputPrice: m.input_cost_per_token != null ? m.input_cost_per_token * 1e6 : null,
       outputPrice: m.output_cost_per_token != null ? m.output_cost_per_token * 1e6 : null,
@@ -1990,6 +2048,17 @@ function extractExtraPrices(m) {
     ['file_search_cost_per_1k_calls', 'epFileSearch', '/1k calls', false],
     ['file_search_cost_per_gb_per_day', 'epFileSearchGb', '/GB/day', false],
     ['vector_store_cost_per_gb_per_day', 'epVectorStore', '/GB/day', false],
+    // 缓存写入价格（Anthropic 系）：与缓存读配对
+    ['cache_creation_input_token_cost', 'epCacheWrite', '/1M', true],
+    // Priority 档（更高优先级/更快响应的加价档）
+    ['input_cost_per_token_priority', 'epPriorityIn', '/1M', true],
+    ['output_cost_per_token_priority', 'epPriorityOut', '/1M', true],
+    // Batch 档（批处理半价档）
+    ['input_cost_per_token_batches', 'epBatchIn', '/1M', true],
+    ['output_cost_per_token_batches', 'epBatchOut', '/1M', true],
+    // Flex 档（Gemini 的灵活档，价格与速度介于标准与批处理之间）
+    ['input_cost_per_token_flex', 'epFlexIn', '/1M', true],
+    ['output_cost_per_token_flex', 'epFlexOut', '/1M', true],
   ];
   for (const [field, labelKey, unit, scale] of numFields) {
     const v = m[field];
@@ -2215,6 +2284,8 @@ function getFiltered() {
   const q = state.search.toLowerCase();
   return state.models.filter(m => {
     if (q && !m.key.toLowerCase().includes(q) && !m.provider.toLowerCase().includes(q)) return false;
+    // 厂商 chip：多选取并集（OR），与其他条件是 AND
+    if (state.vendors.size > 0 && !state.vendors.has(m.vendor)) return false;
     if (state.provider && m.provider !== state.provider) return false;
     if (state.mode && m.mode !== state.mode) return false;
     for (const cap of state.capFilters) if (!m.caps[cap]) return false;
@@ -2281,7 +2352,7 @@ function renderBrowse() {
   // 清除筛选按钮：有任何筛选激活时才可用
   const clearBtn = document.getElementById('clearFilters');
   if (clearBtn) {
-    const hasActive = !!(state.search || state.provider || state.mode
+    const hasActive = !!(state.search || state.provider || state.mode || state.vendors.size
       || state.capFilters.size || state.inModFilters.size || state.outModFilters.size);
     clearBtn.disabled = !hasActive;
   }
@@ -2292,6 +2363,7 @@ function clearFilters() {
   state.search = '';
   state.provider = '';
   state.mode = '';
+  state.vendors.clear();
   state.capFilters.clear();
   state.inModFilters.clear();
   state.outModFilters.clear();
@@ -2597,6 +2669,26 @@ function initUI() {
   };
   fillSelect('providerSelect', countBy('provider'), alphaSort);
   fillSelect('modeSelect', countBy('mode'), freqSort);
+
+  // 重点厂商 chip：按 VENDOR_CHIPS 名单顺序渲染，各带模型数；chip 间 OR、与其他条件 AND。
+  // 挂到 window 供 setLang() 重建（标签/计数文案随语言刷新）。
+  window.rebuildVendorChips = function rebuildVendorChips() {
+    const counts = state.models.reduce((acc, m) => { if (m.vendor) acc[m.vendor] = (acc[m.vendor] || 0) + 1; return acc; }, {});
+    document.getElementById('vendorChips').innerHTML = VENDOR_CHIPS
+      .filter(v => counts[v] > 0)
+      .map(v => `<label class="cap-filter vendor-chip ${state.vendors.has(v) ? 'active' : ''}">
+        <input type="checkbox" data-vendor="${esc(v)}" ${state.vendors.has(v) ? 'checked' : ''}>
+        <span class="chip-label">${providerIcon(VENDOR_REP_PROVIDER[v] || v)}${esc(v)} <span class="vendor-count">${counts[v]}</span></span>
+      </label>`).join('');
+  };
+  window.rebuildVendorChips();
+  document.getElementById('vendorChips').addEventListener('change', e => {
+    const v = e.target.dataset.vendor;
+    if (v == null) return;
+    e.target.checked ? state.vendors.add(v) : state.vendors.delete(v);
+    e.target.closest('.cap-filter').classList.toggle('active', e.target.checked);
+    state.page = 0; renderBrowse();
+  });
 
   // 页头统计
   document.getElementById('statModels').textContent = state.models.length.toLocaleString('en-US');

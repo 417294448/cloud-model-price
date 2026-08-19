@@ -164,6 +164,12 @@ for (const [key, raw] of Object.entries(data)) {
 - 按主要分类字段筛选（下拉选择）。**选项排序按字段基数区分**：基数大的字段（如 provider，上百个选项）按**字母升序**更好找——频次序在大列表里毫无规律可循；基数小的字段（如类型，十几种）按**出现频次降序**更高频优先。字母排序要**统一转小写再比较**（`a.toLowerCase().localeCompare(b.toLowerCase())`），否则大写排在小写前（`Z` 在 `a` 前），顺序反直觉。同一字段的排序口径在浏览下拉、对比页添加下拉、表格列排序里要保持一致。
 - 如果数据包含输入/输出模态数组（如 `supported_modalities`），提供输入模态、输出模态的多选 chip 筛选，选中多个时采用“必须同时包含”的 AND 逻辑。
 - **能力筛选 chip 用通用委托设计，新增 chip 零 JS 改动**：事件绑定挂 `document.querySelectorAll('.cap-filter input')` 统一处理、筛选逻辑遍历 `state.capFilters` 集合做 AND 判断、能力状态在预处理时由 CAPS 列表自动生成——所以新增一个能力筛选（如"联网搜索" `supports_web_search`）只需加一处 chip HTML（`data-cap="字段名"`）+ 两条 i18n 字典，不要为每个 chip 写专属事件或筛选分支。加之前先查字段覆盖率：True 占比只有个位数百分比时 chip 仍有价值（帮用户精确圈出少数派），但要在心里明确它是"窄筛"而非"常用筛"。
+- **比分类字段更粗一层的「分组筛选」放筛选区最上方一行**：如厂商 chip（OpenAI/Anthropic/Google…）圈选的是"一组 provider"，颗粒度比 provider 下拉粗，放在搜索行上方并用虚线与细分隔——用户的筛选动线是先粗后细。设计要点：
+  - **先搞清分类字段的口径再实现**：`litellm_provider` 这类字段是**接入渠道**不是**归属公司**——bedrock/azure/vertex 里托管着大量别家模型（azure 里 96% 是 OpenAI 的 GPT），"按公司筛选"和"按渠道筛选"是两种口径，结果差异可能数倍。拿不准时把两种口径的覆盖率都算出来给用户拍板（本项目用户选了严格渠道口径：vertex_ai-anthropic_models 归 Google 而非 Anthropic）。
+  - **口径映射表必须有权威数据源**：用 CSV（如 provider.csv 的 company_en 列）在构建期注入映射常量（`PROVIDER_COMPANIES`），不要在前端手写 provider→公司映射——数据更新时两处会漂移。chip 显示值必须与映射表里的写法逐字符一致（如 `Fireworks AI` 不是 `Fireworks`）。
+  - **chip 间 OR、与其他筛选条件 AND**；每个 chip 带该组记录数（等宽小字）；选中态纳入统一清除筛选逻辑。
+  - **chip 是公司粒度、logo sprite 是 provider 粒度，中间需要一层桥接映射**（`VENDOR_REP_PROVIDER`：公司→代表 provider），渲染时复用现有的 `providerIcon()`（自带无 logo 走 monogram 的兜底），不要为 chip 单独写一套图标逻辑。
+  - **分组名单是「精选展示」而非「全量自动」**：`VENDOR_CHIPS` 维护一份人工挑选的重点名单（按市场关注度排序），不要从映射表自动生成全部公司 chip——上百个 chip 会淹没筛选区，且用户只关心头部那十几家；不在名单里的公司仍可通过 provider 下拉筛选。追加新厂商时按清单核对：① 值与 CSV 的 company_en **逐字符一致**（`Fireworks AI` ≠ `Fireworks`，不一致的 chip 会静默显示 0 条——渲染前有 `counts[v] > 0` 过滤兜底，表现为 chip 不出现而非报错，排查时先查这个）；② 补 `VENDOR_REP_PROVIDER` 桥接（选该公司最有代表性的 provider， logo 相同的情况下取业务主渠道，如 Meta 用 `meta_llama` 而非 `meta`）；③ 两处改完跑 build 重建即可，其余（事件、筛选、清除、i18n）都是通用逻辑零改动。
 - 表头点击排序（数值列按数值排，文本列按字母排且同样转小写，**缺失值永远排最后**）。
 - 分页（超过 100~200 条时必须分页，不要用虚拟滚动）。
 - 每行一个勾选框，用于选中要对比的记录。
@@ -228,6 +234,15 @@ for (const [key, raw] of Object.entries(data)) {
 浏览器 `file://` 协议禁止 `fetch()` 读取本地文件，所以最终交付的 `index.html` 必须自包含数据。
 
 **页面模板独立成文件，build.py 从模板 + 数据全量重建页面。** skill 目录下有一份 `template.html`（完整页面代码，数据块位置用 `<!--MODEL_DATA-->` 占位），`scripts/build.py` 读它 + 新 JSON 拼出整个 `index.html`。这样**数据或模板任一变化都能从零重建**，而不是只能在已有页面上换数据。
+
+模板与构建脚本之间靠占位符契约衔接，当前共 4 个（新增构建期注入时，模板和 build.py 要成对改动）：
+
+| 占位符 | 注入内容 |
+|--------|----------|
+| `<!--MODEL_DATA-->` | base64 编码的模型数据 `<script>` 块 |
+| `<!--PROVIDER_LOGOS-->` | provider logo 的 `<symbol>` sprite 片段 |
+| `<!--PROVIDER_ICONS-->` | `PROVIDER_ICONS`（provider→symbol id 映射，JS 对象字面量） |
+| `<!--PROVIDER_COMPANIES-->` | `PROVIDER_COMPANIES`（provider→company_en 映射，来自 provider.csv） |
 
 模板里的加载逻辑写成“优先读内嵌数据、没有则退回 fetch”，因此 `template.html` 本身可直接用 `python -m http.server` 开发预览（占位注释走 fetch 分支）：
 

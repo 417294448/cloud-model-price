@@ -283,10 +283,12 @@ def main():
     embed_block = (f'<script type="application/json" id="{args.data_id}" data-encoding="base64">\n'
                    f'{b64}\n</script>')
     icons_js = json.dumps(provider_icons, ensure_ascii=False)
+    companies_js = json.dumps(provider_names, ensure_ascii=False)
     new_html = (template
                 .replace('<!--MODEL_DATA-->', embed_block, 1)
                 .replace('<!--PROVIDER_LOGOS-->', logo_symbols, 1)
-                .replace('<!--PROVIDER_ICONS-->', icons_js, 1))
+                .replace('<!--PROVIDER_ICONS-->', icons_js, 1)
+                .replace('<!--PROVIDER_COMPANIES-->', companies_js, 1))
     with open(new_path, 'w', encoding='utf-8') as f:
         f.write(new_html)
 
