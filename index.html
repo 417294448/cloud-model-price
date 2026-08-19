@@ -823,9 +823,10 @@
 
   /* 窄屏不强行把 Grid 折成单列（那样会打乱"标签+多列值"的行内顺序，
      变成一长串难以阅读的堆叠），改为横向滚动（.compare-wrap 已设 overflow-x），
-     和浏览表格的窄屏处理方式一致。 */
+     和浏览表格的窄屏处理方式一致。min-width 按最多 4 列对比调宽，
+     保证每列有基本可读宽度。 */
   @media (max-width: 860px) {
-    .compare-table-grid { min-width: 640px; }
+    .compare-table-grid { min-width: 800px; }
   }
 
   .cap-list { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -1889,7 +1890,7 @@ function providerIcon(provider) {
   const ch = (provider || '?').trim().charAt(0).toUpperCase() || '?';
   return `<span class="pv-mono" aria-hidden="true">${esc(ch)}</span>`;
 }
-const MAX_COMPARE = 3;
+const MAX_COMPARE = 4;
 const PAGE_SIZE = 100;
 const MODE_LABELS = {
   chat: { zh: '对话', en: 'Chat' }, embedding: { zh: '嵌入', en: 'Embedding' },

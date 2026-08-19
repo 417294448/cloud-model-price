@@ -373,13 +373,20 @@
     font-size: 12.5px;
     letter-spacing: 0.01em;
     cursor: pointer;
-    margin-left: auto;
     transition: all 0.15s;
   }
   .clear-filters-btn .ic { font-size: 12px; }
   .clear-filters-btn:hover:not(:disabled) { color: var(--danger); border-color: var(--danger); }
   .clear-filters-btn:disabled { opacity: 0.4; cursor: default; }
-  /* 清除按钮用 margin-left:auto 把自己推到行尾，统计文字紧随其后（不再自己靠右） */
+  /* 统计文字 + 清除按钮组成筛选区的收尾 footer，整体固定在最后一行行尾：
+     Clear 清空的是全部三行筛选（厂商/搜索/能力/模态），落在筛选区右下角语义最准，
+     位置也不再随第一行内容宽度漂移 */
+  .filter-footer {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+  }
   .stats {
     color: var(--text-faint);
     font-family: var(--font-mono);
@@ -1489,10 +1496,6 @@ eyJzYW1wbGVfc3BlYyI6eyJjb2RlX2ludGVycHJldGVyX2Nvc3RfcGVyX3Nlc3Npb24iOjAuMCwiY29t
         <label class="cap-filter"><input type="checkbox" data-cap="supports_web_search"><span class="chip-label"><svg class="ic"><use href="#i-search"/></svg><span data-i18n="capWebSearch">Web Search</span></span></label>
         <label class="cap-filter"><input type="checkbox" data-cap="supports_computer_use"><span class="chip-label"><svg class="ic"><use href="#i-monitor"/></svg><span data-i18n="capComputerUse">Computer Use</span></span></label>
       </div>
-      <button class="clear-filters-btn" id="clearFilters" data-i18n-title="clearFiltersTitle" title="Clear all filters">
-        <svg class="ic"><use href="#i-close"/></svg><span data-i18n="clearFilters">Clear</span>
-      </button>
-      <span class="stats" id="statsText"></span>
     </div>
     <div class="filter-row">
       <div class="chip-group">
@@ -1511,6 +1514,12 @@ eyJzYW1wbGVfc3BlYyI6eyJjb2RlX2ludGVycHJldGVyX2Nvc3RfcGVyX3Nlc3Npb24iOjAuMCwiY29t
         <label class="cap-filter"><input type="checkbox" data-out-mod="video"><span class="chip-label"><svg class="ic"><use href="#i-video"/></svg><span data-i18n="modVideo">Video</span></span></label>
         <label class="cap-filter"><input type="checkbox" data-out-mod="code"><span class="chip-label"><svg class="ic"><use href="#i-code"/></svg><span data-i18n="modCode">Code</span></span></label>
       </div>
+      <span class="filter-footer">
+        <span class="stats" id="statsText"></span>
+        <button class="clear-filters-btn" id="clearFilters" data-i18n-title="clearFiltersTitle" title="Clear all filters">
+          <svg class="ic"><use href="#i-close"/></svg><span data-i18n="clearFilters">Clear</span>
+        </button>
+      </span>
     </div>
   </div>
   <div class="table-wrap">
