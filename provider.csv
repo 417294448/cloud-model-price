@@ -1,0 +1,124 @@
+provider,company_en,company_zh,logo_url,logo_accessible
+ai21,AI21 Labs,AI21 Labs,https://api.iconify.design/thesvg-color:ai21labs-jamba.svg,yes
+aiml,AIML API,AIML API,,no
+amazon_nova,Amazon,亚马逊,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonwebservices.svg,yes
+anthropic,Anthropic,Anthropic,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/anthropic.svg,yes
+anyscale,Anyscale,Anyscale,https://api.iconify.design/thesvg-color:anyscale.svg,yes
+apiserpent,,,,
+assemblyai,AssemblyAI,AssemblyAI,https://api.iconify.design/thesvg-color:assemblyai.svg,yes
+aws_polly,Amazon,亚马逊,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonwebservices.svg,yes
+azure,Microsoft,微软,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoft.svg,yes
+azure_ai,Microsoft,微软,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoft.svg,yes
+azure_text,Microsoft,微软,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/microsoft.svg,yes
+baseten,Baseten,Baseten,https://api.iconify.design/thesvg-color:baseten.svg,yes
+bedrock,Amazon,亚马逊,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonwebservices.svg,yes
+bedrock_converse,Amazon,亚马逊,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonwebservices.svg,yes
+bedrock_mantle,Amazon,亚马逊,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonwebservices.svg,yes
+black_forest_labs,Black Forest Labs,黑森林实验室,,no
+cerebras,Cerebras,Cerebras,https://api.iconify.design/thesvg-color:cerebras.svg,yes
+chatgpt,OpenAI,OpenAI,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg,yes
+cloudflare,Cloudflare,Cloudflare,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cloudflare.svg,yes
+codestral,Mistral AI,Mistral AI,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mistralai.svg,yes
+cohere,Cohere,Cohere,https://api.iconify.design/thesvg-color:cohere.svg,yes
+cohere_chat,Cohere,Cohere,https://api.iconify.design/thesvg-color:cohere.svg,yes
+crusoe,Crusoe,Crusoe,https://api.iconify.design/thesvg-color:crusoe.svg,yes
+darkbloom,Darkbloom,Darkbloom,,no
+dashscope,Alibaba Cloud,阿里云,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/alibabacloud.svg,yes
+databricks,Databricks,Databricks,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/databricks.svg,yes
+dataforseo,DataForSEO,DataForSEO,,no
+deepgram,Deepgram,Deepgram,https://api.iconify.design/thesvg-color:deepgram.svg,yes
+deepinfra,Deep Infra,Deep Infra,https://api.iconify.design/thesvg-color:deepinfra.svg,yes
+deepseek,DeepSeek,深度求索,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/deepseek.svg,yes
+duckduckgo,DuckDuckGo,DuckDuckGo,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/duckduckgo.svg,yes
+elevenlabs,ElevenLabs,ElevenLabs,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/elevenlabs.svg,yes
+exa_ai,Exa,Exa,https://api.iconify.design/thesvg-color:exa.svg,yes
+fal_ai,fal.ai,fal.ai,https://api.iconify.design/thesvg-color:fal.svg,yes
+featherless_ai,Featherless AI,Featherless AI,https://api.iconify.design/thesvg-color:featherlessdotai.svg,yes
+firecrawl,Firecrawl,Firecrawl,https://api.iconify.design/selfhst:firecrawl.svg,yes
+fireworks_ai,Fireworks AI,Fireworks AI,https://api.iconify.design/thesvg-color:fireworks.svg,yes
+fireworks_ai-embedding-models,Fireworks AI,Fireworks AI,https://api.iconify.design/thesvg-color:fireworks.svg,yes
+friendliai,FriendliAI,FriendliAI,https://api.iconify.design/thesvg-color:friendli.svg,yes
+gemini,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+gigachat,Sber,Sber,,no
+github_copilot,GitHub,GitHub,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg,yes
+gmi,GMI Cloud,GMI Cloud,,no
+google_pse,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+gradient_ai,DigitalOcean,DigitalOcean,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/digitalocean.svg,yes
+groq,Groq,Groq,https://api.iconify.design/thesvg-color:groq.svg,yes
+heroku,Heroku,Heroku,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/heroku.svg,yes
+hyperbolic,Hyperbolic,Hyperbolic,https://api.iconify.design/thesvg-color:hyperbolic.svg,yes
+inception,Inception Labs,Inception Labs,https://api.iconify.design/thesvg-color:inception-labs.svg,yes
+jina_ai,Jina AI,Jina AI,https://api.iconify.design/thesvg-color:jina-ai.svg,yes
+lambda_ai,Lambda,Lambda,https://api.iconify.design/thesvg-color:lambda.svg,yes
+lemonade,,,,
+libertai,LibertAI,LibertAI,,no
+linkup,Linkup,Linkup,,no
+llamagate,LlamaGate,LlamaGate,,no
+meta,Meta,Meta,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/meta.svg,yes
+meta_llama,Meta,Meta,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/meta.svg,yes
+minimax,MiniMax,稀宇科技,https://api.iconify.design/thesvg-color:minimax.svg,yes
+mistral,Mistral AI,Mistral AI,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mistralai.svg,yes
+moonshot,Moonshot AI,月之暗面,https://api.iconify.design/thesvg:moonshot.svg,yes
+morph,Morph,Morph,https://api.iconify.design/thesvg-color:morph.svg,yes
+nebius,Nebius,Nebius,https://api.iconify.design/thesvg-color:nebius.svg,yes
+nimble,Nimble,Nimble,https://api.iconify.design/thesvg-color:nimble.svg,yes
+nlp_cloud,NLP Cloud,NLP Cloud,,no
+novita,Novita AI,Novita AI,,no
+nscale,Nscale,Nscale,,no
+nvidia_nim,NVIDIA,英伟达,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/nvidia.svg,yes
+oci,Oracle,甲骨文,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/oracle.svg,yes
+ollama,Ollama,Ollama,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ollama.svg,yes
+openai,OpenAI,OpenAI,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg,yes
+openrouter,OpenRouter,OpenRouter,https://api.iconify.design/thesvg:openrouter.svg,yes
+ovhcloud,OVHcloud,OVHcloud,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ovh.svg,yes
+palm,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+parallel_ai,Parallel AI,Parallel AI,,no
+perplexity,Perplexity,Perplexity,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/perplexity.svg,yes
+pinstripes,Pinstripes,Pinstripes,,no
+publicai,PublicAI,PublicAI,,no
+recraft,Recraft,Recraft,https://api.iconify.design/thesvg-color:recraft.svg,yes
+reducto,Reducto,Reducto,,no
+replicate,Replicate,Replicate,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/replicate.svg,yes
+runwayml,Runway,Runway,https://api.iconify.design/thesvg-color:runway.svg,yes
+sagemaker,Amazon,亚马逊,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/amazonwebservices.svg,yes
+sambanova,SambaNova,SambaNova,https://api.iconify.design/thesvg-color:sambanova.svg,yes
+sarvam,Sarvam AI,Sarvam AI,,no
+scaleway,Scaleway,Scaleway,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/scaleway.svg,yes
+searxng,SearXNG,SearXNG,https://api.iconify.design/thesvg-color:searxng.svg,yes
+serper,Serper,Serper,,no
+snowflake,Snowflake,Snowflake,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/snowflake.svg,yes
+soniox,Soniox,Soniox,,no
+stability,Stability AI,Stability AI,https://api.iconify.design/thesvg-color:stability-ai.svg,yes
+tavily,Tavily,Tavily,https://api.iconify.design/thesvg-color:tavily.svg,yes
+tencent,Tencent,腾讯,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tencentqq.svg,yes
+tensormesh,TensorMesh,TensorMesh,,no
+text-completion-codestral,Mistral AI,Mistral AI,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mistralai.svg,yes
+text-completion-inception,Inception Labs,Inception Labs,https://api.iconify.design/thesvg-color:inception-labs.svg,yes
+text-completion-openai,OpenAI,OpenAI,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg,yes
+tinyfish,TinyFish,TinyFish,,no
+together_ai,Together AI,Together AI,https://api.iconify.design/thesvg-color:together-ai-light.svg,yes
+v0,Vercel,Vercel,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vercel.svg,yes
+vercel_ai_gateway,Vercel,Vercel,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vercel.svg,yes
+vertex_ai,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-ai21_models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-anthropic_models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-deepseek_models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-embedding-models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-image-models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-language-models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-llama_models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-minimax_models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-mistral_models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-moonshot_models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-openai_models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-qwen_models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-text-models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-video-models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+vertex_ai-zai_models,Google,谷歌,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg,yes
+volcengine,Volcengine,火山引擎,https://api.iconify.design/thesvg-color:volcengine.svg,yes
+voyage,Voyage AI,Voyage AI,https://api.iconify.design/thesvg:voyage.svg,yes
+wandb,Weights & Biases,Weights & Biases,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/weightsandbiases.svg,yes
+watsonx,IBM,IBM,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/ibm.svg,yes
+xai,xAI,xAI,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/x.svg,yes
+you_com,You.com,You.com,,no
+zai,Z.ai,智谱AI,https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/zdotai.svg,yes

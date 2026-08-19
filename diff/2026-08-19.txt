@@ -1,0 +1,20 @@
+===== 2026-08-19 10:09:59 更新 =====
+新增 15 / 减少 0 / 变更 0
+
+--- 新增模型（15）---
++ bedrock/guardrails  [bedrock/guardrail] 入- 出-
++ databricks/databricks-claude-opus-4-6  [databricks/chat] 入$5 出$25
++ databricks/databricks-claude-sonnet-4-6  [databricks/chat] 入$3 出$15
++ databricks/databricks-gemini-3-1-flash-lite  [databricks/chat] 入$0.3125 出$1.875
++ databricks/databricks-gemini-3-1-pro  [databricks/chat] 入$2.5 出$15
++ databricks/databricks-gemini-3-flash  [databricks/chat] 入$0.625 出$3.75
++ databricks/databricks-gemini-3-pro  [databricks/chat] 入$2.5 出$15
++ databricks/databricks-gpt-5-1-codex-max  [databricks/chat] 入$1.25 出$10
++ databricks/databricks-gpt-5-1-codex-mini  [databricks/chat] 入$0.25 出$2
++ databricks/databricks-gpt-5-2  [databricks/chat] 入$1.75 出$14
++ databricks/databricks-gpt-5-2-codex  [databricks/chat] 入$1.75 出$14
++ databricks/databricks-gpt-5-3-codex  [databricks/chat] 入$1.75 出$14
++ databricks/databricks-gpt-5-4  [databricks/chat] 入$2.5 出$15
++ databricks/databricks-gpt-5-4-mini  [databricks/chat] 入$0.75 出$4.5
++ databricks/databricks-gpt-5-4-nano  [databricks/chat] 入$0.2 出$1.25
+
