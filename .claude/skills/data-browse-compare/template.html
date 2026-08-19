@@ -420,6 +420,20 @@
     color: var(--text-dim);
     background: transparent;
   }
+  /* API 端点 tag：等宽字体（路径是代码性质文本），冷灰底、accent 描边 */
+  .endpoint-tag {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--border-strong);
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.01em;
+    color: var(--text-dim);
+    background: var(--bg-soft);
+    white-space: nowrap;
+  }
   /* provider logo / monogram：统一 12px 见方 */
   .pv-logo {
     width: 12px; height: 12px;
@@ -760,6 +774,9 @@
   }
 
   .ctg-caps-cell { display: flex; align-items: flex-start; }
+  /* 对比页 API 端点：右对齐、可换行的 tag 列表 */
+  .ctg-value-endpoints { flex-wrap: wrap; gap: 5px; }
+  .ctg-endpoint-list { display: inline-flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; }
 
   /* 窄屏不强行把 Grid 折成单列（那样会打乱"标签+多列值"的行内顺序，
      变成一长串难以阅读的堆叠），改为横向滚动（.compare-wrap 已设 overflow-x），
@@ -1323,6 +1340,7 @@
         <label class="cap-filter"><input type="checkbox" data-cap="supports_vision"><span class="chip-label"><svg class="ic"><use href="#i-eye"/></svg><span data-i18n="capVision">Vision</span></span></label>
         <label class="cap-filter"><input type="checkbox" data-cap="supports_function_calling"><span class="chip-label"><svg class="ic"><use href="#i-wrench"/></svg><span data-i18n="capFunction">Function Calling</span></span></label>
         <label class="cap-filter"><input type="checkbox" data-cap="supports_reasoning"><span class="chip-label"><svg class="ic"><use href="#i-brain"/></svg><span data-i18n="capReasoning">Reasoning</span></span></label>
+        <label class="cap-filter"><input type="checkbox" data-cap="supports_web_search"><span class="chip-label"><svg class="ic"><use href="#i-search"/></svg><span data-i18n="capWebSearch">Web Search</span></span></label>
       </div>
       <button class="clear-filters-btn" id="clearFilters" data-i18n-title="clearFiltersTitle" title="Clear all filters">
         <svg class="ic"><use href="#i-close"/></svg><span data-i18n="clearFilters">Clear</span>
@@ -1448,7 +1466,7 @@ const I18N = {
     searchPh: '搜索模型名 / provider…',
     allProviders: '全部 Provider',
     allModes: '全部类型',
-    capVision: '视觉', capFunction: '函数调用', capReasoning: '推理',
+    capVision: '视觉', capFunction: '函数调用', capReasoning: '推理', capWebSearch: '联网搜索',
     groupInput: '输入', groupOutput: '输出',
     modText: '文本', modImage: '图像', modAudio: '音频', modVideo: '视频', modCode: '代码',
     clearFilters: '清除筛选',
@@ -1473,7 +1491,7 @@ const I18N = {
     grpPrice: '价格', grpContext: '上下文', grpBasic: '基本信息', grpModality: '支持模态', grpCaps: '能力',
     lblInputPrice: '输入价格', lblOutputPrice: '输出价格', lblCache: '缓存读价格', lblImageGen: '图像生成',
     lblMaxInput: '最大输入', lblMaxOutput: '最大输出', lblDeprec: '弃用日期', lblTiered: '阶梯定价',
-    lblInMod: '输入模态', lblOutMod: '输出模态',
+    lblInMod: '输入模态', lblOutMod: '输出模态', lblEndpoints: 'API 端点',
     unitPerM: '/ 1M tokens', unitPerImg: '/ 张', unitPerMShort: '/1M', unitPerImgShort: '/张',
     bestTag: '最优', tieredTag: '阶梯', tieredTitle: '存在阶梯定价',
     emptyCompareA: '尚未勾选模型。回到', emptyCompareLink: '浏览全部',
@@ -1481,6 +1499,7 @@ const I18N = {
     removeTitle: '移除',
     // 详情抽屉
     secContext: '上下文', secBasic: '基本信息', secModality: '支持模态', secCaps: '能力',
+    secEndpoints: 'API 端点',
     rowProvider: 'Provider', rowMode: '类型', rowSource: '数据来源',
     viewSource: '查看原始文档',
     tieredExist: '存在（详见源数据）',
@@ -1489,6 +1508,10 @@ const I18N = {
     epCodeInterp: '代码解释器', epCompUseIn: '计算机操作输入', epCompUseOut: '计算机操作输出',
     epFileSearch: '文件检索', epFileSearchGb: '文件检索存储', epVectorStore: '向量存储',
     epSearchCtx: '联网检索',
+    epCacheWrite: '缓存写入',
+    epPriorityIn: 'Priority 输入', epPriorityOut: 'Priority 输出',
+    epBatchIn: 'Batch 输入', epBatchOut: 'Batch 输出',
+    epFlexIn: 'Flex 输入', epFlexOut: 'Flex 输出',
     rowRegions: '支持区域',
     addToCompare: '加入对比', addedToCompare: '已加入对比', compareFullBtn: (max) => `对比已满（${max}）`,
     drawerFallback: '模型详情',
@@ -1519,7 +1542,7 @@ const I18N = {
     searchPh: 'Search models / providers…',
     allProviders: 'All Providers',
     allModes: 'All Types',
-    capVision: 'Vision', capFunction: 'Function Calling', capReasoning: 'Reasoning',
+    capVision: 'Vision', capFunction: 'Function Calling', capReasoning: 'Reasoning', capWebSearch: 'Web Search',
     groupInput: 'Input', groupOutput: 'Output',
     modText: 'Text', modImage: 'Image', modAudio: 'Audio', modVideo: 'Video', modCode: 'Code',
     clearFilters: 'Clear',
@@ -1542,13 +1565,14 @@ const I18N = {
     grpPrice: 'Pricing', grpContext: 'Context', grpBasic: 'Basic Info', grpModality: 'Modalities', grpCaps: 'Capabilities',
     lblInputPrice: 'Input Price', lblOutputPrice: 'Output Price', lblCache: 'Cache Read', lblImageGen: 'Image Gen',
     lblMaxInput: 'Max Input', lblMaxOutput: 'Max Output', lblDeprec: 'Deprecation', lblTiered: 'Tiered Pricing',
-    lblInMod: 'Input Modality', lblOutMod: 'Output Modality',
+    lblInMod: 'Input Modality', lblOutMod: 'Output Modality', lblEndpoints: 'API Endpoints',
     unitPerM: '/ 1M tokens', unitPerImg: '/ image', unitPerMShort: '/1M', unitPerImgShort: '/img',
     bestTag: 'Best', tieredTag: 'Tiered', tieredTitle: 'Tiered pricing applies',
     emptyCompareA: 'No models selected. Go back to', emptyCompareLink: 'Browse All',
     emptyCompareB: (max) => `to pick models to compare (up to ${max}).`,
     removeTitle: 'Remove',
     secContext: 'Context', secBasic: 'Basic Info', secModality: 'Modalities', secCaps: 'Capabilities',
+    secEndpoints: 'API Endpoints',
     rowProvider: 'Provider', rowMode: 'Type', rowSource: 'Source',
     viewSource: 'View source',
     tieredExist: 'Yes (see source data)',
@@ -1557,6 +1581,10 @@ const I18N = {
     epCodeInterp: 'Code Interpreter', epCompUseIn: 'Computer Use Input', epCompUseOut: 'Computer Use Output',
     epFileSearch: 'File Search', epFileSearchGb: 'File Search Storage', epVectorStore: 'Vector Store',
     epSearchCtx: 'Web Search Context',
+    epCacheWrite: 'Cache Write',
+    epPriorityIn: 'Priority Input', epPriorityOut: 'Priority Output',
+    epBatchIn: 'Batch Input', epBatchOut: 'Batch Output',
+    epFlexIn: 'Flex Input', epFlexOut: 'Flex Output',
     rowRegions: 'Supported Regions',
     addToCompare: 'Add to Compare', addedToCompare: 'Added to Compare', compareFullBtn: (max) => `Compare full (${max})`,
     drawerFallback: 'Model Detail',
@@ -1843,6 +1871,9 @@ async function loadData() {
       supportedRegions: Array.isArray(m.supported_regions) ? m.supported_regions : null,
       inputModalities: Array.isArray(m.supported_modalities) ? m.supported_modalities : null,
       outputModalities: Array.isArray(m.supported_output_modalities) ? m.supported_output_modalities : null,
+      // API 端点：该模型可调用的接口路径（如 /v1/chat/completions、/v1/responses、/v1/batch）。
+      // 覆盖率约 19%，只在详情抽屉和对比视图展示，不进浏览表格。
+      supportedEndpoints: Array.isArray(m.supported_endpoints) ? m.supported_endpoints : null,
       // 专项价格：sample_spec 里主干之外的额外计费维度。单位各异（session/1k tokens/query/GB-day），
       // 预处理阶段统一换算/格式化好，渲染层只遍历有值的项——该模型没有就不渲染，不产生占位噪音。
       extraPrices: extractExtraPrices(m),
@@ -1867,6 +1898,17 @@ function extractExtraPrices(m) {
     ['file_search_cost_per_1k_calls', 'epFileSearch', '/1k calls', false],
     ['file_search_cost_per_gb_per_day', 'epFileSearchGb', '/GB/day', false],
     ['vector_store_cost_per_gb_per_day', 'epVectorStore', '/GB/day', false],
+    // 缓存写入价格（Anthropic 系）：与缓存读配对
+    ['cache_creation_input_token_cost', 'epCacheWrite', '/1M', true],
+    // Priority 档（更高优先级/更快响应的加价档）
+    ['input_cost_per_token_priority', 'epPriorityIn', '/1M', true],
+    ['output_cost_per_token_priority', 'epPriorityOut', '/1M', true],
+    // Batch 档（批处理半价档）
+    ['input_cost_per_token_batches', 'epBatchIn', '/1M', true],
+    ['output_cost_per_token_batches', 'epBatchOut', '/1M', true],
+    // Flex 档（Gemini 的灵活档，价格与速度介于标准与批处理之间）
+    ['input_cost_per_token_flex', 'epFlexIn', '/1M', true],
+    ['output_cost_per_token_flex', 'epFlexOut', '/1M', true],
   ];
   for (const [field, labelKey, unit, scale] of numFields) {
     const v = m[field];
@@ -2028,6 +2070,17 @@ function renderModelDetailSections(m) {
         ${ownCaps.map(([field, icon, label]) =>
           `<span class="cap-tag on" title="${esc(L(label))}">${ic(icon)}${esc(L(label))}</span>`
         ).join('')}
+      </div>
+    </div>`;
+  }
+
+  // API 端点：该模型可调用的接口路径。等宽字体 tag 列表（路径本身是代码性质的文本），
+  // 该模型有才渲染，没有整块不出现
+  if (m.supportedEndpoints && m.supportedEndpoints.length > 0) {
+    html += `<div class="drawer-section">
+      <div class="drawer-section-label">${ic('link')}${esc(t('secEndpoints'))}</div>
+      <div class="cap-list">
+        ${m.supportedEndpoints.map(ep => `<span class="endpoint-tag">${esc(ep)}</span>`).join('')}
       </div>
     </div>`;
   }
@@ -2306,6 +2359,8 @@ function renderCompareInner(wrap) {
   const showModalities = sel.some(m => m.inputModalities || m.outputModalities);
   const showInputModality = sel.some(m => m.inputModalities);
   const showOutputModality = sel.some(m => m.outputModalities);
+  // 已选模型中至少一个有 API 端点数据才渲染该行
+  const showEndpoints = sel.some(m => m.supportedEndpoints && m.supportedEndpoints.length > 0);
   const showCaps = sel.some(m => CAPS.some(([field]) => m.caps[field]));
   const multiSelected = sel.length > 1;
 
@@ -2402,6 +2457,20 @@ function renderCompareInner(wrap) {
         rows += `<div class="ctg-cell"><div class="ctg-value ${icons == null ? 'na' : ''}">${icons == null ? '—' : icons}</div></div>`;
       });
     }
+  }
+
+  // API 端点行：每列只列该模型自己的端点（遵循"只比较、不列举全集"），
+  // 该模型没有端点数据时显示 —，已选全都没有时整行不渲染（showEndpoints 已判断）
+  if (showEndpoints) {
+    groupRow(t('secEndpoints'), 'link');
+    rows += labelCell(t('lblEndpoints'));
+    sel.forEach(m => {
+      const eps = m.supportedEndpoints;
+      const cell = (eps && eps.length > 0)
+        ? `<div class="ctg-endpoint-list">${eps.map(ep => `<span class="endpoint-tag">${esc(ep)}</span>`).join('')}</div>`
+        : null;
+      rows += `<div class="ctg-cell"><div class="ctg-value ctg-value-endpoints ${cell == null ? 'na' : ''}">${cell == null ? '—' : cell}</div></div>`;
+    });
   }
 
   // 能力：按语义分成几个子行（输入类型/工具与函数调用/推理能力/输出与结构化/
