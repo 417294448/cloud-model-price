@@ -36,6 +36,7 @@ fetch 回退，开发时用 python -m http.server 即可实时预览模板改动
 """
 
 import argparse
+import base64
 import json
 import os
 import re
@@ -43,6 +44,7 @@ import subprocess
 import sys
 import urllib.request
 from datetime import datetime
+import csv
 
 # 数据源：litellm 上游的模型定价 JSON（raw 形式才是纯数据，blob 是网页页）
 DATA_URL = ('https://raw.githubusercontent.com/BerriAI/litellm/'
@@ -142,6 +144,61 @@ def write_diff(old, new, diff_dir, now):
     return len(added), len(removed), len(changed), path
 
 
+# ============ provider logo 内联 ============
+def _svg_to_symbol(svg, sid):
+    """把一个 SVG 文本规整成 <symbol>：抽 viewBox、统一 currentColor 单色、剥外层标签。"""
+    vb = re.search(r'viewBox="([^"]+)"', svg)
+    viewbox = vb.group(1) if vb else '0 0 24 24'
+    # 取 <svg ...> 与 </svg> 之间的内容
+    m = re.search(r'<svg[^>]*>(.*)</svg>', svg, re.DOTALL)
+    inner = m.group(1) if m else svg
+    # 去掉 xml 声明/doctype/注释
+    inner = re.sub(r'<\?.*?\?>|<!DOCTYPE.*?>|<!--.*?-->', '', inner, flags=re.DOTALL)
+    # 统一单色：fill/stroke 的颜色值换成 currentColor（保留 none）
+    inner = re.sub(r'(fill|stroke)="(?!none)[^"]*"', r'\1="currentColor"', inner)
+    # 彩色图标没有显式 fill 属性时默认黑——给 path 补 currentColor
+    if 'currentColor' not in inner:
+        inner = re.sub(r'<(path|circle|rect|polygon|ellipse)', r'<\1 fill="currentColor"', inner, count=0)
+    return f'<symbol id="{sid}" viewBox="{viewbox}">{inner.strip()}</symbol>'
+
+
+def build_provider_logos(csv_path):
+    """读 provider.csv，下载有 logo 的 SVG 并内联为 sprite symbol；
+    返回 (sprite_symbols_str, provider->iconId 映射, provider->公司名 映射)。
+    无 logo 的不进 sprite，由前端用 monogram 兜底。"""
+    if not os.path.isfile(csv_path):
+        print(f'提示：找不到 {csv_path}，跳过 provider logo 内联')
+        return '', {}, {}
+    symbols = []
+    icon_map = {}   # provider -> symbol id（有 logo 的）
+    name_map = {}   # provider -> 公司名（全部）
+    ok = fail_cnt = 0
+    with open(csv_path, encoding='utf-8') as f:
+        for row in csv.DictReader(f):
+            p = row.get('provider', '').strip()
+            if not p:
+                continue
+            name_map[p] = row.get('company_en') or p
+            if row.get('logo_accessible') != 'yes' or not row.get('logo_url'):
+                continue
+            url = row['logo_url'].strip()
+            try:
+                req = urllib.request.Request(url, headers={'User-Agent': 'build.py'})
+                with urllib.request.urlopen(req, timeout=20) as resp:
+                    svg = resp.read().decode('utf-8')
+                if '<svg' not in svg:
+                    raise ValueError('非 SVG 内容')
+                sid = 'pv-' + re.sub(r'[^a-z0-9]+', '-', p.lower()).strip('-')
+                symbols.append(_svg_to_symbol(svg, sid))
+                icon_map[p] = sid
+                ok += 1
+            except Exception as e:
+                fail_cnt += 1
+                print(f'  提示：{p} 的 logo 下载失败（{e}），将用 monogram 兜底', file=sys.stderr)
+    print(f'provider logo：成功内联 {ok} 个，{fail_cnt} 个下载失败/无 logo 走 monogram 兜底')
+    return '\n    '.join(symbols), icon_map, name_map
+
+
 def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -214,11 +271,22 @@ def main():
     # 数据条目数（排除 sample_spec 等非记录项），用于后面验证内嵌结果
     expected_count = sum(1 for k, v in data.items() if isinstance(v, dict) and k != 'sample_spec')
 
+    # ---- provider logo：下载 SVG 并内联为 sprite symbol，生成 provider→iconId 映射 ----
+    logo_symbols, provider_icons, provider_names = build_provider_logos(os.path.join(root, 'provider.csv'))
+
     # ---- 生成 index-new.html ----
     json_text = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
     json_text = json_text.replace('</', '<\\/')   # 防止数据里的 "</" 意外闭合 <script>
-    embed_block = f'<script type="application/json" id="{args.data_id}">\n{json_text}\n</script>'
-    new_html = template.replace('<!--MODEL_DATA-->', embed_block, 1)
+    # base64 混淆：源码里看不到直观 JSON（仅混淆非加密）；页面 loadData 检测到
+    # data-encoding="base64" 时先 atob+UTF-8 解码再解析。按 UTF-8 字节编码保证中文不乱码。
+    b64 = base64.b64encode(json_text.encode('utf-8')).decode('ascii')
+    embed_block = (f'<script type="application/json" id="{args.data_id}" data-encoding="base64">\n'
+                   f'{b64}\n</script>')
+    icons_js = json.dumps(provider_icons, ensure_ascii=False)
+    new_html = (template
+                .replace('<!--MODEL_DATA-->', embed_block, 1)
+                .replace('<!--PROVIDER_LOGOS-->', logo_symbols, 1)
+                .replace('<!--PROVIDER_ICONS-->', icons_js, 1))
     with open(new_path, 'w', encoding='utf-8') as f:
         f.write(new_html)
 
@@ -226,16 +294,20 @@ def main():
     with open(new_path, encoding='utf-8') as f:
         content = f.read()
 
-    # 1. 数据块可被 JSON.parse 解析
+    # 1. 数据块可被解析（data-encoding="base64" 时先解码，再 JSON.parse）
     m = re.search(
-        r'<script type="application/json" id="' + re.escape(args.data_id) + r'">(.*?)</script>',
+        r'<script type="application/json" id="' + re.escape(args.data_id) + r'"[^>]*>(.*?)</script>',
         content, re.DOTALL)
     if not m:
         fail('生成的页面里找不到内嵌数据块', new_path)
+    raw_block = m.group(1).strip()
     try:
-        embedded = json.loads(m.group(1))
+        if 'data-encoding="base64"' in m.group(0):
+            embedded = json.loads(base64.b64decode(raw_block).decode('utf-8'))
+        else:
+            embedded = json.loads(raw_block)
     except Exception as e:
-        fail(f'内嵌数据块无法被 JSON.parse 解析：{e}', new_path)
+        fail(f'内嵌数据块无法被解析：{e}', new_path)
 
     # 2. 条目数与源数据一致
     actual_count = sum(1 for k, v in embedded.items() if isinstance(v, dict) and k != 'sample_spec')

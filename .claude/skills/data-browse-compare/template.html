@@ -408,7 +408,9 @@
   }
   .modality-arrow { color: var(--text-faint); font-size: 11px; display: inline-flex; }
   .provider-tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     border: 1px solid var(--border-strong);
     border-radius: 5px;
     padding: 2px 8px;
@@ -417,6 +419,29 @@
     letter-spacing: 0.02em;
     color: var(--text-dim);
     background: transparent;
+  }
+  /* provider logo / monogram：统一 12px 见方 */
+  .pv-logo {
+    width: 12px; height: 12px;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--text-dim);
+  }
+  .pv-logo svg { width: 100%; height: 100%; display: block; }
+  /* 无 logo 的 provider：首字母 monogram 方块兜底 */
+  .pv-mono {
+    width: 12px; height: 12px;
+    border-radius: 3px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-border);
+    color: var(--accent-bright);
+    font-family: var(--font-sans);
+    font-size: 8.5px;
+    font-weight: 700;
+    line-height: 1;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    text-transform: uppercase;
   }
   input[type="checkbox"] { accent-color: var(--accent); width: 15px; height: 15px; cursor: pointer; }
 
@@ -1241,6 +1266,7 @@
     <symbol id="i-arrow-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></g></symbol>
     <symbol id="i-quest" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M9.4 9.2A2.7 2.7 0 0 1 12 7.4c1.5 0 2.7 1 2.7 2.3 0 1.9-2.4 2-2.7 3.8"/><circle cx="12" cy="16.8" r="1.1" fill="currentColor" stroke="none"/></g></symbol>
     <symbol id="i-ext" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.5H5.5V18.5H18.5V14"/><path d="M13.5 5.5h5v5"/><path d="M18.5 5.5 11 13"/></g></symbol>
+    <!--PROVIDER_LOGOS-->
   </defs>
 </svg>
 
@@ -1642,6 +1668,16 @@ const MODALITY_ICONS = {
 };
 // 生成内联 SVG 图标引用（sprite 定义在 body 开头的 <svg> 里）
 const ic = (id, cls = '') => `<svg class="ic ${cls}" aria-hidden="true"><use href="#i-${id}"/></svg>`;
+// provider -> sprite symbol id 的映射（构建时由 build.py 注入；无 logo 的 provider 不在其中，
+// 前端用首字母 monogram 兜底）。iconId 已含 pv- 前缀，引用时直接用 `#${id}`。
+const PROVIDER_ICONS = <!--PROVIDER_ICONS-->;
+// provider 前缀图标：有 logo 用 sprite symbol，无 logo 用首字母 monogram 方块
+function providerIcon(provider) {
+  const sid = provider && PROVIDER_ICONS[provider];
+  if (sid) return `<span class="pv-logo"><svg aria-hidden="true"><use href="#${sid}"/></svg></span>`;
+  const ch = (provider || '?').trim().charAt(0).toUpperCase() || '?';
+  return `<span class="pv-mono" aria-hidden="true">${esc(ch)}</span>`;
+}
 const MAX_COMPARE = 3;
 const PAGE_SIZE = 100;
 const MODE_LABELS = {
@@ -1770,8 +1806,16 @@ async function loadData() {
   let data;
   const embedded = document.getElementById('model-data');
   if (embedded) {
-    // 数据已内嵌在页面中，直接解析（file:// 双击打开也能用）
-    data = JSON.parse(embedded.textContent);
+    // 数据已内嵌在页面中。base64 编码的数据块先解码（让源码里看不到直观 JSON，属混淆非加密）；
+    // 未编码的（如开发期 template.html 走 fetch 或明文数据块）直接解析。
+    if (embedded.dataset.encoding === 'base64') {
+      // atob 只能解 Latin-1，先转 Uint8Array 再按 UTF-8 解码，保证中文等多字节字符不乱码
+      const bin = atob(embedded.textContent.trim());
+      const bytes = Uint8Array.from(bin, c => c.charCodeAt(0));
+      data = JSON.parse(new TextDecoder('utf-8').decode(bytes));
+    } else {
+      data = JSON.parse(embedded.textContent);
+    }
   } else {
     const resp = await fetch('source-data/model_prices_and_context_window.json');
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
@@ -2003,7 +2047,7 @@ function renderDetail() {
     <div class="drawer-eyebrow">${esc(L(MODE_LABELS[m.mode]) || m.mode || t('drawerFallback'))}</div>
     <div class="drawer-title">${esc(m.key)}</div>
     <div class="drawer-title-meta">
-      <span class="provider-tag">${esc(m.provider || '—')}</span>
+      <span class="provider-tag">${providerIcon(m.provider)}${esc(m.provider || '—')}</span>
       ${m.tiered ? `<span class="tiered-note" title="${esc(t('tieredTitle'))}">${esc(t('tieredTag'))}</span>` : ''}
     </div>
     ${renderModelDetailSections(m)}`;
@@ -2075,7 +2119,7 @@ function renderBrowse() {
     return `<tr style="animation-delay:${delay}ms" data-key="${esc(m.key)}">
       <td><input type="checkbox" data-key="${esc(m.key)}" ${state.selected.has(m.key) ? 'checked' : ''}></td>
       <td class="model-key" title="${esc(m.key)}">${esc(m.key)}${m.tiered ? ` <span class="tiered-note" title="${esc(t('tieredTitle'))}">${esc(t('tieredTag'))}</span>` : ''}</td>
-      <td><span class="provider-tag">${esc(m.provider || '—')}</span></td>
+      <td><span class="provider-tag">${providerIcon(m.provider)}${esc(m.provider || '—')}</span></td>
       <td>${esc(L(MODE_LABELS[m.mode]) || m.mode || '—')}</td>
       <td class="num">${m.inputPrice != null ? esc(fmtPrice(m.inputPrice)) : '<span class="cell-na">—</span>'}</td>
       <td class="num">${m.outputPrice != null ? esc(fmtPrice(m.outputPrice)) : m.imagePrice != null ? esc('$' + m.imagePrice + (lang === 'zh' ? '/图' : '/img')) : '<span class="cell-na">—</span>'}</td>
@@ -2282,7 +2326,7 @@ function renderCompareInner(wrap) {
       <button class="remove-btn" data-remove="${esc(m.key)}" title="${esc(t('removeTitle'))}">${ic('close')}</button>
       <div class="ctg-head-name">${esc(m.key)}</div>
       <div class="ctg-head-meta">
-        <span class="provider-tag">${esc(m.provider || '—')}</span>
+        <span class="provider-tag">${providerIcon(m.provider)}${esc(m.provider || '—')}</span>
         <span class="provider-tag">${esc(L(MODE_LABELS[m.mode]) || m.mode || '—')}</span>
       </div>
     </div>`;
