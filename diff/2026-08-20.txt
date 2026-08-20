@@ -90,3 +90,237 @@
 ~ 修正补丁 zai/glm-5v-turbo  [zai/chat] 入$1.2 出$4
 ~ 修正补丁 zai/glm-ocr  [zai/chat] 入$0.03 出$0.03
 
+===== 2026-08-20 13:33:07 更新 =====
+新增 4 / 减少 0 / 变更 223
+
+--- 新增模型（4）---
++ agentcore/search  [agentcore/search] 入- 出-
++ bedrock_mantle/xai.grok-4.6  [bedrock_mantle/chat] 入$2.2 出$6.6
++ global.xai.grok-4.6  [bedrock_converse/chat] 入$2 出$6
++ us.xai.grok-4.6  [bedrock_converse/chat] 入$2.2 出$6.6
+
+--- 发生变更（223）---
+~ 1024-x-1024/dall-e-2  [openai/image_generation] 入- 出-
+~ 1024-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ 1024-x-1536/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ 1536-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ 256-x-256/dall-e-2  [openai/image_generation] 入- 出-
+~ 512-x-512/dall-e-2  [openai/image_generation] 入- 出-
+~ azure/eu/gpt-5.1  [azure/chat] 入$1.38 出$11
+~ azure/eu/gpt-5.1-codex  [azure/responses] 入$1.38 出$11
+~ azure/eu/gpt-5.1-codex-mini  [azure/responses] 入$0.275 出$2.2
+~ azure/eu/gpt-5.4  [azure/chat] 入$2.75 出$16.5
+~ azure/eu/gpt-5.5  [azure/chat] 入$5.5 出$33
+~ azure/global-standard/gpt-4o-mini  [azure/chat] 入$0.15 出$0.6
+~ azure/global/gpt-5.1  [azure/chat] 入$1.25 出$10
+~ azure/global/gpt-5.1-codex  [azure/responses] 入$1.25 出$10
+~ azure/global/gpt-5.1-codex-mini  [azure/responses] 入$0.25 出$2
+~ azure/gpt-4.1  [azure/chat] 入$2 出$8
+~ azure/gpt-4.1-mini  [azure/chat] 入$0.4 出$1.6
+~ azure/gpt-4.1-nano  [azure/chat] 入$0.1 出$0.4
+~ azure/gpt-4o-mini  [azure/chat] 入$0.165 出$0.66
+~ azure/gpt-5  [azure/chat] 入$1.25 出$10
+~ azure/gpt-5-mini  [azure/chat] 入$0.25 出$2
+~ azure/gpt-5-nano  [azure/chat] 入$0.05 出$0.4
+~ azure/gpt-5.1  [azure/chat] 入$1.25 出$10
+~ azure/gpt-5.1-codex  [azure/responses] 入$1.25 出$10
+~ azure/gpt-5.1-codex-mini  [azure/responses] 入$0.25 出$2
+~ azure/gpt-5.2  [azure/chat] 入$1.75 出$14
+~ azure/gpt-5.4  [azure/chat] 入$2.5 出$15
+~ azure/gpt-5.4-mini  [azure/chat] 入$0.75 出$4.5
+~ azure/gpt-5.4-nano  [azure/chat] 入$0.2 出$1.25
+~ azure/gpt-5.4-pro  [azure/responses] 入$30 出$180
+~ azure/gpt-5.5  [azure/chat] 入$5 出$30
+~ azure/gpt-image-1.5  [azure/image_generation] 入$5 出-
+~ azure/gpt-image-2  [azure/image_generation] 入$5 出$10
+~ azure/high/1024-x-1024/gpt-image-1  [azure/image_generation] 入- 出-
+~ azure/high/1024-x-1024/gpt-image-1-mini  [azure/image_generation] 入- 出-
+~ azure/high/1024-x-1536/gpt-image-1  [azure/image_generation] 入- 出-
+~ azure/high/1024-x-1536/gpt-image-1-mini  [azure/image_generation] 入- 出-
+~ azure/high/1536-x-1024/gpt-image-1  [azure/image_generation] 入- 出-
+~ azure/high/1536-x-1024/gpt-image-1-mini  [azure/image_generation] 入- 出-
+~ azure/low/1024-x-1024/gpt-image-1  [azure/image_generation] 入- 出-
+~ azure/low/1024-x-1024/gpt-image-1-mini  [azure/image_generation] 入- 出-
+~ azure/low/1024-x-1536/gpt-image-1  [azure/image_generation] 入- 出-
+~ azure/low/1024-x-1536/gpt-image-1-mini  [azure/image_generation] 入- 出-
+~ azure/low/1536-x-1024/gpt-image-1  [azure/image_generation] 入- 出-
+~ azure/low/1536-x-1024/gpt-image-1-mini  [azure/image_generation] 入- 出-
+~ azure/medium/1024-x-1024/gpt-image-1  [azure/image_generation] 入- 出-
+~ azure/medium/1024-x-1024/gpt-image-1-mini  [azure/image_generation] 入- 出-
+~ azure/medium/1024-x-1536/gpt-image-1  [azure/image_generation] 入- 出-
+~ azure/medium/1024-x-1536/gpt-image-1-mini  [azure/image_generation] 入- 出-
+~ azure/medium/1536-x-1024/gpt-image-1  [azure/image_generation] 入- 出-
+~ azure/medium/1536-x-1024/gpt-image-1-mini  [azure/image_generation] 入- 出-
+~ azure/o1  [azure/chat] 入$15 出$60
+~ azure/o3  [azure/chat] 入$2 出$8
+~ azure/o3-mini  [azure/chat] 入$1.1 出$4.4
+~ azure/o3-pro  [azure/responses] 入$20 出$80
+~ azure/o4-mini  [azure/chat] 入$1.1 出$4.4
+~ azure/us/gpt-5.1  [azure/chat] 入$1.38 出$11
+~ azure/us/gpt-5.1-codex  [azure/responses] 入$1.38 出$11
+~ azure/us/gpt-5.1-codex-mini  [azure/responses] 入$0.275 出$2.2
+~ azure/us/gpt-5.4  [azure/chat] 入$2.75 出$16.5
+~ azure/us/gpt-5.5  [azure/chat] 入$5.5 出$33
+~ azure_ai/FW-DeepSeek-V3.2  [azure_ai/chat] 入$0.62 出$1.85
+~ azure_ai/FW-GLM-5  [azure_ai/chat] 入$1.1 出$3.52
+~ azure_ai/FW-GLM-5.1  [azure_ai/chat] 入$1.54 出$4.84
+~ azure_ai/FW-Kimi-K2.5  [azure_ai/chat] 入$0.66 出$3.3
+~ azure_ai/FW-MiniMax-M2.5  [azure_ai/chat] 入$0.33 出$1.32
+~ azure_ai/Llama-3.2-11B-Vision-Instruct  [azure_ai/chat] 入$0.37 出$0.37
+~ azure_ai/Llama-3.2-90B-Vision-Instruct  [azure_ai/chat] 入$2.04 出$2.04
+~ azure_ai/MAI-Image-2e  [azure_ai/image_generation] 入$5 出- 图$0.02
+~ azure_ai/Meta-Llama-3.1-405B-Instruct  [azure_ai/chat] 入$5.33 出$16
+~ azure_ai/Meta-Llama-3.1-8B-Instruct  [azure_ai/chat] 入$0.3 出$0.61
+~ azure_ai/claude-haiku-4-5  [azure_ai/chat] 入$1 出$5
+~ azure_ai/claude-opus-4-1  [azure_ai/chat] 入$15 出$75
+~ azure_ai/claude-opus-4-5  [azure_ai/chat] 入$5 出$25
+~ azure_ai/claude-opus-4-6  [azure_ai/chat] 入$5 出$25
+~ azure_ai/claude-opus-4-7  [azure_ai/chat] 入$5 出$25
+~ azure_ai/claude-sonnet-4-5  [azure_ai/chat] 入$3 出$15
+~ azure_ai/claude-sonnet-4-6  [azure_ai/chat] 入$3 出$15
+~ azure_ai/cohere-rerank-v3.5  [azure_ai/rerank] 入$0 出$0
+~ azure_ai/deepseek-r1  [azure_ai/chat] 入$1.35 出$5.4
+~ azure_ai/deepseek-v3-0324  [azure_ai/chat] 入$1.14 出$4.56
+~ azure_ai/deepseek-v3.1  [azure_ai/chat] 入$1.23 出$4.94
+~ azure_ai/deepseek-v4-flash  [azure_ai/chat] 入$0.19 出$0.51
+~ azure_ai/deepseek-v4-pro  [azure_ai/chat] 入$1.74 出$3.48
+~ azure_ai/global/grok-3  [azure_ai/chat] 入$3 出$15
+~ azure_ai/global/grok-3-mini  [azure_ai/chat] 入$0.25 出$1.27
+~ azure_ai/gpt-5.4  [azure_ai/chat] 入$2.5 出$15
+~ azure_ai/gpt-5.4-2026-03-05  [azure_ai/chat] 入$2.5 出$15
+~ azure_ai/gpt-5.4-mini  [azure_ai/chat] 入$0.75 出$4.5
+~ azure_ai/gpt-5.4-mini-2026-03-17  [azure_ai/chat] 入$0.75 出$4.5
+~ azure_ai/gpt-5.4-nano  [azure_ai/chat] 入$0.2 出$1.25
+~ azure_ai/gpt-5.4-nano-2026-03-17  [azure_ai/chat] 入$0.2 出$1.25
+~ azure_ai/gpt-5.4-pro  [azure_ai/responses] 入$30 出$180
+~ azure_ai/gpt-5.4-pro-2026-03-05  [azure_ai/responses] 入$30 出$180
+~ azure_ai/gpt-5.5  [azure_ai/chat] 入$5 出$30
+~ azure_ai/grok-3  [azure_ai/chat] 入$3 出$15
+~ azure_ai/grok-3-mini  [azure_ai/chat] 入$0.25 出$1.27
+~ azure_ai/grok-4-fast-non-reasoning  [azure_ai/chat] 入$0.2 出$0.5
+~ azure_ai/grok-4-fast-reasoning  [azure_ai/chat] 入$0.2 出$0.5
+~ azure_ai/kimi-k2.5  [azure_ai/chat] 入$0.6 出$3
+~ azure_ai/kimi-k2.6  [azure_ai/chat] 入$0.95 出$4
+~ azure_ai/mistral-document-ai-2505  [azure_ai/ocr] 入- 出-
+~ babbage-002  [text-completion-openai/completion] 入$0.4 出$0.4
+~ claude-fable-5  [anthropic/chat] 入$10 出$50
+~ claude-haiku-4-5  [anthropic/chat] 入$1 出$5
+~ claude-haiku-4-5-20251001  [anthropic/chat] 入$1 出$5
+~ claude-mythos-5  [anthropic/chat] 入$10 出$50
+~ claude-opus-4-5  [anthropic/chat] 入$5 出$25
+~ claude-opus-4-5-20251101  [anthropic/chat] 入$5 出$25
+~ claude-opus-4-6  [anthropic/chat] 入$5 出$25
+~ claude-opus-4-6-20260205  [anthropic/chat] 入$5 出$25
+~ claude-opus-4-7  [anthropic/chat] 入$5 出$25
+~ claude-opus-4-7-20260416  [anthropic/chat] 入$5 出$25
+~ claude-opus-4-8  [anthropic/chat] 入$5 出$25
+~ claude-opus-5  [anthropic/chat] 入$5 出$25
+~ claude-sonnet-4-5  [anthropic/chat] 入$3 出$15
+~ claude-sonnet-4-5-20250929  [anthropic/chat] 入$3 出$15
+~ claude-sonnet-4-6  [anthropic/chat] 入$3 出$15
+~ claude-sonnet-5  [anthropic/chat] 入$2 出$10
+~ davinci-002  [text-completion-openai/completion] 入$2 出$2
+~ gemini-2.5-flash  [vertex_ai-language-models/chat] 入$0.3 出$2.5
+~ gemini-2.5-flash-image  [vertex_ai-language-models/image_generation] 入$0.3 出$2.5 图$0.039
+~ gemini-2.5-flash-lite  [vertex_ai-language-models/chat] 入$0.1 出$0.4
+~ gemini-2.5-pro  [vertex_ai-language-models/chat] 入$1.25 出$10
+~ gemini-3-pro-image  [vertex_ai-language-models/image_generation] 入$2 出$12 图$0.134
+~ gemini-3.1-flash-image  [vertex_ai-language-models/image_generation] 入$0.5 出$3 图$0.0672
+~ gemini-3.1-flash-lite  [vertex_ai-language-models/chat] 入$0.25 出$1.5
+~ gemini-3.1-pro-preview  [vertex_ai-language-models/chat] 入$2 出$12 图$0.00012
+~ gemini-3.1-pro-preview-customtools  [vertex_ai-language-models/chat] 入$2 出$12 图$0.00012
+~ gemini-3.5-flash  [vertex_ai-language-models/chat] 入$1.5 出$9
+~ gemini-3.5-flash-lite  [vertex_ai-language-models/chat] 入$0.3 出$2.5
+~ gemini-3.6-flash  [vertex_ai-language-models/chat] 入$0.75 出$3.75
+~ gemini-3.7-flash  [vertex_ai-language-models/chat] 入$0.75 出$3.75
+~ gemini-embedding-001  [vertex_ai-embedding-models/embedding] 入$0.15 出$0
+~ gemini/gemini-3.1-flash-image  [gemini/image_generation] 入$0.5 出$3 图$0.045
+~ gemini/gemini-3.1-flash-image-preview  [gemini/image_generation] 入$0.5 出$3 图$0.045
+~ gemini/gemini-3.1-pro-preview  [gemini/chat] 入$2 出$12
+~ gemini/gemini-3.1-pro-preview-customtools  [gemini/chat] 入$2 出$12
+~ gemini/gemini-3.5-flash  [gemini/chat] 入$1.5 出$9
+~ gemini/gemini-3.6-flash  [gemini/chat] 入$0.75 出$3.75
+~ gemini/gemini-3.7-flash  [gemini/chat] 入$0.75 出$3.75
+~ gemini/gemini-robotics-er-1.6-preview  [gemini/chat] 入$1 出$5
+~ gpt-3.5-turbo-instruct  [text-completion-openai/completion] 入$1.5 出$2
+~ hd/1024-x-1024/dall-e-3  [openai/image_generation] 入- 出-
+~ hd/1024-x-1792/dall-e-3  [openai/image_generation] 入- 出-
+~ hd/1792-x-1024/dall-e-3  [openai/image_generation] 入- 出-
+~ high/1024-x-1024/gpt-image-1  [openai/image_generation] 入- 出-
+~ high/1024-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ high/1024-x-1536/gpt-image-1  [openai/image_generation] 入- 出-
+~ high/1024-x-1536/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ high/1536-x-1024/gpt-image-1  [openai/image_generation] 入- 出-
+~ high/1536-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ low/1024-x-1024/gpt-image-1  [openai/image_generation] 入- 出-
+~ low/1024-x-1024/gpt-image-1-mini  [openai/image_generation] 入- 出-
+~ low/1024-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ low/1024-x-1536/gpt-image-1  [openai/image_generation] 入- 出-
+~ low/1024-x-1536/gpt-image-1-mini  [openai/image_generation] 入- 出-
+~ low/1024-x-1536/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ low/1536-x-1024/gpt-image-1  [openai/image_generation] 入- 出-
+~ low/1536-x-1024/gpt-image-1-mini  [openai/image_generation] 入- 出-
+~ low/1536-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ medium/1024-x-1024/gpt-image-1  [openai/image_generation] 入- 出-
+~ medium/1024-x-1024/gpt-image-1-mini  [openai/image_generation] 入- 出-
+~ medium/1024-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ medium/1024-x-1536/gpt-image-1  [openai/image_generation] 入- 出-
+~ medium/1024-x-1536/gpt-image-1-mini  [openai/image_generation] 入- 出-
+~ medium/1024-x-1536/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ medium/1536-x-1024/gpt-image-1  [openai/image_generation] 入- 出-
+~ medium/1536-x-1024/gpt-image-1-mini  [openai/image_generation] 入- 出-
+~ medium/1536-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ multimodalembedding@001  [vertex_ai-embedding-models/embedding] 入$0.8 出$0
+~ standard/1024-x-1024/dall-e-3  [openai/image_generation] 入- 出-
+~ standard/1024-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ standard/1024-x-1536/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ standard/1024-x-1792/dall-e-3  [openai/image_generation] 入- 出-
+~ standard/1536-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ standard/1792-x-1024/dall-e-3  [openai/image_generation] 入- 出-
+~ text-embedding-005  [vertex_ai-embedding-models/embedding] 入$0.1 出$0
+~ text-moderation-007  [openai/moderation] 入$0 出$0
+~ text-moderation-latest  [openai/moderation] 入$0 出$0
+~ text-moderation-stable  [openai/moderation] 入$0 出$0
+~ text-multilingual-embedding-002  [vertex_ai-embedding-models/embedding] 入$0.1 出$0
+~ vertex_ai/claude-fable-5  [vertex_ai-anthropic_models/chat] 入$10 出$50
+~ vertex_ai/claude-fable-5@default  [vertex_ai-anthropic_models/chat] 入$10 出$50
+~ vertex_ai/claude-haiku-4-5  [vertex_ai-anthropic_models/chat] 入$1 出$5
+~ vertex_ai/claude-haiku-4-5@20251001  [vertex_ai-anthropic_models/chat] 入$1 出$5
+~ vertex_ai/claude-opus-4  [vertex_ai-anthropic_models/chat] 入$15 出$75
+~ vertex_ai/claude-opus-4-1  [vertex_ai-anthropic_models/chat] 入$15 出$75
+~ vertex_ai/claude-opus-4-1@20250805  [vertex_ai-anthropic_models/chat] 入$15 出$75
+~ vertex_ai/claude-opus-4-5  [vertex_ai-anthropic_models/chat] 入$5 出$25
+~ vertex_ai/claude-opus-4-5@20251101  [vertex_ai-anthropic_models/chat] 入$5 出$25
+~ vertex_ai/claude-opus-4-6  [vertex_ai-anthropic_models/chat] 入$5 出$25
+~ vertex_ai/claude-opus-4-6@default  [vertex_ai-anthropic_models/chat] 入$5 出$25
+~ vertex_ai/claude-opus-4-7  [vertex_ai-anthropic_models/chat] 入$5 出$25
+~ vertex_ai/claude-opus-4-7@default  [vertex_ai-anthropic_models/chat] 入$5 出$25
+~ vertex_ai/claude-opus-4-8  [vertex_ai-anthropic_models/chat] 入$5 出$25
+~ vertex_ai/claude-opus-4-8@default  [vertex_ai-anthropic_models/chat] 入$5 出$25
+~ vertex_ai/claude-opus-4@20250514  [vertex_ai-anthropic_models/chat] 入$15 出$75
+~ vertex_ai/claude-opus-5  [vertex_ai-anthropic_models/chat] 入$5 出$25
+~ vertex_ai/claude-opus-5@default  [vertex_ai-anthropic_models/chat] 入$5 出$25
+~ vertex_ai/claude-sonnet-4  [vertex_ai-anthropic_models/chat] 入$3 出$15
+~ vertex_ai/claude-sonnet-4-5  [vertex_ai-anthropic_models/chat] 入$3 出$15
+~ vertex_ai/claude-sonnet-4-5@20250929  [vertex_ai-anthropic_models/chat] 入$3 出$15
+~ vertex_ai/claude-sonnet-4-6  [vertex_ai-anthropic_models/chat] 入$3 出$15
+~ vertex_ai/claude-sonnet-4-6@default  [vertex_ai-anthropic_models/chat] 入$3 出$15
+~ vertex_ai/claude-sonnet-4@20250514  [vertex_ai-anthropic_models/chat] 入$3 出$15
+~ vertex_ai/claude-sonnet-5  [vertex_ai-anthropic_models/chat] 入$2 出$10
+~ vertex_ai/claude-sonnet-5@default  [vertex_ai-anthropic_models/chat] 入$2 出$10
+~ vertex_ai/gemini-2.5-flash-image  [vertex_ai-language-models/image_generation] 入$0.3 出$2.5 图$0.039
+~ vertex_ai/gemini-3-pro-image  [vertex_ai-language-models/image_generation] 入$2 出$12 图$0.134
+~ vertex_ai/gemini-3.1-flash-image  [vertex_ai-language-models/image_generation] 入$0.5 出$3 图$0.0672
+~ vertex_ai/gemini-3.1-flash-lite  [vertex_ai-language-models/chat] 入$0.25 出$1.5
+~ vertex_ai/gemini-3.1-pro-preview  [vertex_ai/chat] 入$2 出$12 图$0.00012
+~ vertex_ai/gemini-3.1-pro-preview-customtools  [vertex_ai/chat] 入$2 出$12 图$0.00012
+~ vertex_ai/gemini-3.5-flash  [vertex_ai/chat] 入$1.5 出$9
+~ vertex_ai/gemini-3.5-flash-lite  [vertex_ai-language-models/chat] 入$0.3 出$2.5
+~ vertex_ai/gemini-3.6-flash  [vertex_ai/chat] 入$0.75 出$3.75
+~ vertex_ai/gemini-3.7-flash  [vertex_ai/chat] 入$0.75 出$3.75
+~ vertex_ai/veo-2.0-generate-001  [vertex_ai-video-models/video_generation] 入- 出-
+~ vertex_ai/veo-3.0-fast-generate-001  [vertex_ai-video-models/video_generation] 入- 出-
+~ vertex_ai/veo-3.0-generate-001  [vertex_ai-video-models/video_generation] 入- 出-
+~ vertex_ai/veo-3.1-fast-generate-001  [vertex_ai-video-models/video_generation] 入- 出-
+~ vertex_ai/veo-3.1-generate-001  [vertex_ai-video-models/video_generation] 入- 出-
+
