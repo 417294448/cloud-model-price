@@ -144,6 +144,128 @@ def write_diff(old, new, diff_dir, now):
     return len(added), len(removed), len(changed), path
 
 
+def diff_addon_snapshot(addon, state_path):
+    """对比本次 add-on 内容与上次构建的快照，生成「补丁变更」小节的行。
+    返回 (行列表 or None, 本次快照 dict)。无快照文件时若补丁非空，全部视为新增；
+    无差异返回 (None, 快照)。快照只记录条目的规范化内容，供下次对比。"""
+    cur = {k: v for k, v in addon.items() if isinstance(v, dict)}
+    prev = {}
+    if os.path.isfile(state_path):
+        try:
+            with open(state_path, encoding='utf-8') as f:
+                prev = json.load(f)
+        except Exception:
+            prev = {}
+
+    def same(a, b):
+        return json.dumps(a, sort_keys=True, ensure_ascii=False) == \
+               json.dumps(b, sort_keys=True, ensure_ascii=False)
+
+    added = [k for k in cur if k not in prev]
+    removed = [k for k in prev if k not in cur]
+    changed = [k for k in cur if k in prev and not same(cur[k], prev[k])]
+
+    if not (added or removed or changed):
+        return None, cur
+
+    lines = ['--- 补丁变更（add-on-data.json）---']
+    for k in sorted(added):
+        lines.append(f'+ 新增补丁 {k}  {_brief(cur[k])}')
+    for k in sorted(changed):
+        lines.append(f'~ 修正补丁 {k}  {_brief(cur[k])}')
+    for k in sorted(removed):
+        lines.append(f'- 移除补丁 {k}（上游已收录或不再需要，退役）')
+    lines.append('')
+    return lines, cur
+
+
+# ============ add-on 补丁合并 ============
+def _norm_key(key, provider):
+    """规范化 key：剥离与 provider 同名的 '/' 前缀（deepseek/deepseek-v4-flash → deepseek-v4-flash）。
+    其他路径形态（bedrock 的 region 前缀、openrouter 的厂商前缀等）不动。"""
+    if provider and key.startswith(provider + '/'):
+        return key[len(provider) + 1:]
+    return key
+
+
+def apply_addon(data, addon_path, quiet=False):
+    """把 add-on-data.json 补丁合并进数据。语义（详见 SKILL.md「补丁层」一节）：
+    - 匹配范围限定在同 provider（litellm_provider 一致）内，规范化 key 匹配；
+      命中 ≥1 条 → 整条覆盖（一对多命中全部覆盖并打日志）；命中 0 条 → 新增
+      （若该 provider 上游全部带 provider/ 前缀，新 key 跟随惯例补前缀）；
+    - 条目带 "_delete": true → 在同 provider 范围内按规范化 key 删除所有命中；
+    - 上游内容与补丁一致 → 提示该补丁条目可退役。
+    quiet=True 时不打日志（用于 diff 前对齐旧数据口径）。
+    直接原地修改 data，返回是否有实际变更。"""
+    if not os.path.isfile(addon_path):
+        return False
+    try:
+        with open(addon_path, encoding='utf-8') as f:
+            addon = json.load(f)
+    except Exception as e:
+        fail(f'add-on 补丁 JSON 解析失败：{e}')
+    if not isinstance(addon, dict) or not addon:
+        return False
+
+    log = (lambda *a, **kw: None) if quiet else print
+    log(f'应用 add-on 补丁：{os.path.basename(addon_path)}（{len(addon)} 条）')
+    changed = False
+    for ak, arec in addon.items():
+        if not isinstance(arec, dict):
+            log(f'  ! 跳过 {ak}：条目不是对象')
+            continue
+        provider = arec.get('litellm_provider', '')
+        norm = _norm_key(ak, provider)
+
+        # 同 provider 范围内规范化 key 匹配
+        hits = [k for k, v in data.items()
+                if isinstance(v, dict) and k != 'sample_spec'
+                and v.get('litellm_provider', '') == provider
+                and _norm_key(k, provider) == norm]
+
+        if arec.get('_delete') is True:
+            if hits:
+                for k in hits:
+                    del data[k]
+                log(f'  - 删除 {ak}：命中 {len(hits)} 条（{", ".join(sorted(hits))}）')
+                changed = True
+            else:
+                log(f'  - 删除 {ak}：上游不存在，无需删除')
+            continue
+
+        # 覆盖/新增：剔除 _patch 类元字段后作为最终记录
+        rec = {k: v for k, v in arec.items() if not k.startswith('_')}
+        if hits:
+            # 可退役检测：所有命中条目的内容都已与补丁一致
+            same = all(json.dumps(data[k], sort_keys=True, ensure_ascii=False)
+                       == json.dumps(rec, sort_keys=True, ensure_ascii=False) for k in hits)
+            for k in hits:
+                data[k] = rec
+            if same:
+                log(f'  ✓ {ak}：上游 {len(hits)} 条内容已与补丁一致，该补丁条目可退役')
+            else:
+                log(f'  ~ 覆盖 {ak}：命中 {len(hits)} 条（{", ".join(sorted(hits))}）')
+            changed = True
+        else:
+            # 纯新增：key 命名跟随该 provider 上游惯例（全部带 provider/ 前缀才补前缀）
+            prov_keys = [k for k, v in data.items()
+                         if isinstance(v, dict) and k != 'sample_spec'
+                         and v.get('litellm_provider', '') == provider]
+            if prov_keys and all(k.startswith(provider + '/') for k in prov_keys) \
+                    and not ak.startswith(provider + '/'):
+                new_key = provider + '/' + norm
+                convention = '（跟随该 provider 前缀惯例）'
+            else:
+                new_key = ak
+                convention = ''
+            if not prov_keys:
+                convention = '（新 provider，provider.csv 无公司/logo 映射时将走 monogram 兜底）'
+            data[new_key] = rec
+            log(f'  + 新增 {new_key}{convention}')
+            changed = True
+    return changed
+
+
 # ============ provider logo 内联 ============
 def _svg_to_symbol(svg, sid):
     """把一个 SVG 文本规整成 <symbol>：抽 viewBox、统一 currentColor 单色、剥外层标签。"""
@@ -234,6 +356,8 @@ def main():
     parser.add_argument('--no-keep-old', dest='keep_old', action='store_false')
     parser.add_argument('--no-fetch', dest='fetch', action='store_false', default=True,
                         help='跳过拉取远程最新数据，直接用本地已有 JSON 重建（离线/调试用）')
+    parser.add_argument('--no-addon-refresh', dest='addon_refresh', action='store_false', default=True,
+                        help='跳过 add-on 补丁的自动刷新（4 个 provider 抓取脚本），直接用现有 add-on-data.json')
     args = parser.parse_args()
 
     root = os.getcwd()
@@ -290,6 +414,20 @@ def main():
                 data = json.load(f)
         except Exception as e:
             fail(f'数据 JSON 解析失败：{e}')
+
+    # ---- add-on 补丁：先自动刷新（4 个 provider 抓取脚本），再合并 ----
+    # 自动刷新：每次运行时按官网最新内容更新 add-on-data.json（失败兜底保留旧值）
+    addon_path = os.path.join(root, 'add-on-data.json')
+    if args.addon_refresh:
+        try:
+            sys.path.insert(0, os.path.join(script_dir, 'addon_fetch'))
+            import refresh_addon
+            print('自动刷新 add-on 补丁（deepseek / zai / moonshot / minimax）：')
+            refresh_addon.refresh(addon_path)
+        except Exception as e:
+            print(f'提示：add-on 自动刷新失败（{e}），直接用现有 add-on-data.json 继续', file=sys.stderr)
+    # 合并：补丁不进本地 JSON 文件，只在内存中合并——上游数据保持原样，补丁持续生效
+    apply_addon(data, addon_path)
 
     # 数据条目数（排除 sample_spec 等非记录项），用于后面验证内嵌结果
     expected_count = sum(1 for k, v in data.items() if isinstance(v, dict) and k != 'sample_spec')
@@ -376,14 +514,50 @@ def main():
         os.replace(fetched_tmp, local_data_path)
         data_updated = True
 
-    # ---- 后置：记录本次更新的 diff（仅拉取模式且有旧数据可对比时）----
+    # ---- 后置：记录本次更新的 diff ----
+    # 上游数据 diff 仅拉取模式且有旧数据时生成；补丁变更（add-on 快照对比）两种模式都记录
     diff_info = ''
-    if old_data is not None:
-        try:
+    addon_path = os.path.join(root, 'add-on-data.json')
+    try:
+        # 补丁变更检测：与上次构建的 add-on 快照对比，有差异才记一条（一次性事件，不重复刷日志）
+        addon_lines = None
+        addon_state_path = os.path.join(root, 'diff', '.addon-state.json')
+        if os.path.isfile(addon_path):
+            try:
+                with open(addon_path, encoding='utf-8') as f:
+                    addon_cur = json.load(f)
+                addon_lines, addon_snapshot = diff_addon_snapshot(addon_cur, addon_state_path)
+            except Exception:
+                addon_lines = None
+
+        if old_data is not None:
+            # old_data 是本地纯上游旧数据，而 data 已合并补丁——两边口径不一致会让
+            # 补丁新增/覆盖的条目在每次构建的 diff 里重复出现。给 old_data 也打一遍
+            # 同样的补丁（静默模式），diff 就只反映上游真实变化了。
+            if os.path.isfile(addon_path):
+                apply_addon(old_data, addon_path, quiet=True)
             na, nr, nc, diff_path = write_diff(old_data, data, os.path.join(root, 'diff'), datetime.now())
             diff_info = f'，diff 已记录到 {os.path.relpath(diff_path, root)}（+{na} -{nr} ~{nc}）'
-        except Exception as e:
-            print(f'提示：生成 diff 失败（不影响页面生成）：{e}', file=sys.stderr)
+        elif addon_lines:
+            # 非拉取模式（--no-fetch）：没有上游 diff，但补丁变更仍单独记录
+            diff_path = os.path.join(root, 'diff', datetime.now().strftime('%Y-%m-%d') + '.txt')
+            os.makedirs(os.path.join(root, 'diff'), exist_ok=True)
+            with open(diff_path, 'a', encoding='utf-8') as f:
+                f.write(f'===== {datetime.now().strftime("%Y-%m-%d %H:%M:%S")} 更新（本地重建）=====\n')
+                f.write('\n'.join(addon_lines) + '\n')
+            diff_info = f'，补丁变更已记录到 {os.path.relpath(diff_path, root)}'
+
+        # 上游 diff 与补丁小节合并：补丁小节追加到本次 diff 文件末尾
+        if addon_lines and old_data is not None:
+            with open(diff_path, 'a', encoding='utf-8') as f:
+                f.write('\n'.join(addon_lines) + '\n')
+            diff_info += '（含补丁变更）'
+        # 补丁小节写入成功后更新快照
+        if addon_lines:
+            with open(addon_state_path, 'w', encoding='utf-8') as f:
+                json.dump(addon_snapshot, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f'提示：生成 diff 失败（不影响页面生成）：{e}', file=sys.stderr)
 
     size_kb = os.path.getsize(out_path) // 1024
     backup = f'，上一版已备份为 {os.path.basename(old_path)}' if args.keep_old and os.path.exists(old_path) else ''

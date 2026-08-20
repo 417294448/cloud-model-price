@@ -1,0 +1,92 @@
+===== 2026-08-20 18:10:52 更新（本地重建）=====
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 deepseek-v4-flash  [deepseek/chat] 入$0.44 出$1.32
++ 新增补丁 deepseek-v4-pro  [deepseek/chat] 入$1.32 出$3.96
++ 新增补丁 zai/glm-4.5  [zai/chat] 入$0.6 出$2.2
++ 新增补丁 zai/glm-4.5-air  [zai/chat] 入$0.2 出$1.1
++ 新增补丁 zai/glm-4.5-airx  [zai/chat] 入$1.1 出$4.5
++ 新增补丁 zai/glm-4.5-x  [zai/chat] 入$2.2 出$8.9
++ 新增补丁 zai/glm-4.7-flashx  [zai/chat] 入$0.07 出$0.4
++ 新增补丁 zai/glm-5  [zai/chat] 入$1 出$3.2
++ 新增补丁 zai/glm-5-turbo  [zai/chat] 入$1.2 出$4
++ 新增补丁 zai/glm-5.2  [zai/chat] 入$1.4 出$4.4
++ 新增补丁 zai/glm-5.3  [zai/chat] 入$1.4 出$4.4
+
+===== 2026-08-20 18:12:04 更新（本地重建）=====
+--- 补丁变更（add-on-data.json）---
+~ 修正补丁 zai/glm-5.3  [zai/chat] 入$1.4 出$4.5
+- 移除补丁 zai/glm-4.7-flashx（上游已收录或不再需要，退役）
+
+===== 2026-08-20 18:16:01 更新（本地重建）=====
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 zai/glm-4.7-flashx  [zai/chat] 入$0.07 出$0.4
+~ 修正补丁 zai/glm-5.3  [zai/chat] 入$1.4 出$4.4
+
+===== 2026-08-20 18:49:00 更新（本地重建）=====
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 zai/glm-4.6v  [zai/chat] 入$0.3 出$0.9
++ 新增补丁 zai/glm-4.6v-flash  [zai/chat] 入$0 出$0
++ 新增补丁 zai/glm-4.6v-flashx  [zai/chat] 入$0.04 出$0.4
++ 新增补丁 zai/glm-5v-turbo  [zai/chat] 入$1.2 出$4
++ 新增补丁 zai/glm-ocr  [zai/chat] 入$0.03 出$0.03
+~ 修正补丁 zai/glm-4.7-flashx  [zai/chat] 入$0.07 出$0.4
+~ 修正补丁 zai/glm-5-turbo  [zai/chat] 入$1.2 出$4
+~ 修正补丁 zai/glm-5.2  [zai/chat] 入$1.4 出$4.4
+~ 修正补丁 zai/glm-5.3  [zai/chat] 入$1.4 出$4.4
+
+===== 2026-08-20 19:26:40 更新（本地重建）=====
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 moonshot/kimi-k2.7-code  [moonshot/chat] 入$0.95 出$4
++ 新增补丁 moonshot/kimi-k2.7-code-highspeed  [moonshot/chat] 入$1.9 出$8
++ 新增补丁 moonshot/kimi-k3  [moonshot/chat] 入$3 出$15
++ 新增补丁 moonshot/moonshot-v1-128k  [moonshot/chat] 入$2 出$5
++ 新增补丁 moonshot/moonshot-v1-128k-vision-preview  [moonshot/chat] 入$2 出$5
++ 新增补丁 moonshot/moonshot-v1-32k  [moonshot/chat] 入$1 出$3
++ 新增补丁 moonshot/moonshot-v1-32k-vision-preview  [moonshot/chat] 入$1 出$3
++ 新增补丁 moonshot/moonshot-v1-8k  [moonshot/chat] 入$0.2 出$2
++ 新增补丁 moonshot/moonshot-v1-8k-vision-preview  [moonshot/chat] 入$0.2 出$2
+
+===== 2026-08-20 19:48:27 更新（本地重建）=====
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 minimax/MiniMax-H3  [minimax/video_generation] 入- 出-
++ 新增补丁 minimax/MiniMax-M2.7  [minimax/chat] 入$0.3 出$1.2
++ 新增补丁 minimax/MiniMax-M2.7-highspeed  [minimax/chat] 入$0.6 出$2.4
++ 新增补丁 minimax/MiniMax-M3  [minimax/chat] 入$0.3 出$1.2
++ 新增补丁 minimax/image-01  [minimax/image_generation] 入- 出- 图$0.0035
++ 新增补丁 minimax/speech-2.8-hd  [minimax/audio_speech] 入- 出-
++ 新增补丁 minimax/speech-2.8-turbo  [minimax/audio_speech] 入- 出-
+
+===== 2026-08-20 20:13:47 更新（本地重建）=====
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 minimax/MiniMax-M2.1  [minimax/chat] 入$0.3 出$1.2
++ 新增补丁 minimax/MiniMax-M2.1-highspeed  [minimax/chat] 入$0.6 出$2.4
++ 新增补丁 minimax/MiniMax-M2.5  [minimax/chat] 入$0.3 出$1.2
++ 新增补丁 minimax/MiniMax-M2.5-highspeed  [minimax/chat] 入$0.6 出$2.4
++ 新增补丁 moonshot/kimi-k2.6  [moonshot/chat] 入$0.95 出$4
++ 新增补丁 zai/glm-4-32b-0414-128k  [zai/chat] 入$0.1 出$0.1
++ 新增补丁 zai/glm-4.5v  [zai/chat] 入$0.6 出$1.8
++ 新增补丁 zai/glm-4.6  [zai/chat] 入$0.6 出$2.2
++ 新增补丁 zai/glm-4.7  [zai/chat] 入$0.6 出$2.2
++ 新增补丁 zai/glm-4.7-flash  [zai/chat] 入$0 出$0
++ 新增补丁 zai/glm-5.1  [zai/chat] 入$1.4 出$4.4
+~ 修正补丁 deepseek-v4-pro  [deepseek/chat] 入$1.32 出$3.96
+~ 修正补丁 minimax/MiniMax-M2.7  [minimax/chat] 入$0.3 出$1.2
+~ 修正补丁 minimax/MiniMax-M2.7-highspeed  [minimax/chat] 入$0.6 出$2.4
+~ 修正补丁 minimax/MiniMax-M3  [minimax/chat] 入$0.3 出$1.2
+~ 修正补丁 minimax/speech-2.8-hd  [minimax/audio_speech] 入- 出-
+~ 修正补丁 moonshot/kimi-k3  [moonshot/chat] 入$3 出$15
+~ 修正补丁 zai/glm-4.5  [zai/chat] 入$0.6 出$2.2
+~ 修正补丁 zai/glm-4.5-air  [zai/chat] 入$0.2 出$1.1
+~ 修正补丁 zai/glm-4.5-airx  [zai/chat] 入$1.1 出$4.5
+~ 修正补丁 zai/glm-4.5-x  [zai/chat] 入$2.2 出$8.9
+~ 修正补丁 zai/glm-4.6v  [zai/chat] 入$0.3 出$0.9
+~ 修正补丁 zai/glm-4.6v-flash  [zai/chat] 入$0 出$0
+~ 修正补丁 zai/glm-4.6v-flashx  [zai/chat] 入$0.04 出$0.4
+~ 修正补丁 zai/glm-4.7-flashx  [zai/chat] 入$0.07 出$0.4
+~ 修正补丁 zai/glm-5  [zai/chat] 入$1 出$3.2
+~ 修正补丁 zai/glm-5-turbo  [zai/chat] 入$1.2 出$4
+~ 修正补丁 zai/glm-5.2  [zai/chat] 入$1.4 出$4.4
+~ 修正补丁 zai/glm-5.3  [zai/chat] 入$1.4 出$4.4
+~ 修正补丁 zai/glm-5v-turbo  [zai/chat] 入$1.2 出$4
+~ 修正补丁 zai/glm-ocr  [zai/chat] 入$0.03 出$0.03
+
