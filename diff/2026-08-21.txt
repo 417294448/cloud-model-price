@@ -116,3 +116,69 @@
 ~ xai/grok-code-fast-1  [xai/chat] 入$1 出$2
 ~ xai/grok-code-fast-1-0825  [xai/chat] 入$1 出$2
 
+===== 2026-08-21 13:32:52 更新 =====
+新增 55 / 减少 0 / 变更 4
+
+--- 新增模型（55）---
++ cognition/swe-1.7-lightning  [cognition/chat] 入$2.5 出$12.5
++ fal_ai/high/1024-x-1024/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.211
++ fal_ai/high/1024-x-1024/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.211
++ fal_ai/high/1024-x-1024/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.219
++ fal_ai/high/1024-x-1536/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.165
++ fal_ai/high/1024-x-1536/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.165
++ fal_ai/high/1024-x-1536/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.178
++ fal_ai/high/1024-x-768/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.145
++ fal_ai/high/1024-x-768/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.145
++ fal_ai/high/1024-x-768/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.151
++ fal_ai/high/1920-x-1080/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.158
++ fal_ai/high/1920-x-1080/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.158
++ fal_ai/high/1920-x-1080/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.158
++ fal_ai/high/2560-x-1440/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.222
++ fal_ai/high/2560-x-1440/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.222
++ fal_ai/high/2560-x-1440/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.234
++ fal_ai/high/3840-x-2160/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.401
++ fal_ai/high/3840-x-2160/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.401
++ fal_ai/high/3840-x-2160/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.413
++ fal_ai/low/1024-x-1024/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.006
++ fal_ai/low/1024-x-1024/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.006
++ fal_ai/low/1024-x-1024/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.015
++ fal_ai/low/1024-x-1536/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.005
++ fal_ai/low/1024-x-1536/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.005
++ fal_ai/low/1024-x-1536/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.018
++ fal_ai/low/1024-x-768/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.005
++ fal_ai/low/1024-x-768/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.005
++ fal_ai/low/1024-x-768/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.011
++ fal_ai/low/1920-x-1080/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.005
++ fal_ai/low/1920-x-1080/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.005
++ fal_ai/low/1920-x-1080/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.017
++ fal_ai/low/2560-x-1440/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.007
++ fal_ai/low/2560-x-1440/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.007
++ fal_ai/low/2560-x-1440/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.019
++ fal_ai/low/3840-x-2160/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.012
++ fal_ai/low/3840-x-2160/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.012
++ fal_ai/low/3840-x-2160/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.024
++ fal_ai/medium/1024-x-1024/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.053
++ fal_ai/medium/1024-x-1024/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.053
++ fal_ai/medium/1024-x-1024/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.061
++ fal_ai/medium/1024-x-1536/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.042
++ fal_ai/medium/1024-x-1536/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.042
++ fal_ai/medium/1024-x-1536/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.054
++ fal_ai/medium/1024-x-768/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.037
++ fal_ai/medium/1024-x-768/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.037
++ fal_ai/medium/1024-x-768/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.043
++ fal_ai/medium/1920-x-1080/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/medium/1920-x-1080/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/medium/1920-x-1080/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.053
++ fal_ai/medium/2560-x-1440/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.056
++ fal_ai/medium/2560-x-1440/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.056
++ fal_ai/medium/2560-x-1440/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.068
++ fal_ai/medium/3840-x-2160/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.101
++ fal_ai/medium/3840-x-2160/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.101
++ fal_ai/medium/3840-x-2160/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.113
+
+--- 发生变更（4）---
+~ cognition/swe-1.7  [cognition/chat] 入$0.5 出$2.5
+~ fal_ai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.145
+~ fal_ai/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.145
+~ fal_ai/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.151
+
