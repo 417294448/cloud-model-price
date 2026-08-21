@@ -1,0 +1,118 @@
+===== 2026-08-21 01:56:14 更新 =====
+新增 51 / 减少 0 / 变更 60
+
+--- 新增模型（51）---
++ chat-latest  [openai/chat] 入$5 出$30
++ cognition/swe-1.6  [cognition/chat] 入$0.5 出$2.5
++ cognition/swe-1.7  [cognition/chat] 入$2.5 出$12.5
++ daybreak-blue-latest  [openai/chat] 入$5 出$30
++ daybreak-red-latest  [openai/chat] 入$12.5 出$75
++ fal_ai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.145
++ fal_ai/openai/gpt-image-2  [fal_ai/image_generation] 入- 出- 图$0.145
++ fal_ai/openai/gpt-image-2/edit  [fal_ai/image_generation] 入- 出- 图$0.145
++ fireworks_ai/accounts/fireworks/models/deepseek-v4-flash-0731  [fireworks_ai/chat] 入$0.14 出$0.28
++ fireworks_ai/accounts/fireworks/models/kimi-k3  [fireworks_ai/chat] 入$3 出$15
++ fireworks_ai/accounts/fireworks/models/muse-glimmer-30b  [fireworks_ai/chat] 入$0.35 出$1.5
++ fireworks_ai/accounts/fireworks/models/nemotron-3-ultra-nvfp4  [fireworks_ai/chat] 入$0.6 出$2.4
++ fireworks_ai/accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b  [fireworks_ai/chat] 入$0.05 出$0.2
++ fireworks_ai/accounts/fireworks/models/qwen3p8-max  [fireworks_ai/chat] 入$2 出$6
++ fireworks_ai/accounts/fireworks/routers/glm-5p2-fast  [fireworks_ai/chat] 入$2.1 出$6.6
++ fireworks_ai/accounts/fireworks/routers/glm-5p2-fast-us  [fireworks_ai/chat] 入$2.1 出$6.6
++ fireworks_ai/accounts/fireworks/routers/kimi-k3-fast  [fireworks_ai/chat] 入$4.5 出$22.5
++ fireworks_ai/accounts/fireworks/routers/kimi-k3-us  [fireworks_ai/chat] 入$3.3 出$16.5
++ fireworks_ai/deepseek-v4-flash-0731  [fireworks_ai/chat] 入$0.14 出$0.28
++ fireworks_ai/glm-5p2-fast  [fireworks_ai/chat] 入$2.1 出$6.6
++ fireworks_ai/glm-5p2-fast-us  [fireworks_ai/chat] 入$2.1 出$6.6
++ fireworks_ai/kimi-k3  [fireworks_ai/chat] 入$3 出$15
++ fireworks_ai/kimi-k3-fast  [fireworks_ai/chat] 入$4.5 出$22.5
++ fireworks_ai/kimi-k3-us  [fireworks_ai/chat] 入$3.3 出$16.5
++ fireworks_ai/muse-glimmer-30b  [fireworks_ai/chat] 入$0.35 出$1.5
++ fireworks_ai/nemotron-3-ultra-nvfp4  [fireworks_ai/chat] 入$0.6 出$2.4
++ fireworks_ai/nemotron-lightning-3p5-30b-a3b  [fireworks_ai/chat] 入$0.05 出$0.2
++ fireworks_ai/qwen3p8-max  [fireworks_ai/chat] 入$2 出$6
++ gemini-3.1-flash-lite-image  [vertex_ai-language-models/image_generation] 入$0.25 出$1.5 图$0.0336
++ gemini/gemini-3.1-flash-lite-image  [gemini/image_generation] 入$0.25 出$1.5 图$0.0336
++ gemini/gemini-3.5-live-translate-preview  [gemini/chat] 入$3.5 出$21
++ gpt-5.6-cyber  [openai/chat] 入$12.5 出$75
++ mistral/glm-5-2  [mistral/chat] 入$1.4 出$4.4
++ mistral/mistral-ocr-4-1  [mistral/ocr] 入- 出-
++ mistral/zai-glm-5-2  [mistral/chat] 入$1.4 出$4.4
++ openrouter/anthropic/claude-opus-5  [openrouter/chat] 入$5 出$25
++ openrouter/deepseek/deepseek-v4-pro  [openrouter/chat] 入$1.32 出$3.96
++ openrouter/deepseek/deepseek-v4-pro-0813  [openrouter/chat] 入$1.32 出$3.96
++ perplexity/perplexity/deepseek-v4-flash-0731  [perplexity/responses] 入$0.13 出$0.26
++ perplexity/perplexity/glm-5.2  [perplexity/responses] 入$1.4 出$4.4
++ perplexity/perplexity/kimi-k2.7-code  [perplexity/responses] 入$0.95 出$4
++ perplexity/perplexity/kimi-k3  [perplexity/responses] 入$3 出$15
++ perplexity/pplx-embed-context-v1-0.6b  [perplexity/embedding] 入$0.008 出$0
++ perplexity/pplx-embed-context-v1-4b  [perplexity/embedding] 入$0.05 出$0
++ vertex_ai/gemini-3.1-flash-lite-image  [vertex_ai-language-models/image_generation] 入$0.25 出$1.5 图$0.0336
++ voyage/voyage-4  [voyage/embedding] 入$0.06 出$0
++ voyage/voyage-4-large  [voyage/embedding] 入$0.12 出$0
++ voyage/voyage-4-lite  [voyage/embedding] 入$0.02 出$0
++ voyage/voyage-code-4  [voyage/embedding] 入$0.12 出$0
++ voyage/voyage-context-4  [voyage/embedding] 入$0.12 出$0
++ voyage/voyage-multimodal-3.5  [voyage/embedding] 入$0.12 出$0
+
+--- 发生变更（60）---
+~ anthropic.claude-haiku-4-5-20251001-v1:0  [bedrock_converse/chat] 入$1 出$5
+~ anthropic.claude-sonnet-4-5-20250929-v1:0  [bedrock_converse/chat] 入$3 出$15
+~ apac.anthropic.claude-haiku-4-5-20251001-v1:0  [bedrock_converse/chat] 入$1.1 出$5.5
+~ au.anthropic.claude-haiku-4-5-20251001-v1:0  [bedrock_converse/chat] 入$1.1 出$5.5
+~ au.anthropic.claude-sonnet-4-5-20250929-v1:0  [bedrock_converse/chat] 入$3.3 出$16.5
+~ azure/eu/gpt-5.6  [azure/chat] 入$5.5 出$33
+~ azure/eu/gpt-5.6-luna  [azure/chat] 入$0.22 出$1.32
+~ azure/eu/gpt-5.6-sol  [azure/chat] 入$5.5 出$33
+~ azure/eu/gpt-5.6-terra  [azure/chat] 入$2.2 出$13.2
+~ azure/gpt-5.6  [azure/chat] 入$5 出$30
+~ azure/gpt-5.6-luna  [azure/chat] 入$0.2 出$1.2
+~ azure/gpt-5.6-sol  [azure/chat] 入$5 出$30
+~ azure/gpt-5.6-terra  [azure/chat] 入$2 出$12
+~ azure/us/gpt-5.6  [azure/chat] 入$5.5 出$33
+~ azure/us/gpt-5.6-luna  [azure/chat] 入$0.22 出$1.32
+~ azure/us/gpt-5.6-sol  [azure/chat] 入$5.5 出$33
+~ azure/us/gpt-5.6-terra  [azure/chat] 入$2.2 出$13.2
+~ claude-fable-5  [anthropic/chat] 入$10 出$50
+~ claude-mythos-5  [anthropic/chat] 入$10 出$50
+~ claude-mythos-preview  [anthropic/chat] 入$10 出$50
+~ claude-sonnet-4-5-20250929-v1:0  [bedrock/chat] 入$3 出$15
+~ claude-sonnet-4-6  [anthropic/chat] 入$3 出$15
+~ command  [cohere/completion] 入$1 出$2
+~ command-light  [cohere_chat/chat] 入$0.3 出$0.6
+~ command-r  [cohere_chat/chat] 入$0.15 出$0.6
+~ command-r-plus  [cohere_chat/chat] 入$2.5 出$10
+~ eu.anthropic.claude-haiku-4-5-20251001-v1:0  [bedrock_converse/chat] 入$1.1 出$5.5
+~ eu.anthropic.claude-sonnet-4-5-20250929-v1:0  [bedrock_converse/chat] 入$3.3 出$16.5
+~ gemini-3.5-flash  [vertex_ai-language-models/chat] 入$1.5 出$9
+~ gemini/gemini-3.5-flash  [gemini/chat] 入$1.5 出$9
+~ global.anthropic.claude-haiku-4-5-20251001-v1:0  [bedrock_converse/chat] 入$1 出$5
+~ global.anthropic.claude-sonnet-4-5-20250929-v1:0  [bedrock_converse/chat] 入$3 出$15
+~ gpt-5.6  [openai/chat] 入$5 出$30
+~ gpt-5.6-luna  [openai/chat] 入$0.2 出$1.2
+~ gpt-5.6-sol  [openai/chat] 入$5 出$30
+~ gpt-5.6-terra  [openai/chat] 入$2 出$12
+~ gpt-audio-mini-2025-12-15  [openai/chat] 入$0.6 出$2.4
+~ gpt-realtime-mini-2025-12-15  [openai/realtime] 入$0.6 出$2.4
+~ jp.anthropic.claude-haiku-4-5-20251001-v1:0  [bedrock_converse/chat] 入$1.1 出$5.5
+~ jp.anthropic.claude-sonnet-4-5-20250929-v1:0  [bedrock_converse/chat] 入$3.3 出$16.5
+~ mistral/codestral-2508  [mistral/chat] 入$0.3 出$0.9
+~ mistral/codestral-latest  [mistral/chat] 入$0.3 出$0.9
+~ mistral/mistral-small-2603  [mistral/chat] 入$0.15 出$0.6
+~ mistral/mistral-small-latest  [mistral/chat] 入$0.15 出$0.6
+~ qwen.qwen3-235b-a22b-2507-v1:0  [bedrock_converse/chat] 入$0.22 出$0.88
+~ rerank-english-v2.0  [cohere/rerank] 入$0 出$0
+~ rerank-multilingual-v2.0  [cohere/rerank] 入$0 出$0
+~ us.anthropic.claude-haiku-4-5-20251001-v1:0  [bedrock_converse/chat] 入$1.1 出$5.5
+~ us.anthropic.claude-sonnet-4-5-20250929-v1:0  [bedrock_converse/chat] 入$3.3 出$16.5
+~ vertex_ai/deepseek-ai/deepseek-v3.1-maas  [vertex_ai-deepseek_models/chat] 入$0.6 出$1.7
+~ vertex_ai/gemini-3.5-flash  [vertex_ai/chat] 入$1.5 出$9
+~ vertex_ai/openai/gpt-oss-120b-maas  [vertex_ai-openai_models/chat] 入$0.09 出$0.36
+~ vertex_ai/qwen/qwen3-235b-a22b-instruct-2507-maas  [vertex_ai-qwen_models/chat] 入$0.22 出$0.88
+~ vertex_ai/qwen/qwen3-coder-480b-a35b-instruct-maas  [vertex_ai-qwen_models/chat] 入$0.22 出$1.8
+~ xai/grok-3-latest  [xai/chat] 入$3 出$15
+~ xai/grok-4  [xai/chat] 入$3 出$15
+~ xai/grok-4-latest  [xai/chat] 入$3 出$15
+~ xai/grok-code-fast  [xai/chat] 入$1 出$2
+~ xai/grok-code-fast-1  [xai/chat] 入$1 出$2
+~ xai/grok-code-fast-1-0825  [xai/chat] 入$1 出$2
+
