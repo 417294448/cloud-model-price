@@ -31,11 +31,22 @@ MODEL_META = {
         'version': 'DeepSeek-V4-Flash-0731',
         'max_input_tokens': 1000000, 'max_output_tokens': 384000,
         'concurrency': 2500,
+        'fim': 'available in non-thinking mode only',
+        'modalities': ['text'],
     },
     'deepseek-v4-pro': {
         'version': 'DeepSeek-V4-Pro-0813',
         'max_input_tokens': 1000000, 'max_output_tokens': 384000,
         'concurrency': 500,
+        'fim': 'available in non-thinking mode only',
+        'modalities': ['text'],
+    },
+    'deepseek-v4-flash-vision-exp': {
+        'version': 'DeepSeek-V4-Flash-Vision-Exp',
+        'max_input_tokens': 1000000, 'max_output_tokens': 384000,
+        'concurrency': 2500,
+        'fim': 'not supported',
+        'modalities': ['text', 'image'],
     },
 }
 
@@ -71,23 +82,33 @@ def fetch():
         raise ValueError('未在定价页找到模型名')
 
     # 按价格锚点提取：OFF-PEAK / PEAK 后的 $ 值
-    # 页面结构：类别名 -> OFF-PEAK -> $a -> $b -> PEAK -> $a -> $b（a=flash, b=pro）
-    def grab(label):
-        """找 label 后的 OFF-PEAK/PEAK 各两个价格，返回 {peak: [f, p], off: [f, p]}"""
+    # 页面结构：类别名 [可能跨行: (CACHE HIT/MISS)] -> OFF-PEAK -> $a $b $c -> PEAK -> $a $b $c
+    def grab(label, sub=None):
+        """找 label（可跨行匹配 sub）后的 OFF-PEAK/PEAK 价格列表"""
         for i, l in enumerate(lines):
-            if l.upper().startswith(label.upper()):
-                seg = lines[i:i + 12]
-                off_i = next((j for j, x in enumerate(seg) if x.upper() == 'OFF-PEAK'), None)
-                peak_i = next((j for j, x in enumerate(seg) if x.upper() == 'PEAK'), None)
-                if off_i is None or peak_i is None:
-                    return None
-                off = [float(x[1:]) for x in seg[off_i + 1:off_i + 3] if x.startswith('$')]
-                peak = [float(x[1:]) for x in seg[peak_i + 1:peak_i + 3] if x.startswith('$')]
-                return {'off': off, 'peak': peak}
+            if not l.upper().startswith(label.upper()):
+                continue
+            if sub:
+                if i + 1 >= len(lines) or lines[i + 1].upper() != sub.upper():
+                    continue
+                start = i + 1
+            else:
+                start = i
+            off_i = peak_i = None
+            for j in range(start + 1, min(start + 15, len(lines))):
+                if lines[j].upper() == 'OFF-PEAK' and off_i is None:
+                    off_i = j
+                elif lines[j].upper() == 'PEAK' and peak_i is None:
+                    peak_i = j
+            if off_i is None or peak_i is None:
+                return None
+            off = [float(x[1:]) for x in lines[off_i + 1:peak_i] if x.startswith('$')]
+            peak = [float(x[1:]) for x in lines[peak_i + 1:peak_i + 6] if x.startswith('$')]
+            return {'off': off, 'peak': peak}
         return None
 
-    cache_hit = grab('1M INPUT TOKENS (CACHE HIT)')
-    cache_miss = grab('1M INPUT TOKENS (CACHE MISS)')
+    cache_hit = grab('1M INPUT TOKENS', '(CACHE HIT)')
+    cache_miss = grab('1M INPUT TOKENS', '(CACHE MISS)')
     output = grab('1M OUTPUT TOKENS')
     if not all([cache_hit, cache_miss, output]):
         raise ValueError('价格表解析不完整')
@@ -108,7 +129,7 @@ def fetch():
             f'Off-peak rates: input_cache_hit=${off_cr}/1M, input_cache_miss=${off_in}/1M, output=${off_out}/1M\n'
             f"Concurrency limit: {meta.get('concurrency', 'N/A')}\n"
             'Supports both non-thinking and thinking (default) modes; thinking output billed as '
-            'regular output tokens\nFIM Completion (Beta) available in non-thinking mode only\n'
+            f'regular output tokens\nFIM Completion (Beta): {meta.get("fim", "available in non-thinking mode only")}\n'
             'Base URL (OpenAI format): https://api.deepseek.com\n'
             'Base URL (Anthropic format): https://api.deepseek.com/anthropic\n'
             'Supports Chat Prefix Completion (Beta)\nSupports Responses API and Anthropic API'
@@ -126,7 +147,7 @@ def fetch():
             'output_cost_per_reasoning_token': peak_out / 1e6,
             'cache_read_input_token_cost': peak_cr / 1e6,
             'input_cost_per_token_cache_hit': peak_cr / 1e6,
-            'supported_modalities': ['text'],
+            'supported_modalities': meta.get('modalities', ['text']),
             'supported_output_modalities': ['text'],
             'supported_endpoints': ENDPOINTS,
             'supported_regions': ['global'],

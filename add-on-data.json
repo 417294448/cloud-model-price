@@ -3,7 +3,7 @@
         "litellm_provider": "deepseek",
         "mode": "chat",
         "source": "https://api-docs.deepseek.com/quick_start/pricing/",
-        "notes": "Model version: DeepSeek-V4-Flash-0731\nPricing is dual-rate: PEAK hours are 01:00-04:00 and 06:00-10:00 UTC; all other hours are OFF-PEAK (half of peak). Values in this entry use PEAK rates.\nOff-peak rates: input_cache_hit=$0.007/1M, input_cache_miss=$0.22/1M, output=$0.66/1M\nConcurrency limit: 2500\nSupports both non-thinking and thinking (default) modes; thinking output billed as regular output tokens\nFIM Completion (Beta) available in non-thinking mode only\nBase URL (OpenAI format): https://api.deepseek.com\nBase URL (Anthropic format): https://api.deepseek.com/anthropic\nSupports Chat Prefix Completion (Beta)\nSupports Responses API and Anthropic API",
+        "notes": "Model version: DeepSeek-V4-Flash-0731\nPricing is dual-rate: PEAK hours are 01:00-04:00 and 06:00-10:00 UTC; all other hours are OFF-PEAK (half of peak). Values in this entry use PEAK rates.\nOff-peak rates: input_cache_hit=$0.007/1M, input_cache_miss=$0.22/1M, output=$0.66/1M\nConcurrency limit: 2500\nSupports both non-thinking and thinking (default) modes; thinking output billed as regular output tokens\nFIM Completion (Beta): available in non-thinking mode only\nBase URL (OpenAI format): https://api.deepseek.com\nBase URL (Anthropic format): https://api.deepseek.com/anthropic\nSupports Chat Prefix Completion (Beta)\nSupports Responses API and Anthropic API",
         "max_input_tokens": 1000000,
         "max_output_tokens": 384000,
         "max_tokens": 384000,
@@ -37,7 +37,7 @@
         "litellm_provider": "deepseek",
         "mode": "chat",
         "source": "https://api-docs.deepseek.com/quick_start/pricing/",
-        "notes": "Model version: DeepSeek-V4-Pro-0813\nPricing is dual-rate: PEAK hours are 01:00-04:00 and 06:00-10:00 UTC; all other hours are OFF-PEAK (half of peak). Values in this entry use PEAK rates.\nOff-peak rates: input_cache_hit=$0.022/1M, input_cache_miss=$0.66/1M, output=$1.98/1M\nConcurrency limit: 500\nSupports both non-thinking and thinking (default) modes; thinking output billed as regular output tokens\nFIM Completion (Beta) available in non-thinking mode only\nBase URL (OpenAI format): https://api.deepseek.com\nBase URL (Anthropic format): https://api.deepseek.com/anthropic\nSupports Chat Prefix Completion (Beta)\nSupports Responses API and Anthropic API",
+        "notes": "Model version: DeepSeek-V4-Pro-0813\nPricing is dual-rate: PEAK hours are 01:00-04:00 and 06:00-10:00 UTC; all other hours are OFF-PEAK (half of peak). Values in this entry use PEAK rates.\nOff-peak rates: input_cache_hit=$0.022/1M, input_cache_miss=$0.66/1M, output=$1.98/1M\nConcurrency limit: 500\nSupports both non-thinking and thinking (default) modes; thinking output billed as regular output tokens\nFIM Completion (Beta): available in non-thinking mode only\nBase URL (OpenAI format): https://api.deepseek.com\nBase URL (Anthropic format): https://api.deepseek.com/anthropic\nSupports Chat Prefix Completion (Beta)\nSupports Responses API and Anthropic API",
         "max_input_tokens": 1000000,
         "max_output_tokens": 384000,
         "max_tokens": 384000,
@@ -1177,5 +1177,40 @@
         "supports_prompt_caching": true,
         "supports_reasoning": true,
         "supports_speed": true
+    },
+    "deepseek-v4-flash-vision-exp": {
+        "litellm_provider": "deepseek",
+        "mode": "chat",
+        "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+        "notes": "Model version: DeepSeek-V4-Flash-Vision-Exp\nPricing is dual-rate: PEAK hours are 01:00-04:00 and 06:00-10:00 UTC; all other hours are OFF-PEAK (half of peak). Values in this entry use PEAK rates.\nOff-peak rates: input_cache_hit=$0.007/1M, input_cache_miss=$0.22/1M, output=$0.66/1M\nConcurrency limit: 2500\nSupports both non-thinking and thinking (default) modes; thinking output billed as regular output tokens\nFIM Completion (Beta): not supported\nBase URL (OpenAI format): https://api.deepseek.com\nBase URL (Anthropic format): https://api.deepseek.com/anthropic\nSupports Chat Prefix Completion (Beta)\nSupports Responses API and Anthropic API",
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 384000,
+        "max_tokens": 384000,
+        "input_cost_per_token": 4.4e-07,
+        "output_cost_per_token": 1.32e-06,
+        "output_cost_per_reasoning_token": 1.32e-06,
+        "cache_read_input_token_cost": 1.4e-08,
+        "input_cost_per_token_cache_hit": 1.4e-08,
+        "supported_modalities": [
+            "text",
+            "image"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "supported_regions": [
+            "global"
+        ],
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_assistant_prefill": true
     }
 }

@@ -33,3 +33,16 @@
 ~ vertex_ai/claude-fable-5@default  [vertex_ai-anthropic_models/chat] 入$10 出$50
 ~ vertex_ai/gemini-3.1-flash-lite-image  [vertex_ai-language-models/image_generation] 入$0.25 出$1.5 图$0.0336
 
+===== 2026-08-22 02:17:15 更新 =====
+新增 0 / 减少 0 / 变更 0
+
+（本次无变化）
+===== 2026-08-22 02:18:25 更新 =====
+新增 0 / 减少 0 / 变更 0
+
+（本次无变化）
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 deepseek-v4-flash-vision-exp  [deepseek/chat] 入$0.44 出$1.32
+~ 修正补丁 deepseek-v4-flash  [deepseek/chat] 入$0.44 出$1.32
+~ 修正补丁 deepseek-v4-pro  [deepseek/chat] 入$1.32 出$3.96
+
