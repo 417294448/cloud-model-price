@@ -1,0 +1,35 @@
+===== 2026-08-22 02:06:47 更新 =====
+新增 10 / 减少 0 / 变更 18
+
+--- 新增模型（10）---
++ azure/gpt-audio-mini  [azure/chat] 入$0.6 出$2.4
++ azure/gpt-realtime-mini  [azure/realtime] 入$0.6 出$2.4
++ global.openai.gpt-5.6-luna  [bedrock_converse/chat] 入$0.2 出$1.2
++ global.openai.gpt-5.6-sol  [bedrock_converse/chat] 入$5 出$30
++ global.openai.gpt-5.6-terra  [bedrock_converse/chat] 入$2 出$12
++ scx-ai/GLM-5.2  [scx-ai/chat] 入$0.61 出$1.98
++ scx-ai/Qwen3.8-Max  [scx-ai/chat] 入$1.65 出$4.99
++ us.openai.gpt-5.6-luna  [bedrock_converse/chat] 入$0.22 出$1.32
++ us.openai.gpt-5.6-sol  [bedrock_converse/chat] 入$5.5 出$33
++ us.openai.gpt-5.6-terra  [bedrock_converse/chat] 入$2.2 出$13.2
+
+--- 发生变更（18）---
+~ anthropic.claude-fable-5  [bedrock_converse/chat] 入$10 出$50
+~ anthropic.claude-mythos-preview  [bedrock/chat] 入$0 出$0
+~ azure_ai/claude-fable-5  [azure_ai/chat] 入$10 出$50
+~ claude-fable-5  [anthropic/chat] 入$10 出$50
+~ claude-mythos-5  [anthropic/chat] 入$10 出$50
+~ claude-mythos-preview  [anthropic/chat] 入$10 出$50
+~ daybreak-blue-latest  [openai/chat] 入$4 出$20
+~ eu.anthropic.claude-fable-5  [bedrock_converse/chat] 入$11 出$55
+~ fallback_generalizations  [/] 入- 出-
+~ gemini-3.1-flash-lite-image  [vertex_ai-language-models/image_generation] 入$0.25 出$1.5 图$0.0336
+~ gemini/gemini-3.1-flash-lite-image  [gemini/image_generation] 入$0.25 出$1.5 图$0.0336
+~ global.anthropic.claude-fable-5  [bedrock_converse/chat] 入$10 出$50
+~ gpt-5.6  [openai/chat] 入$4 出$20
+~ gpt-5.6-sol  [openai/chat] 入$4 出$20
+~ us.anthropic.claude-fable-5  [bedrock_converse/chat] 入$11 出$55
+~ vertex_ai/claude-fable-5  [vertex_ai-anthropic_models/chat] 入$10 出$50
+~ vertex_ai/claude-fable-5@default  [vertex_ai-anthropic_models/chat] 入$10 出$50
+~ vertex_ai/gemini-3.1-flash-lite-image  [vertex_ai-language-models/image_generation] 入$0.25 出$1.5 图$0.0336
+
