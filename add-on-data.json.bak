@@ -1,0 +1,1216 @@
+{
+    "deepseek-v4-flash": {
+        "litellm_provider": "deepseek",
+        "mode": "chat",
+        "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+        "notes": "Model version: DeepSeek-V4-Flash-0731\nPricing is dual-rate: PEAK hours are 01:00-04:00 and 06:00-10:00 UTC; all other hours are OFF-PEAK (half of peak). Values in this entry use PEAK rates.\nOff-peak rates: input_cache_hit=$0.007/1M, input_cache_miss=$0.22/1M, output=$0.66/1M\nConcurrency limit: 2500\nSupports both non-thinking and thinking (default) modes; thinking output billed as regular output tokens\nFIM Completion (Beta): available in non-thinking mode only\nBase URL (OpenAI format): https://api.deepseek.com\nBase URL (Anthropic format): https://api.deepseek.com/anthropic\nSupports Chat Prefix Completion (Beta)\nSupports Responses API and Anthropic API",
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 384000,
+        "max_tokens": 384000,
+        "input_cost_per_token": 4.4e-07,
+        "output_cost_per_token": 1.32e-06,
+        "output_cost_per_reasoning_token": 1.32e-06,
+        "cache_read_input_token_cost": 1.4e-08,
+        "input_cost_per_token_cache_hit": 1.4e-08,
+        "supported_modalities": [
+            "text"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "supported_regions": [
+            "global"
+        ],
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_assistant_prefill": true
+    },
+    "deepseek-v4-pro": {
+        "litellm_provider": "deepseek",
+        "mode": "chat",
+        "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+        "notes": "Model version: DeepSeek-V4-Pro-0813\nPricing is dual-rate: PEAK hours are 01:00-04:00 and 06:00-10:00 UTC; all other hours are OFF-PEAK (half of peak). Values in this entry use PEAK rates.\nOff-peak rates: input_cache_hit=$0.022/1M, input_cache_miss=$0.66/1M, output=$1.98/1M\nConcurrency limit: 500\nSupports both non-thinking and thinking (default) modes; thinking output billed as regular output tokens\nFIM Completion (Beta): available in non-thinking mode only\nBase URL (OpenAI format): https://api.deepseek.com\nBase URL (Anthropic format): https://api.deepseek.com/anthropic\nSupports Chat Prefix Completion (Beta)\nSupports Responses API and Anthropic API",
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 384000,
+        "max_tokens": 384000,
+        "input_cost_per_token": 1.32e-06,
+        "output_cost_per_token": 3.96e-06,
+        "output_cost_per_reasoning_token": 3.96e-06,
+        "cache_read_input_token_cost": 4.4e-08,
+        "input_cost_per_token_cache_hit": 4.4e-08,
+        "supported_modalities": [
+            "text"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "supported_regions": [
+            "global"
+        ],
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_assistant_prefill": true
+    },
+    "zai/glm-4.5": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 128000,
+        "max_output_tokens": 96000,
+        "max_tokens": 96000,
+        "input_cost_per_token": 6e-07,
+        "output_cost_per_token": 2.2e-06,
+        "cache_read_input_token_cost": 1.1e-07,
+        "input_cost_per_token_cache_hit": 1.1e-07,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supported_modalities": [
+            "text"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-4.5-air": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 128000,
+        "max_output_tokens": 96000,
+        "max_tokens": 96000,
+        "input_cost_per_token": 2.0000000000000002e-07,
+        "output_cost_per_token": 1.1e-06,
+        "cache_read_input_token_cost": 3e-08,
+        "input_cost_per_token_cache_hit": 3e-08,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supported_modalities": [
+            "text"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-4.5-airx": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 128000,
+        "max_output_tokens": 96000,
+        "max_tokens": 96000,
+        "input_cost_per_token": 1.1e-06,
+        "output_cost_per_token": 4.5e-06,
+        "cache_read_input_token_cost": 2.2e-07,
+        "input_cost_per_token_cache_hit": 2.2e-07,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supported_modalities": [
+            "text"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-4.5-x": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 128000,
+        "max_output_tokens": 96000,
+        "max_tokens": 96000,
+        "input_cost_per_token": 2.2e-06,
+        "output_cost_per_token": 8.900000000000001e-06,
+        "cache_read_input_token_cost": 4.5000000000000003e-07,
+        "input_cost_per_token_cache_hit": 4.5000000000000003e-07,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supported_modalities": [
+            "text"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-5": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 200000,
+        "max_output_tokens": 128000,
+        "max_tokens": 128000,
+        "input_cost_per_token": 1e-06,
+        "output_cost_per_token": 3.2000000000000003e-06,
+        "cache_read_input_token_cost": 2.0000000000000002e-07,
+        "input_cost_per_token_cache_hit": 2.0000000000000002e-07,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supported_modalities": [
+            "text"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-5.3": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000,
+        "max_tokens": 128000,
+        "input_cost_per_token": 1.4e-06,
+        "output_cost_per_token": 4.4e-06,
+        "cache_read_input_token_cost": 2.6e-07,
+        "input_cost_per_token_cache_hit": 2.6e-07,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supported_modalities": [
+            "text"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-5.2": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000,
+        "max_tokens": 128000,
+        "input_cost_per_token": 1.4e-06,
+        "output_cost_per_token": 4.4e-06,
+        "cache_read_input_token_cost": 2.6e-07,
+        "input_cost_per_token_cache_hit": 2.6e-07,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supported_modalities": [
+            "text"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-5-turbo": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 200000,
+        "max_output_tokens": 128000,
+        "max_tokens": 128000,
+        "input_cost_per_token": 1.2e-06,
+        "output_cost_per_token": 4e-06,
+        "cache_read_input_token_cost": 2.4e-07,
+        "input_cost_per_token_cache_hit": 2.4e-07,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supported_modalities": [
+            "text"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-4.7-flashx": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 200000,
+        "max_output_tokens": 128000,
+        "max_tokens": 128000,
+        "input_cost_per_token": 7e-08,
+        "output_cost_per_token": 4.0000000000000003e-07,
+        "cache_read_input_token_cost": 1e-08,
+        "input_cost_per_token_cache_hit": 1e-08,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supported_modalities": [
+            "text"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-5v-turbo": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 200000,
+        "max_output_tokens": 128000,
+        "max_tokens": 128000,
+        "input_cost_per_token": 1.2e-06,
+        "output_cost_per_token": 4e-06,
+        "cache_read_input_token_cost": 2.4e-07,
+        "input_cost_per_token_cache_hit": 2.4e-07,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_vision": true,
+        "supports_video_input": true,
+        "supported_modalities": [
+            "text",
+            "image",
+            "video"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-4.6v": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 128000,
+        "input_cost_per_token": 3e-07,
+        "output_cost_per_token": 9.000000000000001e-07,
+        "cache_read_input_token_cost": 5.0000000000000004e-08,
+        "input_cost_per_token_cache_hit": 5.0000000000000004e-08,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_vision": true,
+        "supports_video_input": true,
+        "supported_modalities": [
+            "text",
+            "image",
+            "video"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-4.6v-flashx": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 128000,
+        "input_cost_per_token": 4e-08,
+        "output_cost_per_token": 4.0000000000000003e-07,
+        "cache_read_input_token_cost": 4e-09,
+        "input_cost_per_token_cache_hit": 4e-09,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_vision": true,
+        "supports_video_input": true,
+        "supported_modalities": [
+            "text",
+            "image",
+            "video"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-4.6v-flash": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 128000,
+        "input_cost_per_token": 0.0,
+        "output_cost_per_token": 0.0,
+        "cache_read_input_token_cost": 0.0,
+        "input_cost_per_token_cache_hit": 0.0,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_vision": true,
+        "supports_video_input": true,
+        "supported_modalities": [
+            "text",
+            "image",
+            "video"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-ocr": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "input_cost_per_token": 3e-08,
+        "output_cost_per_token": 3e-08,
+        "notes": "OCR model. Input: PDF (<=50MB, <=100 pages) or images (JPG/PNG <=10MB). Output: Text / Image Links / MD Documents. Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supports_vision": true,
+        "supported_modalities": [
+            "text",
+            "image"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "moonshot/kimi-k3": {
+        "litellm_provider": "moonshot",
+        "mode": "chat",
+        "source": "https://platform.kimi.ai/docs/pricing/chat",
+        "input_cost_per_token": 3e-06,
+        "output_cost_per_token": 1.5e-05,
+        "cache_read_input_token_cost": 3e-07,
+        "input_cost_per_token_cache_hit": 3e-07,
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions"
+        ],
+        "max_input_tokens": 1048576,
+        "max_output_tokens": 128000,
+        "max_tokens": 128000,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_vision": true,
+        "supports_video_input": true,
+        "supported_modalities": [
+            "text",
+            "image",
+            "video"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "notes": "Kimi flagship for long-horizon coding and end-to-end knowledge work. Always runs with thinking enabled; reasoning effort configurable via top-level reasoning_effort (low/high/max, default max). Supports tool calling, JSON Mode, structured output, Partial Mode, context caching, tool_choice and dynamic tool loading. Prices per the official pricing page (USD/1M tokens)."
+    },
+    "moonshot/kimi-k2.7-code": {
+        "litellm_provider": "moonshot",
+        "mode": "chat",
+        "source": "https://platform.kimi.ai/docs/pricing/chat",
+        "input_cost_per_token": 9.499999999999999e-07,
+        "output_cost_per_token": 4e-06,
+        "cache_read_input_token_cost": 1.9e-07,
+        "input_cost_per_token_cache_hit": 1.9e-07,
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions"
+        ],
+        "max_input_tokens": 262144,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_vision": true,
+        "supports_video_input": true,
+        "supported_modalities": [
+            "text",
+            "image",
+            "video"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "notes": "Coding-focused model. Thinking mode only. Supports text/image/video input. 256K context. Prices per the official pricing page (USD/1M tokens)."
+    },
+    "moonshot/kimi-k2.7-code-highspeed": {
+        "litellm_provider": "moonshot",
+        "mode": "chat",
+        "source": "https://platform.kimi.ai/docs/pricing/chat",
+        "input_cost_per_token": 1.8999999999999998e-06,
+        "output_cost_per_token": 8e-06,
+        "cache_read_input_token_cost": 3.8e-07,
+        "input_cost_per_token_cache_hit": 3.8e-07,
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions"
+        ],
+        "max_input_tokens": 262144,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_vision": true,
+        "supports_video_input": true,
+        "supports_speed": true,
+        "supported_modalities": [
+            "text",
+            "image",
+            "video"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "notes": "High-speed variant of kimi-k2.7-code (same model, ~180 output tokens/s, up to ~260 in short-context scenarios). Thinking mode only. Prices per the official pricing page (USD/1M tokens)."
+    },
+    "moonshot/moonshot-v1-8k": {
+        "input_cost_per_token": 2e-07,
+        "litellm_provider": "moonshot",
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192,
+        "max_tokens": 8192,
+        "mode": "chat",
+        "output_cost_per_token": 2e-06,
+        "source": "https://platform.kimi.ai/docs/pricing/chat",
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_tool_choice": true,
+        "deprecation_date": "2026-08-31",
+        "notes": "Scheduled for full platform sunset on 2026-08-31 per the official pricing page. Prices confirmed consistent with the official page (USD/1M tokens)."
+    },
+    "moonshot/moonshot-v1-32k": {
+        "input_cost_per_token": 1e-06,
+        "litellm_provider": "moonshot",
+        "max_input_tokens": 32768,
+        "max_output_tokens": 32768,
+        "max_tokens": 32768,
+        "mode": "chat",
+        "output_cost_per_token": 3e-06,
+        "source": "https://platform.kimi.ai/docs/pricing/chat",
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_tool_choice": true,
+        "deprecation_date": "2026-08-31",
+        "notes": "Scheduled for full platform sunset on 2026-08-31 per the official pricing page. Prices confirmed consistent with the official page (USD/1M tokens)."
+    },
+    "moonshot/moonshot-v1-128k": {
+        "input_cost_per_token": 2e-06,
+        "litellm_provider": "moonshot",
+        "max_input_tokens": 131072,
+        "max_output_tokens": 131072,
+        "max_tokens": 131072,
+        "mode": "chat",
+        "output_cost_per_token": 5e-06,
+        "source": "https://platform.kimi.ai/docs/pricing/chat",
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_tool_choice": true,
+        "deprecation_date": "2026-08-31",
+        "notes": "Scheduled for full platform sunset on 2026-08-31 per the official pricing page. Prices confirmed consistent with the official page (USD/1M tokens)."
+    },
+    "moonshot/moonshot-v1-8k-vision-preview": {
+        "input_cost_per_token": 2e-07,
+        "litellm_provider": "moonshot",
+        "max_input_tokens": 8192,
+        "max_output_tokens": 8192,
+        "max_tokens": 8192,
+        "mode": "chat",
+        "output_cost_per_token": 2e-06,
+        "source": "https://platform.kimi.ai/docs/pricing/chat",
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_tool_choice": true,
+        "supports_vision": true,
+        "deprecation_date": "2026-08-31",
+        "notes": "Scheduled for full platform sunset on 2026-08-31 per the official pricing page. Prices confirmed consistent with the official page (USD/1M tokens)."
+    },
+    "moonshot/moonshot-v1-32k-vision-preview": {
+        "input_cost_per_token": 1e-06,
+        "litellm_provider": "moonshot",
+        "max_input_tokens": 32768,
+        "max_output_tokens": 32768,
+        "max_tokens": 32768,
+        "mode": "chat",
+        "output_cost_per_token": 3e-06,
+        "source": "https://platform.kimi.ai/docs/pricing/chat",
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_tool_choice": true,
+        "supports_vision": true,
+        "deprecation_date": "2026-08-31",
+        "notes": "Scheduled for full platform sunset on 2026-08-31 per the official pricing page. Prices confirmed consistent with the official page (USD/1M tokens)."
+    },
+    "moonshot/moonshot-v1-128k-vision-preview": {
+        "input_cost_per_token": 2e-06,
+        "litellm_provider": "moonshot",
+        "max_input_tokens": 131072,
+        "max_output_tokens": 131072,
+        "max_tokens": 131072,
+        "mode": "chat",
+        "output_cost_per_token": 5e-06,
+        "source": "https://platform.kimi.ai/docs/pricing/chat",
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_tool_choice": true,
+        "supports_vision": true,
+        "deprecation_date": "2026-08-31",
+        "notes": "Scheduled for full platform sunset on 2026-08-31 per the official pricing page. Prices confirmed consistent with the official page (USD/1M tokens)."
+    },
+    "minimax/MiniMax-M3": {
+        "litellm_provider": "minimax",
+        "mode": "chat",
+        "source": "https://platform.minimax.io/docs/guides/pricing-paygo",
+        "input_cost_per_token": 3e-07,
+        "output_cost_per_token": 1.2e-06,
+        "cache_read_input_token_cost": 6e-08,
+        "input_cost_per_token_above_512k_tokens": 6e-07,
+        "output_cost_per_token_above_512k_tokens": 2.4e-06,
+        "cache_read_input_token_cost_above_512k_tokens": 1.2e-07,
+        "input_cost_per_token_priority": 4.5e-07,
+        "output_cost_per_token_priority": 1.8e-06,
+        "supported_modalities": [
+            "text"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions"
+        ],
+        "supported_regions": [
+            "global"
+        ],
+        "notes": "Multimodal coding model with 1M context. Tiered pricing: >512K input tokens billed at 2x standard (cache read $0.12/1M). Priority tier (service_tier=priority) billed at 1.5x standard for faster response and improved reliability. Prices per the official pricing page (USD/1M tokens).",
+        "supports_function_calling": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true
+    },
+    "minimax/MiniMax-M2.7": {
+        "litellm_provider": "minimax",
+        "mode": "chat",
+        "source": "https://platform.minimax.io/docs/guides/pricing-paygo",
+        "input_cost_per_token": 3e-07,
+        "output_cost_per_token": 1.2e-06,
+        "cache_read_input_token_cost": 6e-08,
+        "cache_creation_input_token_cost": 3.75e-07,
+        "supported_modalities": [
+            "text"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions"
+        ],
+        "supported_regions": [
+            "global"
+        ],
+        "notes": "Prices per the official pricing page (USD/1M tokens).",
+        "supports_function_calling": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true
+    },
+    "minimax/MiniMax-M2.7-highspeed": {
+        "litellm_provider": "minimax",
+        "mode": "chat",
+        "source": "https://platform.minimax.io/docs/guides/pricing-paygo",
+        "input_cost_per_token": 6e-07,
+        "output_cost_per_token": 2.4e-06,
+        "cache_read_input_token_cost": 6e-08,
+        "cache_creation_input_token_cost": 3.75e-07,
+        "supported_modalities": [
+            "text"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions"
+        ],
+        "supported_regions": [
+            "global"
+        ],
+        "notes": "Prices per the official pricing page (USD/1M tokens).",
+        "supports_function_calling": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_speed": true
+    },
+    "minimax/speech-2.8-turbo": {
+        "litellm_provider": "minimax",
+        "mode": "audio_speech",
+        "source": "https://platform.minimax.io/docs/guides/pricing-paygo",
+        "input_cost_per_character": 6e-05,
+        "notes": "Text-to-speech. Priced at $60 per 1M characters per the official pricing page.",
+        "supported_regions": [
+            "global"
+        ]
+    },
+    "minimax/speech-2.8-hd": {
+        "litellm_provider": "minimax",
+        "mode": "audio_speech",
+        "source": "https://platform.minimax.io/docs/guides/pricing-paygo",
+        "input_cost_per_character": 0.0001,
+        "notes": "Text-to-speech. Priced at $100 per 1M characters per the official pricing page.",
+        "supported_regions": [
+            "global"
+        ]
+    },
+    "minimax/MiniMax-H3": {
+        "litellm_provider": "minimax",
+        "mode": "video_generation",
+        "source": "https://platform.minimax.io/docs/guides/pricing-paygo",
+        "output_cost_per_second": 0.08,
+        "notes": "Video generation. Billed per second: 768P $0.08/s, 2K $0.13/s (field stores 768P rate). Input materials: audio free; first 5 images free, $0.04 per additional image; input video billed by duration at output-resolution rate. 4-15s duration, 24fps. Prices per the official pricing page.",
+        "supported_modalities": [
+            "text",
+            "image",
+            "video"
+        ],
+        "supported_output_modalities": [
+            "video"
+        ],
+        "supported_regions": [
+            "global"
+        ]
+    },
+    "minimax/image-01": {
+        "litellm_provider": "minimax",
+        "mode": "image_generation",
+        "source": "https://platform.minimax.io/docs/guides/pricing-paygo",
+        "output_cost_per_image": 0.0035,
+        "notes": "Image generation. Priced at $0.0035 per image per the official pricing page.",
+        "supported_modalities": [
+            "text"
+        ],
+        "supported_output_modalities": [
+            "image"
+        ],
+        "supported_regions": [
+            "global"
+        ]
+    },
+    "zai/glm-5.1": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 200000,
+        "max_output_tokens": 128000,
+        "max_tokens": 128000,
+        "input_cost_per_token": 1.4e-06,
+        "output_cost_per_token": 4.4e-06,
+        "cache_read_input_token_cost": 2.6e-07,
+        "input_cost_per_token_cache_hit": 2.6e-07,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supported_modalities": [
+            "text"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-4.7": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 200000,
+        "max_output_tokens": 128000,
+        "max_tokens": 128000,
+        "input_cost_per_token": 6e-07,
+        "output_cost_per_token": 2.2e-06,
+        "cache_read_input_token_cost": 1.1e-07,
+        "input_cost_per_token_cache_hit": 1.1e-07,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supported_modalities": [
+            "text"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-4.7-flash": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 200000,
+        "max_output_tokens": 128000,
+        "max_tokens": 128000,
+        "input_cost_per_token": 0.0,
+        "output_cost_per_token": 0.0,
+        "cache_read_input_token_cost": 0.0,
+        "input_cost_per_token_cache_hit": 0.0,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supported_modalities": [
+            "text"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-4.6": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 200000,
+        "max_output_tokens": 128000,
+        "max_tokens": 128000,
+        "input_cost_per_token": 6e-07,
+        "output_cost_per_token": 2.2e-06,
+        "cache_read_input_token_cost": 1.1e-07,
+        "input_cost_per_token_cache_hit": 1.1e-07,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supported_modalities": [
+            "text"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-4-32b-0414-128k": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16000,
+        "max_tokens": 16000,
+        "input_cost_per_token": 1.0000000000000001e-07,
+        "output_cost_per_token": 1.0000000000000001e-07,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supported_modalities": [
+            "text"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "zai/glm-4.5v": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 128000,
+        "max_output_tokens": 16000,
+        "max_tokens": 16000,
+        "input_cost_per_token": 6e-07,
+        "output_cost_per_token": 1.8000000000000001e-06,
+        "cache_read_input_token_cost": 1.1e-07,
+        "input_cost_per_token_cache_hit": 1.1e-07,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_vision": true,
+        "supports_video_input": true,
+        "supported_modalities": [
+            "text",
+            "image",
+            "video"
+        ],
+        "notes": "Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supported_output_modalities": [
+            "text"
+        ]
+    },
+    "moonshot/kimi-k2.6": {
+        "litellm_provider": "moonshot",
+        "mode": "chat",
+        "source": "https://platform.kimi.ai/docs/pricing/chat",
+        "input_cost_per_token": 9.499999999999999e-07,
+        "output_cost_per_token": 4e-06,
+        "cache_read_input_token_cost": 1.6e-07,
+        "input_cost_per_token_cache_hit": 1.6e-07,
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions"
+        ],
+        "max_input_tokens": 262144,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_vision": true,
+        "supports_video_input": true,
+        "supported_modalities": [
+            "text",
+            "image",
+            "video"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "notes": "General-purpose model with stable long-horizon coding, instruction following and self-correction. Supports text/image/video input, thinking and non-thinking modes. Prices per the official pricing page (USD/1M tokens)."
+    },
+    "minimax/MiniMax-M2.5": {
+        "litellm_provider": "minimax",
+        "mode": "chat",
+        "source": "https://platform.minimax.io/docs/guides/pricing-paygo",
+        "input_cost_per_token": 3e-07,
+        "output_cost_per_token": 1.2e-06,
+        "cache_read_input_token_cost": 3e-08,
+        "cache_creation_input_token_cost": 3.75e-07,
+        "supported_modalities": [
+            "text"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions"
+        ],
+        "supported_regions": [
+            "global"
+        ],
+        "notes": "Prices per the official pricing page (USD/1M tokens).",
+        "supports_function_calling": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true
+    },
+    "minimax/MiniMax-M2.5-highspeed": {
+        "litellm_provider": "minimax",
+        "mode": "chat",
+        "source": "https://platform.minimax.io/docs/guides/pricing-paygo",
+        "input_cost_per_token": 6e-07,
+        "output_cost_per_token": 2.4e-06,
+        "cache_read_input_token_cost": 3e-08,
+        "cache_creation_input_token_cost": 3.75e-07,
+        "supported_modalities": [
+            "text"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions"
+        ],
+        "supported_regions": [
+            "global"
+        ],
+        "notes": "Prices per the official pricing page (USD/1M tokens).",
+        "supports_function_calling": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_speed": true
+    },
+    "minimax/MiniMax-M2.1": {
+        "litellm_provider": "minimax",
+        "mode": "chat",
+        "source": "https://platform.minimax.io/docs/guides/pricing-paygo",
+        "input_cost_per_token": 3e-07,
+        "output_cost_per_token": 1.2e-06,
+        "cache_read_input_token_cost": 3e-08,
+        "cache_creation_input_token_cost": 3.75e-07,
+        "supported_modalities": [
+            "text"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions"
+        ],
+        "supported_regions": [
+            "global"
+        ],
+        "notes": "Prices per the official pricing page (USD/1M tokens).",
+        "supports_function_calling": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true
+    },
+    "minimax/MiniMax-M2.1-highspeed": {
+        "litellm_provider": "minimax",
+        "mode": "chat",
+        "source": "https://platform.minimax.io/docs/guides/pricing-paygo",
+        "input_cost_per_token": 6e-07,
+        "output_cost_per_token": 2.4e-06,
+        "cache_read_input_token_cost": 3e-08,
+        "cache_creation_input_token_cost": 3.75e-07,
+        "supported_modalities": [
+            "text"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions"
+        ],
+        "supported_regions": [
+            "global"
+        ],
+        "notes": "Prices per the official pricing page (USD/1M tokens).",
+        "supports_function_calling": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_speed": true
+    },
+    "deepseek-v4-flash-vision-exp": {
+        "litellm_provider": "deepseek",
+        "mode": "chat",
+        "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+        "notes": "Model version: DeepSeek-V4-Flash-Vision-Exp\nPricing is dual-rate: PEAK hours are 01:00-04:00 and 06:00-10:00 UTC; all other hours are OFF-PEAK (half of peak). Values in this entry use PEAK rates.\nOff-peak rates: input_cache_hit=$0.007/1M, input_cache_miss=$0.22/1M, output=$0.66/1M\nConcurrency limit: 2500\nSupports both non-thinking and thinking (default) modes; thinking output billed as regular output tokens\nFIM Completion (Beta): not supported\nBase URL (OpenAI format): https://api.deepseek.com\nBase URL (Anthropic format): https://api.deepseek.com/anthropic\nSupports Chat Prefix Completion (Beta)\nSupports Responses API and Anthropic API",
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 384000,
+        "max_tokens": 384000,
+        "input_cost_per_token": 4.4e-07,
+        "output_cost_per_token": 1.32e-06,
+        "output_cost_per_reasoning_token": 1.32e-06,
+        "cache_read_input_token_cost": 1.4e-08,
+        "input_cost_per_token_cache_hit": 1.4e-08,
+        "supported_modalities": [
+            "text",
+            "image"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "supported_regions": [
+            "global"
+        ],
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_assistant_prefill": true
+    }
+}
