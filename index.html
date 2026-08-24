@@ -1215,6 +1215,17 @@
     text-decoration: none;
   }
   .drawer-source-link:hover { text-decoration: underline; }
+  .drawer-notes {
+    margin-top: 8px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: var(--bg-soft);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
 
   @media (max-width: 520px) {
     .drawer-content { padding: 52px 24px 32px; }
@@ -1658,8 +1669,8 @@ const I18N = {
     removeTitle: '移除',
     // 详情抽屉
     secContext: '上下文', secBasic: '基本信息', secModality: '支持模态', secCaps: '能力',
-    secEndpoints: 'API 端点',
-    rowProvider: 'Provider', rowMode: '类型', rowSource: '数据来源',
+    secEndpoints: 'API 端点', secNotes: '备注',
+    rowProvider: 'Provider', rowMode: '类型', rowSource: '数据来源', rowNotes: '备注说明',
     viewSource: '查看原始文档',
     tieredExist: '存在（详见源数据）',
     secExtraPrice: '专项价格',
@@ -1733,8 +1744,8 @@ const I18N = {
     emptyCompareB: (max) => `to pick models to compare (up to ${max}).`,
     removeTitle: 'Remove',
     secContext: 'Context', secBasic: 'Basic Info', secModality: 'Modalities', secCaps: 'Capabilities',
-    secEndpoints: 'API Endpoints',
-    rowProvider: 'Provider', rowMode: 'Type', rowSource: 'Source',
+    secEndpoints: 'API Endpoints', secNotes: 'Notes',
+    rowProvider: 'Provider', rowMode: 'Type', rowSource: 'Source', rowNotes: 'Notes',
     viewSource: 'View source',
     tieredExist: 'Yes (see source data)',
     secExtraPrice: 'Additional Pricing',
@@ -2059,6 +2070,8 @@ async function loadData() {
       deprecation: m.deprecation_date || null,
       source: m.source || null,
       supportedRegions: Array.isArray(m.supported_regions) ? m.supported_regions : null,
+      // notes：add-on 补丁中的 notes 优先；否则回退到上游数据的 metadata.notes
+      notes: m.notes || (m.metadata && m.metadata.notes) || null,
       inputModalities: Array.isArray(m.supported_modalities) ? m.supported_modalities : null,
       outputModalities: Array.isArray(m.supported_output_modalities) ? m.supported_output_modalities : null,
       // API 端点：该模型可调用的接口路径（如 /v1/chat/completions、/v1/responses、/v1/batch）。
@@ -2272,6 +2285,14 @@ function renderModelDetailSections(m) {
       <div class="cap-list">
         ${m.supportedEndpoints.map(ep => `<span class="endpoint-tag">${esc(ep)}</span>`).join('')}
       </div>
+    </div>`;
+  }
+
+  // 备注说明：add-on 补丁中的 notes 优先，否则回退上游 metadata.notes。可能包含多行文本。
+  if (m.notes) {
+    html += `<div class="drawer-section">
+      <div class="drawer-section-label">${ic('doc')}${esc(t('secNotes'))}</div>
+      <div class="drawer-notes">${esc(m.notes)}</div>
     </div>`;
   }
 
