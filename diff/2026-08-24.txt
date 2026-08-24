@@ -87,3 +87,7 @@
 + 新增补丁 dashscope/qwen3.5-35b-a3b  [dashscope/chat] 入$0.06667 出$0.5333
 + 新增补丁 dashscope/qwen3.5-397b-a17b  [dashscope/chat] 入$0.2 出$1.2
 
+===== 2026-08-24 15:20:46 更新 =====
+新增 0 / 减少 0 / 变更 0
+
+（本次无变化）

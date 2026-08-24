@@ -2232,14 +2232,6 @@ function renderModelDetailSections(m) {
     </div>`;
   }
 
-  // 备注说明：add-on 补丁中的 notes 优先，否则回退上游 metadata.notes。可能包含多行文本。
-  if (m.notes) {
-    html += `<div class="drawer-section">
-      <div class="drawer-section-label">${ic('doc')}${esc(t('secNotes'))}</div>
-      <div class="drawer-notes">${esc(m.notes)}</div>
-    </div>`;
-  }
-
   // 专项价格：主干（输入/输出/缓存读/图像）之外的额外计费维度。
   // extraPrices 已在预处理阶段筛掉无值字段，这里只渲染有值的——没有的模型整个区块不出现。
   if (m.extraPrices && m.extraPrices.length > 0) {
@@ -2293,6 +2285,14 @@ function renderModelDetailSections(m) {
       <div class="cap-list">
         ${m.supportedEndpoints.map(ep => `<span class="endpoint-tag">${esc(ep)}</span>`).join('')}
       </div>
+    </div>`;
+  }
+
+  // 备注说明：add-on 补丁中的 notes 优先，否则回退上游 metadata.notes。可能包含多行文本。
+  if (m.notes) {
+    html += `<div class="drawer-section">
+      <div class="drawer-section-label">${ic('doc')}${esc(t('secNotes'))}</div>
+      <div class="drawer-notes">${esc(m.notes)}</div>
     </div>`;
   }
 
