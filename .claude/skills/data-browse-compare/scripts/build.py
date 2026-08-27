@@ -357,7 +357,7 @@ def main():
     parser.add_argument('--no-fetch', dest='fetch', action='store_false', default=True,
                         help='跳过拉取远程最新数据，直接用本地已有 JSON 重建（离线/调试用）')
     parser.add_argument('--no-addon-refresh', dest='addon_refresh', action='store_false', default=True,
-                        help='跳过 add-on 补丁的自动刷新（4 个 provider 抓取脚本），直接用现有 add-on-data.json')
+                        help='跳过 add-on 补丁的自动刷新（5 个 provider 抓取脚本），直接用现有 add-on-data.json')
     args = parser.parse_args()
 
     root = os.getcwd()
@@ -415,14 +415,14 @@ def main():
         except Exception as e:
             fail(f'数据 JSON 解析失败：{e}')
 
-    # ---- add-on 补丁：先自动刷新（4 个 provider 抓取脚本），再合并 ----
+    # ---- add-on 补丁：先自动刷新（5 个 provider 抓取脚本），再合并 ----
     # 自动刷新：每次运行时按官网最新内容更新 add-on-data.json（失败兜底保留旧值）
     addon_path = os.path.join(root, 'add-on-data.json')
     if args.addon_refresh:
         try:
             sys.path.insert(0, os.path.join(script_dir, 'addon_fetch'))
             import refresh_addon
-            print('自动刷新 add-on 补丁（deepseek / zai / moonshot / minimax）：')
+            print('自动刷新 add-on 补丁（deepseek / zai / moonshot / minimax / dashscope）：')
             refresh_addon.refresh(addon_path)
         except Exception as e:
             print(f'提示：add-on 自动刷新失败（{e}），直接用现有 add-on-data.json 继续', file=sys.stderr)

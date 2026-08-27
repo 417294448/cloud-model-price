@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 """add-on 补丁自动刷新编排器。
 
-每次 build 时依次执行 4 个 provider 的抓取脚本（deepseek / zai / kimi / minimax），
+每次 build 时依次执行 5 个 provider 的抓取脚本（deepseek / zai / kimi / minimax / dashscope），
 用官网最新内容刷新 add-on-data.json 中对应 provider 的条目。
 
 安全设计：
 - **按 provider 增量替换**：某家脚本成功才替换该家在 add-on 里的条目；失败则保留旧条目（兜底）；
-- **非该 4 家的条目（如人工补的其他 provider）原样保留**；
+- **非该 5 家的条目（如人工补的其他 provider）原样保留**；
 - **数值合理性校验**：刷新后某模型价格与上一版快照偏差 >50% 时打醒目警告，提示人工核对；
 - **失败不阻塞**：全部失败也返回原 add-on 不变，构建继续。
 
@@ -25,6 +25,7 @@ FETCHERS = {
     'zai': 'fetch_zai.py',
     'moonshot': 'fetch_kimi.py',
     'minimax': 'fetch_minimax.py',
+    'dashscope': 'fetch_dashscope.py',
 }
 
 # 价格合理性阈值：与旧值偏差超过该比例即告警
