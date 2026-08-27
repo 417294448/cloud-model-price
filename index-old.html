@@ -823,10 +823,10 @@
 
   /* 窄屏不强行把 Grid 折成单列（那样会打乱"标签+多列值"的行内顺序，
      变成一长串难以阅读的堆叠），改为横向滚动（.compare-wrap 已设 overflow-x），
-     和浏览表格的窄屏处理方式一致。min-width 按最多 4 列对比调宽，
+     和浏览表格的窄屏处理方式一致。min-width 按最多 6 列对比调宽，
      保证每列有基本可读宽度。 */
   @media (max-width: 860px) {
-    .compare-table-grid { min-width: 800px; }
+    .compare-table-grid { min-width: 1100px; }
   }
 
   .cap-list { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -1906,7 +1906,7 @@ function providerIcon(provider) {
   const ch = (provider || '?').trim().charAt(0).toUpperCase() || '?';
   return `<span class="pv-mono" aria-hidden="true">${esc(ch)}</span>`;
 }
-const MAX_COMPARE = 4;
+const MAX_COMPARE = 6;
 const PAGE_SIZE = 100;
 const MODE_LABELS = {
   chat: { zh: '对话', en: 'Chat' }, embedding: { zh: '嵌入', en: 'Embedding' },
@@ -1950,7 +1950,7 @@ const state = {
 };
 
 // 把「当前 tab + 已选模型」持久化到 localStorage，刷新后完整恢复对比现场；
-// 已选模型存 key 数组（最多 3 个，体积极小），key 不存在于新数据时启动阶段自动剔除。
+// 已选模型存 key 数组（最多 MAX_COMPARE 个，体积极小），key 不存在于新数据时启动阶段自动剔除。
 const UI_STORE_KEY = 'cmp-ui-v1';
 function saveUIState() {
   try {
