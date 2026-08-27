@@ -1215,6 +1215,11 @@
     text-decoration: none;
   }
   .drawer-source-link:hover { text-decoration: underline; }
+  .drawer-source-links {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+  }
   .drawer-notes {
     margin-top: 8px;
     padding: 14px 16px;
@@ -2221,10 +2226,24 @@ function renderModelDetailSections(m) {
         <span class="drawer-row-label">${esc(t('rowRegions'))}</span>
         <span class="drawer-row-value"><span class="region-list">${m.supportedRegions.map(r => `<span class="provider-tag">${esc(r)}</span>`).join('')}</span></span>
       </div>` : '')
-    + (m.source ? `<div class="drawer-row">
+    + (m.source ? (() => {
+        // source 可能是 "; " 分隔的多个 URL（如 dashscope 的定价页 + 模型列表页），
+        // 拆成独立链接渲染——整体塞进单个 href 会拼出非法 URL，点击后目标站返回 500。
+        const urls = m.source.split(';').map(s => s.trim()).filter(s => /^https?:\/\//.test(s));
+        if (!urls.length) return '';
+        const links = urls.map(u => {
+          // 单链接保持「View source」文案；多链接显示各自域名以便区分
+          let label = t('viewSource');
+          if (urls.length > 1) {
+            try { label = new URL(u).host; } catch (e) { label = u; }
+          }
+          return `<a class="drawer-source-link" href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(label)} ${ic('ext')}</a>`;
+        }).join('');
+        return `<div class="drawer-row">
         <span class="drawer-row-label">${esc(t('rowSource'))}</span>
-        <a class="drawer-source-link" href="${esc(m.source)}" target="_blank" rel="noopener noreferrer">${esc(t('viewSource'))} ${ic('ext')}</a>
-      </div>` : '');
+        <span class="drawer-source-links">${links}</span>
+      </div>`;
+      })() : '');
   if (basicRows) {
     html += `<div class="drawer-section">
       <div class="drawer-section-label">${ic('info')}${esc(t('secBasic'))}</div>

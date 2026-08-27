@@ -14,7 +14,7 @@ A zero-dependency, single-file static page for browsing and comparing **3,000+ c
 
 - **Browse everything** — full-text search across model keys and providers; filter by vendor, provider, capability type, capabilities (vision, function calling, reasoning, web search, computer use), and input/output modalities; click any column header to sort; paginated at 100 rows.
 - **Vendor quick-filters** — one-click chips for 18 major vendors (OpenAI, Anthropic, Google, Amazon, Microsoft, xAI, Alibaba Cloud, DeepSeek, Z.ai, Moonshot AI, Mistral AI, MiniMax, Meta, Oracle, Volcengine, Cohere, Fireworks AI, OpenRouter), each with provider logo and model count.
-- **Side-by-side comparison** — select up to 4 models to compare pricing tiers, context limits, supported modalities, a 30+ item capability matrix, and API endpoints; the single best value per numeric row is highlighted automatically (ties are never highlighted).
+- **Side-by-side comparison** — select up to 6 models to compare pricing tiers, context limits, supported modalities, a 30+ item capability matrix, and API endpoints; the single best value per numeric row is highlighted automatically (ties are never highlighted).
 - **Full pricing-tier coverage** — beyond standard input/output prices: cache read/write, Priority, Batch, and Flex tiers, image generation, audio tokens, and per-second/per-query billing are all surfaced in the detail drawer when present.
 - **Bilingual UI** — English / 中文, one-click toggle, persisted across sessions.
 - **Shareable comparisons** — the current selection is encoded into the URL hash (`#compare=key1,key2,…`); send the link and the recipient lands on the same comparison.
@@ -56,7 +56,7 @@ diff/               # per-day model add/remove/change logs
 
 - **全模型浏览**：模型名 / provider 模糊搜索；按厂商、provider、类型、能力（视觉、函数调用、推理、联网搜索、计算机操作）、输入/输出模态筛选；点击列头排序；每页 100 条分页。
 - **厂商快捷筛选**：18 家重点厂商一键圈选（OpenAI、Anthropic、Google、Amazon、Microsoft、xAI、阿里云、DeepSeek、智谱 Z.ai、月之暗面、Mistral、MiniMax、Meta、Oracle、火山引擎、Cohere、Fireworks、OpenRouter），带品牌 logo 与模型数。
-- **多模型并排对比**：最多勾选 4 个模型，对比价格档位、上下文、支持模态、30+ 项能力矩阵与 API 端点；数值维度自动高亮唯一最优值（并列不高亮）。
+- **多模型并排对比**：最多勾选 6 个模型，对比价格档位、上下文、支持模态、30+ 项能力矩阵与 API 端点；数值维度自动高亮唯一最优值（并列不高亮）。
 - **完整价格档覆盖**：除标准输入/输出价外，缓存读/写、Priority、Batch、Flex 档位价、图像生成、音频 token、按秒/按次计费等在详情抽屉中按实展示。
 - **中英双语**：一键切换，选择持久化。
 - **可分享对比**：已选模型编码进 URL hash（`#compare=key1,key2,…`），对方打开链接即见同一对比。
