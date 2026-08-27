@@ -1,0 +1,12 @@
+# Python 字节码缓存（每次运行自动生成，跨版本文件名不同）
+__pycache__/
+*.pyc
+
+# 手工备份文件（如 add-on-data.json.bak）
+*.bak
+
+# build.py 中间产物：验证失败时残留的半成品页面
+index-new.html
+
+# build.py 拉取上游数据的临时文件（失败时残留）
+source-data/.fetch-tmp.json
