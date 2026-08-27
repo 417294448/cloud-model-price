@@ -141,3 +141,11 @@
 ~ vertex_ai/gemini-3.6-flash  [vertex_ai/chat] 入$0.75 出$3.75
 ~ vertex_ai/gemini-3.7-flash  [vertex_ai/chat] 入$0.75 出$3.75
 
+===== 2026-08-27 13:31:46 更新 =====
+新增 0 / 减少 0 / 变更 0
+
+（本次无变化）
+--- 补丁变更（add-on-data.json）---
+~ 修正补丁 dashscope/deepseek-v4-flash-0731  [dashscope/chat] 入$0.5 出$1.5
+~ 修正补丁 dashscope/deepseek-v4-pro-0813  [dashscope/chat] 入$1.5 出$4.5
+
