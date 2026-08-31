@@ -10,3 +10,9 @@ index-new.html
 
 # build.py 拉取上游数据的临时文件（失败时残留）
 source-data/.fetch-tmp.json
+
+# Trae HTML share packages（自动生成，非源码）
+.trae-html-share-packages/
+
+# 手工备份文件（运行时可能产生）
+add-on-data.json.bak
