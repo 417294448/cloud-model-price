@@ -100,3 +100,7 @@
 ~ xai/grok-4-fast-reasoning  [xai/chat] 入$1.25 出$2.5
 ~ xai/grok-4-latest  [xai/chat] 入$1.25 出$2.5
 
+===== 2026-08-31 06:56:27 更新 =====
+新增 0 / 减少 0 / 变更 0
+
+（本次无变化）
