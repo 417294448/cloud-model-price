@@ -110,7 +110,10 @@ def _is_chat(model_id, item):
 
 
 def _pick_tiers(model_id, item, prices_map):
-    """返回 [{range, timeBand, prices:{type:price}}]，优先卡片 MultiPrices，缺失用定价页兜底。"""
+    """返回 [{range, timeBand, prices:{type:price}}]，优先卡片 MultiPrices，缺失用卡片顶层 Prices 或定价页兜底。
+
+    注意：部分卡片（如 qwen3.8-flash / qwen3.8-27b）的 MultiPrices 是空占位
+    （[{"Prices":[{}]}]），真实价格放在顶层 Prices 字段，必须兜底读取。"""
     tiers = []
     for t in item.get('MultiPrices') or []:
         pr = {p['Type']: p['Price'] for p in t.get('Prices', []) if 'Type' in p}
@@ -119,6 +122,11 @@ def _pick_tiers(model_id, item, prices_map):
                           'timeBand': t.get('TimeBand') or 'standard', 'prices': pr})
     if tiers:
         return tiers
+    # 兜底 1：卡片顶层 Prices（MultiPrices 空占位时真实价格在此）
+    top_pr = {p['Type']: p['Price'] for p in item.get('Prices') or [] if 'Type' in p}
+    if top_pr.get('input_token') and top_pr.get('output_token'):
+        return [{'range': 'all', 'timeBand': 'standard', 'prices': top_pr}]
+    # 兜底 2：定价页 listModelPrices
     for t in prices_map.get(model_id) or []:
         pr = {p['type']: p['price'] for p in t.get('prices', []) if 'type' in p}
         if pr.get('input_token') and pr.get('output_token'):

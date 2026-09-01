@@ -70,6 +70,14 @@ def _drift_warnings(old_rec, new_rec, key):
 
 def refresh(addon_path, quiet=False):
     """刷新 add-on-data.json。返回是否有变更。失败兜底保留旧值，不抛异常。"""
+    # Windows 控制台默认 gbk 编码，print 含 ✓/⚠️ 等字符会抛 UnicodeEncodeError；
+    # 打印前把控制台输出重定向为 UTF-8（stderr 同样处理），保证刷新不因编码中断。
+    if not quiet:
+        for stream in (sys.stdout, sys.stderr):
+            try:
+                stream.reconfigure(encoding='utf-8', errors='replace')
+            except Exception:
+                pass
     log = (lambda *a, **kw: None) if quiet else print
     script_dir = os.path.dirname(os.path.abspath(__file__))
 

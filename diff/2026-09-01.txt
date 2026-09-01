@@ -1,0 +1,245 @@
+===== 2026-09-01 10:51:06 更新（本地重建）=====
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 dashscope/MiniMax-M2.1  [dashscope/chat] 入$0.35 出$1.4
++ 新增补丁 dashscope/MiniMax/MiniMax-M2.1  [dashscope/chat] 入$0.35 出$1.4
++ 新增补丁 dashscope/MiniMax/MiniMax-M2.5  [dashscope/chat] 入$0.35 出$1.4
++ 新增补丁 dashscope/MiniMax/MiniMax-M2.7  [dashscope/chat] 入$0.35 出$1.4
++ 新增补丁 dashscope/MiniMax/MiniMax-M3  [dashscope/chat] 入$0.7 出$2.8
++ 新增补丁 dashscope/ZHIPU/GLM-5  [dashscope/chat] 入$1 出$3.667
++ 新增补丁 dashscope/ZHIPU/GLM-5.1  [dashscope/chat] 入$1.333 出$4.667
++ 新增补丁 dashscope/ZHIPU/GLM-5.2  [dashscope/chat] 入$1.333 出$4.667
++ 新增补丁 dashscope/ZHIPU/GLM-5.3  [dashscope/chat] 入$1.333 出$4.667
++ 新增补丁 dashscope/ZHIPU/GLM-5.3-Flash  [dashscope/chat] 入$0.1333 出$0.4667
++ 新增补丁 dashscope/deepseek-r1-distill-qwen-14b  [dashscope/chat] 入$0.1667 出$0.5
++ 新增补丁 dashscope/deepseek-r1-distill-qwen-32b  [dashscope/chat] 入$0.3333 出$1
++ 新增补丁 dashscope/deepseek-r1-distill-qwen-7b  [dashscope/chat] 入$0.08333 出$0.1667
++ 新增补丁 dashscope/deepseek-v3.2  [dashscope/chat] 入$0.3333 出$0.5
++ 新增补丁 dashscope/farui-plus  [dashscope/chat] 入$3.333 出$3.333
++ 新增补丁 dashscope/gui-plus  [dashscope/chat] 入$0.25 出$0.75
++ 新增补丁 dashscope/gui-plus-2026-02-26  [dashscope/chat] 入$0.25 出$0.75
++ 新增补丁 dashscope/kimi/kimi-k2.5  [dashscope/chat] 入$0.6667 出$3.5
++ 新增补丁 dashscope/kimi/kimi-k2.6  [dashscope/chat] 入$1.083 出$4.5
++ 新增补丁 dashscope/kimi/kimi-k2.7-code  [dashscope/chat] 入$1.083 出$4.5
++ 新增补丁 dashscope/kimi/kimi-k2.7-code-highspeed  [dashscope/chat] 入$2.167 出$9
++ 新增补丁 dashscope/kimi/kimi-k3  [dashscope/chat] 入$3.333 出$16.67
++ 新增补丁 dashscope/qvq-max  [dashscope/chat] 入$1.333 出$5.333
++ 新增补丁 dashscope/qvq-plus  [dashscope/chat] 入$0.3333 出$0.8333
++ 新增补丁 dashscope/qwen-coder-plus  [dashscope/chat] 入$0.5833 出$1.167
++ 新增补丁 dashscope/qwen-coder-turbo  [dashscope/chat] 入$0.3333 出$1
++ 新增补丁 dashscope/qwen-doc-turbo  [dashscope/chat] 入$0.1 出$0.1667
++ 新增补丁 dashscope/qwen-flash-character  [dashscope/chat] 入$0.04167 出$0.25
++ 新增补丁 dashscope/qwen-flash-character-2026-02-26  [dashscope/chat] 入$0.03 出$0.25
++ 新增补丁 dashscope/qwen-long  [dashscope/chat] 入$0.08333 出$0.3333
++ 新增补丁 dashscope/qwen-long-2025-01-25  [dashscope/chat] 入$0.08333 出$0.3333
++ 新增补丁 dashscope/qwen-long-latest  [dashscope/chat] 入$0.08333 出$0.3333
++ 新增补丁 dashscope/qwen-math-plus  [dashscope/chat] 入$0.6667 出$2
++ 新增补丁 dashscope/qwen-math-plus-0816  [dashscope/chat] 入$0.6667 出$2
++ 新增补丁 dashscope/qwen-math-plus-0919  [dashscope/chat] 入$0.6667 出$2
++ 新增补丁 dashscope/qwen-math-plus-latest  [dashscope/chat] 入$0.6667 出$2
++ 新增补丁 dashscope/qwen-math-turbo  [dashscope/chat] 入$0.3333 出$1
++ 新增补丁 dashscope/qwen-max  [dashscope/chat] 入$0.4 出$1.6
++ 新增补丁 dashscope/qwen-plus-0112  [dashscope/chat] 入$0.1333 出$0.3333
++ 新增补丁 dashscope/qwen-plus-1220  [dashscope/chat] 入$0.1333 出$0.3333
++ 新增补丁 dashscope/qwen-plus-character  [dashscope/chat] 入$0.1333 出$0.3333
++ 新增补丁 dashscope/qwen-tts-realtime  [dashscope/chat] 入$0.4 出$2
++ 新增补丁 dashscope/qwen-tts-realtime-2025-07-15  [dashscope/chat] 入$0.4 出$2
++ 新增补丁 dashscope/qwen-tts-realtime-latest  [dashscope/chat] 入$0.4 出$2
++ 新增补丁 dashscope/qwen-turbo  [dashscope/chat] 入$0.05 出$0.1
++ 新增补丁 dashscope/qwen-vl-max  [dashscope/chat] 入$0.2667 出$0.6667
++ 新增补丁 dashscope/qwen-vl-plus  [dashscope/chat] 入$0.1333 出$0.3333
++ 新增补丁 dashscope/qwen3-14b  [dashscope/chat] 入$0.1667 出$0.6667
++ 新增补丁 dashscope/qwen3-235b-a22b  [dashscope/chat] 入$0.3333 出$1.333
++ 新增补丁 dashscope/qwen3-235b-a22b-instruct-2507  [dashscope/chat] 入$0.3333 出$1.333
++ 新增补丁 dashscope/qwen3-30b-a3b  [dashscope/chat] 入$0.125 出$0.5
++ 新增补丁 dashscope/qwen3-30b-a3b-instruct-2507  [dashscope/chat] 入$0.125 出$0.5
++ 新增补丁 dashscope/qwen3-32b  [dashscope/chat] 入$0.3333 出$1.333
++ 新增补丁 dashscope/qwen3-8b  [dashscope/chat] 入$0.08333 出$0.3333
++ 新增补丁 dashscope/qwen3-next-80b-a3b-instruct  [dashscope/chat] 入$0.1667 出$0.6667
++ 新增补丁 dashscope/qwen3-vl-235b-a22b-instruct  [dashscope/chat] 入$0.3333 出$1.333
++ 新增补丁 dashscope/qwen3-vl-30b-a3b-instruct  [dashscope/chat] 入$0.125 出$0.5
++ 新增补丁 dashscope/qwen3-vl-32b-instruct  [dashscope/chat] 入$0.3333 出$1.333
++ 新增补丁 dashscope/qwen3-vl-8b-instruct  [dashscope/chat] 入$0.08333 出$0.3333
++ 新增补丁 dashscope/qwen3.6-27b  [dashscope/chat] 入$0.5 出$3
++ 新增补丁 dashscope/qwen3.6-35b-a3b  [dashscope/chat] 入$0.3 出$1.8
++ 新增补丁 dashscope/qwen3.8-27b  [dashscope/chat] 入$0.5 出$2
++ 新增补丁 dashscope/qwen3.8-flash  [dashscope/chat] 入$0.1333 出$0.45
++ 新增补丁 dashscope/qwq-plus  [dashscope/chat] 入$0.2667 出$0.6667
++ 新增补丁 dashscope/siliconflow/deepseek-r1-0528  [dashscope/chat] 入$0.6667 出$2.667
++ 新增补丁 dashscope/siliconflow/deepseek-v3-0324  [dashscope/chat] 入$0.3333 出$1.333
++ 新增补丁 dashscope/siliconflow/deepseek-v3.1-terminus  [dashscope/chat] 入$0.6667 出$2
++ 新增补丁 dashscope/siliconflow/deepseek-v3.2  [dashscope/chat] 入$0.3333 出$0.5
++ 新增补丁 dashscope/stepfun/step-3.7-flash  [dashscope/chat] 入$0.225 出$1.35
++ 新增补丁 dashscope/tongyi-intent-detect-v3  [dashscope/chat] 入$0.06667 出$0.1667
++ 新增补丁 dashscope/tongyi-xiaomi-analysis-flash  [dashscope/chat] 入$0.03333 出$0.06667
++ 新增补丁 dashscope/tongyi-xiaomi-analysis-pro  [dashscope/chat] 入$0.1667 出$0.45
++ 新增补丁 dashscope/unisound/unisound-u2  [dashscope/chat] 入$0.1667 出$0.3333
++ 新增补丁 dashscope/vanchin/deepseek-ocr  [dashscope/chat] 入$0.036 出$0.036
++ 新增补丁 dashscope/vanchin/deepseek-r1  [dashscope/chat] 入$0.6667 出$2.667
++ 新增补丁 dashscope/vanchin/deepseek-v3  [dashscope/chat] 入$0.3333 出$1.333
++ 新增补丁 dashscope/vanchin/deepseek-v3.1-terminus  [dashscope/chat] 入$0.6667 出$2
++ 新增补丁 dashscope/vanchin/deepseek-v3.2-think  [dashscope/chat] 入$0.3333 出$0.5
++ 新增补丁 dashscope/vanchin/deepseek-v4-pro  [dashscope/chat] 入$2 出$4
++ 新增补丁 dashscope/vanchin/deepseek-v4-pro-0813  [dashscope/chat] 入$1.5 出$4.5
++ 新增补丁 dashscope/xiaomi/mimo-v2.5-pro  [dashscope/chat] 入$1.167 出$3.5
+~ 修正补丁 dashscope/deepseek-v4-flash-0731  [dashscope/chat] 入$0.5 出$1.5
+~ 修正补丁 dashscope/deepseek-v4-pro-0813  [dashscope/chat] 入$1.5 出$4.5
+
+===== 2026-09-01 11:08:35 更新（本地重建）=====
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 minimax/MiniMax-H3-Context-IR  [minimax/chat] 入$0.9 出$3.6
++ 新增补丁 minimax/MiniMax-H3-Max  [minimax/video_generation] 入- 出-
++ 新增补丁 minimax/MiniMax-H3-Regeneration  [minimax/video_generation] 入- 出-
++ 新增补丁 minimax/speech-02-hd  [minimax/audio_speech] 入- 出-
++ 新增补丁 minimax/speech-02-turbo  [minimax/audio_speech] 入- 出-
++ 新增补丁 minimax/speech-2.6-hd  [minimax/audio_speech] 入- 出-
++ 新增补丁 minimax/speech-2.6-turbo  [minimax/audio_speech] 入- 出-
++ 新增补丁 zai/glm-4.5-flash  [zai/chat] 入$0 出$0
++ 新增补丁 zai/glm-5.3-flash  [zai/chat] 入$0.075 出$0.25
+
+===== 2026-09-01 11:15:02 更新 =====
+新增 6 / 减少 1 / 变更 131
+
+--- 新增模型（6）---
++ amazon.nova-2-sonic-v1:0  [bedrock/realtime] 入$0.33 出$2.75
++ amazon.nova-sonic-v1:0  [bedrock/realtime] 入$0.06 出$0.24
++ friendliai/zai-org/GLM-5.3  [friendliai/chat] 入$1.26 出$3.96
++ friendliai/zai-org/GLM-5.3-Flash  [friendliai/chat] 入$0.15 出$0.5
++ gigachat/GigaChat-2  [gigachat/chat] 入$0 出$0
++ gigachat/GigaEmbeddings-3B-2025-09  [gigachat/embedding] 入$0 出$0
+
+--- 减少模型（1）---
+- gigachat/GigaChat-2-Lite  [gigachat/chat] 入$0 出$0
+
+--- 发生变更（131）---
+~ azure/gpt-realtime-whisper  [azure/audio_transcription] 入- 出-
+~ azure/sora-2  [azure/video_generation] 入- 出-
+~ azure/sora-2-pro  [azure/video_generation] 入- 出-
+~ azure/sora-2-pro-high-res  [azure/video_generation] 入- 出-
+~ azure_ai/Cohere-embed-v3-english  [azure_ai/embedding] 入$0.1 出$0
+~ azure_ai/Cohere-embed-v3-multilingual  [azure_ai/embedding] 入$0.1 出$0
+~ azure_ai/FLUX.1-Kontext-pro  [azure_ai/image_generation] 入- 出- 图$0.04
+~ azure_ai/Llama-3.2-11B-Vision-Instruct  [azure_ai/chat] 入$0.37 出$0.37
+~ azure_ai/Llama-3.2-90B-Vision-Instruct  [azure_ai/chat] 入$2.04 出$2.04
+~ azure_ai/Llama-3.3-70B-Instruct  [azure_ai/chat] 入$0.71 出$0.71
+~ azure_ai/Meta-Llama-3.1-405B-Instruct  [azure_ai/chat] 入$5.33 出$16
+~ azure_ai/Meta-Llama-3.1-70B-Instruct  [azure_ai/chat] 入$2.68 出$3.54
+~ azure_ai/Meta-Llama-3.1-8B-Instruct  [azure_ai/chat] 入$0.3 出$0.61
+~ azure_ai/embed-v-4-0  [azure_ai/embedding] 入$0.12 出$0
+~ azure_ai/jais-30b-chat  [azure_ai/chat] 入$3200 出$9710
+~ azure_ai/ministral-3b  [azure_ai/chat] 入$0.04 出$0.04
+~ azure_ai/mistral-document-ai-2512  [azure_ai/ocr] 入- 出-
+~ azure_ai/mistral-large-2407  [azure_ai/chat] 入$2 出$6
+~ azure_ai/mistral-large-latest  [azure_ai/chat] 入$2 出$6
+~ azure_ai/mistral-nemo  [azure_ai/chat] 入$0.15 出$0.15
+~ azure_ai/model_router  [azure_ai/chat] 入$0.14 出$0
+~ chat-latest  [openai/chat] 入$5 出$30
+~ claude-mythos-5  [anthropic/chat] 入$10 出$50
+~ claude-mythos-preview  [anthropic/chat] 入$10 出$50
+~ daybreak-blue-latest  [openai/chat] 入$4 出$20
+~ daybreak-red-latest  [openai/chat] 入$12.5 出$75
+~ eu.anthropic.claude-opus-4-1-20250805-v1:0  [bedrock_converse/chat] 入$15 出$75
+~ gemini-3-flash-preview  [vertex_ai-language-models/chat] 入$0.5 出$3
+~ gemini-3.5-flash  [vertex_ai-language-models/chat] 入$1.5 出$9
+~ gemini-3.6-flash  [vertex_ai-language-models/chat] 入$0.75 出$3.75
+~ gemini-3.7-flash  [vertex_ai-language-models/chat] 入$0.75 出$3.75
+~ gemini/gemini-3-flash-preview  [gemini/chat] 入$0.5 出$3
+~ gemini/gemini-3.5-flash  [gemini/chat] 入$1.5 出$9
+~ gemini/gemini-3.6-flash  [gemini/chat] 入$0.75 出$3.75
+~ gemini/gemini-3.7-flash  [gemini/chat] 入$0.75 出$3.75
+~ gpt-4o-audio-preview  [openai/chat] 入$2.5 出$10
+~ gpt-4o-mini-audio-preview  [openai/chat] 入$0.15 出$0.6
+~ gpt-4o-mini-realtime-preview  [openai/realtime] 入$0.6 出$2.4
+~ gpt-4o-mini-transcribe  [openai/audio_transcription] 入$1.25 出$5
+~ gpt-4o-realtime-preview  [openai/realtime] 入$5 出$20
+~ gpt-4o-realtime-preview-2024-12-17  [openai/realtime] 入$5 出$20
+~ gpt-4o-realtime-preview-2025-06-03  [openai/realtime] 入$5 出$20
+~ gpt-4o-transcribe  [openai/audio_transcription] 入$2.5 出$10
+~ gpt-4o-transcribe-diarize  [openai/audio_transcription] 入$2.5 出$10
+~ gpt-5.6-cyber  [openai/chat] 入$12.5 出$75
+~ gpt-live-transcribe  [openai/audio_transcription] 入- 出-
+~ gpt-realtime-translate  [openai/realtime] 入- 出-
+~ gpt-realtime-whisper  [openai/audio_transcription] 入- 出-
+~ gpt-transcribe  [openai/audio_transcription] 入- 出-
+~ meta/muse-spark-1.1  [meta/chat] 入$1.25 出$4.25
+~ meta/muse-spark-1.2  [meta/chat] 入$1.25 出$4.25
+~ meta/muse-spark-1.2-contributor  [meta/chat] 入$0.1 出$0.2
+~ meta_llama/Llama-3.3-70B-Instruct  [meta_llama/chat] 入- 出-
+~ meta_llama/Llama-3.3-8B-Instruct  [meta_llama/chat] 入- 出-
+~ meta_llama/Llama-4-Maverick-17B-128E-Instruct-FP8  [meta_llama/chat] 入- 出-
+~ meta_llama/Llama-4-Scout-17B-16E-Instruct-FP8  [meta_llama/chat] 入- 出-
+~ nebius/BAAI/bge-en-icl  [nebius/embedding] 入$0.01 出$0
+~ nebius/BAAI/bge-multilingual-gemma2  [nebius/embedding] 入$0.01 出$0
+~ nebius/NousResearch/Hermes-3-Llama-3.1-405B  [nebius/chat] 入$1 出$3
+~ nebius/Qwen/QwQ-32B  [nebius/chat] 入$0.15 出$0.45
+~ nebius/Qwen/Qwen2-VL-72B-Instruct  [nebius/chat] 入$0.13 出$0.4
+~ nebius/Qwen/Qwen2-VL-7B-Instruct  [nebius/chat] 入$0.02 出$0.06
+~ nebius/Qwen/Qwen2.5-32B-Instruct  [nebius/chat] 入$0.06 出$0.2
+~ nebius/Qwen/Qwen2.5-72B-Instruct  [nebius/chat] 入$0.13 出$0.4
+~ nebius/Qwen/Qwen2.5-Coder-7B  [nebius/chat] 入$0.01 出$0.03
+~ nebius/Qwen/Qwen2.5-VL-72B-Instruct  [nebius/chat] 入$0.13 出$0.4
+~ nebius/Qwen/Qwen3-14B  [nebius/chat] 入$0.08 出$0.24
+~ nebius/Qwen/Qwen3-235B-A22B  [nebius/chat] 入$0.2 出$0.6
+~ nebius/Qwen/Qwen3-30B-A3B  [nebius/chat] 入$0.1 出$0.3
+~ nebius/Qwen/Qwen3-32B  [nebius/chat] 入$0.1 出$0.3
+~ nebius/Qwen/Qwen3-4B  [nebius/chat] 入$0.08 出$0.24
+~ nebius/deepseek-ai/DeepSeek-R1  [nebius/chat] 入$0.8 出$2.4
+~ nebius/deepseek-ai/DeepSeek-R1-0528  [nebius/chat] 入$0.8 出$2.4
+~ nebius/deepseek-ai/DeepSeek-R1-Distill-Llama-70B  [nebius/chat] 入$0.25 出$0.75
+~ nebius/deepseek-ai/DeepSeek-V3  [nebius/chat] 入$0.5 出$1.5
+~ nebius/deepseek-ai/DeepSeek-V3-0324  [nebius/chat] 入$0.5 出$1.5
+~ nebius/google/gemma-3-27b-it  [nebius/chat] 入$0.06 出$0.2
+~ nebius/intfloat/e5-mistral-7b-instruct  [nebius/embedding] 入$0.01 出$0
+~ nebius/meta-llama/Llama-3.3-70B-Instruct  [nebius/chat] 入$0.13 出$0.4
+~ nebius/meta-llama/Llama-Guard-3-8B  [nebius/chat] 入$0.02 出$0.06
+~ nebius/meta-llama/Meta-Llama-3.1-405B-Instruct  [nebius/chat] 入$1 出$3
+~ nebius/meta-llama/Meta-Llama-3.1-70B-Instruct  [nebius/chat] 入$0.13 出$0.4
+~ nebius/meta-llama/Meta-Llama-3.1-8B-Instruct  [nebius/chat] 入$0.02 出$0.06
+~ nebius/mistralai/Mistral-Nemo-Instruct-2407  [nebius/chat] 入$0.04 出$0.12
+~ nebius/nvidia/Llama-3.1-Nemotron-Ultra-253B-v1  [nebius/chat] 入$0.6 出$1.8
+~ nebius/nvidia/Llama-3.3-Nemotron-Super-49B-v1  [nebius/chat] 入$0.1 出$0.4
+~ oci/cohere.command-a-03-2025  [oci/chat] 入$1.56 出$1.56
+~ oci/cohere.command-a-reasoning  [oci/chat] 入$1.56 出$1.56
+~ oci/cohere.command-a-vision  [oci/chat] 入$1.56 出$1.56
+~ oci/cohere.command-latest  [oci/chat] 入$1.56 出$1.56
+~ oci/cohere.command-plus-latest  [oci/chat] 入$1.56 出$1.56
+~ oci/cohere.embed-multilingual-image-v3.0  [oci/embedding] 入$0.1 出-
+~ openrouter/bytedance/ui-tars-1.5-7b  [openrouter/chat] 入$0.1 出$0.2
+~ openrouter/google/gemini-3-flash-preview  [openrouter/chat] 入$0.5 出$3
+~ openrouter/google/gemini-3.1-flash-lite-preview  [openrouter/chat] 入$0.25 出$1.5
+~ ovhcloud/DeepSeek-R1-Distill-Llama-70B  [ovhcloud/chat] 入$0.67 出$0.67
+~ ovhcloud/Llama-3.1-8B-Instruct  [ovhcloud/chat] 入$0.1 出$0.1
+~ ovhcloud/Meta-Llama-3_1-70B-Instruct  [ovhcloud/chat] 入$0.67 出$0.67
+~ ovhcloud/Meta-Llama-3_3-70B-Instruct  [ovhcloud/chat] 入$0.67 出$0.67
+~ ovhcloud/Mistral-7B-Instruct-v0.3  [ovhcloud/chat] 入$0.1 出$0.1
+~ ovhcloud/Mistral-Nemo-Instruct-2407  [ovhcloud/chat] 入$0.13 出$0.13
+~ ovhcloud/Mistral-Small-3.2-24B-Instruct-2506  [ovhcloud/chat] 入$0.09 出$0.28
+~ ovhcloud/Mixtral-8x7B-Instruct-v0.1  [ovhcloud/chat] 入$0.63 出$0.63
+~ ovhcloud/Qwen2.5-Coder-32B-Instruct  [ovhcloud/chat] 入$0.87 出$0.87
+~ ovhcloud/Qwen2.5-VL-72B-Instruct  [ovhcloud/chat] 入$0.91 出$0.91
+~ ovhcloud/Qwen3-32B  [ovhcloud/chat] 入$0.08 出$0.23
+~ ovhcloud/gpt-oss-120b  [ovhcloud/chat] 入$0.08 出$0.4
+~ ovhcloud/gpt-oss-20b  [ovhcloud/chat] 入$0.04 出$0.15
+~ ovhcloud/llava-v1.6-mistral-7b-hf  [ovhcloud/chat] 入$0.29 出$0.29
+~ ovhcloud/mamba-codestral-7B-v0.1  [ovhcloud/chat] 入$0.19 出$0.19
+~ pinstripes/ps/deepseek-v4-flash  [pinstripes/chat] 入$0.1 出$0.2
+~ pinstripes/ps/glm-4.5-air  [pinstripes/chat] 入$0.125 出$0.45
+~ pinstripes/ps/minimax-m2.7  [pinstripes/chat] 入$0.255 出$0.55
+~ pinstripes/ps/qwen3-30b-a3b  [pinstripes/chat] 入$0.09 出$0.2
+~ pinstripes/ps/qwen3-coder-30b-a3b  [pinstripes/chat] 入$0.3 出$0.6
+~ pinstripes/ps/qwen3.6-35b-a3b  [pinstripes/chat] 入$0.14 出$0.45
+~ text-embedding-004  [vertex_ai-embedding-models/embedding] 入$0.1 出$0
+~ together_ai/Qwen/Qwen3.5-397B-A17B  [together_ai/chat] 入$0.6 出$3.6
+~ vertex_ai/veo-3.1-fast-generate-001  [vertex_ai-video-models/video_generation] 入- 出-
+~ vertex_ai/veo-3.1-fast-generate-preview  [vertex_ai-video-models/video_generation] 入- 出-
+~ vertex_ai/veo-3.1-generate-001  [vertex_ai-video-models/video_generation] 入- 出-
+~ vertex_ai/veo-3.1-generate-preview  [vertex_ai-video-models/video_generation] 入- 出-
+~ vertex_ai/xai/grok-4.1-fast-non-reasoning  [vertex_ai/chat] 入$0.2 出$0.5
+~ vertex_ai/xai/grok-4.1-fast-reasoning  [vertex_ai/chat] 入$0.2 出$0.5
+~ vertex_ai/xai/grok-4.20-non-reasoning  [vertex_ai/chat] 入$2 出$6
+~ vertex_ai/xai/grok-4.20-reasoning  [vertex_ai/chat] 入$2 出$6
+~ volcengine/doubao-seed-2-0-code-preview-260215  [volcengine/chat] 入- 出-
+~ volcengine/doubao-seed-2-0-lite-260215  [volcengine/chat] 入- 出-
+~ volcengine/doubao-seed-2-0-mini-260215  [volcengine/chat] 入- 出-
+~ volcengine/doubao-seed-2-0-pro-260215  [volcengine/chat] 入- 出-
+~ whisper-1  [openai/audio_transcription] 入- 出-
+

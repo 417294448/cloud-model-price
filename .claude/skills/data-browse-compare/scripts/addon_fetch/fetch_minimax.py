@@ -149,19 +149,38 @@ def _m3_record(lines):
 
 
 def _add_multimodal(out, lines):
-    # speech-2.8-turbo / hd（按字符）
-    for i, l in enumerate(lines):
-        if l in ('speech-2.8-turbo', 'speech-2.8-hd'):
+    # speech 系列（按字符）：页面常以合并行呈现（如 "speech-2.6-turbo / speech-02-turbo"），
+    # 要把同一行内的多个模型名拆成独立条目。匹配所有 speech-* 行，逐个取后续价格。
+    speech_patterns = [
+        # (行内模型名子串列表, 该行价格)
+        # speech-2.8 单独成行
+        ('speech-2.8', None),
+        # 合并行：speech-2.6-turbo / speech-02-turbo 共享价格
+        ('speech-2.6-turbo / speech-02-turbo', ('speech-2.6-turbo', 'speech-02-turbo')),
+        ('speech-2.6-hd / speech-02-hd', ('speech-2.6-hd', 'speech-02-hd')),
+    ]
+    for sub, names in speech_patterns:
+        for i, l in enumerate(lines):
+            if l != sub:
+                continue
+            # 找到该行后第一个价格
+            v = None
             for x in lines[i + 1:i + 4]:
-                v = _usd(x)
-                if v is not None:
-                    out['minimax/' + l] = {
-                        'litellm_provider': 'minimax', 'mode': 'audio_speech', 'source': SRC,
-                        'input_cost_per_character': v / 1e6,
-                        'notes': f'Text-to-speech. Priced at ${v:g} per 1M characters per the official pricing page.',
-                        'supported_regions': ['global'],
-                    }
+                cand = _usd(x)
+                if cand is not None:
+                    v = cand
                     break
+            if v is None:
+                continue
+            model_names = names if names else (sub,)
+            for name in model_names:
+                out['minimax/' + name] = {
+                    'litellm_provider': 'minimax', 'mode': 'audio_speech', 'source': SRC,
+                    'input_cost_per_character': v / 1e6,
+                    'notes': f'Text-to-speech. Priced at ${v:g} per 1M characters per the official pricing page.',
+                    'supported_regions': ['global'],
+                }
+            break
     # image-01（按张）
     for i, l in enumerate(lines):
         if l == 'image-01':
@@ -196,6 +215,67 @@ def _add_multimodal(out, lines):
                         'supported_regions': ['global'],
                     }
                     break
+            break
+
+    # MiniMax-H3-Max 视频（480P $0.05/s，768P $0.08/s；字段存 768P 价）
+    for i, l in enumerate(lines):
+        if l == 'MiniMax-H3-Max' and i + 1 < len(lines) and lines[i + 1] == '768P':
+            for x in lines[i + 2:i + 6]:
+                v = _usd(x)
+                if v is not None:
+                    out['minimax/MiniMax-H3-Max'] = {
+                        'litellm_provider': 'minimax', 'mode': 'video_generation', 'source': SRC,
+                        'output_cost_per_second': v,
+                        'notes': ('Video generation. Billed per second: 480P $0.05/s, 768P $0.08/s '
+                                  '(field stores 768P rate). Supports T2V and I2V only. Output video is billed; '
+                                  'input images are not billed. Prices per the official pricing page.'),
+                        'supported_modalities': ['text', 'image', 'video'],
+                        'supported_output_modalities': ['video'],
+                        'supported_regions': ['global'],
+                    }
+                    break
+            break
+
+    # MiniMax-H3-Regeneration 视频再生（$0.05/s，768P→2K）
+    for i, l in enumerate(lines):
+        if l == 'MiniMax-H3-Regeneration':
+            for x in lines[i + 1:i + 5]:
+                v = _usd(x)
+                if v is not None:
+                    out['minimax/MiniMax-H3-Regeneration'] = {
+                        'litellm_provider': 'minimax', 'mode': 'video_generation', 'source': SRC,
+                        'output_cost_per_second': v,
+                        'notes': ('Video regeneration. Billed per second of regenerated output at $0.05/s (768P→2K). '
+                                  'Input materials from the original 768P task are billed again. '
+                                  'Prices per the official pricing page.'),
+                        'supported_modalities': ['text', 'image', 'video'],
+                        'supported_output_modalities': ['video'],
+                        'supported_regions': ['global'],
+                    }
+                    break
+            break
+
+    # MiniMax-H3-Context-IR（chat：$0.90 入 / $3.60 出 per M tokens）
+    for i, l in enumerate(lines):
+        if l == 'MiniMax-H3-Context-IR':
+            vals = []
+            for x in lines[i + 1:i + 8]:
+                v = _usd(x)
+                if v is not None:
+                    vals.append(v)
+            if len(vals) >= 2:
+                out['minimax/MiniMax-H3-Context-IR'] = {
+                    'litellm_provider': 'minimax', 'mode': 'chat', 'source': SRC,
+                    'input_cost_per_token': vals[0] / 1e6,
+                    'output_cost_per_token': vals[1] / 1e6,
+                    'supported_modalities': ['text', 'image'],
+                    'supported_output_modalities': ['text'],
+                    'supported_endpoints': ['/v1/chat/completions'],
+                    'supported_regions': ['global'],
+                    'notes': ('Context understanding & retrieval model. Priced at $0.90/M input and '
+                              '$3.60/M output tokens per the official pricing page.'),
+                    **CAPS_TEXT,
+                }
             break
 
 

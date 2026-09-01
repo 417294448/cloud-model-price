@@ -29,6 +29,8 @@ CAPS_TEXT = {
 # ctx/maxout 为 token 数；vision 模型带 supports_vision/video_input
 MODEL_META = {
     'glm-5.3':       {'ctx': 1000000, 'maxout': 128000, 'vis': False},
+    'glm-5.3-flash': {'ctx': 200000,  'maxout': 128000, 'vis': False},
+    'glm-4.5-flash': {'ctx': 128000,  'maxout': 96000,  'vis': False},
     'glm-5.2':       {'ctx': 1000000, 'maxout': 128000, 'vis': False},
     'glm-5.1':       {'ctx': 200000,  'maxout': 128000, 'vis': False},
     'glm-5':         {'ctx': 200000,  'maxout': 128000, 'vis': False},
@@ -62,7 +64,13 @@ def _num(s):
     s = s.strip()
     if s.lower() in ('free', '-', '\\', ''):
         return 0.0 if s.lower() == 'free' else None
-    m = re.search(r'([0-9]+(?:\.[0-9]+)?)', s)
+    # 划线价（调价时新价格以 "~~旧价~~ 新价" 呈现）：优先取划线后紧跟的实付价。
+    # 官网 markdown 里美元符带反斜杠转义（~~\$0.15~~ \$0.075），`\$?` 兼容两种情况。
+    # 例：~~\$0.15~~ \$0.075 -> 0.075（旧价 0.15 已不生效，取新价）
+    m = re.search(r'~~\\?\$?\s*[0-9]+(?:\.[0-9]+)?\s*~~\s*\\?\$?\s*([0-9]+(?:\.[0-9]+)?)', s)
+    if m:
+        return float(m.group(1))
+    m = re.search(r'\\?\$?\s*([0-9]+(?:\.[0-9]+)?)', s)
     return float(m.group(1)) if m else None
 
 

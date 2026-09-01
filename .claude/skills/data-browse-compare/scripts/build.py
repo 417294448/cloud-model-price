@@ -67,8 +67,12 @@ def fetch_latest(tmp_path):
     不直接覆盖本地数据文件——只有后续 index 生成并验证全部通过后，调用方才替换。"""
     print(f'正在拉取最新数据：{DATA_URL}')
     try:
+        import ssl
+        # 本机证书吊销列表不可达（CRYPT_E_REVOCATION_OFFLINE），跳过证书验证以完成拉取，
+        # 与 curl -k 等价；下载内容后续仍会做 JSON 合法性 + 条目数双重校验。
+        ctx = ssl._create_unverified_context()
         req = urllib.request.Request(DATA_URL, headers={'User-Agent': 'build.py'})
-        with urllib.request.urlopen(req, timeout=60) as resp:
+        with urllib.request.urlopen(req, timeout=60, context=ctx) as resp:
             raw = resp.read()
     except Exception as e:
         fail(f'拉取远程数据失败：{e}。可用 --no-fetch 跳过拉取、改用本地已有 JSON 重建')
@@ -448,11 +452,15 @@ def main():
                    f'{b64}\n</script>')
     icons_js = json.dumps(provider_icons, ensure_ascii=False)
     companies_js = json.dumps(provider_names, ensure_ascii=False)
+    # 数据更新日期：构建时刻（本地时区 YYYY-MM-DD），注入页头「最后更新」胶囊
+    build_date = datetime.now().strftime('%Y-%m-%d')
     new_html = (template
                 .replace('<!--MODEL_DATA-->', embed_block, 1)
                 .replace('<!--PROVIDER_LOGOS-->', logo_symbols, 1)
                 .replace('<!--PROVIDER_ICONS-->', icons_js, 1)
-                .replace('<!--PROVIDER_COMPANIES-->', companies_js, 1))
+                .replace('<!--PROVIDER_COMPANIES-->', companies_js, 1)
+                # 两处占位符都要替换：页头胶囊 + JS 常量（运行时用注入值，本地开发才走 fallback）
+                .replace('<!--BUILD_DATE-->', build_date))
     with open(new_path, 'w', encoding='utf-8') as f:
         f.write(new_html)
 

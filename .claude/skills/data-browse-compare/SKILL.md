@@ -1,6 +1,6 @@
 ---
 name: data-browse-compare
-description: 根据一份 JSON 数据生成零依赖单文件 HTML 页面，支持浏览表格（搜索/筛选/排序/分页）、单条详情抽屉与多对象并排对比。两类场景都要触发：(1) 用户提供结构化数据并要求”做个页面浏览/对比”、”生成对比工具”、”看看这些数据”；(2) 用户要求更新/刷新/重新拉取/同步数据——凡是出现”更新数据”、”更新模型数据”、”重新拉取模型数据”、”拉取最新数据”、”刷新数据”、”同步上游数据”、”重新生成页面”、”重新构建 index.html”、”跑一下 build”、”模型/价格有更新”、”上游数据变了”等字样或同义表达，都应触发本 skill 执行 build.py 重新构建页面（build.py 默认会先拉取上游最新 JSON 再重建，正是这类需求的入口）。
+description: 根据一份 JSON 数据生成零依赖单文件 HTML 页面，支持浏览表格（搜索/筛选/排序/分页）、单条详情抽屉与多对象并排对比。触发场景：(1) 用户提供结构化数据并要求”做个页面浏览/对比”、”生成对比工具”、”看看这些数据”；(2) 用户要求更新/刷新/重新拉取/同步数据——凡是出现”更新数据”、”更新模型数据”、”重新拉取模型数据”、”拉取最新数据”、”刷新数据”、”同步上游数据”、”重新生成页面”、”重新构建 index.html”、”跑一下 build”、”模型/价格有更新”、”上游数据变了”等字样或同义表达，都应触发本 skill 执行 build.py 重新构建页面；(3) 排查类诉求——凡是出现”为什么没抓到/缺模型”、”官网有但页面没有”、”模型缺失/漏抓”、”抓取不生效”、”add-on 没更新”、”检查抓取链路”等字样或同义表达，应触发本 skill 沿 add-on 抓取链路排查（脚本产出 → refresh_addon 编排 → 补丁落盘 → build 合并 → 页面数据），并按「add-on 抓取生效 check」确认修复闭环。
 ---
 
 # 从 JSON 数据构建浏览 + 对比页面
@@ -340,11 +340,15 @@ build.py 每次运行（除非 `--no-addon-refresh`）在合并补丁**之前**�
 | minimax | `fetch_minimax.py` | platform.minimax.io 定价页（SSR HTML） | 美元价；含 M3 阶梯档与 Priority（×1.5）档 |
 | dashscope | `fetch_dashscope.py` | qianwenai.com 两个 POST JSON 接口：`ListModelSeries`（模型卡片：上下文/模态/能力/多档价）+ `listModelPrices`（兜底价，含峰谷/缓存价） | 官方仅人民币价，按 **1 USD = 6 CNY** 换算并在 notes 注明；多档（按输入长度分档）取最低档、峰谷取 peak，完整档位表写 notes；**结构信息由接口实时返回，无 `MODEL_META`**，新模型上架自动纳入 |
 
+> **dashscope 卡片价格结构坑（2026-08 实测 qwen3.8-flash/27b 漏抓）**：`ListModelSeries` 返回的模型卡片中，价格可能出现在**两处**——大部分模型在 `MultiPrices`（多档数组），但**部分模型（如 `qwen3.8-flash`、`qwen3.8-27b`）的 `MultiPrices` 是空占位 `[{"Prices":[{}]}]`，真实价格放在卡片顶层 `Prices` 字段**。`_pick_tiers` 的兜底顺序必须为：`MultiPrices` → **卡片顶层 `Prices`** → `listModelPrices` 分类定价页。若只读 `MultiPrices`，这类模型会因取不到价格被 `_build_entry` 静默跳过（页面缺模型但不报错）。排查"官网有、页面没有"的 dashscope 模型时，先跑 `fetch_dashscope.py` 检查该模型是否在输出里，再对照卡片 JSON 确认价格字段位置。
+
 机制要点：
 - **按 provider 增量替换**：某家脚本成功才替换该家条目；失败抛异常被捕获后**沿用旧补丁**、构建继续（日志打 `! <provider>: 抓取失败`）；非这 5 家的补丁条目原样保留；
 - **数值漂移告警**：刷新后某模型价格与上一版偏差 >50% 时打醒目警告，提示人工核对（可能是真调价，也可能是页面改版导致解析错位）；
 - **脚本产出与人工补丁同构**：完整 litellm 记录、`source` 必填（写面向人的定价页 URL 而非数据接口 URL，便于溯源）、key 带 `provider/` 前缀；
 - **跳过自动刷新**：离线或调试时用 `--no-addon-refresh`，直接用现有 add-on-data.json。
+
+> **Windows gbk 编码坑（2026-08 实测导致 add-on 静默不刷新）**：`refresh_addon.py` 打印 `✓`/`⚠️` 等 Unicode 字符，Windows 终端默认 gbk 代码页会抛 `UnicodeEncodeError`。该异常被 provider 级 try 捕获后**整家刷新被判失败、沿用旧补丁**，但构建继续——表现为 `build.py` 日志一堆 `! 抓取失败（'gbk' codec can't encode...）`，而 add-on-data.json 实际根本没更新。修复：`refresh_addon.refresh()` 开头对 `sys.stdout`/`sys.stderr` 执行 `reconfigure(encoding='utf-8', errors='replace')`。**看到 build 日志里 `! <provider>: 抓取失败（'gbk' codec...）` 时，说明 add-on 刷新整体失效，必须修复编码而非只修单个抓取脚本。**
 
 ### 抓取脚本页面结构变化自修复
 
@@ -368,13 +372,71 @@ build.py 每次运行（除非 `--no-addon-refresh`）在合并补丁**之前**�
    - **新模型**：抓到 `MODEL_META` 未收录的模型名时，按详情页人工核对补齐元数据（version/上下文/并发/模态/FIM 等），没有依据的字段留空不写。
 4. **验证**：独立运行脚本确认输出完整记录 → 清理 `__pycache__` 下该脚本的 `.pyc` 缓存 → 重新运行 `build.py`，确认日志中该 provider 显示 `✓ ... 自动刷新 N 条`。
 5. **更新 `MODEL_META`**：结构信息（版本号、上下文、并发上限、模态）按官网详情页人工核对后固化在脚本的 `MODEL_META` 中——价格由脚本实时刷新，结构信息靠人工维护，二者职责分离。**例外：dashscope 无 `MODEL_META`**——上下文/模态/能力由 `ListModelSeries` 接口随价格一并实时返回，新模型上架自动纳入，无需人工维护；修复该类脚本时重点核对的是接口返回字段名（`MultiPrices`/`InferenceMetadata`/`Features`）与分档结构，而非补元数据。
+6. **修复后必须验证 add-on 抓取真正生效**：仅 `fetch_*.py` 独立运行成功还不够——还要确认它进到了 `add-on-data.json` 并被页面使用。按下方「add-on 抓取生效 check」清单逐项核对，防止"脚本好了但构建链路没打通"的假修复。
+
+### add-on 数据源自动检测与自动修复机制
+
+抓取脚本除了"官网改版解析失败"这类**显式报错**，还有更隐蔽的一类问题：**官网新增了模型/改了价格结构，但脚本不报错、只是静默漏抓或抓到旧值**（2026-08 实测：dashscope 漏 qwen3.8-flash/27b、zai 漏 GLM-5.3-Flash/GLM-4.5-Flash 且划线价取到旧价、minimax 漏 speech-2.6/H3-Max 等）。这类问题只在**把脚本输出与官网逐项对照**时才能发现。以下是在「页面结构变化自修复」之外的**主动检测 + 自动修复**流程，每次跑 build 或怀疑某 provider 数据陈旧时按序执行：
+
+**第一步：自动检测——对照官网清单找漏抓**
+
+1. 运行该 provider 的抓取脚本，得到"脚本当前输出"模型清单：
+   ```bash
+   python3 .claude/skills/data-browse-compare/scripts/addon_fetch/fetch_<provider>.py 2>&1 | grep '^  '
+   ```
+   或直接在脚本里打印 key 列表。
+2. 抓取官网原始数据源，用同样的模式提取"官网当前模型清单"：
+   - **HTML 页**（deepseek/minimax）：`_strip` 后找模型名锚点行；
+   - **markdown 源**（zai/kimi）：正则提取表格行模型名列；
+   - **JSON 接口**（dashscope `ListModelSeries`）：直接枚举返回的 model id。
+3. **差集 = 漏抓候选**：官网有、脚本输出没有的模型，逐一核对是否"有定价但没被解析"（真漏抓）还是"无定价/非本补丁范围"（合理跳过，如 dashscope 的第三方渠道、zai 的 GLM-ASR/GLM-Image 音频图像模型）。
+
+**第二步：定位漏抓根因（三类常见模式）**
+
+| 根因模式 | 特征 | 修复 |
+|----------|------|------|
+| **白名单缺模型** | `MODEL_META` / `SKIP_PREFIX` / 匹配正则没覆盖新模型名 | 补 `MODEL_META`（结构信息人工核对）或放宽匹配 |
+| **价格字段换位置** | 模型有价格但脚本取不到（如 dashscope `MultiPrices` 空占位、价格在顶层 `Prices`） | 补兜底读取路径（见「dashscope 卡片价格结构坑」） |
+| **价格格式变化** | 页面新增划线价/合并行等格式，脚本解析到旧值或不解析（见下方 zai/minimax 实测） | 增强解析逻辑兼容新格式 |
+
+**第三步：自动修复——解析逻辑增强（2026-08 实测案例）**
+
+- **zai 划线价（strikethrough）**：官网调价时以 `~~\$0.15~~ \$0.075` 呈现（旧价划线 + 实付价，`\$` 是 markdown 反斜杠转义）。`_num()` 只取第一个数字会错误地取到**旧价 0.15** 而非实付价 0.075。修复：正则优先匹配 `~~旧价~~ 新价` 中的新价，且要兼容 `\$` 转义（`~~\\?\$?...~~\\?\$?([0-9.]+)`）。**这类 bug 不报错、输出看起来"正常"，但价格整体是错的**——zai 的 GLM-5.3-Flash 上游也因同因存了 $0.15 的错误价，靠 add-on 覆盖修正。
+- **minimax 合并行**：官网把同价模型写在一行（如 `speech-2.6-turbo / speech-02-turbo`，共享 $60/M chars）。脚本只匹配单行模型名会漏掉。修复：按行匹配模型名集合，把同一行的多个模型拆成独立条目。
+- **minimax 视频/chat 新模型**（H3-Max / H3-Regeneration / H3-Context-IR）：页面结构有规律（`模型名 → 分辨率/说明 → 价格`），按锚点 + 向后扫价格补齐即可，字段沿用 litellm 规范（视频 `output_cost_per_second`、语音 `input_cost_per_character`、chat `input/output_cost_per_token`）。
+
+**第四步：防回归——把新模型纳入验证清单**
+
+修复后把本次新增的模型 key 记入「add-on 抓取生效 check」第 5 步的解码脚本清单，下次构建后自动核对，防止官网结构再变时静默回归。
+
+> **核心教训**：抓取脚本"能跑通、不报错" ≠ "抓对了"。价格类数据必须**定期与官网原始数据源对照差集**（模型清单 + 关键价格值），这类对照是发现静默漏抓/错抓的唯一手段。build 日志里 `! 抓取失败` 是显式告警，但静默错误（漏模型、取旧价）比显式失败更危险——前者会悄悄给用户错误数据。
 
 **抓取脚本设计约束（新增/修改时遵守）：**
 - **解析逻辑要容忍格式抖动**：优先按「锚点文本 → 向后扫描定位值」的方式提取，不依赖固定行号或固定列数；表格列数、模型数量都按实际扫描结果动态确定；
 - **价格值区间提取**：OFF-PEAK 与 PEAK 两个锚点之间的 `$` 值全部收集，按模型索引取值（索引越界即结构变化，应显式报错而非静默取错值）；
 - **条目级容错、整体显式失败**：单个模型缺价格/字段异常时跳过该条继续（如 dashscope 的第三方渠道模型未定价），但**整体产出为空必须抛异常**（由 refresh_addon 兜底沿用旧补丁），不允许静默返回空 dict——空数据比失败更危险（会误删旧条目）；
-- **多数据源时主次分明**：主源负责覆盖、兜底源补缺（如 dashscope 卡片 `MultiPrices` 为主、`listModelPrices` 分类定价为兜底），兜底源失败不致命、主源为空必须抛异常；
+- **多数据源时主次分明**：主源负责覆盖、兜底源补缺（如 dashscope 卡片 `MultiPrices` 为主、卡片顶层 `Prices` 次之、`listModelPrices` 分类定价为兜底），兜底源失败不致命、主源为空必须抛异常；
 - **分页接口要设上限**：页数硬上限（如 `MAX_PAGES = 10`）+ 空页即停双保险，避免接口异常时死循环。
+
+## add-on 抓取生效 check（每次修改抓取脚本后必做）
+
+修改 `addon_fetch/fetch_*.py` 或 `refresh_addon.py` 后，**不能只看单个脚本独立运行成功**——还要确认它穿透完整构建链路真正进了页面。按顺序逐项核对（任一步失败即修复未完成）：
+
+1. **抓取脚本独立产出**：`python scripts/addon_fetch/fetch_<provider>.py` 能输出完整记录，目标模型（如 qwen3.8-flash）**确实出现在输出里**、价格与官网一致。若独立运行正常但目标模型不在输出——说明是解析/过滤逻辑漏了它（见「dashscope 卡片价格结构坑」），不是网络问题。
+2. **refresh_addon 编排成功**：`python scripts/addon_fetch/refresh_addon.py` 末尾打印 `✓ <provider>: 自动刷新 N 条`，且 **N 与第 1 步独立产出条数一致**。若此处报 `! 抓取失败（'gbk' codec...）` → 是 Windows 编码问题导致整家刷新失效（见「Windows gbk 编码坑」），先修编码。
+3. **补丁已落盘**：`add-on-data.json` 里能看到该 provider 的新条目（`"<provider>/<model>"` key 存在、价格正确）。这一步确认刷新结果真的写进了补丁文件，而不是只停留在内存。
+4. **build 合并生效**：运行 `python scripts/build.py`（不带 `--no-fetch` 时先拉上游），日志出现 `+ 新增 <provider>/<model>` 或 `~ 覆盖 ...`，且无 `! 抓取失败`。确认 add-on 补丁被 apply_addon 合并进页面数据。
+5. **页面数据可见**：因为 `index.html` 内嵌数据是 **base64 编码**，直接 `search_files` 搜不到模型名。用脚本解码内嵌数据块后确认 `<provider>/<model>` 在页面数据里：
+   ```python
+   import re, base64, json
+   content = open('index.html', encoding='utf-8').read()
+   m = re.search(r'<script type="application/json" id="model-data"[^>]*>(.*?)</script>', content, re.DOTALL)
+   data = json.loads(base64.b64decode(m.group(1).strip()).decode('utf-8'))
+   print([k for k in data if '<provider>' in k])
+   ```
+   确认模型 key 存在后，在浏览器搜索该模型可看到完整记录。
+
+> **这个 check 能抓住的典型假修复**：只验证到第 1 步（脚本能跑出数据），但实际 gbk 编码让 refresh_addon 全部失败（add-on 没更新）或 apply_addon 合并异常（补丁没进页面）——脚本对、链路断，页面还是缺模型。**完整走到第 5 步才算修复闭环。**
 
 ## 常见坑
 
@@ -388,6 +450,8 @@ build.py 每次运行（除非 `--no-addon-refresh`）在合并补丁**之前**�
 - **不要用 `alert()`/`confirm()` 做提示**——用 toast（定时消失的浮层提示）代替。
 - **排序时缺失值不要排在最前**——`null`/`undefined` 在升序和降序时都排最后。
 - **内嵌数据到 `<script>` 标签时转义 `</`**——用 `.replace('</', '<\\/')` 处理。
+- **解析划线价（strikethrough）要取新价不是旧价**——官网调价时常见 `~~\$0.15~~ \$0.075`（旧价划线 + 实付价，`\$` 是 markdown 反斜杠转义）。用 `_num()` 这类"取第一个数字"的解析会错误地取到旧价 `0.15` 而非实付价 `0.075`，且**不报错**、输出看似正常。正则必须优先匹配 `~~旧价~~ 新价` 中的新价并兼容 `\$`（见 zai 实测：GLM-5.3-Flash 上游也因此存了错误价）。
+- **官网同价模型合并成一行时别漏拆**——如 minimax 的 `speech-2.6-turbo / speech-02-turbo` 共享 $60/M chars。按"行包含某模型名"匹配会漏掉同一行的其他模型，要按行把模型名集合拆成独立条目。
 - **页面生成要做成原子替换**——先产出中间文件（index-new.html）、验证通过再转正并把旧版备份为 index-old.html；不要边写边覆盖正式 index.html，否则中途失败会留下损坏的页面。
 - **表格行点击与勾选框点击要隔离**——勾选框 change 事件不要冒泡触发抽屉打开。
 - **并列最优不要高亮**——多个对象取值相同并列第一时，不要只高亮其中一个，应视为同等优秀。
@@ -403,4 +467,6 @@ build.py 每次运行（除非 `--no-addon-refresh`）在合并补丁**之前**�
 
 ## Windows 用户注意
 
-Windows 终端默认代码页不是 UTF-8，运行涉及中文输出的 Python 脚本时用 `python -X utf8 script.py` 避免乱码，这不影响脚本本身的正确性，只是终端显示问题。
+Windows 终端默认代码页不是 UTF-8（多为 gbk），运行涉及中文输出的 Python 脚本时用 `python -X utf8 script.py` 避免乱码，这不影响脚本本身的正确性，只是终端显示问题。
+
+**但 `-X utf8` 只解决显示乱码，解决不了"print 直接抛 `UnicodeEncodeError`"导致的逻辑中断**：`refresh_addon.py` 打印 `✓`/`⚠️` 时若 stdout 仍是 gbk 编码，会抛异常并让 add-on 刷新静默失败（见「Windows gbk 编码坑」）。已在 `refresh_addon.refresh()` 开头对 stdout/stderr 调用 `reconfigure(encoding='utf-8', errors='replace')` 修复。新增的脚本若也要在 Windows 下打印非 ASCII 字符，务必同样处理，或统一用 ASCII 字符（如 `[OK]`）代替。
