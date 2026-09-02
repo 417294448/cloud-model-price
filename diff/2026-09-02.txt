@@ -146,3 +146,7 @@
 ~ 修正补丁 dashscope/deepseek-v4-flash-0731  [dashscope/chat] 入$0.5 出$1.5
 ~ 修正补丁 dashscope/qwen-doc-turbo  [dashscope/chat] 入$0.1 出$0.1667
 
+===== 2026-09-02 14:23:46 更新 =====
+新增 0 / 减少 0 / 变更 0
+
+（本次无变化）
