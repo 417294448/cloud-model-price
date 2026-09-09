@@ -1,0 +1,28 @@
+===== 2026-09-09 13:31:35 更新 =====
+新增 10 / 减少 0 / 变更 11
+
+--- 新增模型（10）---
++ azure_ai/codex-mini  [azure_ai/responses] 入$1.5 出$6
++ azure_ai/cohere-command-a  [azure_ai/chat] 入$2.5 出$10
++ azure_ai/gpt-chat-latest  [azure_ai/chat] 入$5 出$30
++ azure_ai/grok-4-20-non-reasoning  [azure_ai/chat] 入$1.25 出$2.5
++ azure_ai/grok-4-20-reasoning  [azure_ai/chat] 入$1.25 出$2.5
++ azure_ai/model-router  [azure_ai/chat] 入$0.14 出$0
++ azure_ai/whisper  [azure_ai/audio_transcription] 入- 出-
++ eu.twelvelabs.marengo-embed-3-0-v1:0  [bedrock/embedding] 入- 出$0
++ twelvelabs.marengo-embed-3-0-v1:0  [bedrock/embedding] 入- 出$0
++ us.twelvelabs.marengo-embed-3-0-v1:0  [bedrock/embedding] 入- 出$0
+
+--- 发生变更（11）---
+~ azure_ai/model_router  [azure_ai/chat] 入$0.14 出$0
+~ chat-latest  [openai/chat] 入$5 出$30
+~ eu.twelvelabs.marengo-embed-2-7-v1:0  [bedrock/embedding] 入- 出$0
+~ mistral/voxtral-mini-tts-2603  [mistral/audio_speech] 入- 出-
+~ mistral/voxtral-mini-tts-latest  [mistral/audio_speech] 入- 出-
+~ o3-deep-research  [openai/responses] 入$10 出$40
+~ o3-deep-research-2025-06-26  [openai/responses] 入$10 出$40
+~ o4-mini-deep-research  [openai/responses] 入$2 出$8
+~ o4-mini-deep-research-2025-06-26  [openai/responses] 入$2 出$8
+~ twelvelabs.marengo-embed-2-7-v1:0  [bedrock/embedding] 入- 出$0
+~ us.twelvelabs.marengo-embed-2-7-v1:0  [bedrock/embedding] 入- 出$0
+
