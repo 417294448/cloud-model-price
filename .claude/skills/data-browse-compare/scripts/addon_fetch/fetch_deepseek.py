@@ -27,12 +27,14 @@ ENDPOINTS = ['/v1/chat/completions', '/v1/responses', '/anthropic']
 
 # 详情页人工核对过的结构信息（上下文/版本号/并发上限）
 MODEL_META = {
-    'deepseek-v4-flash': {
-        'version': 'DeepSeek-V4-Flash-0731',
+    # 2026-09 官网改版：deepseek-v4-flash / deepseek-v4-flash-vision-exp 已退役，
+    # 由 deepseek-flash（DeepSeek-V4.1-Flash）承接，且该模型开始支持 Vision。
+    'deepseek-flash': {
+        'version': 'DeepSeek-V4.1-Flash',
         'max_input_tokens': 1000000, 'max_output_tokens': 384000,
         'concurrency': 2500,
         'fim': 'available in non-thinking mode only',
-        'modalities': ['text'],
+        'modalities': ['text', 'image'],
     },
     'deepseek-v4-pro': {
         'version': 'DeepSeek-V4-Pro-0813',
@@ -40,13 +42,6 @@ MODEL_META = {
         'concurrency': 500,
         'fim': 'available in non-thinking mode only',
         'modalities': ['text'],
-    },
-    'deepseek-v4-flash-vision-exp': {
-        'version': 'DeepSeek-V4-Flash-Vision-Exp',
-        'max_input_tokens': 1000000, 'max_output_tokens': 384000,
-        'concurrency': 2500,
-        'fim': 'not supported',
-        'modalities': ['text', 'image'],
     },
 }
 

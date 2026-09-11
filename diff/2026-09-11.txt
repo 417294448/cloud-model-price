@@ -151,3 +151,12 @@
 + 新增补丁 deepseek-flash  [deepseek/chat] 入$0.3 出$1.2
 ~ 修正补丁 zai/glm-5.3-flash  [zai/chat] 入$0.15 出$0.5
 
+===== 2026-09-11 02:44:15 更新 =====
+新增 0 / 减少 0 / 变更 0
+
+（本次无变化）
+--- 补丁变更（add-on-data.json）---
+~ 修正补丁 deepseek-flash  [deepseek/chat] 入$0.3 出$1.2
+~ 修正补丁 deepseek-v4-flash  [deepseek/] 入- 出-
+~ 修正补丁 deepseek-v4-flash-vision-exp  [deepseek/] 入- 出-
+
