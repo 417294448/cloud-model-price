@@ -324,9 +324,17 @@ python .claude/skills/data-browse-compare/scripts/build.py
 
 - **匹配范围限定在同 provider 内**（`litellm_provider` 一致）——key 命名在两种抓取来源间可能不一致（`deepseek-v4-flash` vs `deepseek/deepseek-v4-flash` 上游可并存），按 provider 圈定作用域后做**规范化 key 匹配**（剥离与 provider 同名的 `/` 前缀再比较），一对多命中全部覆盖并打日志；
 - **纯新增**：key 原样写入；若该 provider 上游全部带 `provider/` 前缀，则跟随惯例补前缀；
-- **`"_delete": true`** 标记的条目在同 provider 范围内按规范化 key 删除所有命中；
+- **`"_delete": true`** 标记的条目在同 provider 范围内按规范化 key 删除所有命中。**厂商退役/改名模型时，只删补丁条目不够**——上游 litellm JSON 往往仍收录旧 key，会被顶回页面；必须留一条 `_delete` 条目才能从页面数据里真正移除。又因匹配走规范化 key（剥离 `provider/` 前缀），一条 `deepseek-v4-flash` 的 `_delete` 会连上游 `deepseek/deepseek-v4-flash` 这类带前缀副本一并删除（一对多，日志展示全部命中）；
 - 合并发生在拉取之后、条目数统计之前，**diff 对比的是合并后数据 vs 本地旧数据**——补丁带来的变化同样进 diff 日志；
 - 构建日志输出四类信息：新增 / 覆盖（含命中条数）/ 上游已与补丁一致（提示该条目可退役）/ 删除命中情况。
+
+### 模型改名 / 版本升级（2026-09 实测 deepseek）
+
+厂商把模型改名或升级版本时，**官网旧 key 仍被上游收录、脚本 `MODEL_META`（人工维护）却未同步**，会产出「新旧条目并存、旧条目版本号与价格陈旧」的静默错误（脚本不报错）。典型样本：官网把 `deepseek-v4-flash` 改名为 `deepseek-flash`、版本升到 `DeepSeek-V4.1-Flash`（并开始支持 Vision），退役 `deepseek-v4-flash` / `deepseek-v4-flash-vision-exp`（旧名仍接受、按 Flash 价计费）。修法：
+
+1. 更新脚本 `MODEL_META`：为新 key 补 version/上下文/并发/模态（如 `deepseek-flash` 的 version=`DeepSeek-V4.1-Flash`、`modalities` 加 `image`）；缺失时 notes 会退化成 `Model version: <模型 id>`。
+2. 旧别名在 add-on 里写成 `{"litellm_provider": "<prov>", "_delete": true}`；**只删旧补丁条目不够**，上游 JSON 会把旧 key 顶回页面。
+3. 排查信号：某 provider 同时存在「旧名条目（version 长期不变）」与「新名条目（version 退化成模型 id）」。
 
 ### 抓取脚本页面结构变化自修复
 
@@ -368,6 +376,7 @@ python .claude/skills/data-browse-compare/scripts/build.py
 - **不要用 `alert()`/`confirm()` 做提示**——用 toast（定时消失的浮层提示）代替。
 - **排序时缺失值不要排在最前**——`null`/`undefined` 在升序和降序时都排最后。
 - **内嵌数据到 `<script>` 标签时转义 `</`**——用 `.replace('</', '<\\/')` 处理。
+- **模型改名/退役时只删补丁条目不够，要用 `_delete`**——`refresh_addon` 按 key 增量替换、且「该 provider 旧有但本次没抓到的条目保守保留」（防误删），所以官网改名后旧 key 会长期滞留在 add-on 里；而直接删掉旧补丁条目也不行，上游 litellm JSON 往往仍收录旧 key，会顶回页面。正确做法：旧 key 写成 `{"litellm_provider": "<prov>", "_delete": true}`。注意规范化 key 匹配会剥离与 provider 同名的 `/` 前缀，上游 `deepseek/deepseek-v4-flash` 这类副本会被同一 `_delete` 条目一并删除。
 - **页面生成要做成原子替换**——先产出中间文件（index-new.html）、验证通过再转正并把旧版备份为 index-old.html；不要边写边覆盖正式 index.html，否则中途失败会留下损坏的页面。
 - **表格行点击与勾选框点击要隔离**——勾选框 change 事件不要冒泡触发抽屉打开。
 - **并列最优不要高亮**——多个对象取值相同并列第一时，不要只高亮其中一个，应视为同等优秀。

@@ -324,7 +324,7 @@ python .claude/skills/data-browse-compare/scripts/build.py
 
 - **匹配范围限定在同 provider 内**（`litellm_provider` 一致）——key 命名在两种抓取来源间可能不一致（`deepseek-v4-flash` vs `deepseek/deepseek-v4-flash` 上游可并存），按 provider 圈定作用域后做**规范化 key 匹配**（剥离与 provider 同名的 `/` 前缀再比较），一对多命中全部覆盖并打日志；
 - **纯新增**：key 原样写入；若该 provider 上游全部带 `provider/` 前缀，则跟随惯例补前缀；
-- **`"_delete": true`** 标记的条目在同 provider 范围内按规范化 key 删除所有命中；
+- **`"_delete": true`** 标记的条目在同 provider 范围内按规范化 key 删除所有命中。**厂商退役/改名模型时，只删补丁条目不够**——上游 litellm JSON 往往仍收录旧 key，会被顶回页面；必须留一条 `_delete` 条目才能从页面数据里真正移除。又因匹配走规范化 key（剥离 `provider/` 前缀），一条 `deepseek-v4-flash` 的 `_delete` 会连上游 `deepseek/deepseek-v4-flash` 这类带前缀副本一并删除（一对多，日志展示全部命中）；
 - 合并发生在拉取之后、条目数统计之前，**diff 对比的是合并后数据 vs 本地旧数据**——补丁带来的变化同样进 diff 日志；
 - 构建日志输出四类信息：新增 / 覆盖（含命中条数）/ 上游已与补丁一致（提示该条目可退役）/ 删除命中情况。
 
@@ -334,7 +334,7 @@ build.py 每次运行（除非 `--no-addon-refresh`）在合并补丁**之前**�
 
 | provider | 脚本 | 数据源 | 口径要点 |
 |----------|------|--------|----------|
-| deepseek | `fetch_deepseek.py` | api-docs.deepseek.com/quick_start/pricing（SSR HTML） | 峰谷双价，字段存**峰值价**，notes 注谷时半价与时段 |
+| deepseek | `fetch_deepseek.py` | api-docs.deepseek.com/quick_start/pricing（SSR HTML） | 峰谷双价，字段存**峰值价**，notes 注谷时半价与时段；版本号/上下文/并发/模态固化在 `MODEL_META`（人工维护），**模型改名或退役时旧 key 用 `_delete` 移除**（见「模型改名 / 版本升级」） |
 | zai | `fetch_zai.py` | docs.z.ai 定价总表 `.md` | 美元价；上下文/模态固化在脚本 `MODEL_META` |
 | moonshot | `fetch_kimi.py` | platform.kimi.ai 英文站各模型定价页 `.md` | **美元站直接拿原价**，避免汇率换算口径漂移 |
 | minimax | `fetch_minimax.py` | platform.minimax.io 定价页（SSR HTML） | 美元价；含 M3 阶梯档与 Priority（×1.5）档 |
@@ -391,19 +391,21 @@ build.py 每次运行（除非 `--no-addon-refresh`）在合并补丁**之前**�
    - **JSON 接口**（dashscope `ListModelSeries`）：直接枚举返回的 model id。
 3. **差集 = 漏抓候选**：官网有、脚本输出没有的模型，逐一核对是否"有定价但没被解析"（真漏抓）还是"无定价/非本补丁范围"（合理跳过，如 dashscope 的第三方渠道、zai 的 GLM-ASR/GLM-Image 音频图像模型）。
 
-**第二步：定位漏抓根因（三类常见模式）**
+**第二步：定位漏抓根因（四类常见模式）**
 
 | 根因模式 | 特征 | 修复 |
 |----------|------|------|
 | **白名单缺模型** | `MODEL_META` / `SKIP_PREFIX` / 匹配正则没覆盖新模型名 | 补 `MODEL_META`（结构信息人工核对）或放宽匹配 |
 | **价格字段换位置** | 模型有价格但脚本取不到（如 dashscope `MultiPrices` 空占位、价格在顶层 `Prices`） | 补兜底读取路径（见「dashscope 卡片价格结构坑」） |
 | **价格格式变化** | 页面新增划线价/合并行等格式，脚本解析到旧值或不解析（见下方 zai/minimax 实测） | 增强解析逻辑兼容新格式 |
+| **模型改名 / 版本升级** | 官网把模型改名（如 `deepseek-v4-flash` → `deepseek-flash`）或升级版本，旧 key 仍留着；表现为**新旧条目并存、旧条目版本号与价格陈旧** | 更新 `MODEL_META`（新 key 的 version/上下文/并发/模态）；旧别名写 `_delete: true` 条目移除（见下方 deepseek 实测） |
 
-**第三步：自动修复——解析逻辑增强（2026-08 实测案例）**
+**第三步：自动修复——解析逻辑增强（2026-08 / 2026-09 实测案例）**
 
 - **zai 划线价（strikethrough）**：官网调价时以 `~~\$0.15~~ \$0.075` 呈现（旧价划线 + 实付价，`\$` 是 markdown 反斜杠转义）。`_num()` 只取第一个数字会错误地取到**旧价 0.15** 而非实付价 0.075。修复：正则优先匹配 `~~旧价~~ 新价` 中的新价，且要兼容 `\$` 转义（`~~\\?\$?...~~\\?\$?([0-9.]+)`）。**这类 bug 不报错、输出看起来"正常"，但价格整体是错的**——zai 的 GLM-5.3-Flash 上游也因同因存了 $0.15 的错误价，靠 add-on 覆盖修正。
 - **minimax 合并行**：官网把同价模型写在一行（如 `speech-2.6-turbo / speech-02-turbo`，共享 $60/M chars）。脚本只匹配单行模型名会漏掉。修复：按行匹配模型名集合，把同一行的多个模型拆成独立条目。
 - **minimax 视频/chat 新模型**（H3-Max / H3-Regeneration / H3-Context-IR）：页面结构有规律（`模型名 → 分辨率/说明 → 价格`），按锚点 + 向后扫价格补齐即可，字段沿用 litellm 规范（视频 `output_cost_per_second`、语音 `input_cost_per_character`、chat `input/output_cost_per_token`）。
+- **deepseek 模型改名 / 版本升级（2026-09 实测）**：官网把 `deepseek-v4-flash` 改名为 `deepseek-flash`、版本升到 `DeepSeek-V4.1-Flash`（并开始支持 Vision），退役旧名 `deepseek-v4-flash` / `deepseek-v4-flash-vision-exp`（旧名仍被接受、按 Flash 价计费）。脚本 `MODEL_META` 未同步 → 新条目 notes 退化成 `Model version: deepseek-flash`、旧条目残留旧版本号（`DeepSeek-V4-Flash-0731`）与旧价，形成新旧并存。修复：① `MODEL_META` 补 `deepseek-flash`（version=`DeepSeek-V4.1-Flash`、`modalities` 加 `image`、并发 2500）；② 旧别名在 add-on 里改成 `{"litellm_provider": "deepseek", "_delete": true}`。**只删补丁条目不够**——上游 litellm JSON 仍含旧 key，会被顶回页面。**排查信号**：某 provider 同时存在「旧名条目（version 长期不变）」与「新名条目（version 退化成模型 id）」，即为此类滞后。
 
 **第四步：防回归——把新模型纳入验证清单**
 
@@ -452,7 +454,8 @@ build.py 每次运行（除非 `--no-addon-refresh`）在合并补丁**之前**�
 - **内嵌数据到 `<script>` 标签时转义 `</`**——用 `.replace('</', '<\\/')` 处理。
 - **解析划线价（strikethrough）要取新价不是旧价**——官网调价时常见 `~~\$0.15~~ \$0.075`（旧价划线 + 实付价，`\$` 是 markdown 反斜杠转义）。用 `_num()` 这类"取第一个数字"的解析会错误地取到旧价 `0.15` 而非实付价 `0.075`，且**不报错**、输出看似正常。正则必须优先匹配 `~~旧价~~ 新价` 中的新价并兼容 `\$`（见 zai 实测：GLM-5.3-Flash 上游也因此存了错误价）。
 - **官网同价模型合并成一行时别漏拆**——如 minimax 的 `speech-2.6-turbo / speech-02-turbo` 共享 $60/M chars。按"行包含某模型名"匹配会漏掉同一行的其他模型，要按行把模型名集合拆成独立条目。
-- **页面生成要做成原子替换**——先产出中间文件（index-new.html）、验证通过再转正并把旧版备份为 index-old.html；不要边写边覆盖正式 index.html，否则中途失败会留下损坏的页面。
+- **模型改名/退役时只删补丁条目不够，要用 `_delete`**——`refresh_addon` 按 key 增量替换、且「该 provider 旧有但本次没抓到的条目保守保留」（防误删），所以官网改名后旧 key 会长期滞留在 add-on 里；而直接删掉旧补丁条目也不行，上游 litellm JSON 往往仍收录旧 key，会顶回页面。正确做法：旧 key 写成 `{"litellm_provider": "<prov>", "_delete": true}`。注意规范化 key 匹配会剥离与 provider 同名的 `/` 前缀，上游 `deepseek/deepseek-v4-flash` 这类副本会被同一 `_delete` 条目一并删除。
+- **页面生成要做成原子替换**——先产出中间文件（index-new.html），验证通过再转正并把旧版备份为 index-old.html；不要边写边覆盖正式 index.html，否则中途失败会留下损坏的页面。
 - **表格行点击与勾选框点击要隔离**——勾选框 change 事件不要冒泡触发抽屉打开。
 - **并列最优不要高亮**——多个对象取值相同并列第一时，不要只高亮其中一个，应视为同等优秀。
 - **抽屉/弹窗要提供多种关闭方式**——关闭按钮、点击遮罩、按 `Esc` 都应能关闭。
