@@ -6414,5 +6414,37 @@
     "supports_reasoning": true,
     "cache_read_input_token_cost": 3.3333333333333334e-08,
     "input_cost_per_token_cache_hit": 3.3333333333333334e-08
+  },
+  "dashscope/glm-5.3": {
+    "litellm_provider": "dashscope",
+    "mode": "chat",
+    "source": "https://platform.qianwenai.com/pricing/api ; https://www.qianwenai.com/models",
+    "notes": "Tiered pricing by input length (CNY per 1M tokens):\n  all: input CNY 8, cache-hit CNY 2, output CNY 28 per 1M tokens\nThis entry uses the lowest tier (all); converted at 1 USD = 6.0 CNY.\nFeatures: cache, function-calling, model-experience, structured-outputs",
+    "max_input_tokens": 1048576,
+    "max_output_tokens": 131072,
+    "max_tokens": 131072,
+    "input_cost_per_token": 1.3333333333333332e-06,
+    "output_cost_per_token": 4.666666666666667e-06,
+    "supported_modalities": [
+      "text"
+    ],
+    "supported_output_modalities": [
+      "text"
+    ],
+    "supported_endpoints": [
+      "/v1/chat/completions",
+      "/v1/responses"
+    ],
+    "supported_regions": [
+      "cn"
+    ],
+    "supports_function_calling": true,
+    "supports_response_schema": true,
+    "supports_system_messages": true,
+    "supports_prompt_caching": true,
+    "supports_assistant_prefill": false,
+    "supports_reasoning": true,
+    "cache_read_input_token_cost": 3.333333333333333e-07,
+    "input_cost_per_token_cache_hit": 3.333333333333333e-07
   }
 }
