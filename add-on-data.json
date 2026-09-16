@@ -6446,5 +6446,39 @@
         "supports_reasoning": true,
         "cache_read_input_token_cost": 3.333333333333333e-07,
         "input_cost_per_token_cache_hit": 3.333333333333333e-07
+    },
+    "dashscope/kimi/kimi-k2.8-preview": {
+        "litellm_provider": "dashscope",
+        "mode": "chat",
+        "source": "https://platform.qianwenai.com/pricing/api ; https://www.qianwenai.com/models",
+        "notes": "Tiered pricing by input length (CNY per 1M tokens):\n  all: input CNY 6.5, cache-hit CNY 1.7, output CNY 27 per 1M tokens\nThis entry uses the lowest tier (all); converted at 1 USD = 6.0 CNY.\nFeatures: function-calling, structured-outputs, prefix-completion, cache",
+        "max_input_tokens": 1048576,
+        "max_output_tokens": 1048576,
+        "max_tokens": 1048576,
+        "input_cost_per_token": 1.0833333333333333e-06,
+        "output_cost_per_token": 4.5e-06,
+        "supported_modalities": [
+            "text",
+            "image",
+            "video"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses"
+        ],
+        "supported_regions": [
+            "cn"
+        ],
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_assistant_prefill": true,
+        "supports_reasoning": true,
+        "cache_read_input_token_cost": 2.833333333333333e-07,
+        "input_cost_per_token_cache_hit": 2.833333333333333e-07
     }
 }

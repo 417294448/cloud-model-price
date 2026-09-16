@@ -1,0 +1,7 @@
+===== 2026-09-16 13:31:05 更新 =====
+新增 0 / 减少 0 / 变更 0
+
+（本次无变化）
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 dashscope/kimi/kimi-k2.8-preview  [dashscope/chat] 入$1.083 出$4.5
+
