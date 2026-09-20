@@ -6482,5 +6482,42 @@
         "supports_reasoning": true,
         "cache_read_input_token_cost": 2.833333333333333e-07,
         "input_cost_per_token_cache_hit": 2.833333333333333e-07
+    },
+    "zai/glm-5.3-flashx": {
+        "litellm_provider": "zai",
+        "mode": "chat",
+        "source": "https://docs.z.ai/guides/overview/pricing",
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses",
+            "/anthropic"
+        ],
+        "max_input_tokens": 1000000,
+        "max_output_tokens": 128000,
+        "max_tokens": 128000,
+        "input_cost_per_token": 3.7e-07,
+        "output_cost_per_token": 1.25e-06,
+        "cache_read_input_token_cost": 7.5e-08,
+        "input_cost_per_token_cache_hit": 7.5e-08,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_vision": true,
+        "supports_video_input": true,
+        "supported_modalities": [
+            "text",
+            "image",
+            "video"
+        ],
+        "notes": "Fast variant of GLM-5.3-Flash, delivering inference speeds of ~200 tokens/s. Cached Input Storage is free for a limited time. Prices per the official pricing page (USD/1M tokens).",
+        "supports_speed": true,
+        "supported_output_modalities": [
+            "text"
+        ]
     }
 }
