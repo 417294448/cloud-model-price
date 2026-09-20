@@ -505,6 +505,8 @@
         "supported_endpoints": [
             "/v1/chat/completions"
         ],
+        "cache_creation_input_token_cost": 3e-06,
+        "cache_creation_input_token_cost_above_1hr": 6e-06,
         "max_input_tokens": 1048576,
         "max_output_tokens": 128000,
         "max_tokens": 128000,
