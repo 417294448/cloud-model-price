@@ -8,6 +8,10 @@
   - https://platform.kimi.ai/docs/pricing/chat-k26.md
 价格为美元 USD/1M tokens（英文站），与页面数据口径一致。
 
+各定价页的表格列数/列序会随官网改版变化（如 K3 表在缓存读之外新增了
+Cache Write TTL 5min/1h 两列），因此解析按 <DocTable> 的 columns 列标题
+（COLUMN_FIELDS）取值，不依赖固定位置——新增一列不会让价格整体错位。
+
 输出：dict（key -> 完整 litellm 格式记录），由 refresh_addon.py 合并进 add-on-data.json。
 抓取失败时返回 None，由调用方决定沿用旧补丁。
 """
@@ -37,36 +41,63 @@ def _fetch(url):
         return resp.read().decode('utf-8')
 
 
-def _to_int(s):
-    return int(s.replace(',', '').strip())
-
-
 def _parse_price_cell(cell):
     """<>{"$"}0.30</> 或 "$0.30" -> 0.30"""
     m = re.search(r'\$?\s*([0-9]+(?:\.[0-9]+)?)', cell)
     return float(m.group(1)) if m else None
 
 
+# 定价表列标题（小写）-> 记录内语义字段。列标题是比位置更可靠的锚点。
+COLUMN_FIELDS = {
+    'cached input price': 'cache_read',
+    'input price (cache hit)': 'cache_read',
+    'input price (cache miss)': 'input',
+    'input price': 'input',
+    'output price': 'output',
+    'cache write price (ttl 5min)': 'cache_write_5min',
+    'cache write price (ttl 1h)': 'cache_write_1h',
+}
+
+# 一行的单元格：带引号的文本（上下文列内含逗号，不能按逗号切）或 <>{"$"}x</> 价格
+CELL_RE = re.compile(r'"([^"]*)"|(<\>.*?</>)', re.DOTALL)
+
+
+def _parse_table(block):
+    """解析一个 <DocTable>：用 columns 的列标题给 rows 的每个单元格命名，
+    返回 [{列标题: 单元格文本}]。列数与取值数不一致即报错（官网结构已变）。"""
+    head, sep, rest = block.partition('rows=')
+    if not sep:
+        return []
+    titles = re.findall(r'title:\s*"([^"]+)"', head)
+    if not titles:
+        return []
+    out = []
+    for rm in re.finditer(r'^\s*\[(.*)\],\s*$', rest, re.MULTILINE):
+        cells = [cm.group(1) if cm.group(1) is not None else cm.group(2)
+                 for cm in CELL_RE.finditer(rm.group(1))]
+        if len(cells) != len(titles):
+            raise ValueError(
+                f'定价表列数与取值数不一致（{len(titles)} 列 / {len(cells)} 值）：'
+                f'{rm.group(1).strip()[:80]}，官网表格结构可能已变化')
+        out.append(dict(zip(titles, cells)))
+    return out
+
+
 def _parse_page(md):
-    """解析定价页 markdown，返回 [(model, cache_hit, in_miss, out, ctx), ...]，价格 USD/1M。"""
-    # 行形如 ["kimi-k3", "1M tokens", <>{"$"}0.30</>, <>{"$"}3.00</>, <>{"$"}15.00</>, "1,048,576 tokens"]
+    """解析定价页 markdown，返回 [{model, cache_read, input, output,
+    cache_write_5min?, cache_write_1h?}, ...]，价格 USD/1M。"""
     rows = []
-    for m in re.finditer(r'\[\s*"([^"]+)"\s*,\s*"1M tokens"\s*,\s*([^\]]+?)\]', md):
-        model = m.group(1)
-        cells = re.findall(r'<\>\{"\$"\}([0-9.]+)</>|"([0-9,]+ tokens)"', m.group(2))
-        # cells 是 (价格, 上下文) 元组的混合，按位置提取
-        flat = [a or b for a, b in cells]
-        nums = [x for x in flat if 'tokens' not in x]
-        ctxs = [x for x in flat if 'tokens' in x]
-        if len(nums) < 3 or not ctxs:
-            continue
-        rows.append({
-            'model': model,
-            'cache_hit': float(nums[0]),
-            'input': float(nums[1]),
-            'output': float(nums[2]),
-            'context': _to_int(ctxs[0].replace(' tokens', '')),
-        })
+    for t in re.finditer(r'<DocTable(.*?)\n\s*/>', md, re.DOTALL):
+        for raw in _parse_table(t.group(1)):
+            row = {'model': raw.get('Model', '')}
+            for title, cell in raw.items():
+                field = COLUMN_FIELDS.get(title.strip().lower())
+                if field:
+                    row[field] = _parse_price_cell(cell)
+            if not row['model'] or row.get('input') is None \
+                    or row.get('output') is None or row.get('cache_read') is None:
+                raise ValueError(f'定价表解析不完整（缺模型名/输入价/输出价/缓存读价）：{raw}')
+            rows.append(row)
     return rows
 
 
@@ -124,11 +155,16 @@ def fetch():
             'source': SRC,
             'input_cost_per_token': row['input'] / 1e6,
             'output_cost_per_token': row['output'] / 1e6,
-            'cache_read_input_token_cost': row['cache_hit'] / 1e6,
-            'input_cost_per_token_cache_hit': row['cache_hit'] / 1e6,
+            'cache_read_input_token_cost': row['cache_read'] / 1e6,
+            'input_cost_per_token_cache_hit': row['cache_read'] / 1e6,
             'supported_regions': ['global'],
             'supported_endpoints': ENDPOINTS,
         }
+        # 缓存写入价：5min 档（未指定 TTL 时的默认档）与 1h 档，字段名跟随上游 litellm 惯例
+        if row.get('cache_write_5min') is not None:
+            rec['cache_creation_input_token_cost'] = row['cache_write_5min'] / 1e6
+        if row.get('cache_write_1h') is not None:
+            rec['cache_creation_input_token_cost_above_1hr'] = row['cache_write_1h'] / 1e6
         if meta.get('max_input_tokens'):
             rec['max_input_tokens'] = meta['max_input_tokens']
         if meta.get('max_output_tokens'):
