@@ -1,0 +1,14 @@
+===== 2026-09-21 13:31:28 更新 =====
+新增 0 / 减少 0 / 变更 0
+
+（本次无变化）
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 dashscope/ZHIPU/GLM-5.3-FlashX  [dashscope/chat] 入$0.3333 出$1.167
++ 新增补丁 dashscope/glm-5.3-prime  [dashscope/chat] 入$2.667 出$9.333
++ 新增补丁 dashscope/vanchin/deepseek-v4.1-flash  [dashscope/chat] 入$0.3333 出$1.333
+~ 修正补丁 dashscope/qwen-plus-character  [dashscope/chat] 入$0.1333 出$0.3333
+
+===== 2026-09-21 13:32:47 更新 =====
+新增 0 / 减少 0 / 变更 0
+
+（本次无变化）
