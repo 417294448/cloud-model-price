@@ -48,7 +48,7 @@ import csv
 
 # 数据源：litellm 上游的模型定价 JSON（raw 形式才是纯数据，blob 是网页页）
 DATA_URL = ('https://raw.githubusercontent.com/BerriAI/litellm/'
-            'litellm_internal_staging/model_prices_and_context_window.json')
+            'main/model_prices_and_context_window.json')
 
 
 def fail(msg, new_path=None):
