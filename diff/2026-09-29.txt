@@ -1,0 +1,82 @@
+===== 2026-09-29 13:31:21 更新 =====
+新增 31 / 减少 1 / 变更 41
+
+--- 新增模型（31）---
++ anthropic.claude-sonnet-5-5  [bedrock_converse/chat] 入$2 出$10
++ apac.anthropic.claude-sonnet-5-5  [bedrock_converse/chat] 入$2.2 出$11
++ au.anthropic.claude-sonnet-5-5  [bedrock_converse/chat] 入$2.2 出$11
++ azure_ai/MAI-Cyber-1-Flash  [azure_ai/chat] 入$0.6 出$3.5
++ azure_ai/claude-sonnet-5-5  [azure_ai/chat] 入$2 出$10
++ azure_ai/mistral-ocr-2505  [azure_ai/ocr] 入- 出-
++ azure_ai/mistral-ocr-2512  [azure_ai/ocr] 入- 出-
++ bedrock/us-gov-east-1/anthropic.claude-sonnet-5-5  [bedrock/chat] 入$2.4 出$12
++ bedrock/us-gov-west-1/anthropic.claude-sonnet-5-5  [bedrock/chat] 入$2.4 出$12
++ bedrock_mantle/anthropic.claude-opus-5-5  [bedrock_mantle/chat] 入$4.4 出$22
++ bedrock_mantle/anthropic.claude-sonnet-5-5  [bedrock_mantle/chat] 入$2.2 出$11
++ bedrock_mantle/us-gov-west-1/anthropic.claude-opus-5-5  [bedrock_mantle/chat] 入$4.8 出$24
++ bedrock_mantle/us-gov-west-1/anthropic.claude-sonnet-5-5  [bedrock_mantle/chat] 入$2.4 出$12
++ claude-sonnet-5-5  [anthropic/chat] 入$2 出$10
++ eu.anthropic.claude-sonnet-5-5  [bedrock_converse/chat] 入$2.2 出$11
++ fireworks_ai/accounts/fireworks/routers/auto  [fireworks_ai/chat] 入- 出-
++ fireworks_ai/accounts/fireworks/routers/auto-instant  [fireworks_ai/chat] 入- 出-
++ fireworks_ai/accounts/fireworks/routers/firerouter  [fireworks_ai/chat] 入- 出-
++ global.anthropic.claude-sonnet-5-5  [bedrock_converse/chat] 入$2 出$10
++ global.xai.grok-4.7  [bedrock_converse/chat] 入$2 出$6
++ jp.anthropic.claude-sonnet-5-5  [bedrock_converse/chat] 入$2.2 出$11
++ openrouter/anthropic/claude-sonnet-5.5  [openrouter/chat] 入$2 出$10
++ perplexity/anthropic/claude-sonnet-5-5  [perplexity/responses] 入$2 出$10
++ prism/deepseek-v4-flash  [prism/chat] 入$0.17 出$0.21
++ prism/deepseek-v4.1-flash  [prism/chat] 入$0.17 出$0.63
++ us-gov.anthropic.claude-sonnet-5-5  [bedrock_converse/chat] 入$2.4 出$12
++ us.anthropic.claude-sonnet-5-5  [bedrock_converse/chat] 入$2.2 出$11
++ us.xai.grok-4.7  [bedrock_converse/chat] 入$2.2 出$6.6
++ vertex_ai/claude-sonnet-5-5  [vertex_ai-anthropic_models/chat] 入$2 出$10
++ vertex_ai/claude-sonnet-5-5@default  [vertex_ai-anthropic_models/chat] 入$2 出$10
++ xai.grok-4.7  [bedrock_converse/chat] 入$2 出$6
+
+--- 减少模型（1）---
+- azure_ai/muse-spark-1.3  [azure_ai/chat] 入$1.25 出$4.25
+
+--- 发生变更（41）---
+~ azure_ai/DeepSeek-V4-Flash-0731  [azure_ai/chat] 入$0.44 出$1.32
+~ azure_ai/Llama-3.3-70B-Instruct  [azure_ai/chat] 入$0.71 出$0.71
+~ azure_ai/claude-sonnet-4-6  [azure_ai/chat] 入$3 出$15
+~ azure_ai/deepseek-v3.2  [azure_ai/chat] 入$0.58 出$1.68
+~ azure_ai/deepseek-v3.2-speciale  [azure_ai/chat] 入$0.58 出$1.68
+~ azure_ai/deepseek-v4.1-flash  [azure_ai/chat] 入$0.3 出$1.2
+~ azure_ai/grok-4  [azure_ai/chat] 入$3 出$15
+~ azure_ai/grok-4.3  [azure_ai/chat] 入$1.25 出$2.5
+~ azure_ai/grok-4.6  [azure_ai/chat] 入$1.25 出$6
+~ azure_ai/grok-code-fast-1  [azure_ai/chat] 入$0.2 出$1.5
+~ bedrock/ap-southeast-2/minimax.minimax-m2.5  [bedrock/chat] 入$0.31 出$1.24
+~ meta.llama3-1-405b-instruct-v1:0  [bedrock/chat] 入$2.4 出$2.4
+~ meta.llama3-1-70b-instruct-v1:0  [bedrock/chat] 入$0.72 出$0.72
+~ meta.llama3-2-11b-instruct-v1:0  [bedrock/chat] 入$0.16 出$0.16
+~ meta.llama3-2-90b-instruct-v1:0  [bedrock/chat] 入$0.72 出$0.72
+~ mistral.mistral-large-2407-v1:0  [bedrock/chat] 入$2 出$6
+~ nebius/deepseek-ai/DeepSeek-V4.1-Flash  [nebius/chat] 入$0.3 出$1.2
+~ o3-deep-research  [openai/responses] 入$10 出$40
+~ o4-mini-deep-research  [openai/responses] 入$2 出$8
+~ openrouter/deepseek/deepseek-chat  [openrouter/chat] 入$0.2574 出$1.029
+~ openrouter/deepseek/deepseek-chat-v3-0324  [openrouter/chat] 入$0.29 出$1.14
+~ openrouter/deepseek/deepseek-v3.2  [openrouter/chat] 入$0.28 出$0.42
+~ openrouter/deepseek/deepseek-v4-flash  [openrouter/chat] 入$0.14 出$0.28
+~ openrouter/deepseek/deepseek-v4-flash-vision-exp  [openrouter/chat] 入$0.44 出$1.32
+~ openrouter/deepseek/deepseek-v4-pro  [openrouter/chat] 入$0.9483 出$1.897
+~ openrouter/deepseek/deepseek-v4-pro-0813  [openrouter/chat] 入$0.243 出$3.5
+~ openrouter/deepseek/deepseek-v4.1-flash  [openrouter/chat] 入$0.03483 出$0.6
+~ openrouter/minimax/minimax-m2.7  [openrouter/chat] 入$0.3 出$1.2
+~ openrouter/qwen/qwen3-14b  [openrouter/chat] 入$0.2275 出$0.91
+~ openrouter/qwen/qwen3.5-35b-a3b  [openrouter/chat] 入$0.1625 出$1.3
+~ openrouter/z-ai/glm-5.1  [openrouter/chat] 入$1.4 出$4.4
+~ openrouter/z-ai/glm-5.3  [openrouter/chat] 入$0.3556 出$2.574
+~ openrouter/z-ai/glm-5.3-flash  [openrouter/chat] 入$0.15 出$0.5
+~ together_ai/Salesforce/Llama-Rank-V1  [together_ai/rerank] 入$0.1 出$0
+~ together_ai/google/gemma-4-31B-it  [together_ai/chat] 入$0.39 出$0.97
+~ together_ai/openai/gpt-oss-20b  [together_ai/chat] 入$0.05 出$0.2
+~ us.meta.llama3-1-405b-instruct-v1:0  [bedrock/chat] 入$2.4 出$2.4
+~ us.meta.llama3-1-70b-instruct-v1:0  [bedrock/chat] 入$0.72 出$0.72
+~ us.meta.llama3-2-11b-instruct-v1:0  [bedrock/chat] 入$0.16 出$0.16
+~ us.meta.llama3-2-90b-instruct-v1:0  [bedrock/chat] 入$0.72 出$0.72
+~ vertex_ai/gemini-3.8-live  [vertex_ai/realtime] 入$0.75 出$4.5
+
