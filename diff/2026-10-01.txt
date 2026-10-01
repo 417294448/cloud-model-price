@@ -1,0 +1,51 @@
+===== 2026-10-01 13:31:19 更新 =====
+新增 2 / 减少 0 / 变更 42
+
+--- 新增模型（2）---
++ vertex_ai/gemini-3.8-flash-lite-tts  [vertex_ai/audio_speech] 入$0.5 出$6
++ vertex_ai/gemini-3.8-flash-tts  [vertex_ai/audio_speech] 入$0.5 出$9
+
+--- 发生变更（42）---
+~ azure_ai/claude-haiku-4-5  [azure_ai/chat] 入$1 出$5
+~ azure_ai/claude-opus-4-5  [azure_ai/chat] 入$5 出$25
+~ azure_ai/claude-sonnet-4-5  [azure_ai/chat] 入$3 出$15
+~ baseten/deepseek-ai/DeepSeek-V4.1-Flash  [baseten/chat] 入$0.3 出$1.2
+~ claude-sonnet-4-5  [anthropic/chat] 入$3 出$15
+~ claude-sonnet-4-5-20250929  [anthropic/chat] 入$3 出$15
+~ fireworks_ai/accounts/fireworks/models/ember-1  [fireworks_ai/chat] 入$3 出$15
+~ fireworks_ai/accounts/fireworks/models/inkling  [fireworks_ai/chat] 入$1 出$4.05
+~ fireworks_ai/accounts/fireworks/models/nemotron-3-ultra-nvfp4  [fireworks_ai/chat] 入$0.6 出$2.4
+~ fireworks_ai/accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b  [fireworks_ai/chat] 入$0.05 出$0.2
+~ fireworks_ai/accounts/fireworks/routers/glm-5p3-flash-us  [fireworks_ai/chat] 入$0.225 出$0.75
+~ fireworks_ai/accounts/fireworks/routers/glm-5p3-us  [fireworks_ai/chat] 入$2.1 出$6.6
+~ fireworks_ai/glm-5p3-flash-us  [fireworks_ai/chat] 入$0.225 出$0.75
+~ fireworks_ai/glm-5p3-us  [fireworks_ai/chat] 入$2.1 出$6.6
+~ fireworks_ai/nemotron-3-ultra-nvfp4  [fireworks_ai/chat] 入$0.6 出$2.4
+~ fireworks_ai/nemotron-lightning-3p5-30b-a3b  [fireworks_ai/chat] 入$0.05 出$0.2
+~ gemini/veo-3.1-fast-generate-preview  [gemini/video_generation] 入- 出-
+~ gemini/veo-3.1-generate-preview  [gemini/video_generation] 入- 出-
+~ gemini/veo-3.1-lite-generate-preview  [gemini/video_generation] 入- 出-
+~ gpt-image-2.5-flare  [openai/image_generation] 入$5 出-
+~ gpt-image-2.5-sunburst  [openai/image_generation] 入$5 出-
+~ mistral/labs-leanstral-1-5  [mistral/chat] 入$0 出$0
+~ mistral/mistral-ocr-4-0  [mistral/ocr] 入- 出-
+~ mistral/zai-glm-5-2  [mistral/chat] 入$1.4 出$4.4
+~ openrouter/deepseek/deepseek-v3.1-terminus  [openrouter/chat] 入$0.3 出$1
+~ openrouter/deepseek/deepseek-v4-flash  [openrouter/chat] 入$0.07854 出$0.1571
+~ openrouter/deepseek/deepseek-v4-flash-0731  [openrouter/chat] 入$0.0089 出$1.28
+~ openrouter/deepseek/deepseek-v4-pro  [openrouter/chat] 入$0.783 出$1.566
+~ openrouter/deepseek/deepseek-v4-pro-0813  [openrouter/chat] 入$1.32 出$3.96
+~ openrouter/deepseek/deepseek-v4.1-flash  [openrouter/chat] 入$0.0198 出$0.396
+~ openrouter/google/gemma-4-26b-a4b-it  [openrouter/chat] 入$0.0765 出$0.255
+~ openrouter/meta/muse-glimmer-30b  [openrouter/chat] 入$0.35 出$1.5
+~ openrouter/minimax/minimax-m2.7  [openrouter/chat] 入$0.21 出$0.84
+~ openrouter/moonshotai/kimi-k2.7-code  [openrouter/chat] 入$0.6712 出$3.35
+~ openrouter/moonshotai/kimi-k3  [openrouter/chat] 入$0.28 出$10
+~ openrouter/openai/gpt-oss-120b  [openrouter/chat] 入$0.037 出$0.17
+~ openrouter/qwen/qwen3-30b-a3b-instruct-2507  [openrouter/chat] 入$0.04815 出$0.193
+~ openrouter/stealth/space-bunny-alpha  [openrouter/chat] 入$0 出$0
+~ openrouter/tencent/hy4-preview  [openrouter/chat] 入$0.834 出$2.501
+~ openrouter/z-ai/glm-5.1  [openrouter/chat] 入$0.9646 出$3.032
+~ openrouter/z-ai/glm-5.2  [openrouter/chat] 入$0.3249 出$3.99
+~ wandb/zai-org/GLM-5.3-Flash  [wandb/chat] 入$0.15 出$0.5
+
