@@ -1,0 +1,18 @@
+===== 2026-10-05 13:31:28 更新 =====
+新增 0 / 减少 0 / 变更 13
+
+--- 发生变更（13）---
+~ azure/eu/gpt-4o-realtime-preview-2024-10-01  [azure/realtime] 入$5.5 出$22
+~ azure/gpt-4o-realtime-preview-2024-10-01  [azure/realtime] 入$5 出$20
+~ azure/gpt-realtime-2.1  [azure/realtime] 入$4 出$24
+~ azure/gpt-realtime-2.1-mini  [azure/realtime] 入$0.6 出$2.4
+~ azure/us/gpt-4o-realtime-preview-2024-10-01  [azure/realtime] 入$5.5 出$22
+~ azure_ai/jamba-instruct  [azure_ai/chat] 入$0.5 出$0.7
+~ openrouter/deepseek/deepseek-v4-flash  [openrouter/chat] 入$0.0224 出$1.28
+~ openrouter/deepseek/deepseek-v4-flash-0731  [openrouter/chat] 入$0.0152 出$1.28
+~ openrouter/deepseek/deepseek-v4-pro-0813  [openrouter/chat] 入$0.85 出$5
+~ openrouter/deepseek/deepseek-v4.1-flash  [openrouter/chat] 入$0.003 出$2.4
+~ openrouter/moonshotai/kimi-k3  [openrouter/chat] 入$0.72 出$14
+~ openrouter/qwen/qwen3.8-27b  [openrouter/chat] 入$0.425 出$2.55
+~ openrouter/z-ai/glm-5.2  [openrouter/chat] 入$0.104 出$8
+
