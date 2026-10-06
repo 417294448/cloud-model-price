@@ -1,0 +1,34 @@
+===== 2026-10-06 13:31:08 更新 =====
+新增 7 / 减少 0 / 变更 20
+
+--- 新增模型（7）---
++ amazon.nova-2-5-sonic  [bedrock/realtime] 入$0.33 出$2.75
++ chatgpt/gpt-6-astra  [chatgpt/responses] 入- 出-
++ chatgpt/gpt-6-luna  [chatgpt/responses] 入- 出-
++ chatgpt/gpt-6-sol  [chatgpt/responses] 入- 出-
++ chatgpt/gpt-6.1-sol  [chatgpt/responses] 入- 出-
++ global.zai.glm-5.3  [bedrock_converse/chat] 入$1.68 出$5.28
++ us.zai.glm-5.3  [bedrock_converse/chat] 入$1.848 出$5.808
+
+--- 发生变更（20）---
+~ azure/gpt-4o-transcribe  [azure/audio_transcription] 入$2.5 出$10
+~ azure/gpt-6-sol  [azure/chat] 入$2 出$10
+~ azure/gpt-6-sol-2026-09-22  [azure/chat] 入$2 出$10
+~ azure/us/gpt-6-sol  [azure/chat] 入$2.2 出$11
+~ bedrock_mantle/xai.grok-4.3  [bedrock_mantle/chat] 入$1.25 出$2.5
+~ bedrock_mantle/xai.grok-4.6  [bedrock_mantle/chat] 入$2.2 出$6.6
+~ gemini-3.1-flash-lite-image  [vertex_ai-language-models/image_generation] 入$0.25 出$1.5 图$0.0336
+~ gemini/gemini-2.5-flash  [gemini/chat] 入$0.3 出$2.5
+~ gemini/gemini-2.5-flash-lite  [gemini/chat] 入$0.1 出$0.4
+~ gemini/gemini-3.1-flash-lite  [gemini/chat] 入$0.25 出$1.5
+~ global.moonshotai.kimi-k3  [bedrock_converse/chat] 入$3 出$15
+~ global.xai.grok-4.6  [bedrock_converse/chat] 入$2 出$6
+~ global.xai.grok-4.7  [bedrock_converse/chat] 入$2 出$6
+~ moonshotai.kimi-k3  [bedrock_converse/chat] 入$3.3 出$16.5
+~ us.moonshotai.kimi-k3  [bedrock_converse/chat] 入$3.3 出$16.5
+~ us.xai.grok-4.6  [bedrock_converse/chat] 入$2.2 出$6.6
+~ us.xai.grok-4.7  [bedrock_converse/chat] 入$2.2 出$6.6
+~ vertex_ai/gemini-3.1-flash-image  [vertex_ai-language-models/image_generation] 入$0.5 出$3 图$0.0672
+~ vertex_ai/gemini-3.1-flash-lite-image  [vertex_ai-language-models/image_generation] 入$0.25 出$1.5 图$0.0336
+~ xai.grok-4.7  [bedrock_converse/chat] 入$2 出$6
+
