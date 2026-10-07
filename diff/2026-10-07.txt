@@ -1,0 +1,106 @@
+===== 2026-10-07 13:31:25 更新 =====
+新增 14 / 减少 8 / 变更 75
+
+--- 新增模型（14）---
++ azure/apac/gpt-6.1-sol  [azure/chat] 入$2.4 出$12
++ azure/eu/gpt-6.1-sol  [azure/chat] 入$2.4 出$12
++ azure/model-router  [azure/chat] 入$0.14 出$0
++ azure/us/gpt-6.1-sol  [azure/chat] 入$2.2 出$11
++ azure/whisper  [azure/audio_transcription] 入- 出-
++ azure_ai/grok-4.7  [azure_ai/chat] 入$2 出$6
++ gemini-nano-banana-2.1  [vertex_ai-language-models/image_generation] 入$1.5 出$7.5 图$0.0336
++ gemini/gemini-nano-banana-2.1  [gemini/image_generation] 入$1.5 出$7.5 图$0.0336
++ in.moonshotai.kimi-k3  [bedrock_converse/chat] 入$3.3 出$16.5
++ mistral/mistral-large-4  [mistral/chat] 入$0.68 出$2.09
++ mistral/mistral-large-4-0  [mistral/chat] 入$0.68 出$2.09
++ openrouter/google/gemini-nano-banana-2.1  [openrouter/chat] 入$1.5 出$7.5
++ openrouter/mistralai/mistral-large-4-0  [openrouter/chat] 入$0.68 出$2.09
++ vertex_ai/gemini-nano-banana-2.1  [vertex_ai-language-models/image_generation] 入$1.5 出$7.5 图$0.0336
+
+--- 减少模型（8）---
+- fireworks_ai/accounts/fireworks/models/  [fireworks_ai/embedding] 入$0.1 出$0
+- palm/chat-bison  [palm/chat] 入$0.125 出$0.125
+- palm/chat-bison-001  [palm/chat] 入$0.125 出$0.125
+- palm/text-bison  [palm/completion] 入$0.125 出$0.125
+- palm/text-bison-001  [palm/completion] 入$0.125 出$0.125
+- palm/text-bison-safety-off  [palm/completion] 入$0.125 出$0.125
+- palm/text-bison-safety-recitation-off  [palm/completion] 入$0.125 出$0.125
+- together_ai/baai/bge-base-en-v1.5  [together_ai/embedding] 入$0.008 出$0
+
+--- 发生变更（75）---
+~ azure/eu/gpt-4o-realtime-preview-2024-12-17  [azure/realtime] 入$5.5 出$22
+~ azure/eu/gpt-6-astra  [azure/chat] 入$12 出$60
+~ azure/gpt-4o-mini-audio-preview-2024-12-17  [azure/chat] 入$0.15 出$0.6
+~ azure/gpt-4o-transcribe  [azure/audio_transcription] 入$2.5 出$10
+~ azure/gpt-4o-transcribe-diarize  [azure/audio_transcription] 入$2.5 出$10
+~ azure/gpt-audio-1.5  [azure/chat] 入$2.5 出$10
+~ azure/gpt-audio-1.5-2026-02-23  [azure/chat] 入$2.5 出$10
+~ azure/gpt-image-1  [azure/image_generation] 入$5 出-
+~ azure/gpt-image-1-mini  [azure/image_generation] 入$2 出-
+~ azure/gpt-image-1.5  [azure/image_generation] 入$5 出$10
+~ azure/gpt-image-1.5-2025-12-16  [azure/image_generation] 入$5 出$10
+~ azure/gpt-image-2  [azure/image_generation] 入$5 出-
+~ azure/gpt-image-2-2026-04-21  [azure/image_generation] 入$5 出-
+~ azure/gpt-image-2.5-flare  [azure/image_generation] 入$5 出-
+~ azure/gpt-image-2.5-sunburst  [azure/image_generation] 入$5 出-
+~ azure/hd/1024-x-1024/dall-e-3  [azure/image_generation] 入- 出$0
+~ azure/hd/1024-x-1792/dall-e-3  [azure/image_generation] 入- 出$0
+~ azure/hd/1792-x-1024/dall-e-3  [azure/image_generation] 入- 出$0
+~ azure/standard/1024-x-1024/dall-e-3  [azure/image_generation] 入- 出$0
+~ azure/standard/1024-x-1792/dall-e-3  [azure/image_generation] 入- 出$0
+~ azure/standard/1792-x-1024/dall-e-3  [azure/image_generation] 入- 出$0
+~ azure/us/gpt-4o-realtime-preview-2024-12-17  [azure/realtime] 入$5.5 出$22
+~ azure_ai/claude-opus-5-5  [azure_ai/chat] 入$4 出$20
+~ azure_ai/claude-sonnet-5-5  [azure_ai/chat] 入$2 出$10
+~ azure_ai/grok-4.6  [azure_ai/chat] 入$2 出$6
+~ azure_ai/kimi-k2.7-code  [azure_ai/chat] 入$0.95 出$4
+~ deep-research-pro-preview-12-2025  [vertex_ai-language-models/chat] 入$2 出$12 图$0.134
+~ gemini-2.5-flash-image  [vertex_ai-language-models/image_generation] 入$0.3 出$2.5 图$0.039
+~ gemini-3-pro-image  [vertex_ai-language-models/image_generation] 入$2 出$12 图$0.134
+~ gemini-3-pro-image-preview  [vertex_ai-language-models/image_generation] 入$2 出$12 图$0.134
+~ gemini-3.1-flash-image  [vertex_ai-language-models/image_generation] 入$0.5 出$3 图$0.0672
+~ gemini-3.1-flash-image-preview  [vertex_ai-language-models/image_generation] 入$0.5 出$3 图$0.0672
+~ gemini-3.1-flash-lite-image  [vertex_ai-language-models/image_generation] 入$0.25 出$1.5 图$0.0336
+~ gemini-3.6-flash  [vertex_ai-language-models/chat] 入$0.75 出$3.75
+~ gemini-3.7-flash  [vertex_ai-language-models/chat] 入$0.75 出$3.75
+~ gemini/deep-research-max-preview-04-2026  [gemini/chat] 入$2 出$12
+~ gemini/deep-research-preview-04-2026  [gemini/chat] 入$2 出$12
+~ gemini/gemini-2.5-flash-image  [gemini/image_generation] 入$0.3 出$2.5 图$0.039
+~ gemini/gemini-3-pro-image  [gemini/image_generation] 入$2 出$12 图$0.134
+~ gemini/gemini-3-pro-image-preview  [gemini/image_generation] 入$2 出$12 图$0.134
+~ gemini/gemini-3.1-flash-image  [gemini/image_generation] 入$0.5 出$3 图$0.045
+~ gemini/gemini-3.1-flash-image-preview  [gemini/image_generation] 入$0.5 出$3 图$0.045
+~ gemini/gemini-3.1-flash-lite-image  [gemini/image_generation] 入$0.25 出$1.5 图$0.0336
+~ gemini/nano-banana-pro-preview  [gemini/image_generation] 入$2 出$12 图$0.134
+~ openrouter/deepseek/deepseek-chat-v3-0324  [openrouter/chat] 入$0.29 出$1.14
+~ openrouter/deepseek/deepseek-v4-flash  [openrouter/chat] 入$0.03 出$1.28
+~ openrouter/deepseek/deepseek-v4-flash-0731  [openrouter/chat] 入$0.0163 出$1.28
+~ openrouter/deepseek/deepseek-v4-pro-0813  [openrouter/chat] 入$1.32 出$3.96
+~ openrouter/deepseek/deepseek-v4.1-flash  [openrouter/chat] 入$0.044 出$0.3
+~ openrouter/google/gemma-4-26b-a4b-it  [openrouter/chat] 入$0.0765 出$0.255
+~ openrouter/meta-llama/llama-4-maverick  [openrouter/chat] 入$0.1875 出$0.6525
+~ openrouter/meta/muse-glimmer-30b  [openrouter/chat] 入$0.3 出$1.2
+~ openrouter/moonshotai/kimi-k3  [openrouter/chat] 入$0.79 出$15
+~ openrouter/nvidia/nemotron-3.5-lightning  [openrouter/chat] 入$0.06 出$0.16
+~ openrouter/openai/gpt-5.6-sol-pro  [openrouter/chat] 入$2 出$10
+~ openrouter/qwen/qwen3-235b-a22b-2507  [openrouter/chat] 入$0.09 出$0.55
+~ openrouter/qwen/qwen3.5-397b-a17b  [openrouter/chat] 入$0.45 出$3
+~ openrouter/qwen/qwen3.6-27b  [openrouter/chat] 入$0.3 出$2
+~ openrouter/thinkingmachines/inkling  [openrouter/chat] 入$1 出$4.05
+~ openrouter/z-ai/glm-5.1  [openrouter/chat] 入$0.966 出$3.036
+~ openrouter/z-ai/glm-5.2  [openrouter/chat] 入$0.152 出$12
+~ openrouter/z-ai/glm-5.3  [openrouter/chat] 入$0.07 出$7
+~ together_ai/Qwen/Qwen3.8-Flash  [together_ai/chat] 入$0.15 出$0.47
+~ together_ai/moonshotai/Kimi-K3  [together_ai/chat] 入$2.7 出$13.5
+~ vertex_ai/deep-research-pro-preview-12-2025  [vertex_ai-language-models/chat] 入$2 出$12 图$0.134
+~ vertex_ai/gemini-2.5-flash-image  [vertex_ai-language-models/image_generation] 入$0.3 出$2.5 图$0.039
+~ vertex_ai/gemini-3-pro-image  [vertex_ai-language-models/image_generation] 入$2 出$12 图$0.134
+~ vertex_ai/gemini-3-pro-image-preview  [vertex_ai-language-models/image_generation] 入$2 出$12 图$0.134
+~ vertex_ai/gemini-3.1-flash-image  [vertex_ai-language-models/image_generation] 入$0.5 出$3 图$0.0672
+~ vertex_ai/gemini-3.1-flash-image-preview  [vertex_ai-language-models/image_generation] 入$0.5 出$3 图$0.0672
+~ vertex_ai/gemini-3.1-flash-lite-image  [vertex_ai-language-models/image_generation] 入$0.25 出$1.5 图$0.0336
+~ vertex_ai/gemini-3.5-live-translate-preview  [vertex_ai/realtime] 入$3.5 出$21
+~ vertex_ai/gemini-3.5-transcribe-live  [vertex_ai/audio_transcription] 入- 出$21
+~ vertex_ai/gemini-3.6-flash  [vertex_ai/chat] 入$0.75 出$3.75
+~ vertex_ai/gemini-3.7-flash  [vertex_ai/chat] 入$0.75 出$3.75
+
