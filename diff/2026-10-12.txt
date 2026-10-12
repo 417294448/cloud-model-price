@@ -1,0 +1,53 @@
+===== 2026-10-12 13:31:24 更新 =====
+新增 0 / 减少 0 / 变更 48
+
+--- 发生变更（48）---
+~ ai21.jamba-1-5-large-v1:0  [bedrock/chat] 入$2 出$8
+~ ai21.jamba-1-5-mini-v1:0  [bedrock/chat] 入$0.2 出$0.4
+~ bedrock/ap-south-1/meta.llama3-70b-instruct-v1:0  [bedrock/chat] 入$3.18 出$4.2
+~ bedrock/ap-south-1/meta.llama3-8b-instruct-v1:0  [bedrock/chat] 入$0.36 出$0.72
+~ bedrock/ca-central-1/meta.llama3-70b-instruct-v1:0  [bedrock/chat] 入$3.05 出$4.03
+~ bedrock/ca-central-1/meta.llama3-8b-instruct-v1:0  [bedrock/chat] 入$0.35 出$0.69
+~ bedrock/eu-west-1/meta.llama3-70b-instruct-v1:0  [bedrock/chat] 入$2.86 出$3.78
+~ bedrock/eu-west-1/meta.llama3-8b-instruct-v1:0  [bedrock/chat] 入$0.32 出$0.65
+~ bedrock/eu-west-2/meta.llama3-70b-instruct-v1:0  [bedrock/chat] 入$3.45 出$4.55
+~ bedrock/eu-west-2/meta.llama3-8b-instruct-v1:0  [bedrock/chat] 入$0.39 出$0.78
+~ bedrock/eu-west-3/mistral.mistral-7b-instruct-v0:2  [bedrock/chat] 入$0.2 出$0.26
+~ bedrock/eu-west-3/mistral.mistral-large-2402-v1:0  [bedrock/chat] 入$5.2 出$15.6
+~ bedrock/eu-west-3/mistral.mixtral-8x7b-instruct-v0:1  [bedrock/chat] 入$0.59 出$0.91
+~ bedrock/sa-east-1/meta.llama3-70b-instruct-v1:0  [bedrock/chat] 入$4.45 出$5.88
+~ bedrock/sa-east-1/meta.llama3-8b-instruct-v1:0  [bedrock/chat] 入$0.5 出$1.01
+~ bedrock/us-east-1/meta.llama3-70b-instruct-v1:0  [bedrock/chat] 入$2.65 出$3.5
+~ bedrock/us-east-1/meta.llama3-8b-instruct-v1:0  [bedrock/chat] 入$0.3 出$0.6
+~ bedrock/us-east-1/mistral.mistral-7b-instruct-v0:2  [bedrock/chat] 入$0.15 出$0.2
+~ bedrock/us-east-1/mistral.mistral-large-2402-v1:0  [bedrock/chat] 入$4 出$12
+~ bedrock/us-east-1/mistral.mixtral-8x7b-instruct-v0:1  [bedrock/chat] 入$0.45 出$0.7
+~ bedrock/us-west-1/meta.llama3-70b-instruct-v1:0  [bedrock/chat] 入$2.65 出$3.5
+~ bedrock/us-west-1/meta.llama3-8b-instruct-v1:0  [bedrock/chat] 入$0.3 出$0.6
+~ bedrock/us-west-2/mistral.mistral-7b-instruct-v0:2  [bedrock/chat] 入$0.15 出$0.2
+~ bedrock/us-west-2/mistral.mistral-large-2402-v1:0  [bedrock/chat] 入$4 出$12
+~ bedrock/us-west-2/mistral.mixtral-8x7b-instruct-v0:1  [bedrock/chat] 入$0.45 出$0.7
+~ cohere.rerank-v3-5:0  [bedrock/rerank] 入$0 出$0
+~ eu.mistral.pixtral-large-2502-v1:0  [bedrock_converse/chat] 入$2 出$6
+~ meta.llama3-1-70b-instruct-v1:0  [bedrock/chat] 入$0.72 出$0.72
+~ meta.llama3-1-8b-instruct-v1:0  [bedrock/chat] 入$0.22 出$0.22
+~ meta.llama3-3-70b-instruct-v1:0  [bedrock_converse/chat] 入$0.72 出$0.72
+~ meta.llama3-70b-instruct-v1:0  [bedrock/chat] 入$2.65 出$3.5
+~ meta.llama3-8b-instruct-v1:0  [bedrock/chat] 入$0.3 出$0.6
+~ meta.llama4-maverick-17b-instruct-v1:0  [bedrock_converse/chat] 入$0.24 出$0.97
+~ meta.llama4-scout-17b-instruct-v1:0  [bedrock_converse/chat] 入$0.17 出$0.66
+~ mistral.mistral-7b-instruct-v0:2  [bedrock/chat] 入$0.15 出$0.2
+~ mistral.mistral-large-2402-v1:0  [bedrock/chat] 入$4 出$12
+~ mistral.mistral-small-2402-v1:0  [bedrock/chat] 入$1 出$3
+~ mistral.mixtral-8x7b-instruct-v0:1  [bedrock/chat] 入$0.45 出$0.7
+~ us.meta.llama3-1-70b-instruct-v1:0  [bedrock/chat] 入$0.72 出$0.72
+~ us.meta.llama3-1-8b-instruct-v1:0  [bedrock/chat] 入$0.22 出$0.22
+~ us.meta.llama3-3-70b-instruct-v1:0  [bedrock_converse/chat] 入$0.72 出$0.72
+~ us.meta.llama4-maverick-17b-instruct-v1:0  [bedrock_converse/chat] 入$0.24 出$0.97
+~ us.meta.llama4-scout-17b-instruct-v1:0  [bedrock_converse/chat] 入$0.17 出$0.66
+~ us.mistral.pixtral-large-2502-v1:0  [bedrock_converse/chat] 入$2 出$6
+~ us.writer.palmyra-x5-v1:0  [bedrock_converse/chat] 入$0.6 出$6
+~ writer.palmyra-x5-v1:0  [bedrock_converse/chat] 入$0.6 出$6
+~ zai.glm-4.7  [bedrock_converse/chat] 入$0.6 出$2.2
+~ zai.glm-4.7-flash  [bedrock_converse/chat] 入$0.07 出$0.4
+
