@@ -1,0 +1,63 @@
+===== 2026-10-14 13:30:37 更新 =====
+新增 14 / 减少 0 / 变更 42
+
+--- 新增模型（14）---
++ gemini/gemini-4-argon  [gemini/chat] 入$2 出$10
++ github_copilot/gemini-4-argon  [github_copilot/chat] 入$2 出$10
++ tencent/deepseek-v4-pro-0813  [tencent/chat] 入$1.32 出$3.96
++ tencent/deepseek-v4.1-flash  [tencent/chat] 入$0.3 出$1.2
++ tencent/glm-5.2  [tencent/chat] 入$1.4 出$4.4
++ tencent/glm-5.3  [tencent/chat] 入$1.4 出$4.4
++ tencent/glm-5.3-flash  [tencent/chat] 入$0.15 出$0.5
++ tencent/glm-5.3-flashx  [tencent/chat] 入$0.37 出$1.25
++ tencent/kimi-k2.7-code  [tencent/chat] 入$0.95 出$4
++ tencent/kimi-k2.7-code-highspeed  [tencent/chat] 入$1.9 出$8
++ tencent/kimi-k2.8-preview  [tencent/chat] 入$1 出$4
++ tencent/kimi-k3  [tencent/chat] 入$3 出$15
++ vertex_ai/gemini-4-argon  [vertex_ai/chat] 入$2 出$10
++ vertex_ai/gemini-4-argon-cyber-permissive  [vertex_ai/chat] 入$4 出$20
+
+--- 发生变更（42）---
+~ anthropic.claude-3-5-sonnet-20240620-v1:0  [bedrock/chat] 入$3 出$15
+~ anthropic.claude-3-5-sonnet-20241022-v2:0  [bedrock/chat] 入$3 出$15
+~ cloudflare/@cf/cloudflare/clef  [cloudflare/evaluation] 入$0.24 出$0
+~ cloudflare/@cf/cloudflare/clef-flash  [cloudflare/evaluation] 入$0.09 出$0
+~ cloudflare/@cf/cloudflare/clef-omni  [cloudflare/evaluation] 入$0.15 出$0
+~ cloudflare/clef  [cloudflare/evaluation] 入$0.24 出$0
+~ cloudflare/clef-flash  [cloudflare/evaluation] 入$0.09 出$0
+~ cloudflare/clef-omni  [cloudflare/evaluation] 入$0.15 出$0
+~ fireworks_ai/accounts/fireworks/models/deepseek-r1  [fireworks_ai/chat] 入$3 出$8
+~ fireworks_ai/accounts/fireworks/models/deepseek-r1-0528  [fireworks_ai/chat] 入$3 出$8
+~ fireworks_ai/accounts/fireworks/models/deepseek-r1-basic  [fireworks_ai/chat] 入$0.55 出$2.19
+~ fireworks_ai/accounts/fireworks/models/deepseek-v3  [fireworks_ai/chat] 入$0.9 出$0.9
+~ fireworks_ai/accounts/fireworks/models/ernie-4p5-21b-a3b-pt  [fireworks_ai/chat] 入$0.1 出$0.1
+~ fireworks_ai/accounts/fireworks/models/ernie-4p5-300b-a47b-pt  [fireworks_ai/chat] 入$0.1 出$0.1
+~ fireworks_ai/accounts/fireworks/models/glm-4p5  [fireworks_ai/chat] 入$0.55 出$2.19
+~ fireworks_ai/accounts/fireworks/models/glm-4p5-air  [fireworks_ai/chat] 入$0.22 出$0.88
+~ fireworks_ai/accounts/fireworks/models/glm-4p6  [fireworks_ai/chat] 入$0.55 出$2.19
+~ fireworks_ai/accounts/fireworks/models/glm-4p7  [fireworks_ai/chat] 入$0.6 出$2.2
+~ fireworks_ai/accounts/fireworks/models/glm-5p1  [fireworks_ai/chat] 入$1.4 出$4.4
+~ fireworks_ai/accounts/fireworks/models/llama-v3p1-405b-instruct  [fireworks_ai/chat] 入$3 出$3
+~ fireworks_ai/accounts/fireworks/models/llama-v3p1-8b-instruct  [fireworks_ai/chat] 入$0.1 出$0.1
+~ fireworks_ai/accounts/fireworks/models/llama-v3p2-11b-vision-instruct  [fireworks_ai/chat] 入$0.2 出$0.2
+~ fireworks_ai/accounts/fireworks/models/llama-v3p2-1b-instruct  [fireworks_ai/chat] 入$0.1 出$0.1
+~ fireworks_ai/accounts/fireworks/models/llama-v3p2-3b-instruct  [fireworks_ai/chat] 入$0.1 出$0.1
+~ fireworks_ai/accounts/fireworks/models/llama-v3p2-90b-vision-instruct  [fireworks_ai/chat] 入$0.9 出$0.9
+~ fireworks_ai/accounts/fireworks/models/minimax-m2  [fireworks_ai/chat] 入$0.3 出$1.2
+~ fireworks_ai/accounts/fireworks/models/minimax-m2p1  [fireworks_ai/chat] 入$0.3 出$1.2
+~ fireworks_ai/accounts/fireworks/models/nemotron-nano-v2-12b-vl  [fireworks_ai/chat] 入$0.1 出$0.1
+~ fireworks_ai/accounts/fireworks/models/nvidia-nemotron-nano-12b-v2  [fireworks_ai/chat] 入$0.2 出$0.2
+~ fireworks_ai/accounts/fireworks/models/nvidia-nemotron-nano-9b-v2  [fireworks_ai/chat] 入$0.2 出$0.2
+~ fireworks_ai/accounts/fireworks/models/qwen3-coder-480b-instruct-bf16  [fireworks_ai/chat] 入$0.9 出$0.9
+~ fireworks_ai/accounts/fireworks/models/qwen3-vl-8b-instruct  [fireworks_ai/chat] 入$0.2 出$0.2
+~ fireworks_ai/glm-4p7  [fireworks_ai/chat] 入$0.6 出$2.2
+~ fireworks_ai/glm-5p1  [fireworks_ai/chat] 入$1.4 出$4.4
+~ fireworks_ai/minimax-m2p1  [fireworks_ai/chat] 入$0.3 出$1.2
+~ tencent/deepseek-v4-flash  [tencent/chat] 入$0.14 出$0.28
+~ tencent/deepseek-v4-pro  [tencent/chat] 入$1.74 出$3.48
+~ tencent/minimax-m3  [tencent/chat] 入$0.3 出$1.2
+~ together_ai/Qwen/Qwen3.7-Max  [together_ai/chat] 入$1.5 出$4.5
+~ together_ai/deepseek-ai/DeepSeek-V4-Flash-0731  [together_ai/chat] 入$0.14 出$0.28
+~ together_ai/meta-llama/Llama-3.3-70B-Instruct-Turbo  [together_ai/chat] 入$1.04 出$1.04
+~ together_ai/moonshotai/Kimi-K3  [together_ai/chat] 入$3 出$15
+
