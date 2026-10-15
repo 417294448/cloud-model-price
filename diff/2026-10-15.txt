@@ -1,0 +1,80 @@
+===== 2026-10-15 13:30:31 更新 =====
+新增 40 / 减少 1 / 变更 30
+
+--- 新增模型（40）---
++ dashscope/happyhorse-1.0-i2v  [dashscope/video_generation] 入- 出-
++ dashscope/happyhorse-1.0-r2v  [dashscope/video_generation] 入- 出-
++ dashscope/happyhorse-1.0-t2v  [dashscope/video_generation] 入- 出-
++ dashscope/happyhorse-1.1-i2v  [dashscope/video_generation] 入- 出-
++ dashscope/happyhorse-1.1-r2v  [dashscope/video_generation] 入- 出-
++ dashscope/happyhorse-1.1-t2v  [dashscope/video_generation] 入- 出-
++ dashscope/wan2.7-i2v  [dashscope/video_generation] 入- 出-
++ dashscope/wan2.7-r2v  [dashscope/video_generation] 入- 出-
++ dashscope/wan2.7-t2v  [dashscope/video_generation] 入- 出-
++ dashscope/wan3.0-video  [dashscope/video_generation] 入- 出-
++ dashscope/wan3.0-video-prime  [dashscope/video_generation] 入- 出-
++ qwen_ai_platform/happyhorse-1.0-i2v  [qwen_ai_platform/video_generation] 入- 出-
++ qwen_ai_platform/happyhorse-1.0-r2v  [qwen_ai_platform/video_generation] 入- 出-
++ qwen_ai_platform/happyhorse-1.0-t2v  [qwen_ai_platform/video_generation] 入- 出-
++ qwen_ai_platform/happyhorse-1.1-i2v  [qwen_ai_platform/video_generation] 入- 出-
++ qwen_ai_platform/happyhorse-1.1-r2v  [qwen_ai_platform/video_generation] 入- 出-
++ qwen_ai_platform/happyhorse-1.1-t2v  [qwen_ai_platform/video_generation] 入- 出-
++ qwen_ai_platform/wan2.7-i2v  [qwen_ai_platform/video_generation] 入- 出-
++ qwen_ai_platform/wan2.7-r2v  [qwen_ai_platform/video_generation] 入- 出-
++ qwen_ai_platform/wan2.7-t2v  [qwen_ai_platform/video_generation] 入- 出-
++ qwen_ai_platform/wan3.0-video  [qwen_ai_platform/video_generation] 入- 出-
++ qwen_ai_platform/wan3.0-video-prime  [qwen_ai_platform/video_generation] 入- 出-
++ qwencloud/happyhorse-1.0-i2v  [qwencloud/video_generation] 入- 出-
++ qwencloud/happyhorse-1.0-r2v  [qwencloud/video_generation] 入- 出-
++ qwencloud/happyhorse-1.0-t2v  [qwencloud/video_generation] 入- 出-
++ qwencloud/happyhorse-1.1-i2v  [qwencloud/video_generation] 入- 出-
++ qwencloud/happyhorse-1.1-r2v  [qwencloud/video_generation] 入- 出-
++ qwencloud/happyhorse-1.1-t2v  [qwencloud/video_generation] 入- 出-
++ qwencloud/wan2.7-i2v  [qwencloud/video_generation] 入- 出-
++ qwencloud/wan2.7-r2v  [qwencloud/video_generation] 入- 出-
++ qwencloud/wan2.7-t2v  [qwencloud/video_generation] 入- 出-
++ qwencloud/wan3.0-video  [qwencloud/video_generation] 入- 出-
++ qwencloud/wan3.0-video-prime  [qwencloud/video_generation] 入- 出-
++ scx-ai/DeepSeek-V4.1-flash  [scx-ai/chat] 入$0.15 出$0.6
++ scx-ai/GLM-5.3  [scx-ai/chat] 入$0.98 出$3.08
++ scx-ai/Kimi-K3  [scx-ai/chat] 入$2.83 出$14.13
++ typesafe/jev-1.14.0  [typesafe/evaluation] 入$0.042 出$0
++ xai/grok-voice-2.0  [xai/realtime] 入- 出-
++ xai/grok-voice-3.0  [xai/realtime] 入- 出-
++ xai/grok-voice-latest  [xai/realtime] 入- 出-
+
+--- 减少模型（1）---
+- azure_ai/claude-fable-5-5  [azure_ai/chat] 入$10 出$50
+
+--- 发生变更（30）---
+~ agentcore/search  [agentcore/search] 入- 出-
+~ fallback_generalizations  [/] 入- 出-
+~ gemini-2.0-flash-exp-image-generation  [gemini/image_generation] 入$0 出$0 图$0.039
+~ gemini-nano-banana-2.1  [vertex_ai-language-models/image_generation] 入$1.5 出$7.5 图$0.0336
+~ gemini/gemini-2.0-flash-exp-image-generation  [gemini/image_generation] 入$0 出$0 图$0.039
+~ gpt-5.2  [openai/chat] 入$1.75 出$14
+~ gpt-5.2-2025-12-11  [openai/chat] 入$1.75 出$14
+~ gpt-5.3-codex  [openai/responses] 入$1.75 出$14
+~ gpt-5.4  [openai/chat] 入$2.5 出$15
+~ gpt-5.4-2026-03-05  [openai/chat] 入$2.5 出$15
+~ gpt-5.4-mini  [openai/chat] 入$0.75 出$4.5
+~ gpt-5.4-mini-2026-03-17  [openai/chat] 入$0.75 出$4.5
+~ gpt-5.4-pro  [openai/responses] 入$30 出$180
+~ gpt-5.4-pro-2026-03-05  [openai/responses] 入$30 出$180
+~ gpt-5.5  [openai/chat] 入$5 出$30
+~ gpt-5.5-2026-04-23  [openai/chat] 入$5 出$30
+~ gpt-5.5-pro  [openai/responses] 入$30 出$180
+~ gpt-5.5-pro-2026-04-23  [openai/responses] 入$30 出$180
+~ gpt-5.6  [openai/chat] 入$4 出$20
+~ gpt-5.6-luna  [openai/chat] 入$0.2 出$1.2
+~ gpt-5.6-sol  [openai/chat] 入$4 出$20
+~ gpt-5.6-terra  [openai/chat] 入$2 出$12
+~ gpt-6-astra  [openai/chat] 入$10 出$50
+~ gpt-6-luna  [openai/chat] 入$0.1 出$0.5
+~ gpt-6-sol  [openai/chat] 入$2 出$10
+~ gpt-6.1-sol  [openai/chat] 入$2 出$10
+~ typesafe/jev-1.13.0  [typesafe/evaluation] 入$0.042 出$0
+~ typesafe/jev-latest  [typesafe/evaluation] 入$0.042 出$0
+~ typesafe/jev-preview  [typesafe/evaluation] 入$0.042 出$0
+~ vertex_ai/gemini-nano-banana-2.1  [vertex_ai-language-models/image_generation] 入$1.5 出$7.5 图$0.0336
+
