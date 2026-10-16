@@ -1,0 +1,99 @@
+===== 2026-10-16 13:30:57 更新 =====
+新增 65 / 减少 0 / 变更 27
+
+--- 新增模型（65）---
++ azure_ai/claude-opus-5-5-fast  [azure_ai/chat] 入$8 出$40
++ baseten/meta-models/muse-spark-open  [baseten/chat] 入$1.25 出$4.25
++ baseten/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B  [baseten/chat] 入$0.2 出$0.5
++ fireworks_ai/accounts/fireworks/models/muse-spark-open  [fireworks_ai/chat] 入$1.25 出$4.25
++ gpt-5.5-cyber-preview  [openai/chat] 入$12.5 出$75
++ inferenceapis/MiniMaxAI/MiniMax-M3  [inferenceapis/chat] 入$0.39 出$1.56
++ inferenceapis/Qwen/Qwen3-VL-235B-A22B-Instruct  [inferenceapis/chat] 入$0.26 出$1.15
++ inferenceapis/Qwen/Qwen3.8-Flash  [inferenceapis/chat] 入$0.15 出$0.5
++ inferenceapis/deepseek-ai/DeepSeek-V3  [inferenceapis/chat] 入$0.19 出$0.38
++ inferenceapis/deepseek-ai/DeepSeek-V4-Flash  [inferenceapis/chat] 入$0.19 出$0.38
++ inferenceapis/deepseek-ai/DeepSeek-V4-Flash-0731  [inferenceapis/chat] 入$0.19 出$0.38
++ inferenceapis/deepseek-ai/DeepSeek-V4-Pro  [inferenceapis/chat] 入$1.72 出$5.15
++ inferenceapis/deepseek-ai/DeepSeek-V4-Pro-0813  [inferenceapis/chat] 入$1.72 出$5.15
++ inferenceapis/deepseek-ai/DeepSeek-V4.1-Flash  [inferenceapis/chat] 入$0.4 出$1.6
++ inferenceapis/deepseek-chat  [inferenceapis/chat] 入$0.19 出$0.38
++ inferenceapis/deepseek-flash  [inferenceapis/chat] 入$0.4 出$1.6
++ inferenceapis/deepseek-reasoner  [inferenceapis/chat] 入$0.19 出$0.38
++ inferenceapis/deepseek-v3  [inferenceapis/chat] 入$0.19 出$0.38
++ inferenceapis/deepseek-v4-flash  [inferenceapis/chat] 入$0.19 出$0.38
++ inferenceapis/deepseek-v4-pro  [inferenceapis/chat] 入$1.72 出$5.15
++ inferenceapis/deepseek-v4.1-flash  [inferenceapis/chat] 入$0.4 出$1.6
++ inferenceapis/glm-5.3  [inferenceapis/chat] 入$1.82 出$5.72
++ inferenceapis/glm-5.3-flash  [inferenceapis/chat] 入$0.2 出$0.66
++ inferenceapis/gpt-oss-120b  [inferenceapis/chat] 入$0.2 出$0.8
++ inferenceapis/gpt-oss-20b  [inferenceapis/chat] 入$0.04 出$0.19
++ inferenceapis/kimi-k2.7-code  [inferenceapis/chat] 入$0.89 出$4.42
++ inferenceapis/llama-3.1-8b-instant  [inferenceapis/chat] 入$0.2 出$0.5
++ inferenceapis/llama-3.3-70b  [inferenceapis/chat] 入$0.2 出$0.5
++ inferenceapis/llama-3.3-70b-instruct  [inferenceapis/chat] 入$0.2 出$0.5
++ inferenceapis/llama-3.3-70b-versatile  [inferenceapis/chat] 入$0.2 出$0.5
++ inferenceapis/meta-llama/Llama-3.3-70B-Instruct  [inferenceapis/chat] 入$0.2 出$0.5
++ inferenceapis/meta-llama/Llama-3.3-70B-Instruct-Turbo  [inferenceapis/chat] 入$0.2 出$0.5
++ inferenceapis/minimax-m3  [inferenceapis/chat] 入$0.39 出$1.56
++ inferenceapis/moonshotai/Kimi-K2.7-Code  [inferenceapis/chat] 入$0.89 出$4.42
++ inferenceapis/openai/gpt-oss-120b  [inferenceapis/chat] 入$0.2 出$0.8
++ inferenceapis/openai/gpt-oss-20b  [inferenceapis/chat] 入$0.04 出$0.19
++ inferenceapis/qwen3-vl  [inferenceapis/chat] 入$0.26 出$1.15
++ inferenceapis/qwen3-vl-235b  [inferenceapis/chat] 入$0.26 出$1.15
++ inferenceapis/qwen3.8-flash  [inferenceapis/chat] 入$0.15 出$0.5
++ inferenceapis/zai-org/GLM-5.3  [inferenceapis/chat] 入$1.82 出$5.72
++ inferenceapis/zai-org/GLM-5.3-Flash  [inferenceapis/chat] 入$0.2 出$0.66
++ jp.amazon.nova-2-lite-v1:0  [bedrock_converse/chat] 入$0.396 出$3.311
++ oci/openai.gpt-oss-120b  [oci/chat] 入$0.15 出$0.6
++ oci/openai.gpt-oss-20b  [oci/chat] 入$0.07 出$0.3
++ oci/xai.grok-4.20-0309-non-reasoning  [oci/chat] 入$1.25 出$2.5
++ oci/xai.grok-4.20-0309-reasoning  [oci/chat] 入$1.25 出$2.5
++ oci/xai.grok-4.20-non-reasoning  [oci/chat] 入$1.25 出$2.5
++ oci/xai.grok-4.20-reasoning  [oci/chat] 入$1.25 出$2.5
++ together_ai/meta-models/Muse-Spark-Open-816B-A42B  [together_ai/chat] 入$1.25 出$4.25
++ together_ai/nvidia/NVIDIA-Nemotron-3.5-Super-VL  [together_ai/chat] 入$0.15 出$0.5
++ us.stability.stable-conservative-upscale-v1:0  [bedrock/image_edit] 入- 出- 图$0.4
++ us.stability.stable-creative-upscale-v1:0  [bedrock/image_edit] 入- 出- 图$0.6
++ us.stability.stable-fast-upscale-v1:0  [bedrock/image_edit] 入- 出- 图$0.03
++ us.stability.stable-image-control-sketch-v1:0  [bedrock/image_edit] 入- 出- 图$0.07
++ us.stability.stable-image-control-structure-v1:0  [bedrock/image_edit] 入- 出- 图$0.07
++ us.stability.stable-image-erase-object-v1:0  [bedrock/image_edit] 入- 出- 图$0.07
++ us.stability.stable-image-inpaint-v1:0  [bedrock/image_edit] 入- 出- 图$0.07
++ us.stability.stable-image-remove-background-v1:0  [bedrock/image_edit] 入- 出- 图$0.07
++ us.stability.stable-image-search-recolor-v1:0  [bedrock/image_edit] 入- 出- 图$0.07
++ us.stability.stable-image-search-replace-v1:0  [bedrock/image_edit] 入- 出- 图$0.07
++ us.stability.stable-image-style-guide-v1:0  [bedrock/image_edit] 入- 出- 图$0.07
++ us.stability.stable-outpaint-v1:0  [bedrock/image_edit] 入- 出- 图$0.06
++ us.stability.stable-style-transfer-v1:0  [bedrock/image_edit] 入- 出- 图$0.08
++ vertex_ai/deepseek-ai/deepseek-v4.1-flash-maas  [vertex_ai-deepseek_models/chat] 入$0.3 出$1.2
++ wandb/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B  [wandb/chat] 入$0.15 出$0.75
+
+--- 发生变更（27）---
+~ azure/gpt-chat-latest  [azure/chat] 入$5 出$30
+~ azure/us/gpt-chat-latest  [azure/chat] 入$5.5 出$33
+~ azure_ai/gpt-chat-latest  [azure_ai/chat] 入$5 出$30
+~ ft:gpt-4.1-2025-04-14  [openai/chat] 入$3 出$12
+~ ft:gpt-4.1-mini-2025-04-14  [openai/chat] 入$0.8 出$3.2
+~ ft:gpt-4o-2024-08-06  [openai/chat] 入$3.75 出$15
+~ ft:gpt-4o-2024-11-20  [openai/chat] 入$3.75 出$15
+~ ft:gpt-4o-mini-2024-07-18  [openai/chat] 入$0.3 出$1.2
+~ gemini-3-flash-preview  [vertex_ai-language-models/chat] 入$0.5 出$3
+~ gemini-3.1-pro-preview  [vertex_ai-language-models/chat] 入$2 出$12 图$0.00012
+~ gemini/gemini-4-argon  [gemini/chat] 入$2 出$10
+~ github_copilot/claude-opus-5  [github_copilot/chat] 入- 出-
+~ github_copilot/gpt-5.6-terra  [github_copilot/responses] 入- 出-
+~ gpt-4.1-2025-04-14  [openai/chat] 入$2 出$8
+~ gpt-4.1-mini-2025-04-14  [openai/chat] 入$0.4 出$1.6
+~ gpt-4o-2024-08-06  [openai/chat] 入$2.5 出$10
+~ gpt-4o-2024-11-20  [openai/chat] 入$2.5 出$10
+~ gpt-4o-mini-2024-07-18  [openai/chat] 入$0.15 出$0.6
+~ oci/xai.grok-4.20  [oci/chat] 入$3 出$15
+~ openai.gpt-oss-120b-1:0  [bedrock_converse/chat] 入$0.15 出$0.6
+~ openai.gpt-oss-20b-1:0  [bedrock_converse/chat] 入$0.07 出$0.3
+~ sail/deepseek-ai/DeepSeek-V4.1-Flash  [sail/chat] 入$0.09 出$0.3
+~ vertex_ai/gemini-3-flash-preview  [vertex_ai/chat] 入$0.5 出$3
+~ vertex_ai/gemini-3.1-pro-preview  [vertex_ai/chat] 入$2 出$12 图$0.00012
+~ xai/grok-voice-2.0  [xai/realtime] 入- 出-
+~ xai/grok-voice-3.0  [xai/realtime] 入- 出-
+~ xai/grok-voice-latest  [xai/realtime] 入- 出-
+
