@@ -1,0 +1,25 @@
+===== 2026-10-19 13:30:47 更新 =====
+新增 2 / 减少 0 / 变更 5
+
+--- 新增模型（2）---
++ meta/muse-image-1.0  [meta/image_generation] 入- 出- 图$0.01
++ together_ai/deepseek-ai/DeepSeek-V4.1-Flash-1017  [together_ai/chat] 入$0.3 出$1.2
+
+--- 发生变更（5）---
+~ azure/container  [azure/chat] 入- 出-
+~ bedrock_mantle/qwen.qwen3-coder-480b-a35b-instruct  [bedrock_mantle/chat] 入$0.45 出$1.8
+~ gemini-3.8-flash  [vertex_ai-language-models/chat] 入$0.75 出$3.75
+~ qwen.qwen3-coder-480b-a35b-v1:0  [bedrock_converse/chat] 入$0.45 出$1.8
+~ vertex_ai/gemini-3.8-flash  [vertex_ai/chat] 入$0.75 出$3.75
+
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 dashscope/deepseek-v4.1-flash-1017  [dashscope/chat] 入$0.3333 出$1.333
++ 新增补丁 dashscope/xiaomi/mimo-v2.6-pro-ultraspeed  [dashscope/chat] 入$5 出$10
+
+===== 2026-10-19 13:31:40 更新 =====
+新增 0 / 减少 0 / 变更 0
+
+（本次无变化）
+--- 补丁变更（add-on-data.json）---
+~ 修正补丁 deepseek-flash  [deepseek/chat] 入$0.3 出$1.2
+
