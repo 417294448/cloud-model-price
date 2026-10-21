@@ -1,0 +1,95 @@
+===== 2026-10-21 13:30:36 更新 =====
+新增 20 / 减少 0 / 变更 68
+
+--- 新增模型（20）---
++ azure/eu/gpt-4o  [azure/chat] 入$2.75 出$11
++ azure/eu/gpt-4o-mini  [azure/chat] 入$0.165 出$0.66
++ azure/eu/o1  [azure/chat] 入$16.5 出$66
++ azure/eu/o3  [azure/chat] 入$2.2 出$8.8
++ azure/eu/o3-mini  [azure/chat] 入$1.21 出$4.84
++ azure/eu/o4-mini  [azure/chat] 入$1.21 出$4.84
++ azure/us/gpt-4o  [azure/chat] 入$2.75 出$11
++ azure/us/gpt-4o-mini  [azure/chat] 入$0.165 出$0.66
++ azure/us/o1  [azure/chat] 入$16.5 出$66
++ azure/us/o3  [azure/chat] 入$2.2 出$8.8
++ azure/us/o3-mini  [azure/chat] 入$1.21 出$4.84
++ azure/us/o4-mini  [azure/chat] 入$1.21 出$4.84
++ azure_ai/MAI-Code-1.1-Flash  [azure_ai/chat] 入$0.2 出$1.2
++ cloudflare/@cf/cloudflare/clairic  [cloudflare/extraction] 入$0.1 出$0
++ cloudflare/clairic  [cloudflare/extraction] 入$0.1 出$0
++ fireworks_ai/accounts/fireworks/models/deepseek-v4p1-flash-1017-us  [fireworks_ai/chat] 入$0.45 出$1.8
++ volcengine/doubao-seed-2-1-lite-260915  [volcengine/chat] 入$0.115 出$0.3881
++ volcengine/doubao-seed-2-1-pro-260915  [volcengine/chat] 入$0.8625 出$4.312
++ wandb/reflection/Beam-1.0-501B-A23B  [wandb/chat] 入$1 出$3
++ wandb/zai-org/GLM-5.3  [wandb/chat] 入$1.2 出$4
+
+--- 发生变更（68）---
+~ aihubmix/gemini-3.5-flash-lite  [aihubmix/chat] 入$0.3 出$2.5
+~ aihubmix/gemini-3.7-flash  [aihubmix/chat] 入$0.75 出$3.75
+~ baseten/reflection/Beam-1.0  [baseten/chat] 入$0.4 出$1.2
+~ databricks/databricks-gemini-3-5-flash-lite  [databricks/chat] 入$0.375 出$3.125
+~ databricks/databricks-gemini-3-6-flash  [databricks/chat] 入$1.875 出$9.375
+~ databricks/databricks-gemini-3-7-flash  [databricks/chat] 入- 出-
+~ databricks/databricks-gemini-3-8-flash  [databricks/chat] 入- 出-
+~ deepinfra/google/gemini-3.7-flash  [deepinfra/chat] 入$0.75 出$3.75
+~ fireworks_ai/accounts/fireworks/models/muse-spark-open  [fireworks_ai/chat] 入$1.25 出$4.25
+~ fireworks_ai/accounts/fireworks/routers/glm-5p3-flash-us  [fireworks_ai/chat] 入$0.225 出$0.75
+~ fireworks_ai/glm-5p3-flash-us  [fireworks_ai/chat] 入$0.225 出$0.75
+~ gemini-2.5-flash  [vertex_ai-language-models/chat] 入$0.3 出$2.5
+~ gemini-2.5-flash-lite  [vertex_ai-language-models/chat] 入$0.1 出$0.4
+~ gemini-2.5-flash-lite-preview-09-2025  [vertex_ai-language-models/chat] 入$0.1 出$0.4
+~ gemini-2.5-flash-preview-09-2025  [vertex_ai-language-models/chat] 入$0.3 出$2.5
+~ gemini-2.5-pro  [vertex_ai-language-models/chat] 入$1.25 出$10
+~ gemini-3-flash-preview  [vertex_ai-language-models/chat] 入$0.5 出$3
+~ gemini-3-pro-image  [vertex_ai-language-models/image_generation] 入$2 出$12 图$0.134
+~ gemini-3-pro-image-preview  [vertex_ai-language-models/image_generation] 入$2 出$12 图$0.134
+~ gemini-3.1-flash-image  [vertex_ai-language-models/image_generation] 入$0.5 出$3 图$0.0672
+~ gemini-3.1-flash-image-preview  [vertex_ai-language-models/image_generation] 入$0.5 出$3 图$0.0672
+~ gemini-3.1-flash-lite  [vertex_ai-language-models/chat] 入$0.25 出$1.5
+~ gemini-3.1-flash-lite-preview  [vertex_ai-language-models/chat] 入$0.25 出$1.5
+~ gemini-3.1-pro-preview  [vertex_ai-language-models/chat] 入$2 出$12 图$0.00012
+~ gemini-3.1-pro-preview-customtools  [vertex_ai-language-models/chat] 入$2 出$12 图$0.00012
+~ gemini-3.5-flash  [vertex_ai-language-models/chat] 入$1.5 出$9
+~ gemini-3.5-flash-lite  [vertex_ai-language-models/chat] 入$0.3 出$2.5
+~ gemini-3.6-flash  [vertex_ai-language-models/chat] 入$0.75 出$3.75
+~ gemini-3.7-flash  [vertex_ai-language-models/chat] 入$0.75 出$3.75
+~ gemini-3.8-flash  [vertex_ai-language-models/chat] 入$0.75 出$3.75
+~ gemini-3.8-flash-cyber  [vertex_ai-language-models/chat] 入$1.5 出$7.5
+~ gemini-nano-banana-2.1  [vertex_ai-language-models/image_generation] 入$1.5 出$7.5 图$0.0336
+~ gemini/gemini-2.5-flash  [gemini/chat] 入$0.3 出$2.5
+~ gemini/gemini-2.5-flash-lite  [gemini/chat] 入$0.1 出$0.4
+~ gemini/gemini-2.5-pro  [gemini/chat] 入$1.25 出$10
+~ gemini/gemini-3-flash-preview  [gemini/chat] 入$0.5 出$3
+~ gemini/gemini-3-pro-image  [gemini/image_generation] 入$2 出$12 图$0.134
+~ gemini/gemini-3-pro-image-preview  [gemini/image_generation] 入$2 出$12 图$0.134
+~ gemini/gemini-3.1-flash-image  [gemini/image_generation] 入$0.5 出$3 图$0.045
+~ gemini/gemini-3.1-flash-image-preview  [gemini/image_generation] 入$0.5 出$3 图$0.045
+~ gemini/gemini-3.1-flash-lite  [gemini/chat] 入$0.25 出$1.5
+~ gemini/gemini-3.1-flash-lite-preview  [gemini/chat] 入$0.25 出$1.5
+~ gemini/gemini-3.1-pro-preview  [gemini/chat] 入$2 出$12
+~ gemini/gemini-3.1-pro-preview-customtools  [gemini/chat] 入$2 出$12
+~ gemini/gemini-3.5-flash  [gemini/chat] 入$1.5 出$9
+~ gemini/gemini-3.5-flash-lite  [gemini/chat] 入$0.3 出$2.5
+~ gemini/gemini-3.6-flash  [gemini/chat] 入$0.75 出$3.75
+~ gemini/gemini-3.7-flash  [gemini/chat] 入$0.75 出$3.75
+~ gemini/gemini-3.8-flash  [gemini/chat] 入$0.75 出$3.75
+~ github_copilot/gemini-3.7-flash  [github_copilot/chat] 入$0.75 出$3.75
+~ github_copilot/gemini-3.8-flash  [github_copilot/chat] 入$0.75 出$3.75
+~ perplexity/google/gemini-3.5-flash-lite  [perplexity/responses] 入$0.3 出$2.5
+~ perplexity/google/gemini-3.6-flash  [perplexity/responses] 入$1.5 出$7.5
+~ perplexity/google/gemini-3.7-flash  [perplexity/responses] 入$0.75 出$3.75
+~ perplexity/google/gemini-3.8-flash  [perplexity/responses] 入$0.75 出$3.75
+~ vertex_ai/gemini-3-flash-preview  [vertex_ai/chat] 入$0.5 出$3
+~ vertex_ai/gemini-3-pro-preview  [vertex_ai/chat] 入$2 出$12
+~ vertex_ai/gemini-3.1-flash-lite  [vertex_ai-language-models/chat] 入$0.25 出$1.5
+~ vertex_ai/gemini-3.1-flash-lite-preview  [vertex_ai-language-models/chat] 入$0.25 出$1.5
+~ vertex_ai/gemini-3.1-pro-preview  [vertex_ai/chat] 入$2 出$12 图$0.00012
+~ vertex_ai/gemini-3.1-pro-preview-customtools  [vertex_ai/chat] 入$2 出$12 图$0.00012
+~ vertex_ai/gemini-3.5-flash  [vertex_ai/chat] 入$1.5 出$9
+~ vertex_ai/gemini-3.5-flash-lite  [vertex_ai-language-models/chat] 入$0.3 出$2.5
+~ vertex_ai/gemini-3.6-flash  [vertex_ai/chat] 入$0.75 出$3.75
+~ vertex_ai/gemini-3.7-flash  [vertex_ai/chat] 入$0.75 出$3.75
+~ vertex_ai/gemini-3.8-flash  [vertex_ai/chat] 入$0.75 出$3.75
+~ vertex_ai/gemini-3.8-flash-cyber  [vertex_ai/chat] 入$1.5 出$7.5
+~ vertex_ai/gemini-nano-banana-2.1  [vertex_ai-language-models/image_generation] 入$1.5 出$7.5 图$0.0336
+
