@@ -1,0 +1,8 @@
+===== 2026-10-22 13:31:08 更新 =====
+新增 0 / 减少 0 / 变更 0
+
+（本次无变化）
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 dashscope/MiniMax/MiniMax-M3.1-Flash  [dashscope/chat] 入$0.1667 出$0.6667
++ 新增补丁 zai/glm-5.3-flashx-legal  [zai/chat] 入$0.37 出$1.25
+
