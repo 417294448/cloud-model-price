@@ -5803,7 +5803,7 @@
         "litellm_provider": "dashscope",
         "mode": "chat",
         "source": "https://platform.qianwenai.com/pricing/api ; https://www.qianwenai.com/models",
-        "notes": "Tiered pricing by input length (CNY per 1M tokens):\n  all: input CNY 0.2, cache-hit CNY 0.04, output CNY 0.4 per 1M tokens\nThis entry uses the lowest tier (all); converted at 1 USD = 6.0 CNY.",
+        "notes": "Tiered pricing by input length (CNY per 1M tokens):\n  all: input CNY 0.2, cache-hit CNY 0.04, output CNY 0.4 per 1M tokens\nThis entry uses the lowest tier (all); converted at 1 USD = 6.0 CNY.\nFeatures: function-calling, cache",
         "max_input_tokens": 28672,
         "max_output_tokens": 4096,
         "max_tokens": 4096,
@@ -5822,7 +5822,7 @@
         "supported_regions": [
             "cn"
         ],
-        "supports_function_calling": false,
+        "supports_function_calling": true,
         "supports_response_schema": false,
         "supports_system_messages": true,
         "supports_prompt_caching": true,
@@ -5835,7 +5835,7 @@
         "litellm_provider": "dashscope",
         "mode": "chat",
         "source": "https://platform.qianwenai.com/pricing/api ; https://www.qianwenai.com/models",
-        "notes": "Tiered pricing by input length (CNY per 1M tokens):\n  all: input CNY 1, cache-hit CNY 0.2, output CNY 2.7 per 1M tokens\nThis entry uses the lowest tier (all); converted at 1 USD = 6.0 CNY.",
+        "notes": "Tiered pricing by input length (CNY per 1M tokens):\n  all: input CNY 1, cache-hit CNY 0.2, output CNY 2.7 per 1M tokens\nThis entry uses the lowest tier (all); converted at 1 USD = 6.0 CNY.\nFeatures: function-calling, cache",
         "max_input_tokens": 28672,
         "max_output_tokens": 4096,
         "max_tokens": 4096,
@@ -5854,7 +5854,7 @@
         "supported_regions": [
             "cn"
         ],
-        "supports_function_calling": false,
+        "supports_function_calling": true,
         "supports_response_schema": false,
         "supports_system_messages": true,
         "supports_prompt_caching": true,
