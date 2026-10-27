@@ -2,28 +2,26 @@
 # -*- coding: utf-8 -*-
 """从 Kimi 英文官方站（platform.kimi.ai）抓取 moonshot 模型定价，生成 add-on 补丁条目。
 
-数据源：各模型定价页的 markdown 源（.md 后缀直出）。
-  - https://platform.kimi.ai/docs/pricing/chat-k3.md
-  - https://platform.kimi.ai/docs/pricing/chat-k27-code.md
-  - https://platform.kimi.ai/docs/pricing/chat-k26.md
+数据源：定价页 HTML（https://platform.kimi.ai/docs/pricing/chat）。
+  官网已把 K3 / K2 各定价页合并成这一页，且价格表由 MDX 的 DocTable 组件渲染——
+  markdown 源（.md）里的表格是空的（<table><tr /></table>），拿不到价格；
+  价格只存在于服务端渲染的 Next.js flight 数据里（`_jsx(DocTable,{columns:[...],rows:[...]})`），
+  因此改为抓 HTML 并从 flight 数据解析，不再请求 .md。
 价格为美元 USD/1M tokens（英文站），与页面数据口径一致。
 
-各定价页的表格列数/列序会随官网改版变化（如 K3 表在缓存读之外新增了
-Cache Write TTL 5min/1h 两列），因此解析按 <DocTable> 的 columns 列标题
-（COLUMN_FIELDS）取值，不依赖固定位置——新增一列不会让价格整体错位。
+表格列数/列序会随官网改版变化（如 K3 表在缓存读之外新增了 Cache Write TTL
+5min/1h 两列），因此解析按 DocTable 的 columns 列标题（COLUMN_FIELDS）取值，
+不依赖固定位置——新增一列不会让价格整体错位；出现未收录列则显式报错。
 
 输出：dict（key -> 完整 litellm 格式记录），由 refresh_addon.py 合并进 add-on-data.json。
-抓取失败时返回 None，由调用方决定沿用旧补丁。
+抓取失败时抛异常，由调用方沿用旧补丁。
 """
 
 import re
 import urllib.request
 
-BASE = 'https://platform.kimi.ai/docs/pricing/{}.md'
 SRC = 'https://platform.kimi.ai/docs/pricing/chat'
-
-# 各定价页包含的模型（页内可能有多个 row，如 highspeed 变体）
-PAGES = ['chat-k3', 'chat-k27-code', 'chat-k26']
+URL = SRC
 
 COMMON_CAPS = {
     'supports_function_calling': True,
@@ -41,68 +39,156 @@ def _fetch(url):
         return resp.read().decode('utf-8')
 
 
-def _parse_price_cell(cell):
-    """<>{"$"}0.30</> 或 "$0.30" -> 0.30"""
-    m = re.search(r'\$?\s*([0-9]+(?:\.[0-9]+)?)', cell)
-    return float(m.group(1)) if m else None
-
-
 # 定价表列标题（小写）-> 记录内语义字段。列标题是比位置更可靠的锚点。
 COLUMN_FIELDS = {
-    'cached input price': 'cache_read',
-    'input price (cache hit)': 'cache_read',
-    'input price (cache miss)': 'input',
+    'input': 'input',
     'input price': 'input',
+    'input price (cache miss)': 'input',
+    'output': 'output',
     'output price': 'output',
+    'cached input': 'cache_read',
+    'cached input price': 'cache_read',
+    'input (cache hit)': 'cache_read',
+    'input price (cache hit)': 'cache_read',
+    '5m writes': 'cache_write_5min',
+    '1h writes': 'cache_write_1h',
+    'cache write (5m)': 'cache_write_5min',
+    'cache write (1h)': 'cache_write_1h',
     'cache write price (ttl 5min)': 'cache_write_5min',
     'cache write price (ttl 1h)': 'cache_write_1h',
 }
 
-# 一行的单元格：带引号的文本（上下文列内含逗号，不能按逗号切）或 <>{"$"}x</> 价格
-CELL_RE = re.compile(r'"([^"]*)"|(<\>.*?</>)', re.DOTALL)
+
+def _balanced(seg, start):
+    """seg[start] 是 '[' 或 '{'，返回与之配对的闭括号之后的下标（跳过反引号字符串）。"""
+    pairs = {'[': ']', '{': '}'}
+    stack = []
+    i = start
+    while i < len(seg):
+        ch = seg[i]
+        if ch == '`':
+            i += 1
+            while i < len(seg) and seg[i] != '`':
+                i += 2 if seg[i] == '\\' else 1
+        elif ch in pairs:
+            stack.append(pairs[ch])
+        elif ch in ']}':
+            if not stack or stack[-1] != ch:
+                raise ValueError(f'DocTable 参数括号不配对：{seg[start:start + 60]}')
+            stack.pop()
+            if not stack:
+                return i + 1
+        i += 1
+    raise ValueError(f'DocTable 参数括号未闭合：{seg[start:start + 60]}')
 
 
-def _parse_table(block):
-    """解析一个 <DocTable>：用 columns 的列标题给 rows 的每个单元格命名，
-    返回 [{列标题: 单元格文本}]。列数与取值数不一致即报错（官网结构已变）。"""
-    head, sep, rest = block.partition('rows=')
-    if not sep:
-        return []
-    titles = re.findall(r'title:\s*"([^"]+)"', head)
-    if not titles:
-        return []
-    out = []
-    for rm in re.finditer(r'^\s*\[(.*)\],\s*$', rest, re.MULTILINE):
-        cells = [cm.group(1) if cm.group(1) is not None else cm.group(2)
-                 for cm in CELL_RE.finditer(rm.group(1))]
-        if len(cells) != len(titles):
-            raise ValueError(
-                f'定价表列数与取值数不一致（{len(titles)} 列 / {len(cells)} 值）：'
-                f'{rm.group(1).strip()[:80]}，官网表格结构可能已变化')
-        out.append(dict(zip(titles, cells)))
+def _split_items(block):
+    """把 '[...]'（或 '[[..],[..]]' 的外层）按顶层逗号切分成元素文本列表。"""
+    body = block[1:-1]
+    items, depth, i, start = [], 0, 0, 0
+    while i < len(body):
+        ch = body[i]
+        if ch == '`':
+            i += 1
+            while i < len(body) and body[i] != '`':
+                i += 2 if body[i] == '\\' else 1
+            i += 1
+            continue
+        if ch in '[{':
+            depth += 1
+        elif ch in ']}':
+            depth -= 1
+        elif ch == ',' and depth == 0:
+            items.append(body[start:i])
+            start = i + 1
+        i += 1
+    if body[start:].strip():
+        items.append(body[start:])
+    return [x.strip() for x in items]
+
+
+def _column_title(item):
+    """列定义 -> 列标题。兼容 {title:`Input`} 与 {title:_jsx(Tooltip,{...children:`Cached Input`})}。"""
+    m = re.search(r'title:', item)
+    if not m:
+        raise ValueError(f'列定义缺少 title：{item[:80]}')
+    rest = item[m.end():]
+    if rest.startswith('`'):
+        return rest[1:rest.index('`', 1)]
+    m2 = re.search(r'children:`([^`]*)`', rest)
+    if not m2:
+        raise ValueError(f'列标题无法解析：{item[:120]}')
+    return m2.group(1)
+
+
+def _parse_row(row, titles):
+    """一行 -> {model, input, output, cache_read, cache_write_5min?, cache_write_1h?}。"""
+    prices = [float(x) for x in re.findall(r'\$([0-9]+(?:\.[0-9]+)?)\s*/\s*MTok', row)]
+    model = None
+    for s in re.findall(r'`([^`]*)`', row):
+        if s.startswith('/') or s.startswith('$'):
+            continue
+        model = s
+    if not model:
+        raise ValueError(f'价格行缺少模型名：{row[:80]}')
+    if len(prices) != len(titles) - 1:
+        raise ValueError(
+            f'{model} 价格数与表格列数不一致（{len(titles) - 1} 列 / {len(prices)} 值）：'
+            f'{row[:120]}，官网表格结构可能已变化')
+    out = {'model': model}
+    for title, price in zip(titles[1:], prices):
+        field = COLUMN_FIELDS.get(title.strip().lower())
+        if not field:
+            raise ValueError(f'{model} 出现未收录的价格列「{title}」，官网表格结构可能已变化')
+        out[field] = price
+    if out.get('input') is None or out.get('output') is None or out.get('cache_read') is None:
+        raise ValueError(f'定价表解析不完整（缺输入价/输出价/缓存读价）：{row[:120]}')
     return out
 
 
-def _parse_page(md):
-    """解析定价页 markdown，返回 [{model, cache_read, input, output,
-    cache_write_5min?, cache_write_1h?}, ...]，价格 USD/1M。"""
-    rows = []
-    for t in re.finditer(r'<DocTable(.*?)\n\s*/>', md, re.DOTALL):
-        for raw in _parse_table(t.group(1)):
-            row = {'model': raw.get('Model', '')}
-            for title, cell in raw.items():
-                field = COLUMN_FIELDS.get(title.strip().lower())
-                if field:
-                    row[field] = _parse_price_cell(cell)
-            if not row['model'] or row.get('input') is None \
-                    or row.get('output') is None or row.get('cache_read') is None:
-                raise ValueError(f'定价表解析不完整（缺模型名/输入价/输出价/缓存读价）：{raw}')
-            rows.append(row)
-    return rows
+def _parse_page(html):
+    """解析定价页 HTML 里的 Next.js flight 数据，返回
+    [{model, cache_read, input, output, cache_write_5min?, cache_write_1h?}, ...]，价格 USD/1M。"""
+    rows = {}
+    for m in re.finditer(r'_jsx\(DocTable,\{', html):
+        seg = html[m.end():]
+        ci, ri = seg.find('columns:['), seg.find('rows:[')
+        if ci < 0 or ri < 0:
+            continue  # 空表（只有表头样式定义，无数据）
+        columns = seg[ci + len('columns:'):_balanced(seg, ci + len('columns:'))]
+        rows_at = ri + len('rows:')
+        rows_block = seg[rows_at:_balanced(seg, rows_at)]
+        titles = [_column_title(item) for item in _split_items(columns)]
+        for item in _split_items(rows_block):
+            row = _parse_row(item, titles)
+            rows[row['model']] = row
+    return list(rows.values())
 
+
+# 官网定价页公告的 K2 系列退役计划（2026-10 起，K2 系列由 K3.1 Pro 取代）
+K2_RETIRE = ('K2 series is being retired: unavailable to newly registered users from October 31, 2026, '
+             'and retired for all users by the end of December 2026. ')
 
 # 各模型的能力/模态/说明（详情页人工核对后的口径，价格由脚本实时刷新）
 MODEL_META = {
+    'kimi-k3.1-pro': {
+        'max_input_tokens': 1048576,
+        'modalities': ['text', 'image', 'video'],
+        'caps': {'supports_vision': True, 'supports_video_input': True},
+        'notes': ('Kimi K3.1 Pro, post-trained successor to Kimi K3 (3T-class open-weight model). '
+                  '1M-token context, flat pay-as-you-go pricing (no context-length tiering). '
+                  'Thinking is always on; reasoning effort configurable via top-level reasoning_effort '
+                  '(low/high/max, default max). Supports tool calling, strict JSON Schema, Partial Mode and '
+                  'context caching (cache write billed separately for 5m / 1h TTL tiers). Vision input accepts '
+                  'base64 or ms:// file ids only (public image URLs are not supported). '),
+    },
+    'kimi-k3.1-pro-highspeed': {
+        'max_input_tokens': 1048576,
+        'modalities': ['text', 'image', 'video'],
+        'caps': {'supports_vision': True, 'supports_video_input': True, 'supports_speed': True},
+        'notes': ('High-speed variant of kimi-k3.1-pro (2-3x faster, same model). 1M-token context. '
+                  'Thinking is always on; reasoning effort configurable via reasoning_effort (low/high/max). '),
+    },
     'kimi-k3': {
         'max_input_tokens': 1048576,
         'max_output_tokens': 128000,
@@ -117,31 +203,30 @@ MODEL_META = {
         'max_input_tokens': 262144,
         'modalities': ['text', 'image', 'video'],
         'caps': {'supports_vision': True, 'supports_video_input': True},
-        'notes': ('Coding-focused model. Thinking mode only. Supports text/image/video input. 256K context. '),
+        'notes': ('Coding-focused model. Thinking mode only. Supports text/image/video input. 256K context. '
+                  + K2_RETIRE),
     },
     'kimi-k2.7-code-highspeed': {
         'max_input_tokens': 262144,
         'modalities': ['text', 'image', 'video'],
         'caps': {'supports_vision': True, 'supports_video_input': True, 'supports_speed': True},
         'notes': ('High-speed variant of kimi-k2.7-code (same model, ~180 output tokens/s, up to ~260 '
-                  'in short-context scenarios). Thinking mode only. '),
+                  'in short-context scenarios). Thinking mode only. ' + K2_RETIRE),
     },
     'kimi-k2.6': {
         'max_input_tokens': 262144,
         'modalities': ['text', 'image', 'video'],
         'caps': {'supports_vision': True, 'supports_video_input': True},
         'notes': ('General-purpose model with stable long-horizon coding, instruction following and '
-                  'self-correction. Supports text/image/video input, thinking and non-thinking modes. '),
+                  'self-correction. Supports text/image/video input, thinking and non-thinking modes. '
+                  + K2_RETIRE),
     },
 }
 
 
 def fetch():
-    """抓取所有定价页，返回 {key: record}。任一页面抓取/解析失败抛异常由调用方捕获。"""
-    all_rows = []
-    for page in PAGES:
-        md = _fetch(BASE.format(page))
-        all_rows.extend(_parse_page(md))
+    """抓取定价页，返回 {key: record}。抓取/解析失败抛异常由调用方捕获。"""
+    all_rows = _parse_page(_fetch(URL))
     if not all_rows:
         raise ValueError('未解析到任何模型价格行')
 
