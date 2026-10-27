@@ -557,7 +557,7 @@
         "supported_output_modalities": [
             "text"
         ],
-        "notes": "Coding-focused model. Thinking mode only. Supports text/image/video input. 256K context. Prices per the official pricing page (USD/1M tokens)."
+        "notes": "Coding-focused model. Thinking mode only. Supports text/image/video input. 256K context. K2 series is being retired: unavailable to newly registered users from October 31, 2026, and retired for all users by the end of December 2026. Prices per the official pricing page (USD/1M tokens)."
     },
     "moonshot/kimi-k2.7-code-highspeed": {
         "litellm_provider": "moonshot",
@@ -590,7 +590,7 @@
         "supported_output_modalities": [
             "text"
         ],
-        "notes": "High-speed variant of kimi-k2.7-code (same model, ~180 output tokens/s, up to ~260 in short-context scenarios). Thinking mode only. Prices per the official pricing page (USD/1M tokens)."
+        "notes": "High-speed variant of kimi-k2.7-code (same model, ~180 output tokens/s, up to ~260 in short-context scenarios). Thinking mode only. K2 series is being retired: unavailable to newly registered users from October 31, 2026, and retired for all users by the end of December 2026. Prices per the official pricing page (USD/1M tokens)."
     },
     "moonshot/moonshot-v1-8k": {
         "input_cost_per_token": 2e-07,
@@ -1046,7 +1046,7 @@
         "supported_output_modalities": [
             "text"
         ],
-        "notes": "General-purpose model with stable long-horizon coding, instruction following and self-correction. Supports text/image/video input, thinking and non-thinking modes. Prices per the official pricing page (USD/1M tokens)."
+        "notes": "General-purpose model with stable long-horizon coding, instruction following and self-correction. Supports text/image/video input, thinking and non-thinking modes. K2 series is being retired: unavailable to newly registered users from October 31, 2026, and retired for all users by the end of December 2026. Prices per the official pricing page (USD/1M tokens)."
     },
     "minimax/MiniMax-M2.5": {
         "litellm_provider": "minimax",
@@ -6836,5 +6836,74 @@
         "supports_reasoning": true,
         "cache_read_input_token_cost": 2.1666666666666667e-07,
         "input_cost_per_token_cache_hit": 2.1666666666666667e-07
+    },
+    "moonshot/kimi-k3.1-pro": {
+        "litellm_provider": "moonshot",
+        "mode": "chat",
+        "source": "https://platform.kimi.ai/docs/pricing/chat",
+        "input_cost_per_token": 2e-06,
+        "output_cost_per_token": 1e-05,
+        "cache_read_input_token_cost": 2.0000000000000002e-07,
+        "input_cost_per_token_cache_hit": 2.0000000000000002e-07,
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions"
+        ],
+        "cache_creation_input_token_cost": 2e-06,
+        "cache_creation_input_token_cost_above_1hr": 4e-06,
+        "max_input_tokens": 1048576,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_vision": true,
+        "supports_video_input": true,
+        "supported_modalities": [
+            "text",
+            "image",
+            "video"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "notes": "Kimi K3.1 Pro, post-trained successor to Kimi K3 (3T-class open-weight model). 1M-token context, flat pay-as-you-go pricing (no context-length tiering). Thinking is always on; reasoning effort configurable via top-level reasoning_effort (low/high/max, default max). Supports tool calling, strict JSON Schema, Partial Mode and context caching (cache write billed separately for 5m / 1h TTL tiers). Vision input accepts base64 or ms:// file ids only (public image URLs are not supported). Prices per the official pricing page (USD/1M tokens)."
+    },
+    "moonshot/kimi-k3.1-pro-highspeed": {
+        "litellm_provider": "moonshot",
+        "mode": "chat",
+        "source": "https://platform.kimi.ai/docs/pricing/chat",
+        "input_cost_per_token": 4e-06,
+        "output_cost_per_token": 2e-05,
+        "cache_read_input_token_cost": 2.0000000000000002e-07,
+        "input_cost_per_token_cache_hit": 2.0000000000000002e-07,
+        "supported_regions": [
+            "global"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions"
+        ],
+        "cache_creation_input_token_cost": 4e-06,
+        "cache_creation_input_token_cost_above_1hr": 8e-06,
+        "max_input_tokens": 1048576,
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_reasoning": true,
+        "supports_vision": true,
+        "supports_video_input": true,
+        "supports_speed": true,
+        "supported_modalities": [
+            "text",
+            "image",
+            "video"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "notes": "High-speed variant of kimi-k3.1-pro (2-3x faster, same model). 1M-token context. Thinking is always on; reasoning effort configurable via reasoning_effort (low/high/max). Prices per the official pricing page (USD/1M tokens)."
     }
 }
