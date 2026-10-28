@@ -1,0 +1,76 @@
+===== 2026-10-28 13:30:31 更新 =====
+新增 22 / 减少 0 / 变更 44
+
+--- 新增模型（22）---
++ aiand/deepseek-ai/deepseek-v4-flash  [aiand/chat] 入$0.15 出$0.25
++ aiand/deepseek-ai/deepseek-v4-pro  [aiand/chat] 入$1 出$2.5
++ aiand/deepseek-ai/deepseek-v4.1-flash  [aiand/chat] 入$0.3 出$0.6
++ aiand/google/gemma-4-31b-it  [aiand/chat] 入$0.2 出$0.5
++ aiand/moonshotai/kimi-k2.7-code  [aiand/chat] 入$0.75 出$3.5
++ aiand/moonshotai/kimi-k3  [aiand/chat] 入$3 出$12.5
++ aiand/motif-technologies/motif-3  [aiand/chat] 入$0.5 出$2
++ aiand/openai/gpt-oss-120b  [aiand/chat] 入$0.15 出$0.6
++ aiand/qwen/qwen3.6-27b  [aiand/chat] 入$0.32 出$3.2
++ aiand/qwen/qwen3.8-27b  [aiand/chat] 入$0.4 出$3
++ aiand/zai-org/glm-5.2  [aiand/chat] 入$1 出$4
++ aiand/zai-org/glm-5.3  [aiand/chat] 入$1 出$4
++ aiand/zai-org/glm-5.3-flash  [aiand/chat] 入$0.15 出$0.5
++ bedrock_mantle/openai.gpt-6.1-terra  [bedrock_mantle/responses] 入$1.1 出$5.5
++ morph/morph-dsv41flash  [morph/chat] 入$0.12 出$0.8
++ morph/morph-dsv41flash-1017  [morph/chat] 入$0.12 出$0.8
++ morph/morph-dsv41flash-abliterated  [morph/chat] 入$0.3 出$1.2
++ morph/morph-dsv4flash  [morph/chat] 入$0.142 出$0.3996
++ morph/morph-glm53-744b  [morph/chat] 入$1.19 出$6
++ morph/morph-glm53flash  [morph/chat] 入$0.2 出$0.7
++ morph/morph-kimik3  [morph/chat] 入$2.5 出$14
++ morph/morph-kimik3-fast  [morph/chat] 入$6 出$22.5
+
+--- 发生变更（44）---
+~ bedrock_mantle/anthropic.claude-haiku-4-5  [bedrock_mantle/chat] 入$1 出$5
+~ bedrock_mantle/anthropic.claude-opus-5-5  [bedrock_mantle/chat] 入$4.4 出$22
+~ bedrock_mantle/openai.gpt-5.4  [bedrock_mantle/responses] 入$2.75 出$16.5
+~ bedrock_mantle/openai.gpt-5.5  [bedrock_mantle/responses] 入$5.5 出$33
+~ bedrock_mantle/openai.gpt-5.6-luna  [bedrock_mantle/responses] 入$0.22 出$1.32
+~ bedrock_mantle/openai.gpt-5.6-sol  [bedrock_mantle/responses] 入$4.4 出$22
+~ bedrock_mantle/openai.gpt-5.6-terra  [bedrock_mantle/responses] 入$2.2 出$13.2
+~ bedrock_mantle/openai.gpt-6-astra  [bedrock_mantle/responses] 入$11 出$55
+~ bedrock_mantle/openai.gpt-6-luna  [bedrock_mantle/responses] 入$0.11 出$0.55
+~ bedrock_mantle/openai.gpt-6-sol  [bedrock_mantle/responses] 入$2.2 出$11
+~ bedrock_mantle/us-gov-east-1/openai.gpt-5.4  [bedrock_mantle/responses] 入$3.3 出$19.8
+~ bedrock_mantle/us-gov-west-1/anthropic.claude-haiku-5-5  [bedrock_mantle/chat] 入$0.12 出$0.6
+~ bedrock_mantle/us-gov-west-1/anthropic.claude-opus-5-5  [bedrock_mantle/chat] 入$4.8 出$24
+~ bedrock_mantle/us-gov-west-1/anthropic.claude-sonnet-5-5  [bedrock_mantle/chat] 入$2.4 出$12
+~ bedrock_mantle/us-gov-west-1/openai.gpt-5.4  [bedrock_mantle/responses] 入$3.375 出$20.25
+~ bedrock_mantle/us-gov-west-1/openai.gpt-5.6-luna  [bedrock_mantle/responses] 入$0.27 出$1.62
+~ bedrock_mantle/us-gov-west-1/openai.gpt-5.6-terra  [bedrock_mantle/responses] 入$2.7 出$16.2
+~ claude-opus-4-7  [anthropic/chat] 入$5 出$25
+~ claude-opus-4-7-20260416  [anthropic/chat] 入$5 出$25
+~ databricks/databricks-openjev-qwen35-4b  [databricks/evaluation] 入$0.042 出$0
+~ gemini-3.1-flash-lite-image  [vertex_ai-language-models/image_generation] 入$0.25 出$1.5 图$0.0336
+~ global.openai.gpt-5.4  [bedrock_converse/chat] 入$2.5 出$15
+~ global.openai.gpt-5.5  [bedrock_converse/chat] 入$5 出$30
+~ global.openai.gpt-5.6-luna  [bedrock_converse/chat] 入$0.2 出$1.2
+~ global.openai.gpt-5.6-sol  [bedrock_converse/chat] 入$4 出$20
+~ global.openai.gpt-5.6-terra  [bedrock_converse/chat] 入$2 出$12
+~ global.openai.gpt-6-astra  [bedrock_converse/chat] 入$10 出$50
+~ global.openai.gpt-6-luna  [bedrock_converse/chat] 入$0.1 出$0.5
+~ global.openai.gpt-6-sol  [bedrock_converse/chat] 入$2 出$10
+~ gpt-5-nano  [openai/chat] 入$0.05 出$0.4
+~ gpt-5-nano-2025-08-07  [openai/chat] 入$0.05 出$0.4
+~ openai.gpt-6-luna  [bedrock_converse/chat] 入$0.1 出$0.5
+~ openai.gpt-6-sol  [bedrock_converse/chat] 入$2 出$10
+~ together_ai/MiniMaxAI/MiniMax-M3  [together_ai/chat] 入$0.3 出$1.2
+~ together_ai/thinkingmachines/Inkling  [together_ai/chat] 入$1 出$4.05
+~ us.openai.gpt-5.4  [bedrock_converse/chat] 入$2.75 出$16.5
+~ us.openai.gpt-5.5  [bedrock_converse/chat] 入$5.5 出$33
+~ us.openai.gpt-5.6-luna  [bedrock_converse/chat] 入$0.22 出$1.32
+~ us.openai.gpt-5.6-sol  [bedrock_converse/chat] 入$4.4 出$22
+~ us.openai.gpt-5.6-terra  [bedrock_converse/chat] 入$2.2 出$13.2
+~ us.openai.gpt-6-astra  [bedrock_converse/chat] 入$11 出$55
+~ us.openai.gpt-6-luna  [bedrock_converse/chat] 入$0.11 出$0.55
+~ us.openai.gpt-6-sol  [bedrock_converse/chat] 入$2.2 出$11
+~ vertex_ai/gemini-3.1-flash-lite-image  [vertex_ai-language-models/image_generation] 入$0.25 出$1.5 图$0.0336
+
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 dashscope/vanchin/deepseek-v4.1-flash-1017  [dashscope/chat] 入$0.3333 出$1.333
+

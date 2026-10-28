@@ -6905,5 +6905,38 @@
             "text"
         ],
         "notes": "High-speed variant of kimi-k3.1-pro (2-3x faster, same model). 1M-token context. Thinking is always on; reasoning effort configurable via reasoning_effort (low/high/max). Prices per the official pricing page (USD/1M tokens)."
+    },
+    "dashscope/vanchin/deepseek-v4.1-flash-1017": {
+        "litellm_provider": "dashscope",
+        "mode": "chat",
+        "source": "https://platform.qianwenai.com/pricing/api ; https://www.qianwenai.com/models",
+        "notes": "Tiered pricing by input length (CNY per 1M tokens):\n  all: input CNY 2, cache-hit CNY 0.04, output CNY 8 per 1M tokens\nThis entry uses the lowest tier (all); converted at 1 USD = 6.0 CNY.\nFeatures: function-calling, structured-outputs, cache",
+        "max_input_tokens": 1048576,
+        "max_output_tokens": 393216,
+        "max_tokens": 393216,
+        "input_cost_per_token": 3.333333333333333e-07,
+        "output_cost_per_token": 1.3333333333333332e-06,
+        "supported_modalities": [
+            "text",
+            "image"
+        ],
+        "supported_output_modalities": [
+            "text"
+        ],
+        "supported_endpoints": [
+            "/v1/chat/completions",
+            "/v1/responses"
+        ],
+        "supported_regions": [
+            "cn"
+        ],
+        "supports_function_calling": true,
+        "supports_response_schema": true,
+        "supports_system_messages": true,
+        "supports_prompt_caching": true,
+        "supports_assistant_prefill": false,
+        "supports_reasoning": true,
+        "cache_read_input_token_cost": 6.666666666666667e-09,
+        "input_cost_per_token_cache_hit": 6.666666666666667e-09
     }
 }
