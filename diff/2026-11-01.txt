@@ -1,0 +1,62 @@
+===== 2026-11-01 13:31:05 更新 =====
+新增 15 / 减少 0 / 变更 40
+
+--- 新增模型（15）---
++ aiand/deepseek-ai/deepseek-v4.1-flash-1017  [aiand/chat] 入$0.3 出$0.6
++ aiand/meta/muse-spark-open  [aiand/chat] 入$1.25 出$4.25
++ chatgpt/gpt-6-astra-law  [chatgpt/responses] 入- 出-
++ chatgpt/gpt-6-rosalind  [chatgpt/responses] 入- 出-
++ deepgram/aura  [deepgram/] 入- 出-
++ deepgram/aura-2  [deepgram/] 入- 出-
++ eu.anthropic.claude-haiku-4-5-20251001-v1:0  [bedrock_converse/chat] 入$1.1 出$5.5
++ gpt-6-astra-law  [openai/chat] 入$10 出$50
++ gpt-6-rosalind  [openai/chat] 入$15 出$75
++ hostinger_router/claude-sonnet-5  [hostinger_router/chat] 入$2.64 出$13.2
++ hostinger_router/gpt-5.2  [hostinger_router/chat] 入$2.1 出$16.8
++ hostinger_router/text-embedding-3-large  [hostinger_router/embedding] 入$0.1716 出$0
++ hostinger_router/text-embedding-3-small  [hostinger_router/embedding] 入$0.03 出$0
++ rerank-v5.0-fast  [cohere/rerank] 入$0.02 出$0
++ rerank-v5.0-pro  [cohere/rerank] 入$0.05 出$0
+
+--- 发生变更（40）---
+~ aiand/deepseek-ai/deepseek-v4-flash  [aiand/chat] 入$0.15 出$0.25
+~ aiand/deepseek-ai/deepseek-v4.1-flash  [aiand/chat] 入$0.3 出$0.6
+~ aiand/moonshotai/kimi-k2.7-code  [aiand/chat] 入$0.75 出$3.5
+~ aiand/zai-org/glm-5.2  [aiand/chat] 入$1 出$4
+~ azure/gpt-6-astra  [azure/chat] 入$10 出$50
+~ azure/gpt-6-astra-2026-09-03  [azure/chat] 入$10 出$50
+~ bedrock/us-gov-west-1/meta.llama3-70b-instruct-v1:0  [bedrock/chat] 入$2.65 出$3.5
+~ bedrock/us-gov-west-1/meta.llama3-8b-instruct-v1:0  [bedrock/chat] 入$0.3 出$0.6
+~ bedrock_mantle/openai.gpt-5.6-cyber  [bedrock_mantle/responses] 入$13.75 出$82.5
+~ gemini-3-flash-preview  [vertex_ai-language-models/chat] 入$0.5 出$3
+~ gemini-3.5-flash  [vertex_ai-language-models/chat] 入$1.5 出$9
+~ gemini-3.5-flash-lite  [vertex_ai-language-models/chat] 入$0.3 出$2.5
+~ gemini-3.6-flash  [vertex_ai-language-models/chat] 入$0.75 出$3.75
+~ gemini-3.7-flash  [vertex_ai-language-models/chat] 入$0.75 出$3.75
+~ gemini-3.8-flash  [vertex_ai-language-models/chat] 入$0.75 出$3.75
+~ gemini-robotics-er-2-preview  [vertex_ai-language-models/chat] 入$1 出$5
+~ gemini/gemini-2.5-flash-image  [gemini/image_generation] 入$0.3 出$2.5 图$0.039
+~ gemini/gemini-2.5-pro  [gemini/chat] 入$1.25 出$10
+~ gemini/gemini-3-flash-preview  [gemini/chat] 入$0.5 出$3
+~ gemini/gemini-3.1-flash-lite-image  [gemini/image_generation] 入$0.25 出$1.5 图$0.0336
+~ gemini/gemini-3.1-pro-preview  [gemini/chat] 入$2 出$12
+~ gemini/gemini-3.1-pro-preview-customtools  [gemini/chat] 入$2 出$12
+~ gemini/gemini-3.5-flash-lite  [gemini/chat] 入$0.3 出$2.5
+~ gemini/gemini-3.8-flash  [gemini/chat] 入$0.75 出$3.75
+~ gemini/gemini-4-argon  [gemini/chat] 入$2 出$10
+~ gemini/gemini-embedding-001  [gemini/embedding] 入$0.15 出$0
+~ gemini/gemini-nano-banana-2.1  [gemini/image_generation] 入$1.5 出$7.5 图$0.0336
+~ together_ai/Qwen/Qwen3.8-2.4T-A95B  [together_ai/chat] 入$2 出$6
+~ vertex_ai/claude-haiku-4-5  [vertex_ai-anthropic_models/chat] 入$1 出$5
+~ vertex_ai/claude-haiku-4-5@20251001  [vertex_ai-anthropic_models/chat] 入$1 出$5
+~ vertex_ai/claude-sonnet-4-5  [vertex_ai-anthropic_models/chat] 入$3 出$15
+~ vertex_ai/claude-sonnet-4-5@20250929  [vertex_ai-anthropic_models/chat] 入$3 出$15
+~ vertex_ai/gemini-3-flash-preview  [vertex_ai/chat] 入$0.5 出$3
+~ vertex_ai/gemini-3.5-flash  [vertex_ai/chat] 入$1.5 出$9
+~ vertex_ai/gemini-3.5-flash-lite  [vertex_ai-language-models/chat] 入$0.3 出$2.5
+~ vertex_ai/gemini-3.6-flash  [vertex_ai/chat] 入$0.75 出$3.75
+~ vertex_ai/gemini-3.7-flash  [vertex_ai/chat] 入$0.75 出$3.75
+~ vertex_ai/gemini-3.8-flash  [vertex_ai/chat] 入$0.75 出$3.75
+~ vertex_ai/gemini-4-argon  [vertex_ai/chat] 入$2 出$10
+~ vertex_ai/gemini-robotics-er-2-preview  [vertex_ai/chat] 入$1 出$5
+
