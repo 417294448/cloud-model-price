@@ -1,0 +1,7 @@
+===== 2026-11-02 13:30:54 更新 =====
+新增 0 / 减少 0 / 变更 2
+
+--- 发生变更（2）---
+~ wandb/deepseek-ai/DeepSeek-V3.1  [wandb/chat] 入$0.55 出$1.65
+~ wandb/meta-llama/Llama-3.1-8B-Instruct  [wandb/chat] 入$0.22 出$0.22
+
