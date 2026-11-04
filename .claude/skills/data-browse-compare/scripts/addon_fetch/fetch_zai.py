@@ -47,6 +47,12 @@ MODEL_META = {
     'glm-5.3-flashx': {'ctx': 1000000, 'maxout': 128000, 'vis': True, 'speed': True,
                        'note': ('Fast variant of GLM-5.3-Flash, delivering inference speeds of '
                                 '~200 tokens/s. ')},
+    # Legal 与 Flash/FlashX 共用同一个详情页（Model Code 同列在
+    # `glm-5.3-flash`/`glm-5.3-flashx`/`glm-5.3-flashx-legal` 下），页内规格卡片一致
+    'glm-5.3-flashx-legal': {'ctx': 1000000, 'maxout': 128000, 'vis': True,
+                             'note': ('Legal-domain specialized variant of GLM-5.3-FlashX, '
+                                      'optimized for document understanding, legal reasoning '
+                                      'and legal document drafting. ')},
     'glm-4.5-flash': {'ctx': 128000,  'maxout': 96000,  'vis': False},
     'glm-5.2':       {'ctx': 1000000, 'maxout': 128000, 'vis': False},
     'glm-5.1':       {'ctx': 200000,  'maxout': 128000, 'vis': False},
