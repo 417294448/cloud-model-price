@@ -6388,7 +6388,7 @@
     "litellm_provider": "dashscope",
     "mode": "chat",
     "source": "https://platform.qianwenai.com/pricing/api ; https://www.qianwenai.com/models",
-    "notes": "Tiered pricing by input length (CNY per 1M tokens):\n  all: input CNY 2, cache-hit CNY 0.2, output CNY 8 per 1M tokens\nThis entry uses the lowest tier (all); converted at 1 USD = 6.0 CNY.\nFeatures: cache, function-calling, structured-outputs, web-search",
+    "notes": "Tiered pricing by input length (CNY per 1M tokens):\n  all: input CNY 2, cache-hit CNY 0.04, output CNY 8 per 1M tokens\nThis entry uses the lowest tier (all); converted at 1 USD = 6.0 CNY.\nFeatures: cache, function-calling, structured-outputs, web-search",
     "max_input_tokens": 1000000,
     "max_output_tokens": 393216,
     "max_tokens": 393216,
@@ -6414,8 +6414,8 @@
     "supports_prompt_caching": true,
     "supports_assistant_prefill": false,
     "supports_reasoning": true,
-    "cache_read_input_token_cost": 3.3333333333333334e-08,
-    "input_cost_per_token_cache_hit": 3.3333333333333334e-08
+    "cache_read_input_token_cost": 6.666666666666667e-09,
+    "input_cost_per_token_cache_hit": 6.666666666666667e-09
   },
   "dashscope/glm-5.3": {
     "litellm_provider": "dashscope",
@@ -6655,7 +6655,7 @@
     "litellm_provider": "dashscope",
     "mode": "chat",
     "source": "https://platform.qianwenai.com/pricing/api ; https://www.qianwenai.com/models",
-    "notes": "Tiered pricing by input length (CNY per 1M tokens):\n  all: input CNY 2, cache-hit CNY 0.2, output CNY 8 per 1M tokens\nThis entry uses the lowest tier (all); converted at 1 USD = 6.0 CNY.\nFeatures: cache, function-calling, structured-outputs, web-search",
+    "notes": "Tiered pricing by input length (CNY per 1M tokens):\n  all: input CNY 2, cache-hit CNY 0.04, output CNY 8 per 1M tokens\nThis entry uses the lowest tier (all); converted at 1 USD = 6.0 CNY.\nFeatures: cache, function-calling, structured-outputs, web-search",
     "max_input_tokens": 1000000,
     "max_output_tokens": 393216,
     "max_tokens": 393216,
@@ -6681,8 +6681,8 @@
     "supports_prompt_caching": true,
     "supports_assistant_prefill": false,
     "supports_reasoning": true,
-    "cache_read_input_token_cost": 3.3333333333333334e-08,
-    "input_cost_per_token_cache_hit": 3.3333333333333334e-08
+    "cache_read_input_token_cost": 6.666666666666667e-09,
+    "input_cost_per_token_cache_hit": 6.666666666666667e-09
   },
   "dashscope/xiaomi/mimo-v2.6-pro-ultraspeed": {
     "litellm_provider": "dashscope",
@@ -7021,5 +7021,39 @@
     "supports_reasoning": true,
     "cache_read_input_token_cost": 2.1666666666666667e-07,
     "input_cost_per_token_cache_hit": 2.1666666666666667e-07
+  },
+  "dashscope/qwen4-max": {
+    "litellm_provider": "dashscope",
+    "mode": "chat",
+    "source": "https://platform.qianwenai.com/pricing/api ; https://www.qianwenai.com/models",
+    "notes": "Tiered pricing by input length (CNY per 1M tokens):\n  all: input CNY 10, cache-hit CNY 0.5, output CNY 30 per 1M tokens\nThis entry uses the lowest tier (all); converted at 1 USD = 6.0 CNY.\nExplicit prompt caching: creation CNY 12.5/1M, read within 5 min CNY 0.5/1M.\nFeatures: cache, function-calling, prefix-completion, structured-outputs, web-search",
+    "max_input_tokens": 991808,
+    "max_output_tokens": 131072,
+    "max_tokens": 131072,
+    "input_cost_per_token": 1.6666666666666667e-06,
+    "output_cost_per_token": 5e-06,
+    "supported_modalities": [
+      "text",
+      "image",
+      "video"
+    ],
+    "supported_output_modalities": [
+      "text"
+    ],
+    "supported_endpoints": [
+      "/v1/chat/completions",
+      "/v1/responses"
+    ],
+    "supported_regions": [
+      "cn"
+    ],
+    "supports_function_calling": true,
+    "supports_response_schema": true,
+    "supports_system_messages": true,
+    "supports_prompt_caching": true,
+    "supports_assistant_prefill": true,
+    "supports_reasoning": true,
+    "cache_read_input_token_cost": 8.333333333333333e-08,
+    "input_cost_per_token_cache_hit": 8.333333333333333e-08
   }
 }
