@@ -1,0 +1,1462 @@
+===== 2026-11-17 10:39:50 更新 =====
+新增 1166 / 减少 2 / 变更 280
+
+--- 新增模型（1166）---
++ anthropic.claude-fable-5-2  [bedrock_converse/chat] 入$8 出$40
++ anthropic.claude-mythos-5-2  [bedrock_converse/chat] 入$8 出$40
++ azure/us-gov/gpt-4.1  [azure/chat] 入$2.75 出$11
++ azure/us-gov/gpt-4.1-mini  [azure/chat] 入$0.55 出$2.2
++ azure/us-gov/gpt-4o  [azure/chat] 入$3.438 出$13.75
++ azure/us-gov/gpt-5.6-luna  [azure/chat] 入$0.275 出$1.65
++ azure/us-gov/gpt-5.6-sol  [azure/chat] 入$5.5 出$27.5
++ azure/us-gov/gpt-5.6-terra  [azure/chat] 入$2.75 出$16.5
++ azure/us-gov/text-embedding-ada-002  [azure/embedding] 入$0.125 出$0
++ azure_ai/claude-fable-5-2  [azure_ai/chat] 入$8 出$40
++ azure_ai/claude-fable-5-2-fast  [azure_ai/chat] 入$16 出$80
++ azure_ai/claude-mythos-5-2  [azure_ai/chat] 入$8 出$40
++ azure_ai/claude-mythos-5-2-fast  [azure_ai/chat] 入$16 出$80
++ azure_ai/deepseek-v4.1-flash-1017  [azure_ai/chat] 入$0.3 出$1.2
++ azure_ai/mistral-large-4-latest  [azure_ai/chat] 入$0.7 出$2.1
++ bedrock/claude_platform/claude-fable-5-2  [bedrock/chat] 入$8 出$40
++ bedrock/us-gov-east-1/anthropic.claude-fable-5-2  [bedrock/chat] 入$9.6 出$48
++ bedrock/us-gov-east-1/anthropic.claude-mythos-5-2  [bedrock/chat] 入$9.6 出$48
++ bedrock/us-gov-west-1/anthropic.claude-fable-5-2  [bedrock/chat] 入$9.6 出$48
++ bedrock/us-gov-west-1/anthropic.claude-mythos-5-2  [bedrock/chat] 入$9.6 出$48
++ bedrock_mantle/us-gov-east-1/openai.gpt-5.6-cyber  [bedrock_mantle/responses] 入$16.88 出$101.2
++ claude-fable-5-2  [anthropic/chat] 入$8 出$40
++ claude-mythos-5-2  [anthropic/chat] 入$8 出$40
++ cloudflare/@cf/thinkingmachines/inkling-2-small  [cloudflare/chat] 入$0.3 出$1
++ databricks/databricks-claude-fable-5-2  [databricks/chat] 入$8 出$40
++ databricks/databricks-gemini-4-carbon  [databricks/chat] 入$2 出$10
++ databricks/system.ai.claude-fable-5-2  [databricks/chat] 入$8 出$40
++ databricks/system.ai.gemini-4-carbon  [databricks/chat] 入$2 出$10
++ deepinfra/XiaomiMiMo/MiMo-V2.6-Flash  [deepinfra/chat] 入$0.14 出$0.28
++ deepinfra/nvidia/NVIDIA-Nemotron-3.5-Super-VL  [deepinfra/chat] 入$0.15 出$0.5
++ deepinfra/tencent/Hy4-preview  [deepinfra/chat] 入$0.834 出$2.501
++ deepinfra/zai-org/GLM-5.3-Flash  [deepinfra/chat] 入$0.15 出$0.5
++ eu.anthropic.claude-fable-5-2  [bedrock_converse/chat] 入$8.8 出$44
++ eu.anthropic.claude-mythos-5-2  [bedrock_converse/chat] 入$8.8 出$44
++ fal_ai/alibaba/happy-horse/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/alibaba/happy-horse/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/alibaba/happy-horse/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/alibaba/happy-horse/v1.1/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/alibaba/happy-horse/v1.1/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/alibaba/happy-horse/v1.1/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/alibaba/wan-3.0-prime/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/alibaba/wan-3.0-prime/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/alibaba/wan-3.0-prime/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/alibaba/wan-3.0/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/alibaba/wan-3.0/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/alibaba/wan-3.0/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3-max/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3-max/keyframes-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3-max/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3/draft-enhance  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3/edit-image  [fal_ai/image_generation] 入- 出- 图$0.048
++ fal_ai/blackforestlabs/flux-3/edit-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3/extend-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3/extend-video/draft  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3/first-last-frame-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3/first-last-frame-to-video/draft  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3/image-to-video/draft  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3/keyframes-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3/keyframes-to-video/draft  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3/klein/base/edit-image/lora  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/blackforestlabs/flux-3/klein/base/text-to-image/lora  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/blackforestlabs/flux-3/klein/edit-image  [fal_ai/image_generation] 入- 出- 图$0.009
++ fal_ai/blackforestlabs/flux-3/klein/edit-image/lora  [fal_ai/image_generation] 入- 出- 图$0.012
++ fal_ai/blackforestlabs/flux-3/klein/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.009
++ fal_ai/blackforestlabs/flux-3/klein/text-to-image/lora  [fal_ai/image_generation] 入- 出- 图$0.012
++ fal_ai/blackforestlabs/flux-3/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.048
++ fal_ai/blackforestlabs/flux-3/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-3/text-to-video/draft  [fal_ai/video_generation] 入- 出-
++ fal_ai/blackforestlabs/flux-video-upscale  [fal_ai/video_generation] 入- 出-
++ fal_ai/bria/bria_video_eraser/erase/keypoints  [fal_ai/video_generation] 入- 出-
++ fal_ai/bria/bria_video_eraser/erase/mask  [fal_ai/video_generation] 入- 出-
++ fal_ai/bria/bria_video_eraser/erase/prompt  [fal_ai/video_generation] 入- 出-
++ fal_ai/bria/embed-product  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/extract-object  [fal_ai/image_generation] 入- 出- 图$0.02
++ fal_ai/bria/fibo-2/edit  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-2/generate  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-bbq-preview/generate  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit-1.5/edit  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit-1.5/expand  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit-1.5/product-holding  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit-1.5/virtual-try-on  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit/add_object_by_text  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit/blend  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit/colorize  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit/edit  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit/erase_by_text  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit/relight  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit/replace_object_by_text  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit/reseason  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit/restore  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit/restyle  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit/rewrite_text  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-edit/sketch_to_colored_image  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-gen-1.5/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/fibo-lite/generate  [fal_ai/image_generation] 入- 出- 图$0.036
++ fal_ai/bria/fibo/generate  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/genfill/v2  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/guided-remove-background  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/bria/increase-resolution  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/product-dimensions  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/replace-background  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/rmbg-3  [fal_ai/image_generation] 入- 出- 图$0.018
++ fal_ai/bria/upscale/creative  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/bria/video/background-removal  [fal_ai/video_generation] 入- 出-
++ fal_ai/bria/video/background-removal/green-screen-despill  [fal_ai/video_generation] 入- 出-
++ fal_ai/bria/video/background-removal/realtime  [fal_ai/video_generation] 入- 出-
++ fal_ai/bria/video/background-removal/v3  [fal_ai/video_generation] 入- 出-
++ fal_ai/bria/video/erase/keypoints  [fal_ai/video_generation] 入- 出-
++ fal_ai/bria/video/erase/mask  [fal_ai/video_generation] 入- 出-
++ fal_ai/bria/video/erase/prompt  [fal_ai/video_generation] 入- 出-
++ fal_ai/bria/video/increase-resolution  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/omnihuman/v2  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.0/fast/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.0/fast/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.0/fast/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.0/mini/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.0/mini/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.0/mini/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.0/us/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.0/us/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.0/us/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.5/flash/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.5/flash/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.5/flash/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.5/us/draft/complete  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.5/us/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.5/us/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-2.5/us/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/bytedance/seedance-latest/image-to-video  [/] 入- 出-
++ fal_ai/bytedance/seedance-latest/reference-to-video  [/] 入- 出-
++ fal_ai/bytedance/seedance-latest/text-to-video  [/] 入- 出-
++ fal_ai/bytedance/seedream/v5.5/edit  [fal_ai/image_generation] 入- 出- 图$0.0525
++ fal_ai/bytedance/seedream/v5.5/layerize  [fal_ai/image_generation] 入- 出- 图$0.0405
++ fal_ai/bytedance/seedream/v5.5/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.0405
++ fal_ai/bytedance/seedream/v5/flash/edit  [fal_ai/image_generation] 入- 出- 图$0.027
++ fal_ai/bytedance/seedream/v5/flash/layerize  [fal_ai/image_generation] 入- 出- 图$0.027
++ fal_ai/bytedance/seedream/v5/flash/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.027
++ fal_ai/bytedance/seedream/v5/lite/edit  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/bytedance/seedream/v5/lite/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/bytedance/seedream/v5/pro/layerize  [fal_ai/image_generation] 入- 出- 图$0.03375
++ fal_ai/bytedance/seedream/v5/pro/us/edit  [fal_ai/image_generation] 入- 出- 图$0.135
++ fal_ai/bytedance/seedream/v5/pro/us/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.135
++ fal_ai/clarityai/crystal-upscaler  [fal_ai/image_generation] 入- 出- 图$0.016
++ fal_ai/creatify/boreal  [fal_ai/video_generation] 入- 出-
++ fal_ai/decart/lucy-2-5/realtime  [fal_ai/video_generation] 入- 出-
++ fal_ai/decart/lucy-2-6/realtime  [fal_ai/video_generation] 入- 出-
++ fal_ai/decart/lucy-5b/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/decart/lucy-restyle  [fal_ai/video_generation] 入- 出-
++ fal_ai/decart/lucy2-vton/realtime  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ai-avatar/multi  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ai-avatar/multi-text  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ai-avatar/single-text  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/auto-caption  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/bagel  [fal_ai/image_generation] 入- 出- 图$0.1
++ fal_ai/fal-ai/bagel/edit  [fal_ai/image_generation] 入- 出- 图$0.1
++ fal_ai/fal-ai/ben/v2/image  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/boogu-image  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/boogu-image/edit  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/bria/background/remove  [fal_ai/image_generation] 入- 出- 图$0.018
++ fal_ai/fal-ai/bria/background/replace  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/bria/eraser  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/bria/expand  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/bria/genfill  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/bria/product-shot  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/bria/reimagine  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/bria/text-to-image/base  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/bria/text-to-image/fast  [fal_ai/image_generation] 入- 出- 图$0.028
++ fal_ai/fal-ai/bria/text-to-image/hd  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/bytedance-upscaler/upscale/video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/bytedance/dreamactor/v2  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/bytedance/omnihuman  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/bytedance/omnihuman/v1.5  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/bytedance/seedream/v4.5/edit  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/bytedance/seedream/v4.5/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/bytedance/seedream/v4/edit  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/bytedance/seedream/v4/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/clarity-upscaler  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/codeformer  [fal_ai/image_generation] 入- 出- 图$0.0021
++ fal_ai/fal-ai/control-light  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/creatify/aurora  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/davinci-magihuman  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ddcolor  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/decart/lucy-5b/image-to-video  [/] 入- 出-
++ fal_ai/fal-ai/depth-anything-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/echomimic-v3  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/emu-3.5-image/edit-image  [fal_ai/image_generation] 入- 出- 图$0.3
++ fal_ai/fal-ai/emu-3.5-image/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.3
++ fal_ai/fal-ai/ernie-image  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/ernie-image/lora  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/ernie-image/lora/turbo  [fal_ai/image_generation] 入- 出- 图$0.015
++ fal_ai/fal-ai/ernie-image/turbo  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/fashn/tryon/v1.5  [fal_ai/image_generation] 入- 出- 图$0.075
++ fal_ai/fal-ai/fashn/tryon/v1.6  [fal_ai/image_generation] 入- 出- 图$0.075
++ fal_ai/fal-ai/feynobg  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/ffmpeg-api/compose  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ffmpeg-api/merge-audio-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/finegrain-eraser  [fal_ai/image_generation] 入- 出- 图$0.27
++ fal_ai/fal-ai/finegrain-eraser/bbox  [fal_ai/image_generation] 入- 出- 图$0.18
++ fal_ai/fal-ai/finegrain-eraser/mask  [fal_ai/image_generation] 入- 出- 图$0.13
++ fal_ai/fal-ai/firered-image-edit-v1.1  [fal_ai/image_generation] 入- 出- 图$0.0325
++ fal_ai/fal-ai/flashhead  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/flux-1/dev  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux-1/dev/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux-1/dev/redux  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux-1/krea  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux-1/krea/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux-1/krea/redux  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux-1/schnell  [fal_ai/image_generation] 入- 出- 图$0.003
++ fal_ai/fal-ai/flux-1/schnell/redux  [fal_ai/image_generation] 入- 出- 图$0.003
++ fal_ai/fal-ai/flux-1/srpo  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux-1/srpo/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux-2  [fal_ai/image_generation] 入- 出- 图$0.012
++ fal_ai/fal-ai/flux-2-flex  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/flux-2-flex/edit  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/flux-2-lora-gallery/add-background  [fal_ai/image_generation] 入- 出- 图$0.021
++ fal_ai/fal-ai/flux-2-lora-gallery/apartment-staging  [fal_ai/image_generation] 入- 出- 图$0.021
++ fal_ai/fal-ai/flux-2-lora-gallery/ballpoint-pen-sketch  [fal_ai/image_generation] 入- 出- 图$0.021
++ fal_ai/fal-ai/flux-2-lora-gallery/digital-comic-art  [fal_ai/image_generation] 入- 出- 图$0.021
++ fal_ai/fal-ai/flux-2-lora-gallery/face-to-full-portrait  [fal_ai/image_generation] 入- 出- 图$0.021
++ fal_ai/fal-ai/flux-2-lora-gallery/hdr-style  [fal_ai/image_generation] 入- 出- 图$0.021
++ fal_ai/fal-ai/flux-2-lora-gallery/multiple-angles  [fal_ai/image_generation] 入- 出- 图$0.021
++ fal_ai/fal-ai/flux-2-lora-gallery/realism  [fal_ai/image_generation] 入- 出- 图$0.021
++ fal_ai/fal-ai/flux-2-lora-gallery/satellite-view-style  [fal_ai/image_generation] 入- 出- 图$0.021
++ fal_ai/fal-ai/flux-2-lora-gallery/sepia-vintage  [fal_ai/image_generation] 入- 出- 图$0.021
++ fal_ai/fal-ai/flux-2-lora-gallery/virtual-tryon  [fal_ai/image_generation] 入- 出- 图$0.021
++ fal_ai/fal-ai/flux-2-max  [fal_ai/image_generation] 入- 出- 图$0.07
++ fal_ai/fal-ai/flux-2-max/edit  [fal_ai/image_generation] 入- 出- 图$0.07
++ fal_ai/fal-ai/flux-2-pro  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/flux-2-pro/edit  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/flux-2-pro/outpaint  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/flux-2/edit  [fal_ai/image_generation] 入- 出- 图$0.012
++ fal_ai/fal-ai/flux-2/flash  [fal_ai/image_generation] 入- 出- 图$0.005
++ fal_ai/fal-ai/flux-2/flash/edit  [fal_ai/image_generation] 入- 出- 图$0.005
++ fal_ai/fal-ai/flux-2/klein/4b  [fal_ai/image_generation] 入- 出- 图$0.005
++ fal_ai/fal-ai/flux-2/klein/4b/base  [fal_ai/image_generation] 入- 出- 图$0.009
++ fal_ai/fal-ai/flux-2/klein/4b/base/edit  [fal_ai/image_generation] 入- 出- 图$0.009
++ fal_ai/fal-ai/flux-2/klein/4b/base/edit/lora  [fal_ai/image_generation] 入- 出- 图$0.016
++ fal_ai/fal-ai/flux-2/klein/4b/base/lora  [fal_ai/image_generation] 入- 出- 图$0.016
++ fal_ai/fal-ai/flux-2/klein/4b/edit  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/flux-2/klein/4b/edit/lora  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/flux-2/klein/4b/lora  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/flux-2/klein/9b  [fal_ai/image_generation] 入- 出- 图$0.006
++ fal_ai/fal-ai/flux-2/klein/9b/base  [fal_ai/image_generation] 入- 出- 图$0.011
++ fal_ai/fal-ai/flux-2/klein/9b/base/edit  [fal_ai/image_generation] 入- 出- 图$0.011
++ fal_ai/fal-ai/flux-2/klein/9b/base/edit/lora  [fal_ai/image_generation] 入- 出- 图$0.02
++ fal_ai/fal-ai/flux-2/klein/9b/base/lora  [fal_ai/image_generation] 入- 出- 图$0.02
++ fal_ai/fal-ai/flux-2/klein/9b/edit  [fal_ai/image_generation] 入- 出- 图$0.011
++ fal_ai/fal-ai/flux-2/klein/9b/edit/lora  [fal_ai/image_generation] 入- 出- 图$0.015
++ fal_ai/fal-ai/flux-2/klein/9b/lora  [fal_ai/image_generation] 入- 出- 图$0.015
++ fal_ai/fal-ai/flux-2/lora  [fal_ai/image_generation] 入- 出- 图$0.021
++ fal_ai/fal-ai/flux-2/lora/edit  [fal_ai/image_generation] 入- 出- 图$0.021
++ fal_ai/fal-ai/flux-2/turbo  [fal_ai/image_generation] 入- 出- 图$0.008
++ fal_ai/fal-ai/flux-2/turbo/edit  [fal_ai/image_generation] 入- 出- 图$0.008
++ fal_ai/fal-ai/flux-general  [fal_ai/image_generation] 入- 出- 图$0.075
++ fal_ai/fal-ai/flux-general/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.075
++ fal_ai/fal-ai/flux-general/inpainting  [fal_ai/image_generation] 入- 出- 图$0.075
++ fal_ai/fal-ai/flux-kontext-lora  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/flux-kontext-lora/inpaint  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/flux-kontext-lora/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/flux-kontext/dev  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux-krea-lora  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/flux-krea-lora/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/flux-krea-lora/inpainting  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/flux-krea-lora/stream  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/flux-lora  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/flux-lora-canny  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/flux-lora-fill  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/flux-lora/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/flux-lora/inpainting  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/flux-lora/stream  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/flux-pro/kontext  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/flux-pro/kontext/max  [fal_ai/image_generation] 入- 出- 图$0.08
++ fal_ai/fal-ai/flux-pro/kontext/max/multi  [fal_ai/image_generation] 入- 出- 图$0.08
++ fal_ai/fal-ai/flux-pro/kontext/max/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.08
++ fal_ai/fal-ai/flux-pro/kontext/multi  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/flux-pro/kontext/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/flux-pro/v1.1-ultra-finetuned  [fal_ai/image_generation] 入- 出- 图$0.07
++ fal_ai/fal-ai/flux-pro/v1.1-ultra/redux  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/flux-pro/v1.1/redux  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/flux-pro/v1/erase  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/flux-pro/v1/fill  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/flux-pro/v1/fill-finetuned  [fal_ai/image_generation] 入- 出- 图$0.06
++ fal_ai/fal-ai/flux-pro/v1/vto  [fal_ai/image_generation] 入- 出- 图$0.0425
++ fal_ai/fal-ai/flux-pulid  [fal_ai/image_generation] 入- 出- 图$0.0333
++ fal_ai/fal-ai/flux-vision-upscaler  [fal_ai/image_generation] 入- 出- 图$0.1
++ fal_ai/fal-ai/flux/dev/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/flux/dev/redux  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux/krea  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux/krea/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux/krea/redux  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux/schnell/redux  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux/srpo  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/flux/srpo/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/framepack  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/framepack/f1  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/framepack/flf2v  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/gemini-25-flash-image/edit  [fal_ai/image_generation] 入- 出- 图$0.0398
++ fal_ai/fal-ai/gemini-3-pro-image-preview  [fal_ai/image_generation] 入- 出- 图$0.15
++ fal_ai/fal-ai/gemini-3-pro-image-preview/edit  [fal_ai/image_generation] 入- 出- 图$0.15
++ fal_ai/fal-ai/gemini-3.1-flash-image-preview  [fal_ai/image_generation] 入- 出- 图$0.08
++ fal_ai/fal-ai/gemini-3.1-flash-image-preview/edit  [fal_ai/image_generation] 入- 出- 图$0.08
++ fal_ai/fal-ai/glm-image  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/glm-image/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/heygen/avatar3/digital-twin  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/heygen/avatar4/digital-twin  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/heygen/avatar4/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/heygen/avatar5/digital-twin  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/heygen/v2/translate/precision  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/heygen/v2/translate/speed  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/heygen/v2/video-agent  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/heygen/v3/filler-word-removal  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/heygen/v3/lipsync/precision  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/heygen/v3/lipsync/speed  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/heygen/v3/video-agent  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/hidream-i1-fast  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/hidream-i1-full  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/hidream-i1-full/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/hidream-o1-image  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/hidream-o1-image/dev  [fal_ai/image_generation] 入- 出- 图$0.005
++ fal_ai/fal-ai/hidream-o1-image/dev/edit  [fal_ai/image_generation] 入- 出- 图$0.005
++ fal_ai/fal-ai/hidream-o1-image/edit  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/hunyuan-image/v2.1/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.1
++ fal_ai/fal-ai/hunyuan-image/v3/instruct/edit  [fal_ai/image_generation] 入- 出- 图$0.09
++ fal_ai/fal-ai/hunyuan-image/v3/instruct/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.09
++ fal_ai/fal-ai/hunyuan-image/v3/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.1
++ fal_ai/fal-ai/hunyuan-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/hunyuan-video-image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/hunyuan-video-v1.5/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/hunyuan-video-v1.5/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/hunyuan_world  [fal_ai/image_generation] 入- 出- 图$0.15
++ fal_ai/fal-ai/iclight-v2  [fal_ai/image_generation] 入- 出- 图$0.1
++ fal_ai/fal-ai/id-v2v  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/id-v2v/relight  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ideogram/character  [fal_ai/image_generation] 入- 出- 图$0.15
++ fal_ai/fal-ai/ideogram/character/edit  [fal_ai/image_generation] 入- 出- 图$0.15
++ fal_ai/fal-ai/ideogram/character/remix  [fal_ai/image_generation] 入- 出- 图$0.15
++ fal_ai/fal-ai/ideogram/object-removal  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/ideogram/remove-background  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/ideogram/upscale  [fal_ai/image_generation] 入- 出- 图$0.06
++ fal_ai/fal-ai/ideogram/v2  [fal_ai/image_generation] 入- 出- 图$0.08
++ fal_ai/fal-ai/ideogram/v2/edit  [fal_ai/image_generation] 入- 出- 图$0.08
++ fal_ai/fal-ai/ideogram/v2/remix  [fal_ai/image_generation] 入- 出- 图$0.08
++ fal_ai/fal-ai/ideogram/v2/turbo  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/ideogram/v2/turbo/edit  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/ideogram/v2/turbo/remix  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/ideogram/v2a  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/ideogram/v2a/remix  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/ideogram/v2a/turbo  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/ideogram/v2a/turbo/remix  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/ideogram/v3/edit  [fal_ai/image_generation] 入- 出- 图$0.06
++ fal_ai/fal-ai/ideogram/v3/generate-transparent  [fal_ai/image_generation] 入- 出- 图$0.06
++ fal_ai/fal-ai/ideogram/v3/layerize-text  [fal_ai/image_generation] 入- 出- 图$0.09
++ fal_ai/fal-ai/ideogram/v3/reframe  [fal_ai/image_generation] 入- 出- 图$0.06
++ fal_ai/fal-ai/ideogram/v3/remix  [fal_ai/image_generation] 入- 出- 图$0.06
++ fal_ai/fal-ai/ideogram/v3/replace-background  [fal_ai/image_generation] 入- 出- 图$0.06
++ fal_ai/fal-ai/image-apps-v2/age-modify  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-apps-v2/city-teleport  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-apps-v2/expression-change  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-apps-v2/hair-change  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-apps-v2/headshot-photo  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-apps-v2/makeup-application  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-apps-v2/object-removal  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-apps-v2/outpaint  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/image-apps-v2/perspective  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-apps-v2/photo-restoration  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-apps-v2/photography-effects  [fal_ai/image_generation] 入- 出- 图$0.4
++ fal_ai/fal-ai/image-apps-v2/portrait-enhance  [fal_ai/image_generation] 入- 出- 图$0.4
++ fal_ai/fal-ai/image-apps-v2/product-holding  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-apps-v2/product-photography  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-apps-v2/relighting  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-apps-v2/style-transfer  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-apps-v2/texture-transform  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-apps-v2/virtual-try-on  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/age-progression  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/baby-version  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/background-change  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/broccoli-haircut  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/cartoonify  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/color-correction  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/expression-change  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/face-enhancement  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/hair-change  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/object-removal  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/photo-restoration  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/plushie-style  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/professional-photo  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/realism  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/reframe  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/retouch  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/scene-composition  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/style-transfer  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/text-removal  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/time-of-day  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/weather-effect  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/wojak-style  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image-editing/youtube-thumbnails  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/image2svg  [fal_ai/image_generation] 入- 出- 图$0.005
++ fal_ai/fal-ai/infinity-star/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/instant-character  [fal_ai/image_generation] 入- 出- 图$0.1
++ fal_ai/fal-ai/kling-image/o1  [fal_ai/image_generation] 入- 出- 图$0.028
++ fal_ai/fal-ai/kling-image/o3/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.028
++ fal_ai/fal-ai/kling-image/o3/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.028
++ fal_ai/fal-ai/kling-image/v3/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.028
++ fal_ai/fal-ai/kling-image/v3/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.028
++ fal_ai/fal-ai/kling-video/ai-avatar/v2/pro  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/ai-avatar/v2/standard  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o1/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o1/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o1/standard/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o1/standard/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o1/standard/video-to-video/edit  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o1/standard/video-to-video/reference  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o1/video-to-video/edit  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o1/video-to-video/reference  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o3/4k/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o3/4k/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o3/4k/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o3/4k/video-to-video/edit  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o3/4k/video-to-video/reference  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o3/pro/video-to-video/edit  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o3/pro/video-to-video/reference  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o3/standard/video-to-video/edit  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/o3/standard/video-to-video/reference  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v1.5/pro/effects  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v1.6/pro/effects  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v1.6/standard/effects  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v1/pro/ai-avatar  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v1/standard/ai-avatar  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v1/standard/effects  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v2.5-turbo/pro/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v2.5-turbo/pro/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v2.5-turbo/standard/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v2.6/pro/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v2.6/pro/motion-control  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v2.6/standard/motion-control  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v3/4k/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v3/4k/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v3/pro/motion-control  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v3/standard/motion-control  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v3/turbo/pro/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v3/turbo/pro/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v3/turbo/standard/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/kling-video/v3/turbo/standard/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/krea-2/turbo  [fal_ai/image_generation] 入- 出- 图$0.008
++ fal_ai/fal-ai/krea-2/turbo/lora  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/krea-2/turbo/style  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/krea-wan-14b/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/krea-wan-14b/video-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/latentsync  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/leffa/pose-transfer  [fal_ai/image_generation] 入- 出- 图$0.1
++ fal_ai/fal-ai/leffa/virtual-tryon  [fal_ai/image_generation] 入- 出- 图$0.1
++ fal_ai/fal-ai/lightx/recamera  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/lightx/relight  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/longcat-image  [fal_ai/image_generation] 入- 出- 图$0.13
++ fal_ai/fal-ai/longcat-image/edit  [fal_ai/image_generation] 入- 出- 图$0.15
++ fal_ai/fal-ai/longcat-video/distilled/image-to-video/480p  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/longcat-video/distilled/image-to-video/720p  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/longcat-video/distilled/text-to-video/480p  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/longcat-video/distilled/text-to-video/720p  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/longcat-video/image-to-video/480p  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/longcat-video/image-to-video/720p  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/longcat-video/text-to-video/480p  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/longcat-video/text-to-video/720p  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltx-2.3/audio-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltx-2.3/extend-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltx-2.3/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltx-2.3/image-to-video/fast  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltx-2.3/reframe  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltx-2.3/retake-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltx-2.3/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltx-2.3/text-to-video/fast  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltx-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltx-video-13b-distilled  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltx-video-13b-distilled/extend  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltx-video-13b-distilled/multiconditioning  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltx-video/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltxv-13b-098-distilled  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltxv-13b-098-distilled/extend  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltxv-13b-098-distilled/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ltxv-13b-098-distilled/multiconditioning  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/lumina-image/v2  [fal_ai/image_generation] 入- 出- 图$0.075
++ fal_ai/fal-ai/marigold-v2  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/minimax/hailuo-02-fast/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/minimax/hailuo-02/pro/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/minimax/hailuo-02/pro/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/minimax/hailuo-02/standard/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/minimax/hailuo-02/standard/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/minimax/hailuo-2.3-fast/pro/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/minimax/image-01  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/minimax/image-01/subject-reference  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/minimax/video-01  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/minimax/video-01-director  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/minimax/video-01-director/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/minimax/video-01-live  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/minimax/video-01-live/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/minimax/video-01-subject-reference  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/minimax/video-01/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/mmaudio-v2  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/moss-image  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/nafnet/deblur  [fal_ai/image_generation] 入- 出- 图$0.0225
++ fal_ai/fal-ai/nafnet/denoise  [fal_ai/image_generation] 入- 出- 图$0.0225
++ fal_ai/fal-ai/nano-banana-2/edit  [fal_ai/image_generation] 入- 出- 图$0.08
++ fal_ai/fal-ai/nano-banana-pro/edit  [fal_ai/image_generation] 入- 出- 图$0.15
++ fal_ai/fal-ai/nano-banana/edit  [fal_ai/image_generation] 入- 出- 图$0.0398
++ fal_ai/fal-ai/nucleus-image  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/object-removal  [fal_ai/image_generation] 入- 出- 图$0.024
++ fal_ai/fal-ai/object-removal/bbox  [fal_ai/image_generation] 入- 出- 图$0.024
++ fal_ai/fal-ai/object-removal/mask  [fal_ai/image_generation] 入- 出- 图$0.024
++ fal_ai/fal-ai/omnigen-v2  [fal_ai/image_generation] 入- 出- 图$0.15
++ fal_ai/fal-ai/one-to-all-animation/1.3b  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/one-to-all-animation/14b  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ovi  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/ovi/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/patina  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/patina/material  [fal_ai/image_generation] 入- 出- 图$0.08
++ fal_ai/fal-ai/patina/material/extract  [fal_ai/image_generation] 入- 出- 图$0.17
++ fal_ai/fal-ai/phota/enhance  [fal_ai/image_generation] 入- 出- 图$0.13
++ fal_ai/fal-ai/pixverse/extend  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/extend/fast  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/lipsync  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v3.5/effects  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v3.5/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v3.5/image-to-video/fast  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v3.5/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v3.5/text-to-video/fast  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v3.5/transition  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v4.5/effects  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v4.5/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v4.5/image-to-video/fast  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v4.5/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v4.5/text-to-video/fast  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v4.5/transition  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v4/effects  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v4/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v4/image-to-video/fast  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v4/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v4/text-to-video/fast  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v5/effects  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v5/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v5/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/pixverse/v5/transition  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/post-processing/blur  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/post-processing/chromatic-aberration  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/post-processing/color-correction  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/post-processing/color-tint  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/post-processing/desaturate  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/post-processing/dissolve  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/post-processing/dodge-burn  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/post-processing/grain  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/post-processing/parabolize  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/post-processing/sharpen  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/post-processing/solarize  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/post-processing/vignette  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/qwen-image  [fal_ai/image_generation] 入- 出- 图$0.02
++ fal_ai/fal-ai/qwen-image-2512  [fal_ai/image_generation] 入- 出- 图$0.02
++ fal_ai/fal-ai/qwen-image-2512/lora  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-2509  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/qwen-image-edit-2509-lora  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-2509-lora-gallery/add-background  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-2509-lora-gallery/face-to-full-portrait  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-2509-lora-gallery/group-photo  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-2509-lora-gallery/integrate-product  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-2509-lora-gallery/lighting-restoration  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-2509-lora-gallery/multiple-angles  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-2509-lora-gallery/next-scene  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-2509-lora-gallery/remove-element  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-2509-lora-gallery/remove-lighting  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-2509-lora-gallery/shirt-design  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-2511  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/qwen-image-edit-2511-multiple-angles  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-2511/lora  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-lora  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-plus  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/qwen-image-edit-plus-lora  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-plus-lora-gallery/add-background  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-plus-lora-gallery/face-to-full-portrait  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-plus-lora-gallery/group-photo  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-plus-lora-gallery/integrate-product  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-plus-lora-gallery/lighting-restoration  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-plus-lora-gallery/multiple-angles  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-plus-lora-gallery/next-scene  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-plus-lora-gallery/remove-element  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-plus-lora-gallery/remove-lighting  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit-plus-lora-gallery/shirt-design  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/qwen-image-edit/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/qwen-image-edit/inpaint  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/qwen-image-layered  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/qwen-image-layered/lora  [fal_ai/image_generation] 入- 出- 图$0.06
++ fal_ai/fal-ai/qwen-image/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.02
++ fal_ai/fal-ai/recraft-20b  [fal_ai/image_generation] 入- 出- 图$0.0219
++ fal_ai/fal-ai/recraft/upscale/creative  [fal_ai/image_generation] 入- 出- 图$0.25
++ fal_ai/fal-ai/recraft/upscale/crisp  [fal_ai/image_generation] 入- 出- 图$0.004
++ fal_ai/fal-ai/recraft/v3/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/recraft/v4.1/pro/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.21
++ fal_ai/fal-ai/recraft/v4.1/pro/text-to-vector  [fal_ai/image_generation] 入- 出- 图$0.3
++ fal_ai/fal-ai/recraft/v4.1/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/recraft/v4.1/text-to-vector  [fal_ai/image_generation] 入- 出- 图$0.08
++ fal_ai/fal-ai/recraft/v4.1/utility/pro/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.21
++ fal_ai/fal-ai/recraft/v4.1/utility/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/recraft/v4/pro/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.25
++ fal_ai/fal-ai/recraft/v4/pro/text-to-vector  [fal_ai/image_generation] 入- 出- 图$0.3
++ fal_ai/fal-ai/recraft/v4/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/fal-ai/recraft/v4/text-to-vector  [fal_ai/image_generation] 入- 出- 图$0.08
++ fal_ai/fal-ai/recraft/vectorize  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/sana  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/sana/sprint  [fal_ai/image_generation] 入- 出- 图$0.0025
++ fal_ai/fal-ai/sana/v1.5/1.6b  [fal_ai/image_generation] 入- 出- 图$0.0075
++ fal_ai/fal-ai/sana/v1.5/4.8b  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/scail-2  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/seedvr/upscale/image  [fal_ai/image_generation] 入- 出- 图$0.001
++ fal_ai/fal-ai/seedvr/upscale/image/seamless  [fal_ai/image_generation] 入- 出- 图$0.0025
++ fal_ai/fal-ai/smart-resize  [fal_ai/image_generation] 入- 出- 图$0.2
++ fal_ai/fal-ai/stable-diffusion-v3-medium  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/stable-diffusion-v3-medium/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/stable-diffusion-v35-large  [fal_ai/image_generation] 入- 出- 图$0.065
++ fal_ai/fal-ai/stepx-edit2  [fal_ai/image_generation] 入- 出- 图$0.2
++ fal_ai/fal-ai/telestyle-v2  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/fal-ai/uso  [fal_ai/image_generation] 入- 出- 图$0.1
++ fal_ai/fal-ai/vidu/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/vidu/q2/reference-to-image  [fal_ai/image_generation] 入- 出- 图$0.1
++ fal_ai/fal-ai/vidu/q2/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.1
++ fal_ai/fal-ai/vidu/q4/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/vidu/q4/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/vidu/reference-to-image  [fal_ai/image_generation] 入- 出- 图$0.1
++ fal_ai/fal-ai/vidu/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/vidu/start-end-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/vidu/template-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-22-vace-fun-a14b/depth  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-22-vace-fun-a14b/inpainting  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-22-vace-fun-a14b/outpainting  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-22-vace-fun-a14b/reframe  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-25-preview/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/wan-25-preview/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-25-preview/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/wan-25-preview/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-i2v-lora  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-pro/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-t2v-lora  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-vace-14b  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-vace-14b/depth  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-vace-14b/inpainting  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-vace-14b/outpainting  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-vace-14b/pose  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-vace-14b/reframe  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-vace-apps/long-reframe  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan-vace-apps/video-edit  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan/v2.2-14b/animate/move  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan/v2.2-14b/animate/replace  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan/v2.2-14b/speech-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan/v2.2-5b/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan/v2.2-5b/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.016
++ fal_ai/fal-ai/wan/v2.2-5b/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan/v2.2-a14b/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/wan/v2.2-a14b/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan/v2.2-a14b/image-to-video/lora  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan/v2.2-a14b/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/fal-ai/wan/v2.2-a14b/text-to-image/lora  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/fal-ai/wan/v2.2-a14b/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan/v2.2-a14b/text-to-video/lora  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan/v2.2-a14b/video-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan/v2.7/edit  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/wan/v2.7/edit-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan/v2.7/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan/v2.7/pro/edit  [fal_ai/image_generation] 入- 出- 图$0.075
++ fal_ai/fal-ai/wan/v2.7/pro/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.075
++ fal_ai/fal-ai/wan/v2.7/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/wan/v2.7/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/fal-ai/wan/v2.7/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/fal-ai/z-image/base  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/z-image/base/lora  [fal_ai/image_generation] 入- 出- 图$0.012
++ fal_ai/fal-ai/z-image/turbo  [fal_ai/image_generation] 入- 出- 图$0.005
++ fal_ai/fal-ai/z-image/turbo/controlnet  [fal_ai/image_generation] 入- 出- 图$0.0065
++ fal_ai/fal-ai/z-image/turbo/controlnet/lora  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/z-image/turbo/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.005
++ fal_ai/fal-ai/z-image/turbo/image-to-image/lora  [fal_ai/image_generation] 入- 出- 图$0.0085
++ fal_ai/fal-ai/z-image/turbo/inpaint  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/fal-ai/z-image/turbo/inpaint/lora  [fal_ai/image_generation] 入- 出- 图$0.0115
++ fal_ai/fal-ai/z-image/turbo/lora  [fal_ai/image_generation] 入- 出- 图$0.0085
++ fal_ai/fal-ai/z-image/turbo/tiling  [fal_ai/image_generation] 入- 出- 图$0.02
++ fal_ai/fal-ai/z-image/turbo/tiling/lora  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/google/gemini-omni-flash/v1.1/edit  [fal_ai/video_generation] 入- 出-
++ fal_ai/google/gemini-omni-flash/v1.1/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/google/gemini-omni-flash/v1.1/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/google/gemini-omni-flash/v1.1/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/google/gemini-omni-flash/v1.2/edit  [fal_ai/video_generation] 入$1.5 出-
++ fal_ai/google/gemini-omni-flash/v1.2/extend  [fal_ai/video_generation] 入$1.5 出-
++ fal_ai/google/gemini-omni-flash/v1.2/image-to-video  [fal_ai/video_generation] 入$1.5 出-
++ fal_ai/google/gemini-omni-flash/v1.2/reference-to-video  [fal_ai/video_generation] 入$1.5 出-
++ fal_ai/google/gemini-omni-flash/v1.2/text-to-video  [fal_ai/video_generation] 入$1.5 出-
++ fal_ai/google/gemini-omni-flash/v1.2/upscale  [fal_ai/video_generation] 入- 出-
++ fal_ai/google/nano-banana-2.1  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/google/nano-banana-2.1/edit  [fal_ai/image_generation] 入- 出- 图$0.044
++ fal_ai/google/nano-banana-latest  [/] 入- 出-
++ fal_ai/google/nano-banana-latest/edit  [/] 入- 出-
++ fal_ai/google/virtual-try-on  [fal_ai/image_generation] 入- 出- 图$0.075
++ fal_ai/heygen/heygen-video/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/heygen/heygen-video/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/heygen/heygen-video/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/ideogram/v4.5  [fal_ai/image_generation] 入- 出- 图$0.06
++ fal_ai/ideogram/v4.5/edit  [fal_ai/image_generation] 入- 出- 图$0.06
++ fal_ai/ideogram/v4/instant  [fal_ai/image_generation] 入- 出- 图$0.0075
++ fal_ai/ideogram/v4/tiling  [fal_ai/image_generation] 入- 出- 图$0.06
++ fal_ai/ideogram/v4/tiling/lora  [fal_ai/image_generation] 入- 出- 图$0.0675
++ fal_ai/kling/v4/flash/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/kling/v4/flash/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/kling/v4/flash/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/kling/v4/flash/video-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/kling/v4/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/kling/v4/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/kling/v4/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/kling/v4/video-to-video/edit  [fal_ai/video_generation] 入- 出-
++ fal_ai/krea/v3/edit  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/krea/v3/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.025
++ fal_ai/lightricks/ltx-2.5/image-to-video/fast  [fal_ai/video_generation] 入- 出-
++ fal_ai/lightricks/ltx-2.5/image-to-video/pro  [fal_ai/video_generation] 入- 出-
++ fal_ai/lightricks/ltx-2.5/text-to-video/fast  [fal_ai/video_generation] 入- 出-
++ fal_ai/lightricks/ltx-2.5/text-to-video/pro  [fal_ai/video_generation] 入- 出-
++ fal_ai/luma/agent/ray/v3.2/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/luma/agent/ray/v3.2/reframe  [fal_ai/video_generation] 入- 出-
++ fal_ai/luma/agent/ray/v3.2/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/luma/agent/ray/v3.2/video-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/luma/agent/uni-1/v1/edit  [fal_ai/image_generation] 入- 出- 图$0.045
++ fal_ai/luma/agent/uni-1/v1/max  [fal_ai/image_generation] 入- 出- 图$0.102
++ fal_ai/luma/agent/uni-1/v1/max/edit  [fal_ai/image_generation] 入- 出- 图$0.105
++ fal_ai/luma/agent/uni-1/v1/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.042
++ fal_ai/meta/muse-image/edit  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/meta/muse-image/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.01
++ fal_ai/minimax/h3-max-turbo/extend-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max-turbo/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max-turbo/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max-turbo/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/camera-controls  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/extend-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/insert-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/lip-sync/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/recast  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/reframe-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/relight  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/styles/16bit-pixel  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/styles/hand-drawn  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/styles/low-poly  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/styles/retro-toon-70s  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/styles/vhs  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3-max/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3/image-to-video/lora  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3/reference-to-video/lora  [fal_ai/video_generation] 入- 出-
++ fal_ai/minimax/h3/text-to-video/lora  [fal_ai/video_generation] 入- 出-
++ fal_ai/mirelo-ai/sfx2.0/video-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/moonvalley/marey/motion-transfer  [fal_ai/video_generation] 入- 出-
++ fal_ai/moonvalley/marey/pose-transfer  [fal_ai/video_generation] 入- 出-
++ fal_ai/mureka/api/generate/lyrics-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/nvidia/cosmos-3-super/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/nvidia/cosmos-3-super/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.04
++ fal_ai/pixelcut/background-removal  [fal_ai/image_generation] 入- 出- 图$0.016
++ fal_ai/pixelcut/looping-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/pixelcut/product-photo  [fal_ai/image_generation] 入- 出- 图$0.024
++ fal_ai/pixverse/music-video/vibemv  [fal_ai/video_generation] 入- 出-
++ fal_ai/pixverse/v6/max/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/pixverse/v6/max/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/recraft/v4.1/flash/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.007
++ fal_ai/recraft/v4/style/pro/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.1
++ fal_ai/recraft/v4/style/pro/text-to-vector  [fal_ai/image_generation] 入- 出- 图$0.12
++ fal_ai/recraft/v4/style/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/recraft/v4/style/text-to-vector  [fal_ai/image_generation] 入- 出- 图$0.05
++ fal_ai/rundiffusion-fal/juggernaut-flux/base  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/rundiffusion-fal/juggernaut-flux/base/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.035
++ fal_ai/rundiffusion-fal/juggernaut-flux/lightning  [fal_ai/image_generation] 入- 出- 图$0.006
++ fal_ai/rundiffusion-fal/juggernaut-flux/pro  [fal_ai/image_generation] 入- 出- 图$0.055
++ fal_ai/rundiffusion-fal/juggernaut-flux/pro/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.055
++ fal_ai/rundiffusion-fal/rundiffusion-photo-flux  [fal_ai/image_generation] 入- 出- 图$0.045
++ fal_ai/smoretalk-ai/rembg-enhance  [fal_ai/image_generation] 入- 出- 图$0.006
++ fal_ai/sonilo/v1.1/video-to-video-music  [fal_ai/video_generation] 入- 出-
++ fal_ai/sonilo/v1.1/video-to-video-sound-effects  [fal_ai/video_generation] 入- 出-
++ fal_ai/tbc/mischief-1/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/vast/eden-live-14b-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/vast/eden-live-5b-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/veed/fabric-1.0  [fal_ai/video_generation] 入- 出-
++ fal_ai/veed/fabric-1.0/fast  [fal_ai/video_generation] 入- 出-
++ fal_ai/veed/fabric-1.0/text  [fal_ai/video_generation] 入- 出-
++ fal_ai/wan/v2.6/image-to-image  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/wan/v2.6/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/wan/v2.6/image-to-video/flash  [fal_ai/video_generation] 入- 出-
++ fal_ai/wan/v2.6/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/wan/v2.6/reference-to-video/flash  [fal_ai/video_generation] 入- 出-
++ fal_ai/wan/v2.6/text-to-image  [fal_ai/image_generation] 入- 出- 图$0.03
++ fal_ai/wan/v2.6/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/xai/grok-imagine-image  [fal_ai/image_generation] 入- 出- 图$0.02
++ fal_ai/xai/grok-imagine-image/edit  [fal_ai/image_generation] 入- 出- 图$0.022
++ fal_ai/xai/grok-imagine-video/edit-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/xai/grok-imagine-video/extend-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/xai/grok-imagine-video/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/xai/grok-imagine-video/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/xai/grok-imagine-video/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/xai/grok-imagine-video/v1.5/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/xai/grok-imagine-video/v1.5/lite/image-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/xai/grok-imagine-video/v1.5/lite/text-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/xai/grok-imagine-video/v1.5/reference-to-video  [fal_ai/video_generation] 入- 出-
++ fal_ai/xai/grok-imagine-video/v1.5/text-to-video  [fal_ai/video_generation] 入- 出-
++ fireworks_ai/accounts/fireworks/routers/deepseek-flash-latest  [fireworks_ai/chat] 入$0.3 出$1.2
++ fireworks_ai/accounts/fireworks/routers/glm-fast-latest  [fireworks_ai/chat] 入$2.1 出$6.6
++ fireworks_ai/accounts/fireworks/routers/glm-flash-latest  [fireworks_ai/chat] 入$0.15 出$0.5
++ fireworks_ai/accounts/fireworks/routers/glm-latest  [fireworks_ai/chat] 入$1.4 出$4.4
++ fireworks_ai/accounts/fireworks/routers/kimi-fast-latest  [fireworks_ai/chat] 入$4.5 出$22.5
++ fireworks_ai/accounts/fireworks/routers/kimi-latest  [fireworks_ai/chat] 入$3 出$15
++ fireworks_ai/accounts/fireworks/routers/minimax-latest  [fireworks_ai/chat] 入$0.3 出$1.2
++ fireworks_ai/accounts/fireworks/routers/qwen-max-latest  [fireworks_ai/chat] 入$2 出$6
++ gemini/gemini-4-carbon  [gemini/chat] 入$2 出$10
++ gemini/gemini-4-hydrogen  [gemini/chat] 入$1.5 出$7.5
++ gemini/gemini-decision-1  [gemini/decisions] 入$0.1 出$0
++ gemini/nano-banana-latest  [/] 入- 出-
++ github_copilot/claude-fable-5.2  [github_copilot/chat] 入$8 出$40
++ github_copilot/gemini-4-carbon  [github_copilot/chat] 入$2 出$10
++ github_copilot/gemini-4-hydrogen  [github_copilot/chat] 入$1.5 出$7.5
++ global.anthropic.claude-fable-5-2  [bedrock_converse/chat] 入$8 出$40
++ global.anthropic.claude-mythos-5-2  [bedrock_converse/chat] 入$8 出$40
++ global.openai.gpt-5.6-cyber  [bedrock_converse/chat] 入$12.5 出$75
++ global.openai.gpt-daybreak-blue-5.6-sol  [bedrock_converse/chat] 入$4 出$20
++ gmi/google/gemini-4-carbon  [gmi/chat] 入$2 出$10
++ gmi/xai/grok4.7  [gmi/chat] 入$2 出$6
++ meta/muse-ember-1.0  [meta/chat] 入$0.1 出$0.5
++ minimax/MiniMax-M3.1-Flash  [minimax/chat] 入$0.15 出$0.6
++ nace/drex-max  [nace/evaluation] 入$0.03 出$0
++ nace/drex-max-v1.1  [nace/evaluation] 入$0.03 出$0
++ nebius/thinkingmachines/Inkling-2-Small  [nebius/chat] 入$0.3 出$1
++ omni-moderation-csam-latest  [openai/moderation] 入$0 出$0
++ perplexity/anthropic/claude-fable-5-2  [perplexity/responses] 入$8 出$40
++ perplexity/google/gemini-4-carbon  [perplexity/responses] 入$2 出$10
++ perplexity/google/gemini-4-hydrogen  [perplexity/responses] 入$1.5 出$7.5
++ replicate/alibaba/happyhorse-1.0  [replicate/video_generation] 入- 出-
++ replicate/alibaba/happyhorse-1.1  [replicate/video_generation] 入- 出-
++ replicate/alibaba/qwen-image-3  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/alibaba/qwen-image-3-pro  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/alibaba/wan-3  [replicate/video_generation] 入- 出-
++ replicate/alibaba/wan-3-prime  [replicate/video_generation] 入- 出-
++ replicate/anthropic/claude-fable-5  [replicate/chat] 入$10 出$50
++ replicate/anthropic/claude-fable-5.2  [replicate/chat] 入$8 出$40
++ replicate/anthropic/claude-opus-4.6  [replicate/chat] 入$5 出$25
++ replicate/anthropic/claude-opus-4.7  [replicate/chat] 入$5 出$25
++ replicate/anthropic/claude-opus-5.5  [replicate/chat] 入$4 出$20
++ replicate/anthropic/claude-sonnet-4.6  [replicate/chat] 入$3 出$15
++ replicate/anthropic/claude-sonnet-5  [replicate/chat] 入$2 出$10
++ replicate/black-forest-labs/flux-1.1-pro  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/black-forest-labs/flux-1.1-pro-ultra  [replicate/image_generation] 入- 出- 图$0.06
++ replicate/black-forest-labs/flux-1.1-pro-ultra-finetuned  [replicate/image_generation] 入- 出- 图$0.07
++ replicate/black-forest-labs/flux-2-flex  [replicate/image_generation] 入- 出-
++ replicate/black-forest-labs/flux-2-klein-4b  [replicate/image_generation] 入- 出-
++ replicate/black-forest-labs/flux-2-klein-4b-base  [replicate/image_generation] 入- 出-
++ replicate/black-forest-labs/flux-2-klein-4b-base-lora  [replicate/image_generation] 入- 出-
++ replicate/black-forest-labs/flux-2-klein-9b  [replicate/image_generation] 入- 出-
++ replicate/black-forest-labs/flux-2-klein-9b-base  [replicate/image_generation] 入- 出-
++ replicate/black-forest-labs/flux-2-klein-9b-base-lora  [replicate/image_generation] 入- 出-
++ replicate/black-forest-labs/flux-canny-dev  [replicate/image_generation] 入- 出- 图$0.025
++ replicate/black-forest-labs/flux-canny-pro  [replicate/image_generation] 入- 出- 图$0.05
++ replicate/black-forest-labs/flux-depth-dev  [replicate/image_generation] 入- 出- 图$0.025
++ replicate/black-forest-labs/flux-depth-pro  [replicate/image_generation] 入- 出- 图$0.05
++ replicate/black-forest-labs/flux-dev  [replicate/image_generation] 入- 出- 图$0.025
++ replicate/black-forest-labs/flux-dev-lora  [replicate/image_generation] 入- 出- 图$0.032
++ replicate/black-forest-labs/flux-fill-dev  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/black-forest-labs/flux-fill-pro  [replicate/image_generation] 入- 出- 图$0.05
++ replicate/black-forest-labs/flux-kontext-dev  [replicate/image_generation] 入- 出- 图$0.025
++ replicate/black-forest-labs/flux-kontext-dev-lora  [replicate/image_generation] 入- 出- 图$0.032
++ replicate/black-forest-labs/flux-kontext-max  [replicate/image_generation] 入- 出- 图$0.08
++ replicate/black-forest-labs/flux-kontext-pro  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/black-forest-labs/flux-krea-dev  [replicate/image_generation] 入- 出- 图$0.025
++ replicate/black-forest-labs/flux-pro  [replicate/image_generation] 入- 出- 图$0.055
++ replicate/black-forest-labs/flux-pro-finetuned  [replicate/image_generation] 入- 出- 图$0.06
++ replicate/black-forest-labs/flux-redux-dev  [replicate/image_generation] 入- 出- 图$0.025
++ replicate/black-forest-labs/flux-redux-schnell  [replicate/image_generation] 入- 出- 图$0.003
++ replicate/black-forest-labs/flux-schnell  [replicate/image_generation] 入- 出- 图$0.003
++ replicate/black-forest-labs/flux-schnell-lora  [replicate/image_generation] 入- 出- 图$0.02
++ replicate/bria/eraser  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/bria/expand-image  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/bria/fibo  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/bria/fibo-edit  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/bria/generate-background  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/bria/genfill  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/bria/image-3.2  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/bria/increase-resolution  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/bria/product-cutout  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/bria/product-packshot  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/bria/product-shadow  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/bria/remove-background  [replicate/image_generation] 入- 出- 图$0.018
++ replicate/bria/video-erase-object  [replicate/video_generation] 入- 出-
++ replicate/bria/video-increase-resolution  [replicate/video_generation] 入- 出-
++ replicate/bria/video-remove-background  [replicate/video_generation] 入- 出-
++ replicate/bytedance/dreamactor-m2.0  [replicate/video_generation] 入- 出-
++ replicate/bytedance/dreamina-3.1  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/bytedance/omni-human  [replicate/video_generation] 入- 出-
++ replicate/bytedance/omni-human-1.5  [replicate/video_generation] 入- 出-
++ replicate/bytedance/seedance-1-lite  [replicate/video_generation] 入- 出-
++ replicate/bytedance/seedance-1-pro  [replicate/video_generation] 入- 出-
++ replicate/bytedance/seedance-1-pro-fast  [replicate/video_generation] 入- 出-
++ replicate/bytedance/seedream-3  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/bytedance/seedream-4  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/bytedance/seedream-4.5  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/bytedance/seedream-5-lite  [replicate/image_generation] 入- 出- 图$0.035
++ replicate/datalab-to/ocr  [replicate/ocr] 入- 出-
++ replicate/decart/lucy-edit-2  [replicate/video_generation] 入- 出-
++ replicate/easel/ai-avatars  [replicate/image_generation] 入- 出- 图$0.05
++ replicate/elevenlabs/dubbing  [replicate/audio_speech] 入- 出-
++ replicate/elevenlabs/flash-v2.5  [replicate/audio_speech] 入- 出-
++ replicate/elevenlabs/turbo-v2.5  [replicate/audio_speech] 入- 出-
++ replicate/elevenlabs/v2-multilingual  [replicate/audio_speech] 入- 出-
++ replicate/elevenlabs/v3  [replicate/audio_speech] 入- 出-
++ replicate/flux-kontext-apps/cartoonify  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/flux-kontext-apps/change-haircut  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/flux-kontext-apps/depth-of-field  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/flux-kontext-apps/face-to-many-kontext  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/flux-kontext-apps/filters  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/flux-kontext-apps/iconic-locations  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/flux-kontext-apps/impossible-scenarios  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/flux-kontext-apps/multi-image-kontext-max  [replicate/image_generation] 入- 出- 图$0.08
++ replicate/flux-kontext-apps/multi-image-kontext-pro  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/flux-kontext-apps/multi-image-list  [replicate/image_generation] 入- 出- 图$0.08
++ replicate/flux-kontext-apps/portrait-series  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/flux-kontext-apps/professional-headshot  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/flux-kontext-apps/restore-image  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/flux-kontext-apps/restyle-video-frame  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/flux-kontext-apps/text-removal  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/google/gemini-2.5-flash-image  [replicate/image_generation] 入- 出- 图$0.039
++ replicate/google/gemini-3-flash  [replicate/chat] 入$0.5 出$3
++ replicate/google/gemini-3.1-flash-tts  [replicate/audio_speech] 入$2 出$40
++ replicate/google/gemini-3.1-pro  [replicate/chat] 入$2 出$12
++ replicate/google/gemini-3.5-flash  [replicate/chat] 入$1.5 出$9
++ replicate/google/gemini-3.8-flash-lite-tts  [replicate/audio_speech] 入$0.5 出$6
++ replicate/google/gemini-3.8-flash-tts  [replicate/audio_speech] 入$0.5 出$9
++ replicate/google/gemini-4-carbon  [replicate/chat] 入$2 出$10
++ replicate/google/nano-banana  [replicate/image_generation] 入- 出- 图$0.039
++ replicate/google/nano-banana-2  [replicate/image_generation] 入- 出- 图$0.067
++ replicate/google/nano-banana-2-lite  [replicate/image_generation] 入- 出- 图$0.034
++ replicate/google/nano-banana-2.1  [replicate/image_generation] 入- 出- 图$0.0336
++ replicate/google/nano-banana-latest  [/] 入- 出-
++ replicate/heygen/avatar-iv  [replicate/video_generation] 入- 出-
++ replicate/heygen/avatar-v  [replicate/video_generation] 入- 出-
++ replicate/heygen/lipsync-precision  [replicate/video_generation] 入- 出-
++ replicate/heygen/lipsync-speed  [replicate/video_generation] 入- 出-
++ replicate/heygen/video-agent  [replicate/video_generation] 入- 出-
++ replicate/ibm-granite/granite-20b-code-instruct-8k  [replicate/chat] 入$0.1 出$0.5
++ replicate/ibm-granite/granite-3.0-2b-instruct  [replicate/chat] 入$0.03 出$0.25
++ replicate/ibm-granite/granite-3.0-8b-instruct  [replicate/chat] 入$0.05 出$0.25
++ replicate/ibm-granite/granite-3.1-2b-instruct  [replicate/chat] 入$0.03 出$0.25
++ replicate/ibm-granite/granite-3.1-8b-instruct  [replicate/chat] 入$0.03 出$0.25
++ replicate/ibm-granite/granite-3.2-8b-instruct  [replicate/chat] 入$0.03 出$0.25
++ replicate/ibm-granite/granite-4.0-h-small  [replicate/chat] 入$0.06 出$0.25
++ replicate/ibm-granite/granite-4.1-8b  [replicate/chat] 入$0.06 出$0.25
++ replicate/ibm-granite/granite-4.2-8b  [replicate/chat] 入$0.06 出$0.25
++ replicate/ibm-granite/granite-8b-code-instruct-128k  [replicate/chat] 入$0.05 出$0.25
++ replicate/ibm-granite/granite-speech-3.3-8b  [replicate/audio_transcription] 入- 出$4.9
++ replicate/ibm-granite/granite-speech-4.1-2b  [replicate/audio_transcription] 入$0.03 出$0.25
++ replicate/ibm-granite/granite-vision-3.3-2b  [replicate/chat] 入$0 出$0.25
++ replicate/ibm-granite/granite-vision-4.1-4b  [replicate/chat] 入$0.06 出$0.25
++ replicate/ideogram-ai/ideogram-v2  [replicate/image_generation] 入- 出- 图$0.08
++ replicate/ideogram-ai/ideogram-v2-turbo  [replicate/image_generation] 入- 出- 图$0.05
++ replicate/ideogram-ai/ideogram-v2a  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/ideogram-ai/ideogram-v2a-turbo  [replicate/image_generation] 入- 出- 图$0.025
++ replicate/ideogram-ai/ideogram-v3-balanced  [replicate/image_generation] 入- 出- 图$0.06
++ replicate/ideogram-ai/ideogram-v3-quality  [replicate/image_generation] 入- 出- 图$0.09
++ replicate/ideogram-ai/ideogram-v3-turbo  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/ideogram-ai/ideogram-v4-balanced  [replicate/image_generation] 入- 出- 图$0.06
++ replicate/ideogram-ai/ideogram-v4-quality  [replicate/image_generation] 入- 出- 图$0.1
++ replicate/ideogram-ai/layerize  [replicate/image_generation] 入- 出- 图$0.09
++ replicate/intelligent-utilities/html-to-image  [replicate/image_generation] 入- 出- 图$0.001
++ replicate/inworld/realtime-tts-1.5-max  [replicate/audio_speech] 入- 出-
++ replicate/inworld/realtime-tts-1.5-mini  [replicate/audio_speech] 入- 出-
++ replicate/inworld/realtime-tts-2  [replicate/audio_speech] 入- 出-
++ replicate/kwaivgi/kling-lip-sync  [replicate/video_generation] 入- 出-
++ replicate/kwaivgi/kling-v2.1-master  [replicate/video_generation] 入- 出-
++ replicate/kwaivgi/kling-v2.5-turbo-pro  [replicate/video_generation] 入- 出-
++ replicate/lightricks/audio-to-video  [replicate/video_generation] 入- 出-
++ replicate/lightricks/ltx-2-distilled  [replicate/video_generation] 入- 出-
++ replicate/lightricks/ltx-2-fast  [replicate/video_generation] 入- 出-
++ replicate/lightricks/ltx-2-pro  [replicate/video_generation] 入- 出-
++ replicate/lightricks/ltx-2-retake  [replicate/video_generation] 入- 出-
++ replicate/lightricks/ltx-2.3-fast  [replicate/video_generation] 入- 出-
++ replicate/lightricks/ltx-2.3-pro  [replicate/video_generation] 入- 出-
++ replicate/lightricks/ltx-2.5-fast  [replicate/video_generation] 入- 出-
++ replicate/luma/photon  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/luma/photon-flash  [replicate/image_generation] 入- 出- 图$0.01
++ replicate/luma/reframe-video  [replicate/video_generation] 入- 出-
++ replicate/meta/llama-4-maverick-instruct  [replicate/chat] 入$0.25 出$0.95
++ replicate/meta/llama-4-scout-instruct  [replicate/chat] 入$0.17 出$0.65
++ replicate/meta/llama-guard-4-12b  [replicate/chat] 入$0.2 出$0.2
++ replicate/meta/meta-llama-3-70b  [replicate/chat] 入$0.65 出$2.75
++ replicate/meta/meta-llama-3-70b-instruct  [replicate/chat] 入$0.65 出$2.75
++ replicate/meta/meta-llama-3-8b  [replicate/chat] 入$0.05 出$0.25
++ replicate/meta/meta-llama-3-8b-instruct  [replicate/chat] 入$0.05 出$0.25
++ replicate/minimax/h3  [replicate/video_generation] 入- 出-
++ replicate/minimax/h3-highspeed  [replicate/video_generation] 入- 出-
++ replicate/minimax/h3-lite  [replicate/video_generation] 入- 出-
++ replicate/minimax/image-01  [replicate/image_generation] 入- 出- 图$0.01
++ replicate/minimax/speech-02-hd  [replicate/audio_speech] 入$100 出-
++ replicate/minimax/speech-02-turbo  [replicate/audio_speech] 入$60 出-
++ replicate/minimax/speech-2.6-hd  [replicate/audio_speech] 入$100 出-
++ replicate/minimax/speech-2.6-turbo  [replicate/audio_speech] 入$60 出-
++ replicate/minimax/speech-2.8-hd  [replicate/audio_speech] 入$100 出-
++ replicate/minimax/speech-2.8-turbo  [replicate/audio_speech] 入$60 出-
++ replicate/moonshotai/kimi-k2-thinking  [replicate/chat] 入$0.66 出$2.7
++ replicate/moonshotai/kimi-k2.5  [replicate/chat] 入$0.72 出$3.6
++ replicate/moonshotai/kimi-k2.6  [replicate/chat] 入$0.95 出$4
++ replicate/nightmareai/real-esrgan  [replicate/image_generation] 入- 出- 图$0.002
++ replicate/openai/gpt-4o-mini-transcribe  [replicate/audio_transcription] 入$3 出$5
++ replicate/openai/gpt-4o-transcribe  [replicate/audio_transcription] 入$6 出$10
++ replicate/openai/gpt-5-pro  [replicate/chat] 入$15 出$120
++ replicate/openai/gpt-5.1  [replicate/chat] 入$1.25 出$10
++ replicate/openai/gpt-5.2  [replicate/chat] 入$1.75 出$14
++ replicate/openai/gpt-5.4  [replicate/chat] 入$2.5 出$15
++ replicate/openai/gpt-5.6-luna  [replicate/chat] 入$1 出$6
++ replicate/openai/gpt-5.6-sol  [replicate/chat] 入$2 出$10
++ replicate/openai/gpt-5.6-terra  [replicate/chat] 入$2.5 出$15
++ replicate/perceptron-ai-inc/isaac-0.1  [replicate/chat] 入$0.26 出$2.17
++ replicate/philz1337x/clarity-pro-upscaler  [replicate/image_generation] 入- 出-
++ replicate/pixverse/lipsync  [replicate/video_generation] 入- 出-
++ replicate/playht/play-dialog  [replicate/audio_speech] 入- 出-
++ replicate/prunaai/flux-fast  [replicate/image_generation] 入- 出- 图$0.005
++ replicate/prunaai/flux-kontext-fast  [replicate/image_generation] 入- 出- 图$0.01
++ replicate/prunaai/hidream-l1-fast  [replicate/image_generation] 入- 出- 图$0.005
++ replicate/prunaai/p-image  [replicate/image_generation] 入- 出- 图$0.005
++ replicate/prunaai/p-image-edit  [replicate/image_generation] 入- 出- 图$0.01
++ replicate/prunaai/p-image-edit-lora  [replicate/image_generation] 入- 出- 图$0.01
++ replicate/prunaai/p-image-lora  [replicate/image_generation] 入- 出- 图$0.005
++ replicate/prunaai/p-video-2-pro-avatar  [replicate/video_generation] 入- 出-
++ replicate/prunaai/p-video-2-pro-replace  [replicate/video_generation] 入- 出-
++ replicate/prunaai/p-video-animate  [replicate/video_generation] 入- 出-
++ replicate/prunaai/p-video-avatar  [replicate/video_generation] 入- 出-
++ replicate/prunaai/p-video-replace  [replicate/video_generation] 入- 出-
++ replicate/prunaai/wan-2.2-image  [replicate/image_generation] 入- 出- 图$0.02
++ replicate/quiverai/arrow-1.1  [replicate/image_generation] 入- 出- 图$0.2
++ replicate/quiverai/arrow-1.1-max  [replicate/image_generation] 入- 出- 图$0.25
++ replicate/quiverai/arrow-1.1-max-vectorize  [replicate/image_generation] 入- 出- 图$0.2
++ replicate/quiverai/arrow-1.1-vectorize  [replicate/image_generation] 入- 出- 图$0.15
++ replicate/qwen-edit-apps/qwen-image-edit-plus-lora-fusion  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/qwen-edit-apps/qwen-image-edit-plus-lora-next-scene  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/qwen-edit-apps/qwen-image-edit-plus-lora-photo-to-anime  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/qwen-edit-apps/qwen-image-edit-plus-lora-relight  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/qwen-edit-apps/qwen-image-edit-plus-lora-skin  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/qwen-edit-apps/qwen-image-edit-plus-lora-upscale  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/qwen/qwen-edit-multiangle  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/qwen/qwen-image  [replicate/image_generation] 入- 出- 图$0.025
++ replicate/qwen/qwen-image-2  [replicate/image_generation] 入- 出- 图$0.035
++ replicate/qwen/qwen-image-2-pro  [replicate/image_generation] 入- 出- 图$0.075
++ replicate/qwen/qwen-image-2512  [replicate/image_generation] 入- 出- 图$0.02
++ replicate/qwen/qwen-image-edit  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/qwen/qwen-image-edit-2511  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/qwen/qwen-image-edit-plus  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/qwen/qwen-image-edit-plus-lora  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/qwen/qwen3-7-plus  [replicate/chat] 入$0.276 出$1.101
++ replicate/qwen/qwen3-tts  [replicate/audio_speech] 入- 出-
++ replicate/recraft-ai/recraft-20b  [replicate/image_generation] 入- 出- 图$0.022
++ replicate/recraft-ai/recraft-20b-svg  [replicate/image_generation] 入- 出- 图$0.044
++ replicate/recraft-ai/recraft-creative-upscale  [replicate/image_generation] 入- 出- 图$0.3
++ replicate/recraft-ai/recraft-crisp-upscale  [replicate/image_generation] 入- 出- 图$0.006
++ replicate/recraft-ai/recraft-remove-background  [replicate/image_generation] 入- 出- 图$0.01
++ replicate/recraft-ai/recraft-v3  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/recraft-ai/recraft-v3-svg  [replicate/image_generation] 入- 出- 图$0.08
++ replicate/recraft-ai/recraft-v4  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/recraft-ai/recraft-v4-pro  [replicate/image_generation] 入- 出- 图$0.25
++ replicate/recraft-ai/recraft-v4-pro-svg  [replicate/image_generation] 入- 出- 图$0.3
++ replicate/recraft-ai/recraft-v4-styles-pro  [replicate/image_generation] 入- 出- 图$0.1
++ replicate/recraft-ai/recraft-v4-styles-pro-svg  [replicate/image_generation] 入- 出- 图$0.12
++ replicate/recraft-ai/recraft-v4-svg  [replicate/image_generation] 入- 出- 图$0.08
++ replicate/recraft-ai/recraft-v4.1  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/recraft-ai/recraft-v4.1-pro  [replicate/image_generation] 入- 出- 图$0.25
++ replicate/recraft-ai/recraft-v4.1-pro-svg  [replicate/image_generation] 入- 出- 图$0.25
++ replicate/recraft-ai/recraft-v4.1-svg  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/recraft-ai/recraft-v4.1-utility  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/recraft-ai/recraft-v4.1-utility-pro  [replicate/image_generation] 入- 出- 图$0.25
++ replicate/recraft-ai/recraft-vectorize  [replicate/image_generation] 入- 出- 图$0.01
++ replicate/resemble-ai/chatterbox  [replicate/audio_speech] 入- 出-
++ replicate/resemble-ai/chatterbox-pro  [replicate/audio_speech] 入- 出-
++ replicate/resemble-ai/chatterbox-turbo  [replicate/audio_speech] 入- 出-
++ replicate/retro-diffusion/rd-animation  [replicate/image_generation] 入- 出- 图$0.07
++ replicate/runwayml/aleph-2  [replicate/video_generation] 入- 出-
++ replicate/runwayml/gen-4.5  [replicate/video_generation] 入- 出-
++ replicate/runwayml/gen4-image-turbo  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/runwayml/gen4-turbo  [replicate/video_generation] 入- 出-
++ replicate/snowflake/snowflake-arctic-instruct  [replicate/chat] 入$20 出$20
++ replicate/stability-ai/stable-diffusion-3  [replicate/image_generation] 入- 出- 图$0.035
++ replicate/stability-ai/stable-diffusion-3.5-large  [replicate/image_generation] 入- 出- 图$0.065
++ replicate/stability-ai/stable-diffusion-3.5-large-turbo  [replicate/image_generation] 入- 出- 图$0.04
++ replicate/stability-ai/stable-diffusion-3.5-medium  [replicate/image_generation] 入- 出- 图$0.035
++ replicate/sync/lipsync-2  [replicate/video_generation] 入- 出-
++ replicate/sync/lipsync-2-pro  [replicate/video_generation] 入- 出-
++ replicate/sync/react-1  [replicate/video_generation] 入- 出-
++ replicate/tencent/hunyuan-image-2.1  [replicate/image_generation] 入- 出- 图$0.02
++ replicate/tencent/hunyuan-image-3  [replicate/image_generation] 入- 出- 图$0.08
++ replicate/veed/fabric-1.0  [replicate/video_generation] 入- 出-
++ replicate/wan-video/wan-2.2-s2v  [replicate/video_generation] 入- 出-
++ replicate/wan-video/wan-2.5-i2v  [replicate/video_generation] 入- 出-
++ replicate/wan-video/wan-2.5-i2v-fast  [replicate/video_generation] 入- 出-
++ replicate/wan-video/wan-2.5-t2v  [replicate/video_generation] 入- 出-
++ replicate/wan-video/wan-2.5-t2v-fast  [replicate/video_generation] 入- 出-
++ replicate/wan-video/wan-2.6-i2v  [replicate/video_generation] 入- 出-
++ replicate/wan-video/wan-2.6-t2v  [replicate/video_generation] 入- 出-
++ replicate/wan-video/wan-2.7-i2v  [replicate/video_generation] 入- 出-
++ replicate/wan-video/wan-2.7-image  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/wan-video/wan-2.7-image-pro  [replicate/image_generation] 入- 出- 图$0.03
++ replicate/wan-video/wan-2.7-r2v  [replicate/video_generation] 入- 出-
++ replicate/wan-video/wan-2.7-t2v  [replicate/video_generation] 入- 出-
++ replicate/wan-video/wan-2.7-videoedit  [replicate/video_generation] 入- 出-
++ replicate/wan-video/wan2.6-i2v-flash  [replicate/video_generation] 入- 出-
++ replicate/wavespeedai/qwen-image  [replicate/image_generation] 入- 出- 图$0.025
++ replicate/wavespeedai/wan-2.1-i2v-480p  [replicate/video_generation] 入- 出-
++ replicate/wavespeedai/wan-2.1-i2v-720p  [replicate/video_generation] 入- 出-
++ replicate/wavespeedai/wan-2.1-t2v-480p  [replicate/video_generation] 入- 出-
++ replicate/wavespeedai/wan-2.1-t2v-720p  [replicate/video_generation] 入- 出-
++ replicate/xai/grok-imagine-image  [replicate/image_generation] 入- 出- 图$0.02
++ replicate/xai/grok-imagine-image-quality  [replicate/image_generation] 入- 出- 图$0.06
++ replicate/xai/grok-imagine-r2v  [replicate/video_generation] 入- 出-
++ replicate/xai/grok-imagine-video  [replicate/video_generation] 入- 出-
++ replicate/xai/grok-imagine-video-1.5  [replicate/video_generation] 入- 出-
++ replicate/xai/grok-imagine-video-extension  [replicate/video_generation] 入- 出-
++ replicate/xai/grok-text-to-speech  [replicate/audio_speech] 入- 出-
++ runwayml/bria_fibo_edit_1_5  [runwayml/image_generation] 入- 出- 图$0.05
++ runwayml/eleven_v3  [runwayml/audio_speech] 入- 出-
++ runwayml/eleven_v4  [runwayml/audio_speech] 入- 出-
++ runwayml/gemini_2.5_flash  [runwayml/image_generation] 入- 出- 图$0.05
++ runwayml/gemini_image3.1_flash_lite  [runwayml/image_generation] 入- 出- 图$0.04
++ runwayml/gemini_omni_flash_1.1  [runwayml/video_generation] 入- 出-
++ runwayml/gemini_omni_flash_1.2  [runwayml/video_generation] 入- 出-
++ runwayml/grok_imagine_1_5  [runwayml/video_generation] 入- 出-
++ runwayml/grok_imagine_1_5_lite  [runwayml/video_generation] 入- 出-
++ runwayml/h3_max  [runwayml/video_generation] 入- 出-
++ runwayml/happyhorse_1_0  [runwayml/video_generation] 入- 出-
++ runwayml/kling2.5_turbo_pro  [runwayml/video_generation] 入- 出-
++ runwayml/kling3.0_4k  [runwayml/video_generation] 入- 出-
++ runwayml/kling3.0_pro  [runwayml/video_generation] 入- 出-
++ runwayml/kling3.0_standard  [runwayml/video_generation] 入- 出-
++ runwayml/klingO3_4k  [runwayml/video_generation] 入- 出-
++ runwayml/klingO3_pro  [runwayml/video_generation] 入- 出-
++ runwayml/klingO3_standard  [runwayml/video_generation] 入- 出-
++ runwayml/kling_4  [runwayml/video_generation] 入- 出-
++ runwayml/kling_4_flash  [runwayml/video_generation] 入- 出-
++ runwayml/muse_image  [runwayml/image_generation] 入- 出- 图$0.01
++ runwayml/seedance-latest  [/] 入- 出-
++ runwayml/seedream5_flash  [runwayml/image_generation] 入- 出- 图$0.02
++ runwayml/seedream5_lite  [runwayml/image_generation] 入- 出- 图$0.04
++ runwayml/wan3  [runwayml/video_generation] 入- 出-
++ runwayml/wan3_prime  [runwayml/video_generation] 入- 出-
++ soniox/stt-async-v6  [soniox/audio_transcription] 入- 出-
++ soniox/stt-rt-v6  [soniox/audio_transcription] 入- 出-
++ together_ai/elorian-labs/glimpse-1.0  [together_ai/chat] 入$0.6 出$3
++ together_ai/thinkingmachines/Inkling-2-Small  [together_ai/chat] 入$0.3 出$1
++ us-gov.anthropic.claude-fable-5-2  [bedrock_converse/chat] 入$9.6 出$48
++ us-gov.anthropic.claude-mythos-5-2  [bedrock_converse/chat] 入$9.6 出$48
++ us.anthropic.claude-fable-5-2  [bedrock_converse/chat] 入$8.8 出$44
++ us.anthropic.claude-mythos-5-2  [bedrock_converse/chat] 入$8.8 出$44
++ us.openai.gpt-5.6-cyber  [bedrock_converse/chat] 入$13.75 出$82.5
++ us.openai.gpt-daybreak-blue-5.6-sol  [bedrock_converse/chat] 入$4.4 出$22
++ vercel_ai_gateway/openai/gpt-6-luna-decisions  [vercel_ai_gateway/evaluation] 入$0.1 出$0
++ vercel_ai_gateway/typesafe-ai/jev  [vercel_ai_gateway/evaluation] 入$0.042 出$0
++ vercel_ai_gateway/typesafe-ai/jev-1.13.0  [vercel_ai_gateway/evaluation] 入$0.042 出$0
++ vercel_ai_gateway/typesafe-ai/jev-1.14.0  [vercel_ai_gateway/evaluation] 入$0.042 出$0
++ vertex_ai/claude-fable-5-2  [vertex_ai-anthropic_models/chat] 入$8 出$40
++ vertex_ai/claude-fable-5-2@default  [vertex_ai-anthropic_models/chat] 入$8 出$40
++ vertex_ai/claude-mythos-5-2  [vertex_ai-anthropic_models/chat] 入$8 出$40
++ vertex_ai/claude-mythos-5-2@default  [vertex_ai-anthropic_models/chat] 入$8 出$40
++ vertex_ai/deep-research-preview-04-2026  [vertex_ai/chat] 入$2 出$12
++ vertex_ai/gemini-4-carbon  [vertex_ai/chat] 入$2 出$10
++ vertex_ai/gemini-4-carbon-cyber-permissive  [vertex_ai/chat] 入$4 出$20
++ vertex_ai/gemini-4-hydrogen  [vertex_ai/chat] 入$1.5 出$7.5
++ vertex_ai/nano-banana-latest  [/] 入- 出-
++ webiq/search  [webiq/search] 入- 出-
+
+--- 减少模型（2）---
+- friendliai/MiniMaxAI/MiniMax-M2.5  [friendliai/chat] 入$0.3 出$1.2
+- friendliai/deepseek-ai/DeepSeek-V3.2  [friendliai/chat] 入$0.5 出$1.5
+
+--- 发生变更（280）---
+~ 1024-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ 1024-x-1024/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ 1024-x-1536/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ 1024-x-1536/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ 1536-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ 1536-x-1024/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ amazon.nova-2-5-sonic  [bedrock/realtime] 入$0.33 出$2.75
+~ anthropic.claude-3-5-sonnet-20240620-v1:0  [bedrock/chat] 入$3 出$15
+~ anthropic.claude-3-5-sonnet-20241022-v2:0  [bedrock/chat] 入$3 出$15
+~ anthropic.claude-3-7-sonnet-20250219-v1:0  [bedrock_converse/chat] 入$3 出$15
+~ azure/eu/gpt-4o-realtime-preview-2024-12-17  [azure/realtime] 入$5.5 出$22
+~ azure/eu/gpt-5.4-mini  [azure/chat] 入$0.825 出$4.95
+~ azure/eu/gpt-5.4-nano  [azure/chat] 入$0.22 出$1.375
+~ azure/gpt-4o-realtime-preview-2024-12-17  [azure/realtime] 入$5 出$20
+~ azure/gpt-6-astra  [azure/chat] 入$10 出$50
+~ azure/gpt-6-luna  [azure/chat] 入$0.1 出$0.5
+~ azure/gpt-realtime  [azure/realtime] 入$4 出$16
+~ azure/gpt-realtime-1.5  [azure/realtime] 入$4 出$16
+~ azure/gpt-realtime-1.5-2026-02-23  [azure/realtime] 入$4 出$16
+~ azure/gpt-realtime-2  [azure/realtime] 入$4 出$24
+~ azure/gpt-realtime-2025-08-28  [azure/realtime] 入$4 出$16
+~ azure/gpt-realtime-mini  [azure/realtime] 入$0.6 出$2.4
+~ azure/us/gpt-4o-realtime-preview-2024-12-17  [azure/realtime] 入$5.5 出$22
+~ azure/us/gpt-5.4-mini  [azure/chat] 入$0.825 出$4.95
+~ azure/us/gpt-5.4-nano  [azure/chat] 入$0.22 出$1.375
+~ azure/whisper  [azure/audio_transcription] 入- 出-
+~ azure/whisper-1  [azure/audio_transcription] 入- 出-
+~ azure_ai/DeepSeek-V4-Flash-0731  [azure_ai/chat] 入$0.44 出$1.32
+~ azure_ai/FW-Kimi-K3  [azure_ai/chat] 入$3 出$15
+~ azure_ai/claude-fable-5  [azure_ai/chat] 入$10 出$50
+~ azure_ai/claude-fable-5-1  [azure_ai/chat] 入$10 出$50
+~ azure_ai/claude-fable-latest  [/] 入- 出-
+~ azure_ai/claude-haiku-4-5  [azure_ai/chat] 入$1 出$5
+~ azure_ai/claude-haiku-5-5  [azure_ai/chat] 入$0.1 出$0.5
+~ azure_ai/claude-mythos-5-1  [azure_ai/chat] 入$10 出$50
+~ azure_ai/claude-opus-4-5  [azure_ai/chat] 入$5 出$25
+~ azure_ai/claude-opus-4-6  [azure_ai/chat] 入$5 出$25
+~ azure_ai/claude-opus-4-7  [azure_ai/chat] 入$5 出$25
+~ azure_ai/claude-opus-4-8  [azure_ai/chat] 入$5 出$25
+~ azure_ai/claude-opus-5  [azure_ai/chat] 入$5 出$25
+~ azure_ai/claude-opus-5-5  [azure_ai/chat] 入$4 出$20
+~ azure_ai/claude-opus-5-5-fast  [azure_ai/chat] 入$8 出$40
+~ azure_ai/claude-sonnet-4-5  [azure_ai/chat] 入$3 出$15
+~ azure_ai/claude-sonnet-4-6  [azure_ai/chat] 入$3 出$15
+~ azure_ai/claude-sonnet-5  [azure_ai/chat] 入$2 出$10
+~ azure_ai/claude-sonnet-5-5  [azure_ai/chat] 入$2 出$10
+~ azure_ai/deepseek-v4-flash  [azure_ai/chat] 入$0.19 出$0.51
+~ azure_ai/deepseek-v4-pro  [azure_ai/chat] 入$1.74 出$3.48
+~ baseten/moonshotai/Kimi-K3.1-Pro  [baseten/chat] 入$2 出$10
+~ bedrock/claude-fable-latest  [/] 入- 出-
+~ bedrock/invoke/anthropic.claude-3-5-sonnet-20240620-v1:0  [bedrock/chat] 入$3 出$15
+~ bedrock/moonshotai.kimi-k2.5  [bedrock/chat] 入$0.6 出$3
+~ bedrock/us-gov-east-1/anthropic.claude-sonnet-4-5-20250929-v1:0  [bedrock/chat] 入$3.6 出$18
+~ bedrock/us-gov-east-1/claude-sonnet-4-5-20250929-v1:0  [bedrock/chat] 入$3.6 出$18
+~ bedrock/us-gov-west-1/anthropic.claude-sonnet-4-5-20250929-v1:0  [bedrock/chat] 入$3.6 出$18
+~ bedrock/us-gov-west-1/claude-sonnet-4-5-20250929-v1:0  [bedrock/chat] 入$3.6 出$18
+~ bedrock/us-gov-west-1/meta.llama3-70b-instruct-v1:0  [bedrock/chat] 入$2.65 出$3.5
+~ bedrock/us-gov-west-1/meta.llama3-8b-instruct-v1:0  [bedrock/chat] 入$0.3 出$0.6
+~ bedrock_mantle/openai.gpt-daybreak-blue-5.6-sol  [bedrock_mantle/responses] 入$4.4 出$22
+~ chatgpt-image-latest  [openai/image_generation] 入$5 出$10
+~ chatgpt/gpt-5.6-luna  [chatgpt/responses] 入- 出-
+~ chatgpt/gpt-5.6-sol  [chatgpt/responses] 入- 出-
+~ chatgpt/gpt-5.6-terra  [chatgpt/responses] 入- 出-
+~ claude-fable-latest  [/] 入- 出-
+~ databricks/claude-fable-latest  [/] 入- 出-
+~ databricks/databricks-gemini-3-6-flash  [databricks/chat] 入$0.75 出$3.75
+~ databricks/databricks-glm-5-2  [databricks/chat] 入$1.4 出$4.4
+~ databricks/databricks-meta-llama-3-1-8b-instruct  [databricks/chat] 入$0.15 出$0.45
+~ deepinfra/anthropic/claude-sonnet-5  [deepinfra/chat] 入$3 出$15
+~ deepinfra/deepseek-ai/DeepSeek-V4-Pro  [deepinfra/chat] 入$1.3 出$2.6
+~ deepinfra/deepseek-ai/DeepSeek-V4-Pro-0813  [deepinfra/chat] 入$1.3 出$2.6
+~ deepinfra/mistralai/Mistral-Nemo-Instruct-2407  [deepinfra/chat] 入$0.029 出$0.03
+~ deepinfra/moonshotai/Kimi-K3  [deepinfra/chat] 入$2.85 出$14.25
+~ deepinfra/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B  [deepinfra/chat] 入$0.075 出$0.4
+~ deepinfra/nvidia/NVIDIA-Nemotron-3.5-Lightning  [deepinfra/chat] 入$0.06 出$0.16
+~ eu.anthropic.claude-3-5-sonnet-20240620-v1:0  [bedrock/chat] 入$3 出$15
+~ eu.anthropic.claude-3-5-sonnet-20241022-v2:0  [bedrock/chat] 入$3 出$15
+~ eu.anthropic.claude-3-7-sonnet-20250219-v1:0  [bedrock/chat] 入$3 出$15
+~ eu.deepseek.v3.2  [bedrock_converse/chat] 入$0.74 出$2.22
+~ fal_ai/fal-ai/flux-lora-depth  [fal_ai/image_generation] 入- 出- 图$0.035
+~ fal_ai/fal-ai/flux-pro/v1.1  [fal_ai/image_generation] 入- 出- 图$0.04
+~ fal_ai/fal-ai/flux-pro/v1.1-ultra  [fal_ai/image_generation] 入- 出- 图$0.06
+~ fal_ai/fal-ai/flux/dev  [fal_ai/image_generation] 入- 出- 图$0.025
+~ fal_ai/fal-ai/flux/schnell  [fal_ai/image_generation] 入- 出- 图$0.003
+~ fal_ai/fal-ai/gemini-25-flash-image  [fal_ai/image_generation] 入- 出- 图$0.0398
+~ fal_ai/fal-ai/ideogram/v3  [fal_ai/image_generation] 入- 出- 图$0.06
+~ fal_ai/fal-ai/nano-banana  [fal_ai/image_generation] 入- 出- 图$0.0398
+~ fal_ai/fal-ai/stable-diffusion-v35-medium  [fal_ai/image_generation] 入- 出- 图$0.02
+~ fal_ai/minimax/h3/text-to-video  [fal_ai/video_generation] 入- 出-
+~ fallback_generalizations  [/] 入- 出-
+~ fireworks_ai/accounts/fireworks/models/deepseek-v4-flash  [fireworks_ai/chat] 入$0.14 出$0.28
+~ fireworks_ai/accounts/fireworks/models/ember-1  [fireworks_ai/chat] 入$3 出$15
+~ fireworks_ai/accounts/fireworks/models/glm-5p3-flash  [fireworks_ai/chat] 入$0.15 出$0.5
+~ fireworks_ai/accounts/fireworks/models/kimi-k3p1-pro  [fireworks_ai/chat] 入$2 出$10
+~ fireworks_ai/accounts/fireworks/models/minimax-m3p1-flash  [fireworks_ai/chat] 入$0.15 出$0.6
+~ fireworks_ai/accounts/fireworks/models/muse-spark-open  [fireworks_ai/chat] 入$1.25 出$4.25
+~ fireworks_ai/accounts/fireworks/models/ultramarine-1-flash-us  [fireworks_ai/chat] 入$0.15 出$0.5
+~ fireworks_ai/accounts/fireworks/routers/spot-deepseek-v4-flash  [fireworks_ai/chat] 入$0.105 出$0.21
+~ fireworks_ai/deepseek-v4-flash  [fireworks_ai/chat] 入$0.14 出$0.28
+~ fireworks_ai/glm-5p3-flash  [fireworks_ai/chat] 入$0.15 出$0.5
+~ friendliai/zai-org/GLM-5.1  [friendliai/chat] 入$1.4 出$4.4
+~ gemini-2.5-flash  [vertex_ai-language-models/chat] 入$0.3 出$2.5
+~ gemini-2.5-flash-lite  [vertex_ai-language-models/chat] 入$0.1 出$0.4
+~ gemini-2.5-flash-native-audio-preview-12-2025  [gemini/realtime] 入$0.5 出$2
+~ gemini-2.5-flash-preview-tts  [gemini/audio_speech] 入$0.5 出$10
+~ gemini-2.5-pro  [vertex_ai-language-models/chat] 入$1.25 出$10
+~ gemini-3-flash-preview  [vertex_ai-language-models/chat] 入$0.5 出$3
+~ gemini-3-pro-image  [vertex_ai-language-models/image_generation] 入$2 出$12 图$0.134
+~ gemini-3.1-flash-image  [vertex_ai-language-models/image_generation] 入$0.5 出$3 图$0.0672
+~ gemini-3.1-flash-lite  [vertex_ai-language-models/chat] 入$0.25 出$1.5
+~ gemini-3.1-flash-live-preview  [gemini/realtime] 入$0.75 出$4.5
+~ gemini-3.1-pro-preview  [vertex_ai-language-models/chat] 入$2 出$12 图$0.00012
+~ gemini-3.1-pro-preview-customtools  [vertex_ai-language-models/chat] 入$2 出$12 图$0.00012
+~ gemini-3.5-flash  [vertex_ai-language-models/chat] 入$1.5 出$9
+~ gemini-3.5-flash-lite  [vertex_ai-language-models/chat] 入$0.3 出$2.5
+~ gemini-3.8-flash-cyber  [vertex_ai-language-models/chat] 入$1.5 出$7.5
+~ gemini-flash-latest  [gemini/chat] 入$0.75 出$3.75
+~ gemini-flash-lite-latest  [gemini/chat] 入$0.3 出$2.5
+~ gemini-pro-latest  [gemini/chat] 入$2 出$12
+~ gemini/gemini-2.5-flash-image  [gemini/image_generation] 入$0.3 出$2.5 图$0.039
+~ gemini/gemini-2.5-flash-native-audio-preview-12-2025  [gemini/realtime] 入$0.5 出$2
+~ gemini/gemini-2.5-flash-preview-tts  [gemini/audio_speech] 入$0.5 出$10
+~ gemini/gemini-2.5-pro-preview-tts  [gemini/chat] 入$1 出$20
+~ gemini/gemini-3.1-flash-live-preview  [gemini/realtime] 入$0.75 出$4.5
+~ gemini/gemini-3.1-flash-tts-preview  [gemini/audio_speech] 入$1 出$20
+~ gemini/gemini-3.8-flash-lite-tts  [gemini/audio_speech] 入$0.5 出$6
+~ gemini/gemini-3.8-flash-tts  [gemini/audio_speech] 入$0.5 出$9
+~ gemini/gemini-4-argon  [gemini/chat] 入$2 出$10
+~ gemini/gemini-flash-latest  [gemini/chat] 入$0.75 出$3.75
+~ gemini/gemini-flash-lite-latest  [gemini/chat] 入$0.3 出$2.5
+~ gemini/gemini-pro-latest  [gemini/chat] 入$2 出$12
+~ github_copilot/claude-fable-5  [github_copilot/chat] 入$10 出$50
+~ github_copilot/claude-fable-latest  [/] 入- 出-
+~ github_copilot/claude-haiku-4.5  [github_copilot/chat] 入$1 出$5
+~ github_copilot/claude-opus-4.8  [github_copilot/chat] 入$5 出$25
+~ github_copilot/claude-opus-5  [github_copilot/chat] 入$5 出$25
+~ github_copilot/gemini-3.8-flash  [github_copilot/chat] 入$0.75 出$3.75
+~ github_copilot/gemini-4-argon  [github_copilot/chat] 入$2 出$10
+~ github_copilot/gpt-5.6-terra  [github_copilot/responses] 入$2 出$12
+~ github_copilot/grok-4.6  [github_copilot/chat] 入$2 出$6
+~ github_copilot/kimi-k3  [github_copilot/chat] 入$3 出$15
+~ gpt-4o-mini-audio-preview-2024-12-17  [openai/chat] 入$0.15 出$0.6
+~ gpt-4o-mini-realtime-preview-2024-12-17  [openai/realtime] 入$0.6 出$2.4
+~ gpt-5  [openai/chat] 入$1.25 出$10
+~ gpt-5-2025-08-07  [openai/chat] 入$1.25 出$10
+~ gpt-5-mini  [openai/chat] 入$0.25 出$2
+~ gpt-5-mini-2025-08-07  [openai/chat] 入$0.25 出$2
+~ gpt-5-nano  [openai/chat] 入$0.05 出$0.4
+~ gpt-5-nano-2025-08-07  [openai/chat] 入$0.05 出$0.4
+~ gpt-5-pro  [openai/responses] 入$15 出$120
+~ gpt-5-pro-2025-10-06  [openai/responses] 入$15 出$120
+~ gpt-5.5-pro  [openai/responses] 入$30 出$180
+~ gpt-6-cyber  [openai/chat] 入$20 出$100
+~ gpt-image-1-mini  [openai/image_generation] 入$2 出-
+~ gpt-image-1.5  [openai/image_generation] 入$5 出$10
+~ gpt-image-1.5-2025-12-16  [openai/image_generation] 入$5 出$10
+~ gpt-image-2  [openai/image_generation] 入$5 出-
+~ gpt-image-2-2026-04-21  [openai/image_generation] 入$5 出-
+~ gpt-image-2.5-flare  [openai/image_generation] 入$5 出-
+~ gpt-image-2.5-sunburst  [openai/image_generation] 入$5 出-
+~ gpt-image-2.6-flare  [openai/image_generation] 入$5 出-
+~ gpt-image-2.6-sunburst  [openai/image_generation] 入$5 出-
+~ groq/openai/gpt-oss-safeguard-20b  [groq/chat] 入$0.075 出$0.3
+~ high/1024-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ high/1024-x-1024/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ high/1024-x-1536/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ high/1024-x-1536/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ high/1536-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ high/1536-x-1024/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ low/1024-x-1024/gpt-image-1-mini  [openai/image_generation] 入- 出-
+~ low/1024-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ low/1024-x-1024/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ low/1024-x-1536/gpt-image-1-mini  [openai/image_generation] 入- 出-
+~ low/1024-x-1536/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ low/1024-x-1536/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ low/1536-x-1024/gpt-image-1-mini  [openai/image_generation] 入- 出-
+~ low/1536-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ low/1536-x-1024/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ medium/1024-x-1024/gpt-image-1-mini  [openai/image_generation] 入- 出-
+~ medium/1024-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ medium/1024-x-1024/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ medium/1024-x-1536/gpt-image-1-mini  [openai/image_generation] 入- 出-
+~ medium/1024-x-1536/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ medium/1024-x-1536/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ medium/1536-x-1024/gpt-image-1-mini  [openai/image_generation] 入- 出-
+~ medium/1536-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ medium/1536-x-1024/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ mistral/labs-leanstral-1-5  [mistral/chat] 入$0 出$0
+~ mistral/labs-leanstral-1-5-1  [mistral/chat] 入$0 出$0
+~ mistral/magistral-medium-latest  [mistral/chat] 入$1.5 出$7.5
+~ mistral/magistral-small-latest  [mistral/chat] 入$0.15 出$0.6
+~ mistral/mistral-embed  [mistral/embedding] 入$0.1 出-
+~ mistral/mistral-embed-2312  [mistral/embedding] 入$0.1 出-
+~ mistral/mistral-large-4  [mistral/chat] 入$0.7 出$2.1
+~ mistral/mistral-large-4-0  [mistral/chat] 入$0.7 出$2.1
+~ nace/drex-latest  [nace/evaluation] 入$0.03 出$0
+~ nace/drex-v1.0  [nace/evaluation] 入$0.03 出$0
+~ nace/drex-v1.5  [nace/evaluation] 入$0.03 出$0
+~ nace/drex-v2.0  [nace/evaluation] 入$0.03 出$0
+~ nebius/moonshotai/Kimi-K3.1-Pro  [nebius/chat] 入$2 出$10
+~ o3  [openai/chat] 入$2 出$8
+~ o3-2025-04-16  [openai/chat] 入$2 出$8
+~ o3-pro  [openai/responses] 入$20 出$80
+~ o3-pro-2025-06-10  [openai/responses] 入$20 出$80
+~ replicate/anthropic/claude-4.5-haiku  [replicate/chat] 入$1 出$5
+~ replicate/anthropic/claude-4.5-sonnet  [replicate/chat] 入$3 出$15
+~ replicate/deepseek-ai/deepseek-r1  [replicate/chat] 入$3.75 出$10
+~ replicate/deepseek-ai/deepseek-v3  [replicate/chat] 入$1.45 出$1.45
+~ replicate/deepseek-ai/deepseek-v3.1  [replicate/chat] 入$0.672 出$2.016
+~ replicate/google/gemini-2.5-flash  [replicate/chat] 入$0.3 出$2.5
+~ replicate/google/gemini-3-pro  [replicate/chat] 入$2 出$12
+~ replicate/ibm-granite/granite-3.3-8b-instruct  [replicate/chat] 入$0.03 出$0.25
+~ replicate/meta/llama-2-13b  [replicate/chat] 入$0.1 出$0.5
+~ replicate/meta/llama-2-13b-chat  [replicate/chat] 入$0.1 出$0.5
+~ replicate/meta/llama-2-70b  [replicate/chat] 入$0.65 出$2.75
+~ replicate/meta/llama-2-70b-chat  [replicate/chat] 入$0.65 出$2.75
+~ replicate/meta/llama-2-7b  [replicate/chat] 入$0.05 出$0.25
+~ replicate/meta/llama-2-7b-chat  [replicate/chat] 入$0.05 出$0.25
+~ replicate/mistralai/mistral-7b-v0.1  [replicate/chat] 入$0.05 出$0.25
+~ replicate/openai/gpt-4.1  [replicate/chat] 入$2 出$8
+~ replicate/openai/gpt-4.1-mini  [replicate/chat] 入$0.4 出$1.6
+~ replicate/openai/gpt-4o  [replicate/chat] 入$2.5 出$10
+~ replicate/openai/gpt-4o-mini  [replicate/chat] 入$0.15 出$0.6
+~ replicate/openai/gpt-5  [replicate/chat] 入$1.25 出$10
+~ replicate/openai/gpt-5-mini  [replicate/chat] 入$0.25 出$2
+~ replicate/openai/gpt-5-nano  [replicate/chat] 入$0.05 出$0.4
+~ replicate/openai/gpt-oss-120b  [replicate/chat] 入$0.18 出$0.72
+~ replicate/openai/gpt-oss-20b  [replicate/chat] 入$0.09 出$0.36
+~ replicate/qwen/qwen3-235b-a22b-instruct-2507  [replicate/chat] 入$0.264 出$1.06
+~ runwayml/eleven_multilingual_v2  [runwayml/audio_speech] 入- 出-
+~ runwayml/seedance2  [runwayml/video_generation] 入- 出-
+~ runwayml/seedance2_5  [runwayml/video_generation] 入- 出-
+~ runwayml/seedance2_fast  [runwayml/video_generation] 入- 出-
+~ runwayml/seedance2_mini  [runwayml/video_generation] 入- 出-
+~ soniox/stt-async-v4  [soniox/audio_transcription] 入- 出-
+~ soniox/stt-async-v5  [soniox/audio_transcription] 入- 出-
+~ soniox/stt-rt-preview-v2  [soniox/audio_transcription] 入- 出-
+~ soniox/stt-rt-v3  [soniox/audio_transcription] 入- 出-
+~ soniox/stt-rt-v4  [soniox/audio_transcription] 入- 出-
+~ soniox/stt-rt-v5  [soniox/audio_transcription] 入- 出-
+~ standard/1024-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ standard/1024-x-1024/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ standard/1024-x-1536/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ standard/1024-x-1536/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ standard/1536-x-1024/gpt-image-1.5  [openai/image_generation] 入- 出-
+~ standard/1536-x-1024/gpt-image-1.5-2025-12-16  [openai/image_generation] 入- 出-
+~ tencent/hy4  [tencent/chat] 入$0.417 出$1.25
+~ tencent/hy4-preview  [tencent/chat] 入$0.417 出$1.25
+~ together_ai/deepseek-ai/DeepSeek-V3  [together_ai/chat] 入$1.25 出$1.25
+~ together_ai/essentialai/rnj-1-instruct  [together_ai/chat] 入$0.15 出$0.15
+~ together_ai/moonshotai/Kimi-K2-Instruct  [together_ai/chat] 入$1 出$3
+~ together_ai/togethercomputer/CodeLlama-34b-Instruct  [together_ai/chat] 入- 出-
+~ us-gov.anthropic.claude-sonnet-4-5-20250929-v1:0  [bedrock_converse/chat] 入$3.6 出$18
+~ us.anthropic.claude-3-5-sonnet-20240620-v1:0  [bedrock/chat] 入$3 出$15
+~ us.anthropic.claude-3-5-sonnet-20241022-v2:0  [bedrock/chat] 入$3 出$15
+~ us.anthropic.claude-3-7-sonnet-20250219-v1:0  [bedrock_converse/chat] 入$3 出$15
+~ us.deepseek.v3.2  [bedrock_converse/chat] 入$0.62 出$1.85
+~ vertex_ai/claude-fable-latest  [/] 入- 出-
+~ vertex_ai/gemini-3-flash-preview  [vertex_ai/chat] 入$0.5 出$3
+~ vertex_ai/gemini-3-pro-image  [vertex_ai-language-models/image_generation] 入$2 出$12 图$0.134
+~ vertex_ai/gemini-3-pro-preview  [vertex_ai/chat] 入$2 出$12
+~ vertex_ai/gemini-3.1-flash-image  [vertex_ai-language-models/image_generation] 入$0.5 出$3 图$0.0672
+~ vertex_ai/gemini-3.1-flash-lite  [vertex_ai-language-models/chat] 入$0.25 出$1.5
+~ vertex_ai/gemini-3.1-pro-preview  [vertex_ai/chat] 入$2 出$12 图$0.00012
+~ vertex_ai/gemini-3.1-pro-preview-customtools  [vertex_ai/chat] 入$2 出$12 图$0.00012
+~ vertex_ai/gemini-3.5-flash  [vertex_ai/chat] 入$1.5 出$9
+~ vertex_ai/gemini-3.5-flash-lite  [vertex_ai-language-models/chat] 入$0.3 出$2.5
+~ vertex_ai/gemini-3.8-flash-cyber  [vertex_ai/chat] 入$1.5 出$7.5
+~ vertex_ai/gemini-4-argon  [vertex_ai/chat] 入$2 出$10
+~ vertex_ai/gemini-4-argon-cyber-permissive  [vertex_ai/chat] 入$4 出$20
+~ vertex_ai/gemini-omni-1.1-flash  [vertex_ai/chat] 入$1.5 出$9
+~ vertex_ai/gemini-omni-1.1-flash-preview  [vertex_ai/chat] 入$1.5 出$9
+~ vertex_ai/veo-3.1-fast-generate-001  [vertex_ai-video-models/video_generation] 入- 出-
+~ vertex_ai/veo-3.1-generate-001  [vertex_ai-video-models/video_generation] 入- 出-
+~ wandb/deepseek-ai/DeepSeek-V4.1-Flash-1017  [wandb/chat] 入$0.3 出$1.2
+~ xai/grok-imagine-image-pro  [xai/image_generation] 入- 出-
+~ xai/grok-imagine-image-quality  [xai/image_generation] 入- 出-
+~ xai/grok-imagine-image-quality-20260403  [xai/image_generation] 入- 出-
+~ xai/grok-imagine-image-quality-latest  [xai/image_generation] 入- 出-
+~ zai.glm-5  [bedrock_converse/chat] 入$1 出$3.2
+
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 dashscope/qwen4-max  [dashscope/chat] 入$1.667 出$5
+~ 修正补丁 dashscope/deepseek-v4.1-flash  [dashscope/chat] 入$0.3333 出$1.333
+~ 修正补丁 dashscope/deepseek-v4.1-flash-1017  [dashscope/chat] 入$0.3333 出$1.333
+
