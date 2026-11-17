@@ -1460,3 +1460,71 @@
 ~ 修正补丁 dashscope/deepseek-v4.1-flash  [dashscope/chat] 入$0.3333 出$1.333
 ~ 修正补丁 dashscope/deepseek-v4.1-flash-1017  [dashscope/chat] 入$0.3333 出$1.333
 
+===== 2026-11-17 21:31:18 更新 =====
+新增 42 / 减少 2 / 变更 12
+
+--- 新增模型（42）---
++ bedrock/mantle/anthropic.claude-fable-5  [bedrock/chat] 入$11 出$55
++ bedrock/mantle/anthropic.claude-haiku-4-5  [bedrock/chat] 入$1.1 出$5.5
++ bedrock/mantle/anthropic.claude-mythos-5  [bedrock/chat] 入$11 出$55
++ bedrock/mantle/anthropic.claude-opus-4-7  [bedrock/chat] 入$5.5 出$27.5
++ bedrock/mantle/anthropic.claude-opus-4-8  [bedrock/chat] 入$5.5 出$27.5
++ bedrock/mantle/anthropic.claude-opus-5  [bedrock/chat] 入$5.5 出$27.5
++ bedrock/mantle/anthropic.claude-opus-5-5  [bedrock/chat] 入$4.4 出$22
++ bedrock/mantle/anthropic.claude-sonnet-5  [bedrock/chat] 入$2.2 出$11
++ bedrock_mantle/anthropic.claude-fable-5  [bedrock_mantle/chat] 入$11 出$55
++ bedrock_mantle/anthropic.claude-mythos-5  [bedrock_mantle/chat] 入$11 出$55
++ bedrock_mantle/anthropic.claude-opus-4-7  [bedrock_mantle/chat] 入$5.5 出$27.5
++ bedrock_mantle/anthropic.claude-opus-4-8  [bedrock_mantle/chat] 入$5.5 出$27.5
++ bedrock_mantle/anthropic.claude-opus-5  [bedrock_mantle/chat] 入$5.5 出$27.5
++ bedrock_mantle/anthropic.claude-sonnet-5  [bedrock_mantle/chat] 入$2.2 出$11
++ bedrock_mantle/deepseek.v3.2  [bedrock_mantle/chat] 入$0.62 出$1.85
++ bedrock_mantle/google.gemma-3-12b-it  [bedrock_mantle/chat] 入$0.09 出$0.29
++ bedrock_mantle/google.gemma-3-27b-it  [bedrock_mantle/chat] 入$0.23 出$0.38
++ bedrock_mantle/google.gemma-3-4b-it  [bedrock_mantle/chat] 入$0.04 出$0.08
++ bedrock_mantle/minimax.minimax-m2  [bedrock_mantle/chat] 入$0.3 出$1.2
++ bedrock_mantle/minimax.minimax-m2.1  [bedrock_mantle/chat] 入$0.3 出$1.2
++ bedrock_mantle/minimax.minimax-m2.5  [bedrock_mantle/chat] 入$0.3 出$1.2
++ bedrock_mantle/mistral.devstral-2-123b  [bedrock_mantle/chat] 入$0.4 出$2
++ bedrock_mantle/mistral.magistral-small-2509  [bedrock_mantle/chat] 入$0.5 出$1.5
++ bedrock_mantle/mistral.ministral-3-14b-instruct  [bedrock_mantle/chat] 入$0.2 出$0.2
++ bedrock_mantle/mistral.ministral-3-3b-instruct  [bedrock_mantle/chat] 入$0.1 出$0.1
++ bedrock_mantle/mistral.ministral-3-8b-instruct  [bedrock_mantle/chat] 入$0.15 出$0.15
++ bedrock_mantle/mistral.mistral-large-3-675b-instruct  [bedrock_mantle/chat] 入$0.5 出$1.5
++ bedrock_mantle/mistral.voxtral-mini-3b-2507  [bedrock_mantle/chat] 入$0.04 出$0.04
++ bedrock_mantle/mistral.voxtral-small-24b-2507  [bedrock_mantle/chat] 入$0.1 出$0.3
++ bedrock_mantle/moonshotai.kimi-k2.5  [bedrock_mantle/chat] 入$0.6 出$3
++ bedrock_mantle/nvidia.nemotron-nano-12b-v2  [bedrock_mantle/chat] 入$0.2 出$0.6
++ bedrock_mantle/nvidia.nemotron-nano-3-30b  [bedrock_mantle/chat] 入$0.06 出$0.24
++ bedrock_mantle/nvidia.nemotron-nano-9b-v2  [bedrock_mantle/chat] 入$0.06 出$0.23
++ bedrock_mantle/nvidia.nemotron-super-3-120b  [bedrock_mantle/chat] 入$0.15 出$0.65
++ bedrock_mantle/qwen.qwen3-coder-next  [bedrock_mantle/chat] 入$0.5 出$1.2
++ bedrock_mantle/writer.palmyra-vision-7b  [bedrock_mantle/chat] 入$0.15 出$0.6
++ bedrock_mantle/zai.glm-4.7  [bedrock_mantle/chat] 入$0.6 出$2.2
++ bedrock_mantle/zai.glm-4.7-flash  [bedrock_mantle/chat] 入$0.07 出$0.4
++ bedrock_mantle/zai.glm-5  [bedrock_mantle/chat] 入$1 出$3.2
++ vispark/vision-large  [vispark/chat] 入$7.37 出$22.11
++ vispark/vision-medium  [vispark/chat] 入$4.21 出$12.63
++ vispark/vision-small  [vispark/chat] 入$1.05 出$3.16
+
+--- 减少模型（2）---
+- bedrock/us-gov-east-1/claude-sonnet-4-5-20250929-v1:0  [bedrock/chat] 入$3.6 出$18
+- bedrock/us-gov-west-1/claude-sonnet-4-5-20250929-v1:0  [bedrock/chat] 入$3.6 出$18
+
+--- 发生变更（12）---
+~ bedrock/us-gov-east-1/moonshotai.kimi-k3  [bedrock_converse/chat] 入$3.96 出$19.8
+~ bedrock/us-gov-west-1/moonshotai.kimi-k3  [bedrock_converse/chat] 入$3.96 出$19.8
+~ bedrock_mantle/anthropic.claude-haiku-4-5  [bedrock_mantle/chat] 入$1.1 出$5.5
+~ databricks/databricks-claude-opus-5-5  [databricks/chat] 入$4 出$20
+~ global.moonshotai.kimi-k3  [bedrock_converse/chat] 入$3 出$15
+~ global.moonshotai.kimi-k3.1  [bedrock_converse/chat] 入$4 出$20
+~ in.moonshotai.kimi-k3  [bedrock_converse/chat] 入$3.3 出$16.5
+~ in.moonshotai.kimi-k3.1  [bedrock_converse/chat] 入$4.4 出$22
+~ moonshotai.kimi-k3  [bedrock_converse/chat] 入$3.3 出$16.5
+~ moonshotai.kimi-k3.1  [bedrock_converse/chat] 入$4.4 出$22
+~ us.moonshotai.kimi-k3  [bedrock_converse/chat] 入$3.3 出$16.5
+~ us.moonshotai.kimi-k3.1  [bedrock_converse/chat] 入$4.4 出$22
+
+--- 补丁变更（add-on-data.json）---
+~ 修正补丁 dashscope/qwen4-max  [dashscope/chat] 入$1.667 出$5
+
