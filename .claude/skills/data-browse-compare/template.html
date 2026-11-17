@@ -579,10 +579,20 @@
     letter-spacing: 0.01em;
     cursor: pointer;
     transition: all 0.15s;
+    text-decoration: none;
   }
   .share-compare-btn .ic { font-size: 13px; }
   .share-compare-btn:hover:not(:disabled) { background: var(--accent); color: #f4fbfd; border-color: var(--accent); }
   .share-compare-btn:disabled { opacity: 0.4; cursor: default; }
+  /* 外链按钮（Artificial Analysis 多维度对比）：同为次级按钮，但用虚线边框弱化，
+     避免与主操作「分享对比」抢视觉焦点。选择器带 .share-compare-btn 提高优先级，
+     确保覆盖上面的通用 hover 规则（外链不是 disabled，:not(:disabled) 会命中）。 */
+  .share-compare-btn.ext-compare-link {
+    border-style: dashed;
+    background: transparent;
+    color: var(--text-dim);
+  }
+  .share-compare-btn.ext-compare-link:hover { background: var(--accent-soft); color: var(--accent-bright); border-color: var(--accent); }
   .compare-toolbar {
     display: flex;
     align-items: center;
@@ -1526,6 +1536,9 @@
       </div>
     </div>
     <div class="compare-toolbar-right">
+      <a class="share-compare-btn ext-compare-link" id="aaCompareLink" href="https://artificialanalysis.ai/models/comparisons" target="_blank" rel="noopener noreferrer" data-i18n-title="aaCompareTitle" title="Compare models across more dimensions on Artificial Analysis">
+        <svg class="ic"><use href="#i-ext"/></svg><span data-i18n="aaCompare">More Dimensions</span>
+      </a>
       <button id="shareCompare" class="share-compare-btn" data-i18n-title="shareTitle" title="Copy a shareable link to this comparison">
         <svg class="ic"><use href="#i-share"/></svg><span data-i18n="shareBtn">Share</span>
       </button>
@@ -1625,9 +1638,11 @@ const I18N = {
     errBody: '本页面数据应内嵌于页面中，但当前未检测到，且浏览器不允许通过 file:// 协议 fetch 本地 JSON。请检查数据块是否完整，或在项目目录运行本地服务后访问。',
     renderErr: '对比表渲染出错：',
     renderErrHint: '请打开浏览器控制台（F12）查看详情并反馈。',
-    // 分享
+    // 分享 / 外链
     shareBtn: '分享对比',
     shareTitle: '复制当前对比的分享链接',
+    aaCompare: '更多维度对比',
+    aaCompareTitle: '在 Artificial Analysis 上按更多维度对比模型（新标签页打开）',
     toastShared: '分享链接已复制，发送给他人即可查看当前对比',
     toastShareEmpty: '请先勾选要对比的模型',
     toastShareInvalid: (n) => `链接中有 ${n} 个模型已不可用，已自动忽略`,
@@ -1700,9 +1715,11 @@ const I18N = {
     errBody: 'The page data should be embedded inline, but it was not detected, and the browser blocks fetch() of local JSON over file://. Check the data block, or serve the directory over a local HTTP server.',
     renderErr: 'Failed to render compare table: ',
     renderErrHint: 'Open the browser console (F12) for details.',
-    // 分享
+    // 分享 / 外链
     shareBtn: 'Share',
     shareTitle: 'Copy a shareable link to this comparison',
+    aaCompare: 'More Dimensions',
+    aaCompareTitle: 'Compare models across more dimensions on Artificial Analysis (opens in a new tab)',
     toastShared: 'Link copied — share it to let others see this comparison',
     toastShareEmpty: 'Select models to compare first',
     toastShareInvalid: (n) => `${n} model(s) in the link are no longer available and were skipped`,
