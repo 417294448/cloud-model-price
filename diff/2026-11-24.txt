@@ -162,3 +162,55 @@
 ~ vertex_ai/xai/grok-4.3  [vertex_ai/chat] 入$1.25 出$2.5
 ~ xai/grok-4.3-latest  [xai/chat] 入$1.25 出$2.5
 
+===== 2026-11-24 12:20:53 更新 =====
+新增 6 / 减少 0 / 变更 35
+
+--- 新增模型（6）---
++ minimax/MiniMax-H3-Image  [minimax/image_generation] 入$2.3 出-
++ minimax/MiniMax-H3-Image-Highspeed  [minimax/image_generation] 入$2.3 出-
++ nace/parse-high  [nace/ocr] 入- 出-
++ nace/parse-low  [nace/ocr] 入- 出-
++ nace/parse-medium  [nace/ocr] 入- 出-
++ nvidia_nim/moonshotai/kimi-k3.1-pro  [nvidia_nim/chat] 入- 出-
+
+--- 发生变更（35）---
+~ azure_ai/cohere-rerank-v4.0-fast  [azure_ai/rerank] 入$0 出$0
+~ azure_ai/cohere-rerank-v4.0-pro  [azure_ai/rerank] 入$0 出$0
+~ azure_ai/deepseek-v3.2  [azure_ai/chat] 入$0.58 出$1.68
+~ azure_ai/deepseek-v4-flash  [azure_ai/chat] 入$0.19 出$0.51
+~ azure_ai/deepseek-v4-pro  [azure_ai/chat] 入$1.74 出$3.48
+~ azure_ai/gpt-chat-latest  [azure_ai/chat] 入$5 出$30
+~ azure_ai/kimi-k3.1-pro  [azure_ai/chat] 入$2.3 出$11.5
+~ fallback_generalizations  [/] 入- 出-
+~ gemini-2.5-flash  [vertex_ai-language-models/chat] 入$0.3 出$2.5
+~ gemini/gemini-2.5-flash  [gemini/chat] 入$0.3 出$2.5
+~ gemini/gemini-4-argon  [gemini/chat] 入$2 出$10
+~ nvidia_nim/mistralai/mistral-large-4-1t-a52b  [nvidia_nim/chat] 入- 出-
+~ nvidia_nim/nvidia/nemotron-3.5-bolt-e4b  [nvidia_nim/chat] 入- 出-
+~ nvidia_nim/poolside/laguna-xs-2.1  [nvidia_nim/chat] 入- 出-
+~ perplexity/anthropic/claude-fable-5-1  [perplexity/responses] 入$10 出$50
+~ perplexity/anthropic/claude-fable-5-2  [perplexity/responses] 入$8 出$40
+~ perplexity/anthropic/claude-opus-5-5  [perplexity/responses] 入$4 出$20
+~ perplexity/google/gemini-3.8-flash  [perplexity/responses] 入$0.75 出$3.75
+~ perplexity/google/gemini-4-argon  [perplexity/responses] 入$2 出$10
+~ perplexity/google/gemini-4-carbon  [perplexity/responses] 入$2 出$10
+~ perplexity/google/gemini-4-hydrogen  [perplexity/responses] 入$1.5 出$7.5
+~ perplexity/openai/gpt-5-nano  [perplexity/responses] 入$0.05 出$0.4
+~ perplexity/openai/gpt-5.3-codex  [perplexity/responses] 入$3.5 出$28
+~ perplexity/openai/gpt-6-astra  [perplexity/responses] 入$10 出$50
+~ perplexity/openai/gpt-6-luna  [perplexity/responses] 入$0.1 出$0.5
+~ perplexity/openai/gpt-6-sol  [perplexity/responses] 入$2 出$10
+~ perplexity/openai/gpt-6.1-sol  [perplexity/responses] 入$2 出$10
+~ perplexity/openai/gpt-6.1-terra  [perplexity/responses] 入$1 出$5
+~ perplexity/openai/gpt-6.2-astra  [perplexity/responses] 入$8 出$40
+~ perplexity/openai/gpt-6.2-sol  [perplexity/responses] 入$2 出$10
+~ perplexity/perplexity/deepseek-v4-pro-0813  [perplexity/responses] 入$1.32 出$3.96
+~ perplexity/perplexity/nemotron-3.5-super-120b-a12b  [perplexity/responses] 入$0.2 出$0.5
+~ perplexity/xai/grok-4.7  [perplexity/responses] 入$2 出$6
+~ vertex_ai/gemini-2.0-flash  [vertex_ai/chat] 入$0.15 出$0.6
+~ vertex_ai/gemini-4-argon  [vertex_ai/chat] 入$2 出$10
+
+===== 2026-11-24 12:22:05 更新 =====
+新增 0 / 减少 0 / 变更 0
+
+（本次无变化）
