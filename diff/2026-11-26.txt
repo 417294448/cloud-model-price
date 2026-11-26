@@ -332,3 +332,10 @@
 ~ us.anthropic.claude-sonnet-5-5  [bedrock_converse/chat] 入$2.2 出$11
 ~ xai/grok-4.6  [xai/chat] 入$2 出$6
 
+===== 2026-11-26 14:59:16 更新 =====
+新增 0 / 减少 0 / 变更 2
+
+--- 发生变更（2）---
+~ baseten/deepseek-ai/DeepSeek-V4.1-Flash-Fast  [baseten/chat] 入$0.6 出$2.4
+~ together_ai/thinkingmachines/inkling  [together_ai/chat] 入$1 出$4.05
+
