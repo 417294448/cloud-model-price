@@ -1,0 +1,16 @@
+===== 2026-11-27 18:59:34 更新 =====
+新增 0 / 减少 0 / 变更 8
+
+--- 发生变更（8）---
+~ gemini-2.5-flash-image  [vertex_ai-language-models/image_generation] 入$0.3 出$2.5 图$0.039
+~ gemini-3-pro-image  [vertex_ai-language-models/image_generation] 入$2 出$12 图$0.134
+~ gemini-3.1-flash-image  [vertex_ai-language-models/image_generation] 入$0.5 出$3 图$0.0672
+~ gemini-3.1-flash-lite-image  [vertex_ai-language-models/image_generation] 入$0.25 出$1.5 图$0.0336
+~ vertex_ai/gemini-2.5-flash-image  [vertex_ai-language-models/image_generation] 入$0.3 出$2.5 图$0.039
+~ vertex_ai/gemini-3-pro-image  [vertex_ai-language-models/image_generation] 入$2 出$12 图$0.134
+~ vertex_ai/gemini-3.1-flash-image  [vertex_ai-language-models/image_generation] 入$0.5 出$3 图$0.0672
+~ vertex_ai/gemini-3.1-flash-lite-image  [vertex_ai-language-models/image_generation] 入$0.25 出$1.5 图$0.0336
+
+--- 补丁变更（add-on-data.json）---
++ 新增补丁 dashscope/Xing/Xing4.1-Preview  [dashscope/chat] 入$0.25 出$1
+
